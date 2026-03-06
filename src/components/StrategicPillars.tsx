@@ -11,18 +11,7 @@ const pillars = [
     title: "STAR Pro",
     description:
       "An adaptive intelligence layer built on advanced multimodal AI models. It integrates contextual signals — user preferences, real-time location, behavior patterns and environmental inputs — to guide navigation and support relevant decisions across the ecosystem.",
-    scenarios: [
-      {
-        label: "Health scenario",
-        text: '"I noticed you are looking for emergency care. Here is the fastest route, and I have already shared your location."',
-      },
-      {
-        label: "Gastro scenario",
-        text: '"It\'s raining. Here are 3 favorite places nearby with free tables and covered parking."',
-      },
-    ],
-    mockups: true,
-    tags: null,
+    tags: ["Multimodal AI", "Real-time Context", "Adaptive Navigation", "Decision Support"],
   },
   {
     id: "modularity",
@@ -31,8 +20,6 @@ const pillars = [
     title: "System Modularity",
     description:
       "A unified platform architecture serving Citizens (B2C), Cities & Municipalities (B2G), and Local Businesses (B2B). Standardized core layers with locally adaptable modules.",
-    scenarios: null,
-    mockups: false,
     tags: ["Standardized Core", "Local Adaptation", "Global Scale", "Long-term Infrastructure"],
   },
   {
@@ -42,8 +29,6 @@ const pillars = [
     title: "Ethical Data Environment",
     description:
       "Trust-based digital framework aligned with European data governance and AI regulation standards. Privacy-by-design architecture, transparent data usage, responsible AI principles.",
-    scenarios: null,
-    mockups: false,
     tags: ["Privacy-by-Design", "EU AI Act Aligned", "Digital Sovereignty", "User Autonomy"],
   },
 ];
@@ -58,7 +43,7 @@ const StrategicPillars = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Strategic Pillars</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
             Built on Three Foundations
           </h2>
         </div>
@@ -80,68 +65,25 @@ const StrategicPillars = () => {
           ))}
         </div>
 
-        {/* Active Pillar Content */}
-        <div className="transition-all duration-300">
-          {active.mockups ? (
-            /* STAR Pro layout with mockups */
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg neu-inset flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                  <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{active.title}</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">{active.description}</p>
-                {active.scenarios && (
-                  <div className="space-y-4">
-                    {active.scenarios.map((s) => (
-                      <div key={s.label} className="p-5 neu-card">
-                        <p className="text-sm font-medium text-foreground mb-1">{s.label}</p>
-                        <p className="text-sm text-muted-foreground italic">{s.text}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+        {/* Active Pillar Content — uniform layout */}
+        <div className="max-w-3xl mx-auto">
+          <div className="p-8 md:p-12 neu-card">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center">
+                <Icon className="w-5 h-5 text-muted-foreground" />
               </div>
-              <div className="flex justify-center gap-6">
-                <div className="w-44 md:w-52 neu-card-white !rounded-[2rem] overflow-hidden p-1.5">
-                  <div className="rounded-[1.5rem] overflow-hidden">
-                    <img src={mockup1} alt="STAR Pro health scenario" className="w-full h-auto" loading="lazy" />
-                  </div>
-                </div>
-                <div className="w-44 md:w-52 neu-card-white !rounded-[2rem] overflow-hidden p-1.5 mt-8">
-                  <div className="rounded-[1.5rem] overflow-hidden">
-                    <img src={mockup2} alt="STAR Pro gastro scenario" className="w-full h-auto" loading="lazy" />
-                  </div>
-                </div>
-              </div>
+              <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
             </div>
-          ) : (
-            /* Modularity / Ethics layout */
-            <div className="max-w-3xl mx-auto">
-              <div className="p-8 md:p-12 neu-card">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-muted-foreground" />
-                  </div>
-                  <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{active.title}</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">{active.description}</p>
-                {active.tags && (
-                  <div className="flex flex-wrap gap-2">
-                    {active.tags.map((tag) => (
-                      <span key={tag} className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{active.title}</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">{active.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {active.tags.map((tag) => (
+                <span key={tag} className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground">
+                  {tag}
+                </span>
+              ))}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Dot indicators */}
@@ -150,8 +92,8 @@ const StrategicPillars = () => {
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === activeIndex ? "bg-foreground w-6" : "bg-muted-foreground/30"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === activeIndex ? "bg-foreground w-6" : "bg-muted-foreground/30 w-2"
               }`}
             />
           ))}

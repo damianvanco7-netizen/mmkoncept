@@ -31,7 +31,7 @@ const RoadmapSection = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Roadmap</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
             Structured Development. Phased Scaling.
           </h2>
         </div>
