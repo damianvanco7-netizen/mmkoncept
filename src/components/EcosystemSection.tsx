@@ -53,13 +53,15 @@ const EcosystemSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           {modules.map(({ icon: Icon, title, description, size }) => (
             <div
               key={title}
-              className={`${size} p-8 rounded-2xl bg-card border border-border hover:shadow-md transition-shadow group`}
+              className={`${size} p-8 neu-card group cursor-default`}
             >
-              <Icon className="w-6 h-6 text-muted-foreground mb-4 group-hover:text-foreground transition-colors" />
+              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
+                <Icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
             </div>

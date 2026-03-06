@@ -42,13 +42,16 @@ const RoadmapSection = () => {
               {/* Timeline line */}
               <div className="flex flex-col items-center">
                 <div
-                  className={`w-3 h-3 rounded-full shrink-0 ${
+                  className={`w-3.5 h-3.5 rounded-full shrink-0 ${
                     phase.status === "complete"
                       ? "bg-foreground"
                       : phase.status === "active"
                       ? "bg-foreground ring-4 ring-foreground/10"
                       : "bg-border"
                   }`}
+                  style={phase.status !== "upcoming" ? {
+                    boxShadow: '2px 2px 4px hsl(35 15% 78%), -2px -2px 4px hsl(0 0% 100%)'
+                  } : undefined}
                 />
                 {i < phases.length - 1 && (
                   <div className="w-px flex-1 bg-border min-h-[80px]" />
@@ -65,7 +68,7 @@ const RoadmapSection = () => {
           ))}
         </div>
 
-        <div className="mt-8 p-6 rounded-2xl bg-accent border border-border">
+        <div className="mt-8 p-6 neu-card">
           <p className="text-sm text-muted-foreground leading-relaxed">
             Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
           </p>
