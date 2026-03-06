@@ -1,4 +1,3 @@
-import villageImg from "@/assets/vv-village-3d.jpg";
 import mockupImg from "@/assets/vv-mockup-trio.png";
 
 const modules = [
@@ -19,39 +18,26 @@ const VirtualVillageIntro = () => {
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
             Virtual Village
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             One Ecosystem. Clear Structure. Contextual Intelligence.
           </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={villageImg}
-              alt="Virtual Village 3D concept rendering"
-              className="w-full h-auto object-cover"
-              loading="lazy"
-            />
-          </div>
-          <div className="space-y-6">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Virtual Village is a modular AI-powered digital ecosystem — unified, personalised, structured, and seamless for citizens, cities and services.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {modules.map((mod) => (
-                <span
-                  key={mod}
-                  className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground"
-                >
-                  {mod}
-                </span>
-              ))}
-            </div>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+            Virtual Village is a modular AI-powered digital ecosystem — unified, personalised, structured, and seamless for citizens, cities and services.
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
+            {modules.map((mod) => (
+              <span
+                key={mod}
+                className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground"
+              >
+                {mod}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* App Mockup Showcase */}
-        <div className="mt-16">
+        <div>
           <img
             src={mockupImg}
             alt="Virtual Village app — city services, navigation and detail screens"

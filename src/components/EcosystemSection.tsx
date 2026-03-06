@@ -45,7 +45,7 @@ const EcosystemSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Modules</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             A Living Ecosystem
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
