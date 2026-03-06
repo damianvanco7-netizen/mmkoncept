@@ -1,4 +1,5 @@
 import villageImg from "@/assets/vv-village-3d.jpg";
+import mockupImg from "@/assets/vv-mockup-trio.png";
 
 const modules = [
   "Municipal Services",
@@ -36,17 +37,27 @@ const VirtualVillageIntro = () => {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Virtual Village is a modular AI-powered digital ecosystem — unified, personalised, structured, and seamless for citizens, cities and services.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {modules.map((mod) => (
                 <span
                   key={mod}
-                  className="px-4 py-2 rounded-full bg-card text-sm font-medium text-foreground border border-border"
+                  className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground"
                 >
                   {mod}
                 </span>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* App Mockup Showcase */}
+        <div className="mt-16">
+          <img
+            src={mockupImg}
+            alt="Virtual Village app — city services, navigation and detail screens"
+            className="w-full max-w-4xl mx-auto h-auto"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
