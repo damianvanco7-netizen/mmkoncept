@@ -140,64 +140,64 @@
 
   /* Neumorphism cards — light background */
   .neu-card {
-    background: hsl(35 24% 90%);
-    border: 1px solid hsl(35 20% 85%);
+    background: hsl(35 22% 91%);
+    border: 1px solid hsl(35 18% 87%);
     border-radius: 1.25rem;
     box-shadow:
-      8px 8px 20px hsl(35 15% 78%),
-      -8px -8px 20px hsl(0 0% 100%);
+      4px 4px 12px hsl(35 12% 82%),
+      -4px -4px 12px hsl(0 0% 98%);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .neu-card:hover {
     box-shadow:
-      10px 10px 24px hsl(35 15% 75%),
-      -10px -10px 24px hsl(0 0% 100%);
-    transform: translateY(-2px);
+      5px 5px 14px hsl(35 12% 80%),
+      -5px -5px 14px hsl(0 0% 99%);
+    transform: translateY(-1px);
   }
 
   /* Neumorphism cards — on white/card background */
   .neu-card-white {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(35 20% 92%);
+    background: hsl(35 15% 95%);
+    border: 1px solid hsl(35 15% 92%);
     border-radius: 1.25rem;
     box-shadow:
-      6px 6px 16px hsl(35 15% 85%),
-      -6px -6px 16px hsl(0 0% 100%);
+      4px 4px 10px hsl(35 12% 88%),
+      -3px -3px 10px hsl(0 0% 100%);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .neu-card-white:hover {
     box-shadow:
-      8px 8px 20px hsl(35 15% 82%),
-      -8px -8px 20px hsl(0 0% 100%);
-    transform: translateY(-2px);
+      5px 5px 12px hsl(35 12% 86%),
+      -4px -4px 12px hsl(0 0% 100%);
+    transform: translateY(-1px);
   }
 
   /* Neumorphism cards — dark background */
   .neu-card-dark {
-    background: hsl(18 40% 7%);
-    border: 1px solid hsl(18 30% 12%);
+    background: hsl(18 35% 7%);
+    border: 1px solid hsl(18 25% 11%);
     border-radius: 1.25rem;
     box-shadow:
-      6px 6px 16px hsl(18 100% 1%),
-      -6px -6px 16px hsl(18 30% 10%);
+      3px 3px 10px hsl(18 100% 1%),
+      -3px -3px 10px hsl(18 25% 9%);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .neu-card-dark:hover {
     box-shadow:
-      8px 8px 20px hsl(18 100% 1%),
-      -8px -8px 20px hsl(18 30% 12%);
-    transform: translateY(-2px);
+      4px 4px 12px hsl(18 100% 1%),
+      -4px -4px 12px hsl(18 25% 10%);
+    transform: translateY(-1px);
   }
 
   /* Neumorphism inset (pressed) */
   .neu-inset {
-    background: hsl(35 24% 88%);
-    border-radius: 1rem;
+    background: hsl(35 20% 89%);
+    border-radius: 0.75rem;
     box-shadow:
-      inset 4px 4px 10px hsl(35 15% 78%),
-      inset -4px -4px 10px hsl(0 0% 100%);
+      inset 2px 2px 6px hsl(35 12% 82%),
+      inset -2px -2px 6px hsl(0 0% 98%);
   }
 }
