@@ -24,11 +24,11 @@ const VirtualVillageIntro = () => {
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
             Virtual Village is a modular AI-powered digital ecosystem — unified, personalised, structured, and seamless for citizens, cities and services.
           </p>
-          <div className="flex flex-wrap justify-center gap-2 max-w-xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-2.5 max-w-xl mx-auto">
             {modules.map((mod) => (
               <span
                 key={mod}
-                className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground"
+                className="px-4 py-2 text-sm font-medium rounded-full neu-inset text-foreground"
               >
                 {mod}
               </span>

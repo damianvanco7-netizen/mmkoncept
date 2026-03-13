@@ -1,6 +1,4 @@
 import { useState } from "react";
-import mockup1 from "@/assets/vv-app-mockup-1.jpg";
-import mockup2 from "@/assets/vv-app-mockup-2.jpg";
 import { Shield, Layers, Brain } from "lucide-react";
 
 const pillars = [
@@ -40,7 +38,7 @@ const StrategicPillars = () => {
 
   return (
     <section id="pillars" className="py-28 md:py-36 bg-card section-padding">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Strategic Pillars</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
@@ -65,9 +63,9 @@ const StrategicPillars = () => {
           ))}
         </div>
 
-        {/* Active Pillar Content — uniform layout */}
-        <div className="max-w-3xl mx-auto">
-          <div className="p-8 md:p-12 neu-card">
+        {/* Active Pillar Content — full width */}
+        <div className="w-full">
+          <div className="p-10 md:p-14 neu-card">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center">
                 <Icon className="w-5 h-5 text-muted-foreground" />
@@ -75,7 +73,7 @@ const StrategicPillars = () => {
               <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{active.title}</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">{active.description}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-3xl">{active.description}</p>
             <div className="flex flex-wrap gap-2">
               {active.tags.map((tag) => (
                 <span key={tag} className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground">
