@@ -1,4 +1,5 @@
-import heroVillage from "@/assets/hero-village.png";
+import mockup2 from "@/assets/mockup-2.png";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
