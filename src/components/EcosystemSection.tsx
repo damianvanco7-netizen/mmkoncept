@@ -1,4 +1,5 @@
 import { Heart, Building2, Palette, Car, GraduationCap, Store } from "lucide-react";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const modules = [
   {
@@ -41,8 +42,9 @@ const modules = [
 
 const EcosystemSection = () => {
   return (
-    <section id="ecosystem" className="py-28 md:py-36 bg-accent section-padding">
-      <div className="max-w-6xl mx-auto">
+    <section id="ecosystem" className="relative py-28 md:py-36 bg-accent section-padding overflow-hidden">
+      <ConcentricCircles />
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Modules</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">

@@ -1,4 +1,5 @@
 import mockupImg from "@/assets/vv-mockup-trio.png";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const modules = [
   "Municipal Services",
@@ -11,8 +12,9 @@ const modules = [
 
 const VirtualVillageIntro = () => {
   return (
-    <section id="virtual-village" className="py-28 md:py-36 bg-accent section-padding">
-      <div className="max-w-6xl mx-auto">
+    <section id="virtual-village" className="relative py-28 md:py-36 bg-accent section-padding overflow-hidden">
+      <ConcentricCircles />
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Flagship Platform</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
