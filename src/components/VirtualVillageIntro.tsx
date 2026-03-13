@@ -1,4 +1,5 @@
 import mockupImg from "@/assets/vv-mockup-trio.png";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const modules = [
   "Municipal Services",
