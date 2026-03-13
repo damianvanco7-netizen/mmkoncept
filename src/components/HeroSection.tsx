@@ -31,9 +31,9 @@ const HeroSection = () => {
         {/* Right — Hero image */}
         <div className="flex justify-center md:justify-end">
           <img
-            src={heroVillage}
-            alt="Virtual Village 3D concept — miniature digital city model"
-            className="w-full max-w-lg xl:max-w-xl h-auto drop-shadow-2xl"
+            src={mockup2}
+            alt="Virtual Village app mockup — city ecosystem on mobile"
+            className="w-full max-w-sm xl:max-w-md h-auto drop-shadow-2xl"
           />
         </div>
       </div>

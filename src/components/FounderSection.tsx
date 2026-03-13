@@ -1,7 +1,10 @@
+import ConcentricCircles from "@/components/ConcentricCircles";
+
 const FounderSection = () => {
   return (
-    <section id="founder" className="py-28 md:py-36 bg-accent section-padding">
-      <div className="max-w-5xl mx-auto">
+    <section id="founder" className="relative py-28 md:py-36 bg-accent section-padding overflow-hidden">
+      <ConcentricCircles />
+      <div className="relative z-10 max-w-5xl mx-auto">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
           {/* Portrait placeholder */}
           <div className="md:col-span-2">
