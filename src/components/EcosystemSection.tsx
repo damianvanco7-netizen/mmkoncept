@@ -42,7 +42,7 @@ const modules = [
 
 const EcosystemSection = () => {
   return (
-    <section id="ecosystem" className="relative py-28 md:py-36 bg-accent section-padding overflow-hidden">
+    <section id="ecosystem" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
       <ConcentricCircles />
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
