@@ -17,11 +17,7 @@ const challenges = [
 
 const WhyMmConcept = () => {
   return (
-    <section
-      id="why"
-      className="relative z-10 py-32 md:py-44 section-padding rounded-t-[2rem] md:rounded-t-[3rem] -mt-8"
-      style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}
-    >
+    <section id="why" className="py-28 md:py-36 section-padding" style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Why mm concept</p>
@@ -30,27 +26,9 @@ const WhyMmConcept = () => {
           </h2>
         </div>
 
-        {/* Bento grid: large card left + 2x2 right */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Large card — Challenges — spans 2 rows */}
-          <div className="md:row-span-2 neu-card-dark p-8 md:p-10 flex flex-col">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style={{ background: 'hsl(18 40% 10%)', boxShadow: 'inset 3px 3px 6px hsl(18 100% 2%), inset -3px -3px 6px hsl(18 30% 12%)' }}>
-              <Server className="w-5 h-5 text-warm-taupe" />
-            </div>
-            <h3 className="text-xl font-semibold text-warm-beige mb-6">Platform Architecture Challenges</h3>
-            <ul className="space-y-4 flex-1">
-              {challenges.map((c) => (
-                <li key={c} className="flex items-start gap-3 text-warm-taupe">
-                  <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe mt-2 shrink-0" />
-                  <span className="text-sm leading-relaxed">{c}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 4 smaller cards — 2x2 grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {pillars.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="neu-card-dark p-7">
+            <div key={title} className="p-6 neu-card-dark">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'hsl(18 40% 10%)', boxShadow: 'inset 3px 3px 6px hsl(18 100% 2%), inset -3px -3px 6px hsl(18 30% 12%)' }}>
                 <Icon className="w-5 h-5 text-warm-taupe" />
               </div>
@@ -58,6 +36,21 @@ const WhyMmConcept = () => {
               <p className="text-sm text-warm-taupe leading-relaxed">{desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="max-w-2xl mx-auto neu-card-dark p-8">
+          <div className="flex items-center gap-3 mb-6">
+            <Server className="w-5 h-5 text-warm-taupe" />
+            <h3 className="text-lg font-semibold text-warm-beige">Platform Architecture Challenges</h3>
+          </div>
+          <ul className="space-y-3">
+            {challenges.map((c) => (
+              <li key={c} className="flex items-start gap-3 text-warm-taupe">
+                <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe mt-2 shrink-0" />
+                <span className="text-sm leading-relaxed">{c}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

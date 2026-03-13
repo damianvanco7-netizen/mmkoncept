@@ -41,7 +41,7 @@ const modules = [
 
 const EcosystemSection = () => {
   return (
-    <section id="ecosystem" className="py-32 md:py-44 pb-40 md:pb-52 bg-accent section-padding">
+    <section id="ecosystem" className="py-28 md:py-36 bg-accent section-padding">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Modules</p>
