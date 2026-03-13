@@ -1,4 +1,5 @@
 import { Heart, Building2, Palette, Car, GraduationCap, Store } from "lucide-react";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const modules = [
   {
