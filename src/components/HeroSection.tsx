@@ -8,15 +8,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center bg-warm-white section-padding pt-24 overflow-hidden">
-      {/* Concentric circle lines background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="absolute w-[500px] h-[500px] rounded-full border border-foreground/[0.04]" />
-        <div className="absolute w-[800px] h-[800px] rounded-full border border-foreground/[0.035]" />
-        <div className="absolute w-[1100px] h-[1100px] rounded-full border border-foreground/[0.03]" />
-        <div className="absolute w-[1400px] h-[1400px] rounded-full border border-foreground/[0.025]" />
-        <div className="absolute w-[1700px] h-[1700px] rounded-full border border-foreground/[0.02]" />
-        <div className="absolute w-[2000px] h-[2000px] rounded-full border border-foreground/[0.015]" />
-      </div>
+      <ConcentricCircles />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left — Text */}
