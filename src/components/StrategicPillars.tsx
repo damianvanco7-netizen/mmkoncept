@@ -8,6 +8,7 @@ const pillars = [
     id: "ai",
     label: "Contextual AI Layer",
     icon: Brain,
+    image: starProImg,
     title: "STAR Pro",
     description:
       "An adaptive intelligence layer built on advanced multimodal AI models. It integrates contextual signals — user preferences, real-time location, behavior patterns and environmental inputs — to guide navigation and support relevant decisions across the ecosystem.",
