@@ -72,7 +72,7 @@ const RoadmapSection = () => {
             <div key={label} className="p-8 neu-card flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
-                  <Icon className={`w-5 h-5 ${statusColor}`} />
+                  <Icon className="w-5 h-5 text-muted-foreground" />
                 </div>
                 <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
