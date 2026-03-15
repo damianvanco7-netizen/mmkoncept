@@ -1,4 +1,4 @@
-import { CheckCircle, Loader, Calendar, Rocket } from "lucide-react";
+import { CheckCircle, Loader, Calendar, Rocket, Compass, Code, MapPin, Globe } from "lucide-react";
 
 const phases = [
   {
