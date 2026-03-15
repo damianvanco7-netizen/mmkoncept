@@ -115,7 +115,7 @@ const StrategicPillars = () => {
                   <div
                     key={pillar.id}
                     ref={(el) => { cardRefs.current[i] = el; }}
-                    className="rounded-2xl bg-muted/20 neu-card overflow-hidden"
+                    className="rounded-2xl bg-muted/20 overflow-hidden"
                   >
                     {/* Image placeholder — inside card */}
                     <div className="w-full aspect-[16/9] bg-muted/30 flex items-center justify-center">
