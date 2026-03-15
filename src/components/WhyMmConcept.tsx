@@ -18,7 +18,7 @@ const challenges = [
 const WhyMmConcept = () => {
   return (
     <section id="why" className="py-28 md:py-36 section-padding" style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}>
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Why mm concept</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-beige leading-tight max-w-3xl mx-auto">

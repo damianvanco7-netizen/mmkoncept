@@ -4,7 +4,7 @@ const FounderSection = () => {
   return (
     <section id="founder" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
       <ConcentricCircles />
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 w-full">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
           {/* Portrait placeholder */}
           <div className="md:col-span-2">
