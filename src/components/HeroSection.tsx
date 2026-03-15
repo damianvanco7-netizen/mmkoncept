@@ -10,7 +10,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center bg-warm-white section-padding pt-24 overflow-hidden">
       <ConcentricCircles />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left — Text */}
         <div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.08] mb-6">
