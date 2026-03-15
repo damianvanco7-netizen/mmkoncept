@@ -1,5 +1,5 @@
 import { Eye, Layout, Cpu, Handshake, Server } from "lucide-react";
-import heroVillageImg from "@/assets/hero-village.png";
+import vvAppIconImg from "@/assets/vv-app-icon.png";
 
 const pillars = [
   { icon: Eye, title: "Visionary Leadership", desc: "Integrated system expertise driving long-term digital strategy." },
@@ -35,7 +35,7 @@ const WhyMmConcept = () => {
           {/* Left tall card — full background image with overlay text */}
           <div className="md:row-span-2 rounded-2xl overflow-hidden relative">
             <img
-              src={heroVillageImg}
+              src={vvAppIconImg}
               alt="Platform Architecture"
               className="absolute inset-0 w-full h-full object-cover"
             />
