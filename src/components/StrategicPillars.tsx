@@ -63,16 +63,6 @@ const StrategicPillars = () => {
   return (
     <section ref={sectionRef} id="pillars" className="py-28 md:py-36 bg-card section-padding">
       <div className="w-full">
-        {/* Header — left aligned like Vectura */}
-        <div className="mb-20">
-          <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-            Strategic Pillars
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground max-w-4xl">
-            Built on Three Foundations
-          </h2>
-        </div>
-
         {/* Two-column scroll layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
           {/* Left — Sticky navigation */}
@@ -105,54 +95,70 @@ const StrategicPillars = () => {
             </div>
           </div>
 
-          {/* Right — Scrollable cards */}
-          <div className="flex flex-col gap-16">
-            {pillars.map((pillar, i) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.id}
-                  ref={(el) => { cardRefs.current[i] = el; }}
-                >
-                  {/* Image placeholder */}
-                  <div className="w-full aspect-[16/10] rounded-2xl bg-muted/30 neu-card flex items-center justify-center mb-8 overflow-hidden">
-                    <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-muted-foreground/50" />
+          {/* Right — Header + Scrollable cards */}
+          <div className="flex flex-col">
+            {/* Header — aligned with right column */}
+            <div className="mb-16">
+              <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+                Strategic Pillars
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground max-w-4xl">
+                Built on Three Foundations
+              </h2>
+            </div>
+
+            {/* Cards */}
+            <div className="flex flex-col gap-12">
+              {pillars.map((pillar, i) => {
+                const Icon = pillar.icon;
+                return (
+                  <div
+                    key={pillar.id}
+                    ref={(el) => { cardRefs.current[i] = el; }}
+                    className="rounded-2xl bg-muted/20 neu-card overflow-hidden"
+                  >
+                    {/* Image placeholder — inside card */}
+                    <div className="w-full aspect-[16/9] bg-muted/30 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-muted-foreground/50" />
+                      </div>
                     </div>
+
+                    {/* Content inside card */}
+                    <div className="p-8">
+                      <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+                        {/* Left — title + description */}
+                        <div className="flex-1">
+                          <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
+                            {pillar.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                            {pillar.description}
+                          </p>
+                        </div>
+
+                        {/* Right — pill tags */}
+                        <div className="flex flex-wrap md:flex-col gap-2 md:w-44 flex-shrink-0">
+                          {pillar.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile label */}
+                    <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase px-8 pb-6">
+                      {pillar.label}
+                    </p>
                   </div>
-
-                  {/* Content below card */}
-                  <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
-                    {/* Left — title + description */}
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
-                        {pillar.title}
-                      </h3>
-                      <p className="text-base text-muted-foreground leading-relaxed">
-                        {pillar.description}
-                      </p>
-                    </div>
-
-                    {/* Right — pill tags */}
-                    <div className="flex flex-wrap md:flex-col gap-2 md:w-56 flex-shrink-0">
-                      {pillar.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-4 py-2 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Mobile label */}
-                  <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase mt-6">
-                    {pillar.label}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
