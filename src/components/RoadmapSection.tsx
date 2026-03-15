@@ -15,7 +15,7 @@ const phases = [
     title: "Core Development",
     description: "Platform core development, contextual AI integration, initial module build-out.",
     status: "In Progress",
-    icon: Loader,
+    icon: Code,
     statusColor: "text-amber-500",
     statusBg: "bg-amber-500/15",
   },
