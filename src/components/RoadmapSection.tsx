@@ -41,7 +41,7 @@ const phases = [
 
 const RoadmapSection = () => {
   return (
-    <section id="roadmap" className="py-28 md:py-36 bg-card section-padding overflow-hidden">
+    <section id="roadmap" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
       <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Roadmap</p>
