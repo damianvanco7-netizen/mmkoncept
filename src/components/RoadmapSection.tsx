@@ -82,9 +82,8 @@ const RoadmapSection = () => {
               </div>
               <div className="mt-4">
                 <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${statusColor} ${statusBg}`}>
-                  {(status === "Completed" || status === "In Progress") && (
-                    <Icon className={`w-3 h-3 ${statusColor}`} />
-                  )}
+                  {status === "Completed" && <CheckCircle className={`w-3 h-3 ${statusColor}`} />}
+                  {status === "In Progress" && <Loader className={`w-3 h-3 ${statusColor}`} />}
                   {status}
                 </span>
               </div>
