@@ -18,6 +18,7 @@ const pillars = [
     id: "modularity",
     label: "System Modularity",
     icon: Layers,
+    image: systemModularityImg,
     title: "System Modularity",
     description:
       "A unified platform architecture serving Citizens (B2C), Cities & Municipalities (B2G), and Local Businesses (B2B). Standardized core layers with locally adaptable modules.",
