@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Shield, Layers, Brain } from "lucide-react";
+import starProImg from "@/assets/star-pro.png";
+import systemModularityImg from "@/assets/system-modularity.png";
 
 const pillars = [
   {
     id: "ai",
     label: "Contextual AI Layer",
     icon: Brain,
+    image: starProImg,
     title: "STAR Pro",
     description:
       "An adaptive intelligence layer built on advanced multimodal AI models. It integrates contextual signals — user preferences, real-time location, behavior patterns and environmental inputs — to guide navigation and support relevant decisions across the ecosystem.",
@@ -15,6 +18,7 @@ const pillars = [
     id: "modularity",
     label: "System Modularity",
     icon: Layers,
+    image: systemModularityImg,
     title: "System Modularity",
     description:
       "A unified platform architecture serving Citizens (B2C), Cities & Municipalities (B2G), and Local Businesses (B2B). Standardized core layers with locally adaptable modules.",
@@ -24,6 +28,7 @@ const pillars = [
     id: "ethics",
     label: "Ethical Data Environment",
     icon: Shield,
+    image: null,
     title: "Ethical Data Environment",
     description:
       "Trust-based digital framework aligned with European data governance and AI regulation standards. Privacy-by-design architecture, transparent data usage, responsible AI principles.",
@@ -118,10 +123,14 @@ const StrategicPillars = () => {
                     className="rounded-2xl bg-muted/20 overflow-hidden"
                   >
                     {/* Image placeholder — inside card */}
-                    <div className="w-full aspect-[16/9] bg-muted/30 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-muted-foreground/50" />
-                      </div>
+                    <div className="w-full aspect-[16/9] bg-muted/30 overflow-hidden flex items-center justify-center">
+                      {pillar.image ? (
+                        <img src={pillar.image} alt={pillar.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+                          <Icon className="w-8 h-8 text-muted-foreground/50" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Content inside card */}

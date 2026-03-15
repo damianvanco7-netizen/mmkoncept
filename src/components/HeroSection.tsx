@@ -33,7 +33,7 @@ const HeroSection = () => {
           <img
             src={mockup2}
             alt="Virtual Village app mockup — city ecosystem on mobile"
-            className="w-full max-w-[26rem] xl:max-w-[29rem] h-auto drop-shadow-2xl"
+            className="w-full max-w-[30rem] xl:max-w-[33rem] h-auto drop-shadow-2xl"
           />
         </div>
       </div>
