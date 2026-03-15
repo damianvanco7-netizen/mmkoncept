@@ -21,7 +21,7 @@ const WhyMmConcept = () => {
       <div className="w-full">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Why mm concept</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-warm-beige leading-tight max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-warm-beige leading-tight max-w-3xl mx-auto">
             System-Level Thinking. Scalable Architecture. Human Intention.
           </h2>
         </div>

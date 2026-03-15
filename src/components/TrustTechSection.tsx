@@ -13,7 +13,7 @@ const TrustTechSection = () => {
       <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Technology</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-warm-beige mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-warm-beige mb-4">
             Trust Through Transparency
           </h2>
           <p className="text-lg text-warm-taupe max-w-xl mx-auto">

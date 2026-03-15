@@ -23,7 +23,7 @@ const FounderSection = () => {
           {/* Bio */}
           <div className="md:col-span-3">
             <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Founder</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Martina</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-2">Martina</h2>
             <p className="text-lg font-medium text-muted-foreground mb-8">Leader & Visionary</p>
             <div className="space-y-4">
               <p className="text-muted-foreground leading-relaxed">

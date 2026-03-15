@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="relative z-10 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left — Text */}
         <div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.08] mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
             Designing
             <br />
             Human-Centric

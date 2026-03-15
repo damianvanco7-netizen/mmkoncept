@@ -41,7 +41,7 @@ const StrategicPillars = () => {
       <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Strategic Pillars</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground">
             Built on Three Foundations
           </h2>
         </div>
@@ -72,7 +72,7 @@ const StrategicPillars = () => {
               </div>
               <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{active.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">{active.title}</h3>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-3xl">{active.description}</p>
             <div className="flex flex-wrap gap-2">
               {active.tags.map((tag) => (
