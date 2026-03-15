@@ -6,7 +6,7 @@ const phases = [
     title: "Strategic Foundation",
     description: "Architecture, design prototype and modular framework defined. AI integration roadmap established.",
     status: "Completed",
-    icon: CheckCircle,
+    icon: Compass,
     statusColor: "text-green-600",
     statusBg: "bg-green-600/15",
   },
