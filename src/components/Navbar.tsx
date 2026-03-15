@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-warm-white/80 border-b border-border/40">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 py-4">
+      <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
           <img src={logo} alt="mm concept" className="h-7" />
         </button>

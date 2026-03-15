@@ -40,7 +40,7 @@ const RoadmapSection = () => {
   return (
     <section id="roadmap" className="relative py-28 md:py-36 bg-card section-padding overflow-hidden">
       <ConcentricCircles />
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 w-full">
         <div className="text-center mb-20">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Roadmap</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">

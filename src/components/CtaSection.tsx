@@ -1,7 +1,7 @@
 const CtaSection = () => {
   return (
     <section id="cta" className="py-28 md:py-36 bg-accent section-padding">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="w-full text-center">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-12">
           Let's build structured digital ecosystems that serve people.
         </h2>

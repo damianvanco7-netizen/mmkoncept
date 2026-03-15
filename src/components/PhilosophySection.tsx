@@ -31,7 +31,6 @@ const PhilosophySection = () => {
 
     const wordElements = content.querySelectorAll(".word");
 
-    // Pin the section while text reveals
     const pinTrigger = ScrollTrigger.create({
       trigger: section,
       start: "top top",
@@ -40,7 +39,6 @@ const PhilosophySection = () => {
       pinSpacing: true,
     });
 
-    // Fade in the label first
     gsap.fromTo(
       label,
       { opacity: 0, y: 20 },
@@ -57,7 +55,6 @@ const PhilosophySection = () => {
       }
     );
 
-    // Word-by-word opacity reveal
     gsap.fromTo(
       wordElements,
       { opacity: 0.08 },
@@ -74,7 +71,6 @@ const PhilosophySection = () => {
       }
     );
 
-    // Word-by-word blur reveal
     gsap.fromTo(
       wordElements,
       { filter: "blur(5px)" },
@@ -103,7 +99,7 @@ const PhilosophySection = () => {
       id="philosophy"
       className="h-screen bg-card flex items-center section-padding"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="w-full">
         <p
           ref={labelRef}
           className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10 opacity-0"
@@ -111,9 +107,9 @@ const PhilosophySection = () => {
           Origin
         </p>
         <div ref={contentRef}>
-          <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-foreground leading-relaxed">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">
             {splitText}
-          </p>
+          </h2>
         </div>
       </div>
     </section>

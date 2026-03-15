@@ -10,7 +10,7 @@ const flowSteps = [
 const TrustTechSection = () => {
   return (
     <section id="tech" className="py-28 md:py-36 section-padding" style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}>
-      <div className="max-w-5xl mx-auto">
+      <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Technology</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-warm-beige mb-4">
