@@ -41,7 +41,7 @@ const StrategicPillars = () => {
       <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Strategic Pillars</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground">
             Built on Three Foundations
           </h2>
         </div>
