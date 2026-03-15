@@ -71,21 +71,7 @@ const PhilosophySection = () => {
       }
     );
 
-    gsap.fromTo(
-      wordElements,
-      { filter: "blur(5px)" },
-      {
-        filter: "blur(0px)",
-        stagger: 0.05,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top+=10%",
-          end: "+=120%",
-          scrub: true,
-        },
-      }
-    );
+    // blur removed per design request
 
     return () => {
       pinTrigger.kill();

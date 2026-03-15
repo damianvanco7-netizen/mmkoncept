@@ -37,7 +37,7 @@ const VirtualVillageIntro = () => {
   return (
     <section
       id="virtual-village"
-      className="relative -mt-8 rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-10"
+      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-10"
     >
       <div className="w-full">
         {/* Label */}
@@ -45,21 +45,24 @@ const VirtualVillageIntro = () => {
           Flagship Platform
         </p>
 
-        {/* Heading */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-12 max-w-4xl">
-          Virtual Village —{" "}
-          <span className="text-muted-foreground">
-            One Ecosystem. Clear Structure. Contextual Intelligence.
-          </span>
-        </h2>
+        {/* Heading + Subtitle row — Vectura layout */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          {/* Left — Heading */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight max-w-3xl">
+            Virtual Village —{" "}
+            <span className="text-muted-foreground">
+              One Ecosystem. Clear Structure. Contextual Intelligence.
+            </span>
+          </h2>
 
-        {/* Quote-style description (like Daniel Chen on Vectura) */}
-        <div className="mb-16 max-w-2xl">
-          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed italic">
-            "Virtual Village is a modular AI-powered digital ecosystem — unified,
-            personalised, structured, and seamless for citizens, cities and
-            services."
-          </p>
+          {/* Right — Subtitle, bottom-aligned with heading */}
+          <div className="md:max-w-sm flex-shrink-0">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Virtual Village is a modular AI-powered digital ecosystem — unified,
+              personalised, structured, and seamless for citizens, cities and
+              services.
+            </p>
+          </div>
         </div>
 
         {/* 3x2 Card Grid */}
