@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Shield, Layers, Brain } from "lucide-react";
 
 const pillars = [
@@ -33,68 +33,127 @@ const pillars = [
 
 const StrategicPillars = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const active = pillars[activeIndex];
-  const Icon = active.icon;
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) setActiveIndex(index);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: 0,
+      }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="pillars" className="py-28 md:py-36 bg-card section-padding">
+    <section ref={sectionRef} id="pillars" className="py-28 md:py-36 bg-card section-padding">
       <div className="w-full">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Strategic Pillars</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground">
+        {/* Header — left aligned like Vectura */}
+        <div className="mb-20">
+          <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+            Strategic Pillars
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground max-w-4xl">
             Built on Three Foundations
           </h2>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex items-center justify-center gap-2 md:gap-4 mb-16">
-          {pillars.map((pillar, i) => (
-            <button
-              key={pillar.id}
-              onClick={() => setActiveIndex(i)}
-              className={`px-4 md:px-6 py-3 rounded-full text-xs md:text-sm font-medium tracking-wide transition-all duration-300 ${
-                i === activeIndex
-                  ? "neu-card text-foreground shadow-md"
-                  : "text-muted-foreground/50 hover:text-muted-foreground"
-              }`}
-            >
-              {pillar.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Active Pillar Content — full width */}
-        <div className="w-full">
-          <div className="p-10 md:p-14 neu-card">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center">
-                <Icon className="w-5 h-5 text-muted-foreground" />
-              </div>
-              <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">{active.label}</p>
-            </div>
-            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">{active.title}</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-3xl">{active.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {active.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground">
-                  {tag}
-                </span>
-              ))}
+        {/* Two-column scroll layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+          {/* Left — Sticky navigation */}
+          <div className="hidden lg:block">
+            <div className="sticky top-[40vh]">
+              <nav className="flex flex-col gap-1">
+                {pillars.map((pillar, i) => (
+                  <button
+                    key={pillar.id}
+                    onClick={() => {
+                      cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }}
+                    className="text-left transition-all duration-300"
+                  >
+                    <span
+                      className={`flex items-center gap-3 text-lg font-medium transition-all duration-300 ${
+                        i === activeIndex
+                          ? "text-foreground"
+                          : "text-muted-foreground/40"
+                      }`}
+                    >
+                      {i === activeIndex && (
+                        <span className="inline-block w-4 text-muted-foreground/60">↳</span>
+                      )}
+                      {pillar.label}
+                    </span>
+                  </button>
+                ))}
+              </nav>
             </div>
           </div>
-        </div>
 
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-12">
-          {pillars.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === activeIndex ? "bg-foreground w-6" : "bg-muted-foreground/30 w-2"
-              }`}
-            />
-          ))}
+          {/* Right — Scrollable cards */}
+          <div className="flex flex-col gap-16">
+            {pillars.map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={pillar.id}
+                  ref={(el) => { cardRefs.current[i] = el; }}
+                >
+                  {/* Image placeholder */}
+                  <div className="w-full aspect-[16/10] rounded-2xl bg-muted/30 neu-card flex items-center justify-center mb-8 overflow-hidden">
+                    <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+                      <Icon className="w-8 h-8 text-muted-foreground/50" />
+                    </div>
+                  </div>
+
+                  {/* Content below card */}
+                  <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-12">
+                    {/* Left — title + description */}
+                    <div className="flex-1">
+                      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-base text-muted-foreground leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
+
+                    {/* Right — pill tags */}
+                    <div className="flex flex-wrap md:flex-col gap-2 md:w-56 flex-shrink-0">
+                      {pillar.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-4 py-2 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Mobile label */}
+                  <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase mt-6">
+                    {pillar.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
