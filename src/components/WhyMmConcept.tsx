@@ -1,5 +1,5 @@
 import { Eye, Layout, Cpu, Handshake, Server } from "lucide-react";
-import heroVillageImg from "@/assets/hero-village.png";
+import vvAppIconImg from "@/assets/vv-app-icon.png";
 
 const pillars = [
   { icon: Eye, title: "Visionary Leadership", desc: "Integrated system expertise driving long-term digital strategy." },
