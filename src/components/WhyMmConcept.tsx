@@ -20,7 +20,6 @@ const WhyMmConcept = () => {
   return (
     <section
       id="why"
-      className="py-28 md:py-36 section-padding"
       className="py-28 md:py-36 section-padding bg-near-black"
     >
       <div className="w-full">
