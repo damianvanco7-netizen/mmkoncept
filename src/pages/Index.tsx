@@ -21,6 +21,9 @@ const Index = () => {
       <StrategicPillars />
       <EcosystemSection />
       <WhyMmConcept />
+      <div className="bg-near-black section-padding">
+        <hr className="border-white/10" />
+      </div>
       <TrustTechSection />
       <FounderSection />
       <RoadmapSection />
