@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Shield, Layers, Brain } from "lucide-react";
 import starProImg from "@/assets/star-pro.png";
 import systemModularityImg from "@/assets/system-modularity.png";
+import ethicalDataImg from "@/assets/ethical-data.png";
 
 const pillars = [
   {
@@ -28,7 +29,7 @@ const pillars = [
     id: "ethics",
     label: "Ethical Data Environment",
     icon: Shield,
-    image: null,
+    image: ethicalDataImg,
     title: "Ethical Data Environment",
     description:
       "Trust-based digital framework aligned with European data governance and AI regulation standards. Privacy-by-design architecture, transparent data usage, responsible AI principles.",
