@@ -35,6 +35,16 @@ const PhilosophySection = () => {
     // Ensure absolutely no blur
     gsap.set(wordElements, { filter: "none", willChange: "opacity" });
 
+    // Pin the section for: text animation (120%) + reading pause (30%) + slide-over (50%) = 200%
+    const pinTrigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top top",
+      end: "+=200%",
+      pin: true,
+      pinSpacing: true,
+    });
+    triggers.push(pinTrigger);
+
     // Label fade in
     const labelAnim = gsap.fromTo(
       label,
@@ -53,7 +63,7 @@ const PhilosophySection = () => {
     );
     if (labelAnim.scrollTrigger) triggers.push(labelAnim.scrollTrigger);
 
-    // Word opacity reveal — no blur
+    // Word opacity reveal — no blur, finishes at 120%
     const wordAnim = gsap.fromTo(
       wordElements,
       { opacity: 0.08 },
@@ -80,7 +90,7 @@ const PhilosophySection = () => {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="sticky top-0 h-screen bg-card flex items-center section-padding z-0"
+      className="h-screen bg-card flex items-center section-padding"
     >
       <div className="w-full">
         <p
