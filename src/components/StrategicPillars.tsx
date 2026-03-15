@@ -123,10 +123,14 @@ const StrategicPillars = () => {
                     className="rounded-2xl bg-muted/20 overflow-hidden"
                   >
                     {/* Image placeholder — inside card */}
-                    <div className="w-full aspect-[16/9] bg-muted/30 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-muted-foreground/50" />
-                      </div>
+                    <div className="w-full aspect-[16/9] bg-muted/30 overflow-hidden flex items-center justify-center">
+                      {pillar.image ? (
+                        <img src={pillar.image} alt={pillar.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+                          <Icon className="w-8 h-8 text-muted-foreground/50" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Content inside card */}
