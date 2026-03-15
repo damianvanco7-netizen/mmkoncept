@@ -37,7 +37,7 @@ const VirtualVillageIntro = () => {
   return (
     <section
       id="virtual-village"
-      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-20 -mt-16"
+      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-10"
     >
       <div className="w-full">
         {/* Label */}
