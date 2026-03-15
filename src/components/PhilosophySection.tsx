@@ -30,6 +30,10 @@ const PhilosophySection = () => {
     if (!section || !content || !label) return;
 
     const wordElements = content.querySelectorAll(".word");
+    const triggers: ScrollTrigger[] = [];
+
+    // Explicitly ensure no blur on any word
+    gsap.set(wordElements, { filter: "none" });
 
     const pinTrigger = ScrollTrigger.create({
       trigger: section,
@@ -38,8 +42,9 @@ const PhilosophySection = () => {
       pin: true,
       pinSpacing: true,
     });
+    triggers.push(pinTrigger);
 
-    gsap.fromTo(
+    const labelAnim = gsap.fromTo(
       label,
       { opacity: 0, y: 20 },
       {
@@ -54,8 +59,9 @@ const PhilosophySection = () => {
         },
       }
     );
+    if (labelAnim.scrollTrigger) triggers.push(labelAnim.scrollTrigger);
 
-    gsap.fromTo(
+    const wordAnim = gsap.fromTo(
       wordElements,
       { opacity: 0.08 },
       {
@@ -70,12 +76,10 @@ const PhilosophySection = () => {
         },
       }
     );
-
-    // blur removed per design request
+    if (wordAnim.scrollTrigger) triggers.push(wordAnim.scrollTrigger);
 
     return () => {
-      pinTrigger.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      triggers.forEach((t) => t.kill());
     };
   }, []);
 
