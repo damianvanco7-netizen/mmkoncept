@@ -35,7 +35,7 @@ const WhyMmConcept = () => {
           {/* Left tall card — full background image with overlay text */}
           <div className="md:row-span-2 rounded-2xl overflow-hidden relative">
             <img
-              src={heroVillageImg}
+              src={vvAppIconImg}
               alt="Platform Architecture"
               className="absolute inset-0 w-full h-full object-cover"
             />
