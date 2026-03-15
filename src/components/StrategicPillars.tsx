@@ -138,11 +138,11 @@ const StrategicPillars = () => {
                         </div>
 
                         {/* Right — pill tags */}
-                        <div className="flex flex-wrap md:flex-col gap-2 md:w-44 flex-shrink-0">
+                        <div className="flex flex-wrap md:flex-col gap-2 flex-shrink-0">
                           {pillar.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
+                              className="inline-flex w-fit px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
                             >
                               {tag}
                             </span>

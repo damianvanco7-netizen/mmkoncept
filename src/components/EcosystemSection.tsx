@@ -45,14 +45,20 @@ const EcosystemSection = () => {
     <section id="ecosystem" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
       <ConcentricCircles />
       <div className="relative z-10 w-full">
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Modules</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4">
+        <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
+          Modules
+        </p>
+
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
             A Living Ecosystem
           </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Six integrated modules creating a seamless digital experience for urban life.
-          </p>
+
+          <div className="md:max-w-sm flex-shrink-0">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Six integrated modules creating a seamless digital experience for urban life.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">

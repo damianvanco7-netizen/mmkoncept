@@ -48,11 +48,8 @@ const VirtualVillageIntro = () => {
         {/* Heading + Subtitle row — Vectura layout */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           {/* Left — Heading */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl">
-            Virtual Village —{" "}
-            <span className="text-muted-foreground">
-              One Ecosystem. Clear Structure. Contextual Intelligence.
-            </span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
+            Virtual Village — One Ecosystem. Clear Structure. Contextual Intelligence.
           </h2>
 
           {/* Right — Subtitle, bottom-aligned with heading */}
