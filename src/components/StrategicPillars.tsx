@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Shield, Layers, Brain } from "lucide-react";
 import starProImg from "@/assets/star-pro.png";
 import systemModularityImg from "@/assets/system-modularity.png";
+import ethicalDataImg from "@/assets/ethical-data.png";
 
 const pillars = [
   {
