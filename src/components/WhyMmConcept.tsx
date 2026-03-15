@@ -21,7 +21,7 @@ const WhyMmConcept = () => {
     <section
       id="why"
       className="py-28 md:py-36 section-padding"
-      style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}
+      style={{ background: '#181818' }}
     >
       <div className="w-full">
         <div className="text-center mb-16">
@@ -32,40 +32,42 @@ const WhyMmConcept = () => {
         </div>
 
         {/* Bento grid - Vectura style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-h-[calc(100vh-12rem)]">
-          {/* Left tall card with image and challenges */}
-          <div className="md:row-span-2 neu-card-dark overflow-hidden flex flex-col">
-            <div className="flex-1 min-h-0 overflow-hidden">
-              <img
-                src={heroVillageImg}
-                alt="Platform Architecture"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <Server className="w-5 h-5 text-warm-taupe" />
-                <h3 className="text-lg font-semibold text-warm-beige">Platform Architecture Challenges</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ height: 'clamp(500px, 65vh, 700px)' }}>
+          {/* Left tall card — full background image with overlay text */}
+          <div className="md:row-span-2 rounded-2xl overflow-hidden relative">
+            <img
+              src={heroVillageImg}
+              alt="Platform Architecture"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="relative z-10 h-full flex flex-col justify-between p-8">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight max-w-[280px]">
+                  Platform Architecture Challenges
+                </h3>
               </div>
-              <ul className="space-y-2">
-                {challenges.map((c) => (
-                  <li key={c} className="flex items-start gap-2 text-warm-taupe">
-                    <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe mt-1.5 shrink-0" />
-                    <span className="text-sm leading-relaxed">{c}</span>
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <ul className="space-y-2">
+                  {challenges.map((c) => (
+                    <li key={c} className="flex items-start gap-2 text-white/80">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/60 mt-1.5 shrink-0" />
+                      <span className="text-sm leading-relaxed">{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* 4 pillar cards in 2x2 grid */}
+          {/* 4 pillar cards in 2x2 grid — clean flat white cards like Vectura */}
           {pillars.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="neu-card-dark p-6 flex flex-col justify-between">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: 'hsl(18 40% 10%)', boxShadow: 'inset 3px 3px 6px hsl(18 100% 2%), inset -3px -3px 6px hsl(18 30% 12%)' }}>
+            <div key={title} className="rounded-2xl bg-white/[0.07] p-6 flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center mb-6">
                 <Icon className="w-5 h-5 text-warm-taupe" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-warm-beige mb-2">{title}</h3>
+                <h3 className="text-xl font-semibold text-warm-beige mb-3">{title}</h3>
                 <p className="text-sm text-warm-taupe leading-relaxed">{desc}</p>
               </div>
             </div>
