@@ -64,7 +64,7 @@ const StrategicPillars = () => {
     <section ref={sectionRef} id="pillars" className="py-28 md:py-36 bg-card section-padding">
       <div className="w-full">
         {/* Two-column scroll layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-12 lg:gap-16">
           {/* Left — Sticky navigation */}
           <div className="hidden lg:block">
             <div className="sticky top-[40vh]">
