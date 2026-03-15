@@ -1,4 +1,4 @@
-import { CheckCircle, Loader, Calendar, Rocket } from "lucide-react";
+import { CheckCircle, Loader, Calendar, Rocket, Compass, Code, MapPin, Globe } from "lucide-react";
 
 const phases = [
   {
@@ -6,7 +6,7 @@ const phases = [
     title: "Strategic Foundation",
     description: "Architecture, design prototype and modular framework defined. AI integration roadmap established.",
     status: "Completed",
-    icon: CheckCircle,
+    icon: Compass,
     statusColor: "text-green-600",
     statusBg: "bg-green-600/15",
   },
@@ -15,7 +15,7 @@ const phases = [
     title: "Core Development",
     description: "Platform core development, contextual AI integration, initial module build-out.",
     status: "In Progress",
-    icon: Loader,
+    icon: Code,
     statusColor: "text-amber-500",
     statusBg: "bg-amber-500/15",
   },
@@ -56,10 +56,10 @@ const RoadmapSection = () => {
           <div className="md:row-span-2 p-8 neu-card flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <Globe className="w-5 h-5 text-muted-foreground" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-foreground leading-tight max-w-[280px] mb-6">
-                Strategic Outlook
+              <h3 className="text-2xl md:text-3xl font-semibold text-foreground leading-tight max-w-[200px] mb-6">
+                Strategic<br />Outlook
               </h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -72,7 +72,7 @@ const RoadmapSection = () => {
             <div key={label} className="p-8 neu-card flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
-                  <Icon className={`w-5 h-5 ${statusColor}`} />
+                  <Icon className="w-5 h-5 text-muted-foreground" />
                 </div>
                 <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
