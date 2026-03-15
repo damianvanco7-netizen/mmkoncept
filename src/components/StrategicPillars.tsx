@@ -64,7 +64,7 @@ const StrategicPillars = () => {
     <section ref={sectionRef} id="pillars" className="py-28 md:py-36 bg-card section-padding">
       <div className="w-full">
         {/* Two-column scroll layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-12 lg:gap-16">
           {/* Left — Sticky navigation */}
           <div className="hidden lg:block">
             <div className="sticky top-[40vh]">
@@ -138,11 +138,11 @@ const StrategicPillars = () => {
                         </div>
 
                         {/* Right — pill tags */}
-                        <div className="flex flex-wrap md:flex-col gap-2 md:w-44 flex-shrink-0">
+                        <div className="flex flex-wrap md:flex-col gap-2 flex-shrink-0">
                           {pillar.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
+                              className="inline-flex w-fit px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
                             >
                               {tag}
                             </span>
