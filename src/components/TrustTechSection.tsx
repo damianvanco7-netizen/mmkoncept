@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import geminiLogo from "@/assets/gemini-logo.png";
 
 const flowSteps = [
   "User Input",
