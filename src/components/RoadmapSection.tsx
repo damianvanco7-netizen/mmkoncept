@@ -1,5 +1,4 @@
 import { CheckCircle, Loader, Calendar, Rocket } from "lucide-react";
-import ConcentricCircles from "@/components/ConcentricCircles";
 
 const phases = [
   {
@@ -38,35 +37,48 @@ const phases = [
 
 const RoadmapSection = () => {
   return (
-    <section id="roadmap" className="relative py-28 md:py-36 bg-card section-padding overflow-hidden">
-      <ConcentricCircles />
-      <div className="relative z-10 w-full">
-        <div className="text-center mb-20">
+    <section id="roadmap" className="py-28 md:py-36 bg-card section-padding overflow-hidden">
+      <div className="w-full">
+        <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">Roadmap</p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-foreground">
             Structured Development. Phased Scaling.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-12">
+        {/* Bento grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4" style={{ height: 'clamp(500px, 65vh, 700px)' }}>
+          {/* Left tall card — strategic note */}
+          <div className="md:row-span-2 rounded-2xl overflow-hidden relative bg-muted/30 border border-border">
+            <div className="h-full flex flex-col justify-between p-8">
+              <div>
+                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground leading-tight max-w-[280px] mb-6">
+                  Strategic Outlook
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
+              </p>
+            </div>
+          </div>
+
+          {/* 4 phase cards in 2x2 grid */}
           {phases.map(({ label, title, description, status, icon: Icon, statusColor }) => (
-            <div key={label} className="p-6 neu-card">
-              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
+            <div key={label} className="rounded-2xl bg-muted/30 border border-border p-6 flex flex-col justify-between">
+              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
                 <Icon className={`w-5 h-5 ${statusColor}`} />
               </div>
-              <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
-              <h3 className="text-base font-semibold text-foreground mb-2">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{description}</p>
-              <span className={`text-xs font-semibold tracking-wide ${statusColor}`}>{status}</span>
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{description}</p>
+                <span className={`text-xs font-semibold tracking-wide ${statusColor}`}>{status}</span>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="p-6 neu-card flex items-start gap-3">
-          <CheckCircle className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
-          </p>
         </div>
       </div>
     </section>

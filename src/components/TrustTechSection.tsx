@@ -9,7 +9,7 @@ const flowSteps = [
 
 const TrustTechSection = () => {
   return (
-    <section id="tech" className="py-28 md:py-36 section-padding" style={{ background: 'linear-gradient(135deg, #181818 0%, #C5BEB4 100%)' }}>
+    <section id="tech" className="py-28 md:py-36 section-padding bg-near-black">
       <div className="w-full">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Technology</p>
@@ -25,7 +25,7 @@ const TrustTechSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2 mb-20">
           {flowSteps.map((step, i) => (
             <div key={step} className="flex items-center gap-2 md:gap-4">
-              <div className="px-6 py-4 neu-card-dark text-center min-w-[140px]">
+              <div className="px-6 py-4 rounded-2xl bg-white/[0.07] border border-white/[0.06] text-center min-w-[140px]">
                 <p className="text-sm font-medium text-warm-beige">{step}</p>
               </div>
               {i < flowSteps.length - 1 && (
@@ -39,10 +39,10 @@ const TrustTechSection = () => {
         <div className="text-center">
           <p className="text-xs font-semibold tracking-widest text-warm-taupe uppercase mb-8">Technology Partners</p>
           <div className="flex items-center justify-center gap-8">
-            <div className="px-8 py-4 neu-card-dark">
+            <div className="px-8 py-4 rounded-2xl bg-white/[0.07] border border-white/[0.06]">
               <span className="text-sm font-semibold text-warm-beige tracking-wide">Google Cloud</span>
             </div>
-            <div className="px-8 py-4 neu-card-dark">
+            <div className="px-8 py-4 rounded-2xl bg-white/[0.07] border border-white/[0.06]">
               <span className="text-sm font-semibold text-warm-beige tracking-wide">Gemini</span>
             </div>
           </div>

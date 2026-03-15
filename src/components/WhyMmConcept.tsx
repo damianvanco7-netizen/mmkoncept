@@ -21,7 +21,7 @@ const WhyMmConcept = () => {
     <section
       id="why"
       className="py-28 md:py-36 section-padding"
-      style={{ background: '#181818' }}
+      className="py-28 md:py-36 section-padding bg-near-black"
     >
       <div className="w-full">
         <div className="text-center mb-16">
