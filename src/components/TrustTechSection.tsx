@@ -50,11 +50,7 @@ const TrustTechSection = () => {
               <span className="text-sm font-semibold text-warm-beige tracking-wide">Google Cloud</span>
             </div>
             <div className="px-8 py-4 rounded-2xl bg-white/[0.07] border border-white/[0.06] flex items-center gap-3">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#4285F4"/>
-                <path d="M2 17l10 5 10-5" stroke="#34A853" strokeWidth="2" fill="none"/>
-                <path d="M2 12l10 5 10-5" stroke="#FBBC05" strokeWidth="2" fill="none"/>
-              </svg>
+              <img src={geminiLogo} alt="Gemini" className="w-6 h-6 object-contain" />
               <span className="text-sm font-semibold text-warm-beige tracking-wide">Gemini</span>
             </div>
           </div>
