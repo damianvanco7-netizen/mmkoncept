@@ -2,7 +2,7 @@ import ConcentricCircles from "@/components/ConcentricCircles";
 
 const FounderSection = () => {
   return (
-    <section id="founder" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
+    <section id="founder" className="relative py-28 md:py-36 bg-card section-padding overflow-hidden">
       <ConcentricCircles />
       <div className="relative z-10 w-full">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
