@@ -1,4 +1,5 @@
 import { CheckCircle, Loader, Calendar, Rocket, Compass, Code, MapPin, Globe } from "lucide-react";
+import ConcentricCircles from "@/components/ConcentricCircles";
 
 const phases = [
   {
