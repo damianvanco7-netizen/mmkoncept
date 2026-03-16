@@ -92,6 +92,7 @@ function SilkPlane({ uniforms }: SilkPlaneProps) {
   return (
     <mesh ref={meshRef}>
       <planeGeometry args={[1, 1, 1, 1]} />
+      {/* @ts-ignore – R3F shader material props */}
       <shaderMaterial
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
