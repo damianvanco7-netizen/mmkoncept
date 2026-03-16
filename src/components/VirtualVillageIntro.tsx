@@ -52,9 +52,20 @@ const VirtualVillageIntro = () => {
   return (
     <section
       id="virtual-village"
-      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-10 -mt-[100vh]"
+      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-0 section-padding z-10 -mt-[100vh]"
     >
-      <div className="w-full">
+      {/* Hero image with matching top border-radius, flat bottom */}
+      <div className="w-full overflow-hidden rounded-t-[2.5rem] -mx-[var(--section-px,clamp(1.5rem,5vw,6rem))] mb-16 md:mb-20" style={{ width: 'calc(100% + 2 * var(--section-px, clamp(1.5rem, 5vw, 6rem)))' }}>
+        <div className="w-full aspect-[16/9]">
+          <img
+            src={cityVvHero}
+            alt="Virtual Village — City module"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <div className="w-full pb-28 md:pb-36">
         <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
           Flagship Platform
         </p>
