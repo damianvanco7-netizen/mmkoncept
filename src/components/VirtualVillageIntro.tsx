@@ -1,7 +1,7 @@
 import { Heart, Building2, Palette, Car, GraduationCap, Store } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileCarousel from "@/components/MobileCarousel";
-import cityVvHero from "@/assets/city-vv-hero.png";
+import cityVvHero from "@/assets/city-vv-hero-new.jpeg";
 
 const modules = [
   {
