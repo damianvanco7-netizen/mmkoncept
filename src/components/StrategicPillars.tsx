@@ -3,6 +3,8 @@ import { Shield, Layers, Brain } from "lucide-react";
 import starProImg from "@/assets/star-pro.png";
 import systemModularityImg from "@/assets/system-modularity.png";
 import ethicalDataImg from "@/assets/ethical-data.png";
+import { useIsMobile } from "@/hooks/use-mobile";
+import MobileCarousel from "@/components/MobileCarousel";
 
 const pillars = [
   {
@@ -37,12 +39,45 @@ const pillars = [
   },
 ];
 
+const PillarCardMobile = ({ pillar }: { pillar: typeof pillars[0] }) => {
+  const Icon = pillar.icon;
+  return (
+    <div className="rounded-2xl bg-muted/20 overflow-hidden h-full flex flex-col">
+      <div className="w-full aspect-[16/9] bg-muted/30 overflow-hidden flex items-center justify-center">
+        {pillar.image ? (
+          <img src={pillar.image} alt={pillar.title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+            <Icon className="w-8 h-8 text-muted-foreground/50" />
+          </div>
+        )}
+      </div>
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-xl font-semibold text-foreground mb-2">{pillar.title}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-3">{pillar.description}</p>
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {pillar.tags.map((tag) => (
+            <span key={tag} className="inline-flex w-fit px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+      <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase px-5 pb-5">
+        {pillar.label}
+      </p>
+    </div>
+  );
+};
+
 const StrategicPillars = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -64,113 +99,121 @@ const StrategicPillars = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   return (
     <section ref={sectionRef} id="pillars" className="py-28 md:py-36 bg-card section-padding">
       <div className="w-full">
-        {/* Two-column scroll layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-12 lg:gap-16">
-          {/* Left — Sticky navigation */}
-          <div className="hidden lg:block">
-            <div className="sticky top-[40vh]">
-              <nav className="flex flex-col gap-1">
-                {pillars.map((pillar, i) => (
-                  <button
-                    key={pillar.id}
-                    onClick={() => {
-                      cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
-                    }}
-                    className="text-left transition-all duration-300"
-                  >
-                    <span
-                      className={`flex items-center gap-3 text-lg font-medium transition-all duration-300 ${
-                        i === activeIndex
-                          ? "text-foreground"
-                          : "text-muted-foreground/40"
-                      }`}
-                    >
-                      {i === activeIndex && (
-                        <span className="inline-block w-4 text-muted-foreground/60">↳</span>
-                      )}
-                      {pillar.label}
-                    </span>
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-
-          {/* Right — Header + Scrollable cards */}
-          <div className="flex flex-col">
-            {/* Header — aligned with right column */}
+        {isMobile ? (
+          /* Mobile: header + carousel */
+          <div>
             <div className="mb-16">
               <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
                 Strategic Pillars
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground max-w-4xl">
+              <h2 className="text-3xl font-semibold text-foreground max-w-4xl">
                 Built on Three Foundations
               </h2>
             </div>
+            <MobileCarousel itemsPerPage={1}>
+              {pillars.map((pillar) => (
+                <PillarCardMobile key={pillar.id} pillar={pillar} />
+              ))}
+            </MobileCarousel>
+          </div>
+        ) : (
+          /* Desktop: two-column scroll layout */
+          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-12 lg:gap-16">
+            {/* Left — Sticky navigation */}
+            <div className="hidden lg:block">
+              <div className="sticky top-[40vh]">
+                <nav className="flex flex-col gap-1">
+                  {pillars.map((pillar, i) => (
+                    <button
+                      key={pillar.id}
+                      onClick={() => {
+                        cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+                      }}
+                      className="text-left transition-all duration-300"
+                    >
+                      <span
+                        className={`flex items-center gap-3 text-lg font-medium transition-all duration-300 ${
+                          i === activeIndex
+                            ? "text-foreground"
+                            : "text-muted-foreground/40"
+                        }`}
+                      >
+                        {i === activeIndex && (
+                          <span className="inline-block w-4 text-muted-foreground/60">↳</span>
+                        )}
+                        {pillar.label}
+                      </span>
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </div>
 
-            {/* Cards */}
-            <div className="flex flex-col gap-12">
-              {pillars.map((pillar, i) => {
-                const Icon = pillar.icon;
-                return (
-                  <div
-                    key={pillar.id}
-                    ref={(el) => { cardRefs.current[i] = el; }}
-                    className="rounded-2xl bg-muted/20 overflow-hidden"
-                  >
-                    {/* Image placeholder — inside card */}
-                    <div className="w-full aspect-[16/9] bg-muted/30 overflow-hidden flex items-center justify-center">
-                      {pillar.image ? (
-                        <img src={pillar.image} alt={pillar.title} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
-                          <Icon className="w-8 h-8 text-muted-foreground/50" />
-                        </div>
-                      )}
-                    </div>
+            {/* Right — Header + Scrollable cards */}
+            <div className="flex flex-col">
+              <div className="mb-16">
+                <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+                  Strategic Pillars
+                </p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground max-w-4xl">
+                  Built on Three Foundations
+                </h2>
+              </div>
 
-                    {/* Content inside card — reduced padding on mobile */}
-                    <div className="p-5 md:p-8">
-                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-10">
-                        {/* Left — title + description */}
-                        <div className="flex-1">
-                          <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 md:mb-3">
-                            {pillar.title}
-                          </h3>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                            {pillar.description}
-                          </p>
-                        </div>
+              <div className="flex flex-col gap-12">
+                {pillars.map((pillar, i) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <div
+                      key={pillar.id}
+                      ref={(el) => { cardRefs.current[i] = el; }}
+                      className="rounded-2xl bg-muted/20 overflow-hidden"
+                    >
+                      <div className="w-full aspect-[16/9] bg-muted/30 overflow-hidden flex items-center justify-center">
+                        {pillar.image ? (
+                          <img src={pillar.image} alt={pillar.title} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-16 h-16 rounded-2xl neu-inset flex items-center justify-center">
+                            <Icon className="w-8 h-8 text-muted-foreground/50" />
+                          </div>
+                        )}
+                      </div>
 
-                        {/* Right — pill tags */}
-                        <div className="flex flex-wrap md:flex-col gap-2 flex-shrink-0">
-                          {pillar.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="inline-flex w-fit px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                      <div className="p-5 md:p-8">
+                        <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-10">
+                          <div className="flex-1">
+                            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 md:mb-3">
+                              {pillar.title}
+                            </h3>
+                            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                              {pillar.description}
+                            </p>
+                          </div>
+                          <div className="flex flex-wrap md:flex-col gap-2 flex-shrink-0">
+                            {pillar.tags.map((tag) => (
+                              <span key={tag} className="inline-flex w-fit px-3 py-1.5 text-xs font-medium rounded-full neu-inset text-foreground whitespace-nowrap">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Mobile label */}
-                    <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase px-5 md:px-8 pb-5 md:pb-6">
-                      {pillar.label}
-                    </p>
-                  </div>
-                );
-              })}
+                      <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase px-5 md:px-8 pb-5 md:pb-6">
+                        {pillar.label}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
