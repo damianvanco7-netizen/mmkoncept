@@ -1,6 +1,7 @@
 import { Heart, Building2, Palette, Car, GraduationCap, Store } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileCarousel from "@/components/MobileCarousel";
+import cityVvHero from "@/assets/city-vv-hero.png";
 
 const modules = [
   {
@@ -51,39 +52,52 @@ const VirtualVillageIntro = () => {
   return (
     <section
       id="virtual-village"
-      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-28 md:py-36 section-padding z-10 -mt-[100vh]"
+      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground z-10 -mt-[100vh]"
     >
-      <div className="w-full">
-        <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
-          Flagship Platform
-        </p>
-
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
-            Virtual Village — One Ecosystem. Clear Structure. Contextual Intelligence.
-          </h2>
-          <div className="md:max-w-sm flex-shrink-0">
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              Virtual Village is a modular AI-powered digital ecosystem — unified,
-              personalised, structured, and seamless for citizens, cities and
-              services.
-            </p>
-          </div>
+      {/* Full-width hero image: top corners match section radius, bottom corners flat */}
+      <div className="w-full overflow-hidden rounded-t-[2.5rem]">
+        <div className="w-full aspect-[16/9]">
+          <img
+            src={cityVvHero}
+            alt="Virtual Village — City module"
+            className="w-full h-full object-cover"
+          />
         </div>
+      </div>
 
-        {isMobile ? (
-          <MobileCarousel itemsPerPage={2}>
-            {modules.map(({ icon, title, description }) => (
-              <ModuleCard key={title} icon={icon} title={title} description={description} />
-            ))}
-          </MobileCarousel>
-        ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-            {modules.map(({ icon, title, description }) => (
-              <ModuleCard key={title} icon={icon} title={title} description={description} />
-            ))}
+      <div className="section-padding pt-16 md:pt-20 pb-28 md:pb-36">
+        <div className="w-full">
+          <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
+            Flagship Platform
+          </p>
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
+              Virtual Village — One Ecosystem. Clear Structure. Contextual Intelligence.
+            </h2>
+            <div className="md:max-w-sm flex-shrink-0">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                Virtual Village is a modular AI-powered digital ecosystem — unified,
+                personalised, structured, and seamless for citizens, cities and
+                services.
+              </p>
+            </div>
           </div>
-        )}
+
+          {isMobile ? (
+            <MobileCarousel itemsPerPage={2}>
+              {modules.map(({ icon, title, description }) => (
+                <ModuleCard key={title} icon={icon} title={title} description={description} />
+              ))}
+            </MobileCarousel>
+          ) : (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+              {modules.map(({ icon, title, description }) => (
+                <ModuleCard key={title} icon={icon} title={title} description={description} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
