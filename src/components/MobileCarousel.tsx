@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface MobileCarouselProps {
@@ -8,8 +8,12 @@ interface MobileCarouselProps {
 
 const MobileCarousel = ({ children, itemsPerPage = 2 }: MobileCarouselProps) => {
   const [page, setPage] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [offsetX, setOffsetX] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const isDragging = useRef(false);
+  const isHorizontalSwipe = useRef<boolean | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const totalPages = Math.ceil(children.length / itemsPerPage);
 
@@ -18,40 +22,102 @@ const MobileCarousel = ({ children, itemsPerPage = 2 }: MobileCarouselProps) => 
     page * itemsPerPage + itemsPerPage
   );
 
-  const goTo = (next: number, dir: "left" | "right") => {
-    if (isAnimating) return;
-    setDirection(dir);
-    setIsAnimating(true);
+  const animateTo = useCallback((nextPage: number) => {
+    setTransitioning(true);
+    // Slide out in the direction of movement
+    const dir = nextPage > page || (page === totalPages - 1 && nextPage === 0) ? -1 : 1;
+    // Correct for wrap-around reverse
+    const correctedDir = page === 0 && nextPage === totalPages - 1 ? 1 : dir;
+    setOffsetX(correctedDir * 60);
+
     setTimeout(() => {
-      setPage(next);
-      setTimeout(() => setIsAnimating(false), 50);
-    }, 150);
-  };
+      setPage(nextPage);
+      setOffsetX(correctedDir * -60);
+      // Force reflow then animate in
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setOffsetX(0);
+          setTimeout(() => setTransitioning(false), 350);
+        });
+      });
+    }, 200);
+  }, [page, totalPages]);
 
   const handlePrev = () => {
-    const prev = page === 0 ? totalPages - 1 : page - 1;
-    goTo(prev, "left");
+    if (transitioning) return;
+    animateTo(page === 0 ? totalPages - 1 : page - 1);
   };
 
   const handleNext = () => {
-    const next = page === totalPages - 1 ? 0 : page + 1;
-    goTo(next, "right");
+    if (transitioning) return;
+    animateTo(page === totalPages - 1 ? 0 : page + 1);
+  };
+
+  // Touch handlers for swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (transitioning) return;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isDragging.current = true;
+    isHorizontalSwipe.current = null;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current || transitioning) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+
+    // Determine swipe direction on first significant move
+    if (isHorizontalSwipe.current === null) {
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        isHorizontalSwipe.current = Math.abs(dx) > Math.abs(dy);
+      }
+      return;
+    }
+
+    if (!isHorizontalSwipe.current) return;
+
+    // Dampen the drag slightly
+    setOffsetX(dx * 0.4);
+  };
+
+  const onTouchEnd = () => {
+    if (!isDragging.current || transitioning) return;
+    isDragging.current = false;
+
+    if (!isHorizontalSwipe.current) {
+      setOffsetX(0);
+      return;
+    }
+
+    const threshold = 30;
+    if (offsetX < -threshold) {
+      handleNext();
+    } else if (offsetX > threshold) {
+      handlePrev();
+    } else {
+      // Snap back
+      setOffsetX(0);
+    }
   };
 
   return (
     <div>
       <div
         ref={containerRef}
-        className="flex flex-col gap-4 transition-all duration-300 ease-in-out"
+        className="flex flex-col gap-4"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
         style={{
-          opacity: isAnimating ? 0 : 1,
-          transform: isAnimating
-            ? `translateX(${direction === "right" ? "-20px" : "20px"})`
-            : "translateX(0)",
+          transform: `translateX(${offsetX}px)`,
+          opacity: Math.abs(offsetX) > 40 ? 0.6 : 1,
+          transition: isDragging.current ? "none" : "transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease",
+          willChange: "transform, opacity",
         }}
       >
         {visibleItems.map((item, i) => (
-          <div key={`${page}-${i}`} className="min-h-0">
+          <div key={`${page}-${i}`} className="[&>*]:!h-full">
             {item}
           </div>
         ))}
