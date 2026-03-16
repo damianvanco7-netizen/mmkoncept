@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
-import { useRef, useMemo, useLayoutEffect } from 'react';
-import { Color, Mesh, ShaderMaterial } from 'three';
-
-extend({ ShaderMaterial });
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { useRef, useMemo, useLayoutEffect, useEffect } from 'react';
+import { Color, Mesh, ShaderMaterial, PlaneGeometry } from 'three';
 
 const hexToNormalizedRGB = (hex: string): [number, number, number] => {
   hex = hex.replace('#', '');
@@ -71,13 +69,34 @@ void main() {
 }
 `;
 
-interface SilkPlaneProps {
-  uniforms: Record<string, { value: unknown }>;
+interface SilkSceneProps {
+  speed: number;
+  scale: number;
+  color: string;
+  noiseIntensity: number;
+  rotation: number;
 }
 
-function SilkPlane({ uniforms }: SilkPlaneProps) {
+function SilkScene({ speed, scale, color, noiseIntensity, rotation }: SilkSceneProps) {
   const meshRef = useRef<Mesh>(null!);
   const { viewport } = useThree();
+
+  const material = useMemo(() => {
+    return new ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uSpeed: { value: speed },
+        uScale: { value: scale },
+        uNoiseIntensity: { value: noiseIntensity },
+        uColor: { value: new Color(...hexToNormalizedRGB(color)) },
+        uRotation: { value: rotation },
+        uTime: { value: 0 },
+      },
+    });
+  }, [speed, scale, noiseIntensity, color, rotation]);
+
+  const geometry = useMemo(() => new PlaneGeometry(1, 1, 1, 1), []);
 
   useLayoutEffect(() => {
     if (meshRef.current) {
@@ -87,21 +106,11 @@ function SilkPlane({ uniforms }: SilkPlaneProps) {
 
   useFrame((_, delta) => {
     if (meshRef.current) {
-      (meshRef.current.material as any).uniforms.uTime.value += 0.1 * delta;
+      material.uniforms.uTime.value += 0.1 * delta;
     }
   });
 
-  return (
-    <mesh ref={meshRef}>
-      <planeGeometry args={[1, 1, 1, 1]} />
-      {/* @ts-ignore – R3F shader material props */}
-      <shaderMaterial
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={uniforms}
-      />
-    </mesh>
-  );
+  return <mesh ref={meshRef} geometry={geometry} material={material} />;
 }
 
 interface SilkProps {
@@ -113,21 +122,9 @@ interface SilkProps {
 }
 
 const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }: SilkProps) => {
-  const uniforms = useMemo(
-    () => ({
-      uSpeed: { value: speed },
-      uScale: { value: scale },
-      uNoiseIntensity: { value: noiseIntensity },
-      uColor: { value: new Color(...hexToNormalizedRGB(color)) },
-      uRotation: { value: rotation },
-      uTime: { value: 0 },
-    }),
-    [speed, scale, noiseIntensity, color, rotation]
-  );
-
   return (
     <Canvas camera={{ position: [0, 0, 1] }} style={{ position: 'absolute', inset: 0 }}>
-      <SilkPlane uniforms={uniforms} />
+      <SilkScene speed={speed} scale={scale} color={color} noiseIntensity={noiseIntensity} rotation={rotation} />
     </Canvas>
   );
 };
