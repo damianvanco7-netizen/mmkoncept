@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center section-padding pt-24 overflow-hidden">
       {/* Silk WebGL background */}
-      <Silk speed={5} scale={0.7} noiseIntensity={0.6} rotation={1.2} color="#EAE3D9" />
+      <Silk speed={5} scale={0.7} noiseIntensity={0.6} rotation={1.2} color="#8B7D6B" />
 
       <div className="relative z-10 w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
