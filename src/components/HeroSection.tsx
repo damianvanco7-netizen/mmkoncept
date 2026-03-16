@@ -1,5 +1,4 @@
 import mockup2 from "@/assets/mockup-2.png";
-import Silk from "@/components/Silk";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
