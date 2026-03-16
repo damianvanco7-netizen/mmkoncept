@@ -1,5 +1,5 @@
 import mockup2 from "@/assets/mockup-2.png";
-import ConcentricCircles from "@/components/ConcentricCircles";
+import Silk from "@/components/Silk";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
@@ -7,8 +7,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center bg-warm-white section-padding pt-24 overflow-hidden">
-      <ConcentricCircles />
+    <section className="relative min-h-screen flex items-center section-padding pt-24 overflow-hidden">
+      {/* Silk WebGL background */}
+      <Silk speed={5} scale={0.7} noiseIntensity={0.6} rotation={1.57} color="#EAE3D9" />
 
       <div className="relative z-10 w-full grid md:grid-cols-2 gap-12 items-center">
         {/* Left — Text */}
@@ -21,7 +22,7 @@ const HeroSection = () => {
             Digital Ecosystems.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-lg">
-            Strategic innovation group building scalable digital infrastructures — from vision to execution.
+            mm concept is a Strategic Innovation Group building structured, scalable digital infrastructures for citizens, cities and institutions.
           </p>
           <button onClick={() => scrollTo("virtual-village")} className="pill-button text-base">
             Explore Virtual Village
