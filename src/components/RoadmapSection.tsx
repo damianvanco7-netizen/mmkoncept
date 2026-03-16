@@ -1,5 +1,7 @@
-import { CheckCircle, Loader, Calendar, Rocket, Compass, Code, MapPin, Globe } from "lucide-react";
+import { CheckCircle, Loader, Calendar, Rocket, Compass, Code, Globe } from "lucide-react";
 import ConcentricCircles from "@/components/ConcentricCircles";
+import { useIsMobile } from "@/hooks/use-mobile";
+import MobileCarousel from "@/components/MobileCarousel";
 
 const phases = [
   {
@@ -40,7 +42,29 @@ const phases = [
   },
 ];
 
+const PhaseCard = ({ label, title, description, status, icon: Icon, statusColor, statusBg }: typeof phases[0]) => (
+  <div className="p-8 neu-card flex flex-col justify-between">
+    <div>
+      <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
+        <Icon className="w-5 h-5 text-muted-foreground" />
+      </div>
+      <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
+      <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </div>
+    <div className="mt-4">
+      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${statusColor} ${statusBg}`}>
+        {status === "Completed" && <CheckCircle className={`w-3 h-3 ${statusColor}`} />}
+        {status === "In Progress" && <Loader className={`w-3 h-3 ${statusColor}`} />}
+        {status}
+      </span>
+    </div>
+  </div>
+);
+
 const RoadmapSection = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="roadmap" className="relative py-28 md:py-36 bg-warm-white section-padding overflow-hidden">
       <ConcentricCircles />
@@ -52,44 +76,51 @@ const RoadmapSection = () => {
           </h2>
         </div>
 
-        {/* Bento grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" style={{ height: 'clamp(500px, 65vh, 700px)' }}>
-          {/* Left tall card — strategic note */}
-          <div className="md:row-span-2 p-8 neu-card flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
-                <Globe className="w-5 h-5 text-muted-foreground" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-semibold text-foreground leading-tight max-w-[200px] mb-6">
-                Strategic<br />Outlook
-              </h3>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
-            </p>
-          </div>
-
-          {/* 4 phase cards in 2x2 grid — matching Modules style */}
-          {phases.map(({ label, title, description, status, icon: Icon, statusColor, statusBg }) => (
-            <div key={label} className="p-8 neu-card flex flex-col justify-between">
+        {isMobile ? (
+          <div className="space-y-6">
+            {/* Strategic Outlook always visible */}
+            <div className="p-8 neu-card flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
-                  <Icon className="w-5 h-5 text-muted-foreground" />
+                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
+                  <Globe className="w-5 h-5 text-muted-foreground" />
                 </div>
-                <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-1">{label}</p>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                <h3 className="text-2xl font-semibold text-foreground leading-tight mb-6">
+                  Strategic Outlook
+                </h3>
               </div>
-              <div className="mt-4">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${statusColor} ${statusBg}`}>
-                  {status === "Completed" && <CheckCircle className={`w-3 h-3 ${statusColor}`} />}
-                  {status === "In Progress" && <Loader className={`w-3 h-3 ${statusColor}`} />}
-                  {status}
-                </span>
-              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
+              </p>
             </div>
-          ))}
-        </div>
+
+            {/* Phase cards in carousel, 1 at a time */}
+            <MobileCarousel itemsPerPage={1}>
+              {phases.map((phase) => (
+                <PhaseCard key={phase.label} {...phase} />
+              ))}
+            </MobileCarousel>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5" style={{ height: 'clamp(500px, 65vh, 700px)' }}>
+            <div className="md:row-span-2 p-8 neu-card flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-6">
+                  <Globe className="w-5 h-5 text-muted-foreground" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-foreground leading-tight max-w-[200px] mb-6">
+                  Strategic<br />Outlook
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Strategic discussions and soft commitments with pilot cities are progressing. Long-term ambition: foundational urban digital infrastructure across Europe.
+              </p>
+            </div>
+
+            {phases.map((phase) => (
+              <PhaseCard key={phase.label} {...phase} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
