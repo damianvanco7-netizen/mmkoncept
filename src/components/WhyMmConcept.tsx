@@ -19,41 +19,13 @@ const challenges = [
 ];
 
 const PillarCard = ({ icon: Icon, title, desc }: { icon: any; title: string; desc: string }) => (
-  <div className="rounded-2xl bg-white/[0.07] p-6 flex flex-col justify-between">
+  <div className="rounded-2xl bg-white/[0.07] p-6 flex flex-col justify-between h-full">
     <div className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center mb-6">
       <Icon className="w-5 h-5 text-warm-taupe" />
     </div>
     <div>
       <h3 className="text-xl font-semibold text-warm-beige mb-3">{title}</h3>
       <p className="text-sm text-warm-taupe leading-relaxed">{desc}</p>
-    </div>
-  </div>
-);
-
-const ArchitectureCard = () => (
-  <div className="rounded-2xl overflow-hidden relative min-h-[300px]">
-    <img
-      src={vvAppIconImg}
-      alt="Platform Architecture"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-    <div className="relative z-10 h-full flex flex-col justify-between p-8">
-      <div>
-        <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight max-w-[280px]">
-          Platform Architecture Challenges
-        </h3>
-      </div>
-      <div>
-        <ul className="space-y-2">
-          {challenges.map((c) => (
-            <li key={c} className="flex items-start gap-2 text-white/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60 mt-1.5 shrink-0" />
-              <span className="text-sm leading-relaxed">{c}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   </div>
 );
@@ -72,14 +44,39 @@ const WhyMmConcept = () => {
         </div>
 
         {isMobile ? (
-          <div className="text-warm-beige">
+          <div className="text-warm-beige space-y-6">
+            {/* Architecture card always visible, 20% taller */}
+            <div className="rounded-2xl overflow-hidden relative" style={{ minHeight: '360px' }}>
+              <img
+                src={vvAppIconImg}
+                alt="Platform Architecture"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="relative z-10 h-full flex flex-col justify-between p-8" style={{ minHeight: '360px' }}>
+                <div>
+                  <h3 className="text-2xl font-semibold text-white leading-tight max-w-[280px]">
+                    Platform Architecture Challenges
+                  </h3>
+                </div>
+                <div>
+                  <ul className="space-y-2">
+                    {challenges.map((c) => (
+                      <li key={c} className="flex items-start gap-2 text-white/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/60 mt-1.5 shrink-0" />
+                        <span className="text-sm leading-relaxed">{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar cards in carousel: 2 at a time, infinite */}
             <MobileCarousel itemsPerPage={2}>
-              {[
-                <ArchitectureCard key="arch" />,
-                ...pillars.map(({ icon, title, desc }) => (
-                  <PillarCard key={title} icon={icon} title={title} desc={desc} />
-                )),
-              ]}
+              {pillars.map(({ icon, title, desc }) => (
+                <PillarCard key={title} icon={icon} title={title} desc={desc} />
+              ))}
             </MobileCarousel>
           </div>
         ) : (

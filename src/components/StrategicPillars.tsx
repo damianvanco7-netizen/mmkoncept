@@ -134,12 +134,12 @@ const StrategicPillars = () => {
                       )}
                     </div>
 
-                    {/* Content inside card */}
-                    <div className="p-8">
-                      <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+                    {/* Content inside card — reduced padding on mobile */}
+                    <div className="p-5 md:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-10">
                         {/* Left — title + description */}
                         <div className="flex-1">
-                          <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
+                          <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 md:mb-3">
                             {pillar.title}
                           </h3>
                           <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -162,7 +162,7 @@ const StrategicPillars = () => {
                     </div>
 
                     {/* Mobile label */}
-                    <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase px-8 pb-6">
+                    <p className="lg:hidden text-xs font-semibold tracking-widest text-muted-foreground uppercase px-5 md:px-8 pb-5 md:pb-6">
                       {pillar.label}
                     </p>
                   </div>
