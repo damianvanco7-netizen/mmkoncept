@@ -43,7 +43,7 @@ const modules = [
 ];
 
 const ModuleCard = ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => (
-  <div className="p-8 neu-card group cursor-default">
+  <div className="p-8 neu-card group cursor-default h-full flex flex-col">
     <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
       <Icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
     </div>

@@ -12,7 +12,18 @@ const TrustTechSection = () => {
   return (
     <section id="tech" className="py-28 md:py-36 section-padding bg-near-black">
       <div className="w-full">
-        {/* Flow diagram first on mobile */}
+        {/* Title block first */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Technology</p>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-warm-beige mb-4">
+            Trust Through Transparency
+          </h2>
+          <p className="text-lg text-warm-taupe max-w-xl mx-auto">
+            A clear, auditable pipeline from user input to personalised output.
+          </p>
+        </div>
+
+        {/* Flow diagram */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2 mb-16 md:mb-20">
           {flowSteps.map((step, i) => (
             <div key={step} className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
@@ -27,16 +38,6 @@ const TrustTechSection = () => {
               )}
             </div>
           ))}
-        </div>
-
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold tracking-widest text-warm-taupe uppercase mb-4">Technology</p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-warm-beige mb-4">
-            Trust Through Transparency
-          </h2>
-          <p className="text-lg text-warm-taupe max-w-xl mx-auto">
-            A clear, auditable pipeline from user input to personalised output.
-          </p>
         </div>
 
         {/* Partner logos */}

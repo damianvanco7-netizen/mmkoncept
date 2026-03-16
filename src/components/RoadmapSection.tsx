@@ -43,7 +43,7 @@ const phases = [
 ];
 
 const PhaseCard = ({ label, title, description, status, icon: Icon, statusColor, statusBg }: typeof phases[0]) => (
-  <div className="p-8 neu-card flex flex-col justify-between">
+  <div className="p-8 neu-card flex flex-col justify-between h-full">
     <div>
       <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center mb-5">
         <Icon className="w-5 h-5 text-muted-foreground" />
@@ -93,7 +93,7 @@ const RoadmapSection = () => {
               </p>
             </div>
 
-            {/* Phase cards in carousel, 1 at a time */}
+            {/* Phase cards in carousel, 1 at a time, infinite */}
             <MobileCarousel itemsPerPage={1}>
               {phases.map((phase) => (
                 <PhaseCard key={phase.label} {...phase} />
