@@ -52,10 +52,10 @@ const VirtualVillageIntro = () => {
   return (
     <section
       id="virtual-village"
-      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground py-0 section-padding z-10 -mt-[100vh]"
+      className="relative rounded-t-[2.5rem] bg-warm-white text-foreground z-10 -mt-[100vh]"
     >
-      {/* Hero image with matching top border-radius, flat bottom */}
-      <div className="w-full overflow-hidden rounded-t-[2.5rem] -mx-[var(--section-px,clamp(1.5rem,5vw,6rem))] mb-16 md:mb-20" style={{ width: 'calc(100% + 2 * var(--section-px, clamp(1.5rem, 5vw, 6rem)))' }}>
+      {/* Full-width hero image: top corners match section radius, bottom corners flat */}
+      <div className="w-full overflow-hidden rounded-t-[2.5rem]">
         <div className="w-full aspect-[16/9]">
           <img
             src={cityVvHero}
@@ -65,37 +65,39 @@ const VirtualVillageIntro = () => {
         </div>
       </div>
 
-      <div className="w-full pb-28 md:pb-36">
-        <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
-          Flagship Platform
-        </p>
+      <div className="section-padding pt-16 md:pt-20 pb-28 md:pb-36">
+        <div className="w-full">
+          <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
+            Flagship Platform
+          </p>
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
-            Virtual Village — One Ecosystem. Clear Structure. Contextual Intelligence.
-          </h2>
-          <div className="md:max-w-sm flex-shrink-0">
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              Virtual Village is a modular AI-powered digital ecosystem — unified,
-              personalised, structured, and seamless for citizens, cities and
-              services.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight max-w-3xl text-foreground">
+              Virtual Village — One Ecosystem. Clear Structure. Contextual Intelligence.
+            </h2>
+            <div className="md:max-w-sm flex-shrink-0">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                Virtual Village is a modular AI-powered digital ecosystem — unified,
+                personalised, structured, and seamless for citizens, cities and
+                services.
+              </p>
+            </div>
           </div>
+
+          {isMobile ? (
+            <MobileCarousel itemsPerPage={2}>
+              {modules.map(({ icon, title, description }) => (
+                <ModuleCard key={title} icon={icon} title={title} description={description} />
+              ))}
+            </MobileCarousel>
+          ) : (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+              {modules.map(({ icon, title, description }) => (
+                <ModuleCard key={title} icon={icon} title={title} description={description} />
+              ))}
+            </div>
+          )}
         </div>
-
-        {isMobile ? (
-          <MobileCarousel itemsPerPage={2}>
-            {modules.map(({ icon, title, description }) => (
-              <ModuleCard key={title} icon={icon} title={title} description={description} />
-            ))}
-          </MobileCarousel>
-        ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-            {modules.map(({ icon, title, description }) => (
-              <ModuleCard key={title} icon={icon} title={title} description={description} />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
