@@ -67,7 +67,7 @@ const Navbar = () => {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden relative z-[60] transition-colors ${
-              mobileOpen ? "text-foreground" : scrolled ? "text-foreground" : "text-primary-foreground"
+              mobileOpen || scrolled ? "text-foreground" : "text-primary-foreground"
             }`}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
