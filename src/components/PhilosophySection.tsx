@@ -9,17 +9,26 @@ const PhilosophySection = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
 
-  const text =
-    "MM Concept connects advanced technology with human intention - from vision to architecture to execution.";
+  const lines = [
+    "MM Concept connects advanced technology with human intention",
+    "from vision to architecture to execution.",
+  ];
 
   const splitText = useMemo(() => {
-    return text.split(/(\s+)/).map((word, index) => {
-      if (word.match(/^\s+$/)) return word;
-      return (
-        <span className="word inline-block" key={index}>
-          {word}
-        </span>
-      );
+    let wordIndex = 0;
+    return lines.flatMap((line, lineIdx) => {
+      const words = line.split(/(\s+)/).map((word) => {
+        if (word.match(/^\s+$/)) return word;
+        return (
+          <span className="word inline-block" key={wordIndex++}>
+            {word}
+          </span>
+        );
+      });
+      if (lineIdx < lines.length - 1) {
+        words.push(<br key={`br-${lineIdx}`} />);
+      }
+      return words;
     });
   }, []);
 
