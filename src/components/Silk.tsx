@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
 import { useRef, useMemo, useLayoutEffect } from 'react';
-import { Color, Mesh } from 'three';
+import { Color, Mesh, ShaderMaterial } from 'three';
+
+extend({ ShaderMaterial });
 
 const hexToNormalizedRGB = (hex: string): [number, number, number] => {
   hex = hex.replace('#', '');
