@@ -10,7 +10,7 @@ const PhilosophySection = () => {
   const labelRef = useRef<HTMLParagraphElement>(null);
 
   const text =
-    "Virtual Village emerged from life experiences where critical moments collided with digital complexity. This led to the ambition to create a coherent, trustworthy, human-centered digital environment for urban life.";
+    "MM Concept connects advanced technology with human intention - from vision to architecture to execution.";
 
   const splitText = useMemo(() => {
     return text.split(/(\s+)/).map((word, index) => {
