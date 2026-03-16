@@ -10,7 +10,7 @@ const PhilosophySection = () => {
   const labelRef = useRef<HTMLParagraphElement>(null);
 
   const text =
-    "MM Concept connects advanced technology with human intention - from vision to architecture to execution.";
+    "MM Concept connects advanced technology with human intention\nfrom vision to architecture to execution.";
 
   const splitText = useMemo(() => {
     return text.split(/(\s+)/).map((word, index) => {
