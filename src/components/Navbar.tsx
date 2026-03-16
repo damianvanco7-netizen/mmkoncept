@@ -33,10 +33,12 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-xl bg-warm-white/80 border-b border-border/40"
-            : "bg-transparent border-b border-transparent"
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
+          mobileOpen
+            ? "bg-card"
+            : scrolled
+              ? "backdrop-blur-xl bg-warm-white/80 border-b border-border/40"
+              : "bg-transparent border-b border-transparent"
         }`}
       >
         <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
@@ -45,7 +47,7 @@ const Navbar = () => {
               src={logo}
               alt="mm concept"
               className={`h-7 transition-all duration-300 ${
-                scrolled ? "" : "brightness-0 invert"
+                mobileOpen || scrolled ? "" : "brightness-0 invert"
               }`}
             />
           </button>
@@ -65,7 +67,7 @@ const Navbar = () => {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden relative z-[60] transition-colors ${
-              mobileOpen ? "text-foreground" : scrolled ? "text-foreground" : "text-primary-foreground"
+              mobileOpen || scrolled ? "text-foreground" : "text-primary-foreground"
             }`}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
