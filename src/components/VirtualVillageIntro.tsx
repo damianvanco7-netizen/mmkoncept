@@ -65,7 +65,7 @@ const VirtualVillageIntro = () => {
         </div>
       </div>
 
-      <div className="section-padding pt-16 md:pt-20 pb-28 md:pb-36">
+      <div id="vv-content" className="section-padding pt-16 md:pt-20 pb-28 md:pb-36">
         <div className="w-full">
           <p className="text-sm font-semibold tracking-widest uppercase mb-6 text-muted-foreground">
             Flagship Platform

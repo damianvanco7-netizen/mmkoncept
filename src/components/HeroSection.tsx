@@ -19,7 +19,7 @@ const HeroSection = () => {
           Digital Ecosystems.
         </h1>
         <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed mb-10 max-w-lg">
-          mm concept is a Strategic Innovation Group building structured, scalable digital infrastructures for citizens, cities and institutions.
+          MM Concept is a Strategic Innovation Group building structured, scalable digital infrastructures for citizens, cities and institutions.
         </p>
         <button onClick={() => scrollTo("philosophy")} className="pill-button text-base">
           Explore MM Concept
