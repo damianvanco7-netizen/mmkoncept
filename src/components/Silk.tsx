@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect } from 'react';
-import { Color, Mesh } from 'three';
+import { useRef, useMemo, useLayoutEffect, useEffect } from 'react';
+import { Color, Mesh, ShaderMaterial, PlaneGeometry } from 'three';
 
 const hexToNormalizedRGB = (hex: string): [number, number, number] => {
   hex = hex.replace('#', '');
@@ -28,7 +28,7 @@ varying vec2 vUv;
 varying vec3 vPosition;
 
 uniform float uTime;
-uniform vec3 uColor;
+uniform vec3  uColor;
 uniform float uSpeed;
 uniform float uScale;
 uniform float uRotation;
@@ -38,30 +38,30 @@ const float e = 2.71828182845904523536;
 
 float noise(vec2 texCoord) {
   float G = e;
-  vec2 r = (G * sin(G * texCoord));
+  vec2  r = (G * sin(G * texCoord));
   return fract(r.x * r.y * (1.0 + texCoord.x));
 }
 
 vec2 rotateUvs(vec2 uv, float angle) {
   float c = cos(angle);
   float s = sin(angle);
-  mat2 rot = mat2(c, -s, s, c);
+  mat2  rot = mat2(c, -s, s, c);
   return rot * uv;
 }
 
 void main() {
-  float rnd = noise(gl_FragCoord.xy);
-  vec2 uv = rotateUvs(vUv * uScale, uRotation);
-  vec2 tex = uv * uScale;
-  float tOffset = uSpeed * uTime;
+  float rnd        = noise(gl_FragCoord.xy);
+  vec2  uv         = rotateUvs(vUv * uScale, uRotation);
+  vec2  tex        = uv * uScale;
+  float tOffset    = uSpeed * uTime;
 
   tex.y += 0.03 * sin(8.0 * tex.x - tOffset);
 
   float pattern = 0.6 +
-    0.4 * sin(5.0 * (tex.x + tex.y +
-    cos(3.0 * tex.x + 5.0 * tex.y) +
-    0.02 * tOffset) +
-    sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
+                  0.4 * sin(5.0 * (tex.x + tex.y +
+                                   cos(3.0 * tex.x + 5.0 * tex.y) +
+                                   0.02 * tOffset) +
+                           sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
 
   vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
   col.a = 1.0;
@@ -69,38 +69,49 @@ void main() {
 }
 `;
 
-interface SilkPlaneProps {
-  uniforms: Record<string, { value: unknown }>;
+interface SilkSceneProps {
+  speed: number;
+  scale: number;
+  color: string;
+  noiseIntensity: number;
+  rotation: number;
 }
 
-const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane({ uniforms }, ref) {
+function SilkScene({ speed, scale, color, noiseIntensity, rotation }: SilkSceneProps) {
+  const meshRef = useRef<Mesh>(null!);
   const { viewport } = useThree();
-  const meshRef = ref as React.MutableRefObject<Mesh>;
+
+  const material = useMemo(() => {
+    return new ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uSpeed: { value: speed },
+        uScale: { value: scale },
+        uNoiseIntensity: { value: noiseIntensity },
+        uColor: { value: new Color(...hexToNormalizedRGB(color)) },
+        uRotation: { value: rotation },
+        uTime: { value: 0 },
+      },
+    });
+  }, [speed, scale, noiseIntensity, color, rotation]);
+
+  const geometry = useMemo(() => new PlaneGeometry(1, 1, 1, 1), []);
 
   useLayoutEffect(() => {
     if (meshRef.current) {
       meshRef.current.scale.set(viewport.width, viewport.height, 1);
     }
-  }, [meshRef, viewport]);
+  }, [viewport]);
 
   useFrame((_, delta) => {
     if (meshRef.current) {
-      (meshRef.current.material as any).uniforms.uTime.value += 0.1 * delta;
+      material.uniforms.uTime.value += 0.1 * delta;
     }
   });
 
-  return (
-    <mesh ref={ref}>
-      <planeGeometry args={[1, 1, 1, 1]} />
-      <shaderMaterial
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={uniforms}
-      />
-    </mesh>
-  );
-});
-SilkPlane.displayName = 'SilkPlane';
+  return <mesh ref={meshRef} geometry={geometry} material={material} />;
+}
 
 interface SilkProps {
   speed?: number;
@@ -111,23 +122,9 @@ interface SilkProps {
 }
 
 const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }: SilkProps) => {
-  const meshRef = useRef<Mesh>(null!);
-
-  const uniforms = useMemo(
-    () => ({
-      uSpeed: { value: speed },
-      uScale: { value: scale },
-      uNoiseIntensity: { value: noiseIntensity },
-      uColor: { value: new Color(...hexToNormalizedRGB(color)) },
-      uRotation: { value: rotation },
-      uTime: { value: 0 },
-    }),
-    [speed, scale, noiseIntensity, color, rotation]
-  );
-
   return (
     <Canvas camera={{ position: [0, 0, 1] }} style={{ position: 'absolute', inset: 0 }}>
-      <SilkPlane ref={meshRef} uniforms={uniforms} />
+      <SilkScene speed={speed} scale={scale} color={color} noiseIntensity={noiseIntensity} rotation={rotation} />
     </Canvas>
   );
 };
