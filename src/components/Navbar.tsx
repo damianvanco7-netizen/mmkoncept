@@ -47,7 +47,7 @@ const Navbar = () => {
               src={logo}
               alt="mm concept"
               className={`h-7 transition-all duration-300 ${
-                scrolled ? "" : "brightness-0 invert"
+                mobileOpen || scrolled ? "" : "brightness-0 invert"
               }`}
             />
           </button>
