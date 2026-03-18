@@ -5,7 +5,7 @@ import mockup from "@/assets/mockup-2.png";
 import villageSekcie from "@/assets/village-sekcie.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import HeroSection from "@/components/HeroSection";
-import { Separator } from "@/components/ui/separator";
+import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
 import vuyo from "@/assets/vuyo.png";
 import hans from "@/assets/hans.png";
