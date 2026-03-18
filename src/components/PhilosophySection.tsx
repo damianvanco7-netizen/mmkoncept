@@ -1,6 +1,7 @@
 import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,6 +9,7 @@ const PhilosophySection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   const lines = [
     "At mm concept, we bridge the gap between high-level corporate strategy",
@@ -36,15 +38,16 @@ const PhilosophySection = () => {
     const section = sectionRef.current;
     const content = contentRef.current;
     const label = labelRef.current;
-    if (!section || !content || !label) return;
+    const cards = cardsRef.current;
+    if (!section || !content || !label || !cards) return;
 
     const wordElements = content.querySelectorAll(".word");
+    const cardElements = cards.querySelectorAll(".service-card");
     const triggers: ScrollTrigger[] = [];
 
-    // Ensure absolutely no blur
     gsap.set(wordElements, { filter: "none", willChange: "opacity" });
+    gsap.set(cardElements, { opacity: 0, y: 40 });
 
-    // Pin the section for: text animation (120%) + reading pause (30%) + slide-over (50%) = 200%
     const pinTrigger = ScrollTrigger.create({
       trigger: section,
       start: "top top",
@@ -54,7 +57,6 @@ const PhilosophySection = () => {
     });
     triggers.push(pinTrigger);
 
-    // Label fade in
     const labelAnim = gsap.fromTo(
       label,
       { opacity: 0, y: 20 },
@@ -72,7 +74,6 @@ const PhilosophySection = () => {
     );
     if (labelAnim.scrollTrigger) triggers.push(labelAnim.scrollTrigger);
 
-    // Word opacity reveal — no blur, finishes at 120%
     const wordAnim = gsap.fromTo(
       wordElements,
       { opacity: 0.08 },
@@ -83,12 +84,31 @@ const PhilosophySection = () => {
         scrollTrigger: {
           trigger: section,
           start: "top top+=10%",
-          end: "+=120%",
+          end: "+=100%",
           scrub: true,
         },
       }
     );
     if (wordAnim.scrollTrigger) triggers.push(wordAnim.scrollTrigger);
+
+    // Cards fade in after text reveal
+    const cardsAnim = gsap.fromTo(
+      cardElements,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "+=110%",
+          end: "+=40%",
+          scrub: true,
+        },
+      }
+    );
+    if (cardsAnim.scrollTrigger) triggers.push(cardsAnim.scrollTrigger);
 
     return () => {
       triggers.forEach((t) => t.kill());
@@ -99,7 +119,7 @@ const PhilosophySection = () => {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="h-screen bg-card flex items-center section-padding"
+      className="min-h-screen bg-card flex items-center section-padding py-20"
     >
       <div className="w-full">
         <p
@@ -112,6 +132,32 @@ const PhilosophySection = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">
             {splitText}
           </h2>
+        </div>
+
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14 max-w-5xl">
+          <div className="service-card neu-card-white p-8 md:p-10 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">Virtual Village</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.
+              </p>
+            </div>
+            <button className="pill-button-dark text-sm self-start flex items-center gap-2">
+              Explore Village <ArrowRight size={16} />
+            </button>
+          </div>
+
+          <div className="service-card neu-card-white p-8 md:p-10 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">Consulting & Strategy</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
+              </p>
+            </div>
+            <button className="pill-button-dark text-sm self-start flex items-center gap-2">
+              Learn more <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
