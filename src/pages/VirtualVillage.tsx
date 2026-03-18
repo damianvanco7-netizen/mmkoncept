@@ -56,10 +56,6 @@ const VirtualVillage = () => {
       {/* Hero */}
       <section
         className="relative min-h-screen flex items-center section-padding pt-24"
-        style={{
-          background:
-            "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
