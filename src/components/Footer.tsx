@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer id="footer" className="py-16 md:py-24 bg-near-black section-padding">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
         {/* Top: Logo + Nav */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">

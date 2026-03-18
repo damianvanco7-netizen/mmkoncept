@@ -19,7 +19,7 @@ const PhilosophySection = () => {
         </h2>
 
         <p className="text-base text-muted-foreground mb-10">Explore our two core pillars:</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           <div className="flex flex-col">
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">Virtual Village</h3>
             <p className="text-muted-foreground leading-relaxed mb-8">
