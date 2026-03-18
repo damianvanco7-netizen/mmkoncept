@@ -8,41 +8,48 @@ import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
 import vuyo from "@/assets/vuyo.png";
 import hans from "@/assets/hans.png";
-import { Building2, Heart, GraduationCap, Palette, Dumbbell, UtensilsCrossed, ShoppingCart } from "lucide-react";
+
+import iconCity from "@/assets/icons/city_and_services.svg";
+import iconHealth from "@/assets/icons/health.svg";
+import iconEducation from "@/assets/icons/education.svg";
+import iconCulture from "@/assets/icons/culture.svg";
+import iconSport from "@/assets/icons/sport.svg";
+import iconFood from "@/assets/icons/food_dining.svg";
+import iconShopping from "@/assets/icons/shopping_services.svg";
 
 const dimensions = [
   {
-    icon: Building2,
+    icon: iconCity,
     title: "City Life & Services",
     description: "Your gateway to local governance, news, and urban infrastructure.",
   },
   {
-    icon: Heart,
+    icon: iconHealth,
     title: "Health",
     description: "Instant access to personalized wellness, medical resources, and community care.",
   },
   {
-    icon: GraduationCap,
+    icon: iconEducation,
     title: "Education",
     description: "A dedicated space for lifelong learning and local educational opportunities.",
   },
   {
-    icon: Palette,
+    icon: iconCulture,
     title: "Culture",
     description: "Connecting you with local arts, events, and the unique heartbeat of your neighborhood.",
   },
   {
-    icon: Dumbbell,
+    icon: iconSport,
     title: "Sport",
     description: "Promoting an active lifestyle with integrated modules for training and local athletic groups.",
   },
   {
-    icon: UtensilsCrossed,
+    icon: iconFood,
     title: "Food & Dining",
     description: "Discovering the best local tastes, sustainable options, and neighborhood dining experiences.",
   },
   {
-    icon: ShoppingCart,
+    icon: iconShopping,
     title: "Shopping & Services",
     description: "Smart, localized commerce that prioritizes convenience and community businesses.",
   },
