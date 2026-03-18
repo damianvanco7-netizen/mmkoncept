@@ -157,9 +157,6 @@ const VirtualVillage = () => {
       {/* Technology Section */}
       <section
         className="py-28 md:py-36 section-padding"
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
