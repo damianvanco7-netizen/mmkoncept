@@ -151,7 +151,7 @@ const NetworkCanvas = () => {
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(18, 25%, 25%, 0.8)`;
+        ctx.fillStyle = `hsla(18, 20%, 35%, 0.6)`;
         ctx.fill();
       }
 
