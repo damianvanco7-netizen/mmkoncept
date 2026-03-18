@@ -25,7 +25,7 @@ const PhilosophySection = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.
             </p>
-            <button className="pill-button text-xs !py-2 !px-5 self-start">
+            <button onClick={() => navigate("/virtual-village")} className="pill-button text-xs !py-2 !px-5 self-start">
               Explore Village
             </button>
           </div>
