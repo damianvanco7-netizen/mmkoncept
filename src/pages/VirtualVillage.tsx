@@ -64,9 +64,9 @@ const VirtualVillage = () => {
             <img
               src={vvLogo}
               alt="Virtual Village"
-              className="h-10 md:h-12 mb-8"
+              className="h-14 md:h-20 mb-8"
             />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
               Your personalized Universe.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-lg">
