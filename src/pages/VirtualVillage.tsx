@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/vv-mockup-hero.png";
 import villageSekcie from "@/assets/village-sekcie.png";
+import darkBg from "@/assets/dark-section-bg.jpg";
+import appScreens from "@/assets/vv-app-screens.png";
 import { Building2, Heart, GraduationCap, Palette, Dumbbell, UtensilsCrossed, ShoppingCart } from "lucide-react";
 
 const dimensions = [
@@ -62,9 +64,9 @@ const VirtualVillage = () => {
             <img
               src={vvLogo}
               alt="Virtual Village"
-              className="h-10 md:h-12 mb-8"
+              className="h-14 md:h-20 mb-8"
             />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
               Your personalized Universe.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-lg">
@@ -132,6 +134,24 @@ const VirtualVillage = () => {
               className="w-full max-w-[560px]"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Dark App Screens Section */}
+      <section
+        className="relative py-20 md:py-28 section-padding overflow-hidden"
+        style={{
+          backgroundImage: `url(${darkBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="w-full flex items-center justify-center">
+          <img
+            src={appScreens}
+            alt="Virtual Village app screens"
+            className="w-full max-w-[1200px]"
+          />
         </div>
       </section>
 
