@@ -167,27 +167,24 @@ const PhilosophySection = () => {
 
         {/* Service cards — same pinned container */}
         <div ref={cardsRef} className="mt-16 md:mt-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-            <div className="service-card neu-card-white p-8 md:p-10 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">Virtual Village</h3>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.
-                </p>
-              </div>
-              <button className="pill-button-dark text-sm self-start flex items-center gap-2">
+          <p className="text-base text-muted-foreground mb-10">Explore our two core pillars:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl">
+            <div className="service-card flex flex-col">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">Virtual Village</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.
+              </p>
+              <button className="text-foreground text-sm font-medium self-start flex items-center gap-2 hover:gap-3 transition-all">
                 Explore Village <ArrowRight size={16} />
               </button>
             </div>
 
-            <div className="service-card neu-card-white p-8 md:p-10 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">Consulting & Strategy</h3>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
-                </p>
-              </div>
-              <button className="pill-button-dark text-sm self-start flex items-center gap-2">
+            <div className="service-card flex flex-col">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">Consulting & Strategy</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
+              </p>
+              <button className="text-foreground text-sm font-medium self-start flex items-center gap-2 hover:gap-3 transition-all">
                 Learn more <ArrowRight size={16} />
               </button>
             </div>
