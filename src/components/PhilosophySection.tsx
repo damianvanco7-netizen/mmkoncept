@@ -46,8 +46,8 @@ const PhilosophySection = () => {
     const triggers: ScrollTrigger[] = [];
 
     gsap.set(wordElements, { filter: "none", willChange: "opacity" });
-    gsap.set(cardElements, { opacity: 0, y: 40 });
 
+    // Pin text section
     const pinTrigger = ScrollTrigger.create({
       trigger: section,
       start: "top top",
@@ -84,31 +84,32 @@ const PhilosophySection = () => {
         scrollTrigger: {
           trigger: section,
           start: "top top+=10%",
-          end: "+=100%",
+          end: "+=120%",
           scrub: true,
         },
       }
     );
     if (wordAnim.scrollTrigger) triggers.push(wordAnim.scrollTrigger);
 
-    // Cards fade in after text reveal
-    const cardsAnim = gsap.fromTo(
-      cardElements,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "+=110%",
-          end: "+=40%",
-          scrub: true,
-        },
-      }
-    );
-    if (cardsAnim.scrollTrigger) triggers.push(cardsAnim.scrollTrigger);
+    // Cards scroll-triggered fade in
+    cardElements.forEach((card, i) => {
+      const cardAnim = gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      if (cardAnim.scrollTrigger) triggers.push(cardAnim.scrollTrigger);
+    });
 
     return () => {
       triggers.forEach((t) => t.kill());
@@ -116,25 +117,31 @@ const PhilosophySection = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="philosophy"
-      className="min-h-screen bg-card flex items-center section-padding py-20"
-    >
-      <div className="w-full">
-        <p
-          ref={labelRef}
-          className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10 opacity-0"
-        >
-          Projects & Services
-        </p>
-        <div ref={contentRef}>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">
-            {splitText}
-          </h2>
+    <>
+      {/* Pinned text reveal */}
+      <section
+        ref={sectionRef}
+        id="philosophy"
+        className="h-screen bg-card flex items-center section-padding"
+      >
+        <div className="w-full">
+          <p
+            ref={labelRef}
+            className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10 opacity-0"
+          >
+            Projects & Services
+          </p>
+          <div ref={contentRef}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">
+              {splitText}
+            </h2>
+          </div>
         </div>
+      </section>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14 max-w-5xl">
+      {/* Cards section — scrolls naturally after pin */}
+      <section className="bg-card section-padding pb-24 pt-10" ref={cardsRef}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
           <div className="service-card neu-card-white p-8 md:p-10 flex flex-col justify-between">
             <div>
               <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">Virtual Village</h3>
@@ -159,8 +166,8 @@ const PhilosophySection = () => {
             </button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
