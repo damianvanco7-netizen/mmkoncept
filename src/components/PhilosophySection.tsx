@@ -138,7 +138,7 @@ const PhilosophySection = () => {
       id="philosophy"
       className="h-screen bg-card overflow-hidden section-padding"
     >
-      <div ref={innerRef} className="w-full h-full flex flex-col justify-center">
+      <div ref={innerRef} className="w-full h-full flex flex-col justify-start pt-[12vh]">
         {/* Claim text */}
         <div>
           <p
