@@ -126,7 +126,7 @@ const NetworkCanvas = () => {
       }
 
       // Draw connections
-      const maxConnDist = 120;
+      const maxConnDist = 150;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const a = nodes[i];
@@ -135,18 +135,13 @@ const NetworkCanvas = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          // Connection threshold decreases toward right
-          const avgX = (a.x + b.x) / 2;
-          const rightFactor = 1 - (avgX / w) * 0.6;
-          const threshold = maxConnDist * rightFactor;
-
-          if (dist < threshold) {
-            const alpha = (1 - dist / threshold) * 0.25 * rightFactor;
+          if (dist < maxConnDist) {
+            const alpha = (1 - dist / maxConnDist) * 0.55;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `hsla(18, 20%, 40%, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `hsla(18, 25%, 30%, ${alpha})`;
+            ctx.lineWidth = 1.2;
             ctx.stroke();
           }
         }
@@ -154,11 +149,9 @@ const NetworkCanvas = () => {
 
       // Draw nodes
       for (const n of nodes) {
-        const rightness = n.x / w;
-        const alpha = 0.5 + (1 - rightness) * 0.4;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(18, 20%, 30%, ${alpha})`;
+        ctx.fillStyle = `hsla(18, 25%, 25%, 0.8)`;
         ctx.fill();
       }
 
@@ -179,7 +172,7 @@ const NetworkCanvas = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-auto"
-      style={{ opacity: 0.75 }}
+      style={{ opacity: 0.9 }}
     />
   );
 };
