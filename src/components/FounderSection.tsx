@@ -2,9 +2,13 @@ import martinaPhoto from "@/assets/martina.png";
 
 const FounderSection = () => {
   return (
-    <section id="founder" className="py-28 md:py-36 bg-card section-padding overflow-hidden">
+    <section
+      id="founder"
+      className="py-28 md:py-36 section-padding overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)' }}
+    >
       <div className="w-full">
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
           {/* Portrait */}
           <div className="md:col-span-2">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden">
@@ -22,14 +26,20 @@ const FounderSection = () => {
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-2">Martina</h2>
             <p className="text-lg font-medium text-muted-foreground mb-8">Leader & Visionary</p>
             <div className="space-y-4">
-              <p className="text-muted-foreground leading-relaxed">
-                With a background spanning strategic innovation, digital transformation and urban technology, Martina founded mm concept to bridge the gap between human needs and digital infrastructure.
+              <p className="text-foreground leading-relaxed">
+                I am Martina, a strategist, entrepreneur, and the architect of mm concept and the Virtual Village ecosystem.
+              </p>
+              <p className="text-foreground leading-relaxed font-semibold">
+                My mission is driven by a simple but powerful belief: Life, just simplified.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Her vision: create a structured, trustworthy digital ecosystem that empowers citizens and institutions alike — built on European values of privacy, transparency and human-centered design.
+                My perspective was shaped at the intersection of diverse worlds. From the high-precision automotive environments of Volkswagen to my transformative journey across Slovakia, Germany, and Africa, I have learned that the most powerful solutions are always the most intuitive.
               </p>
-              <p className="text-sm text-muted-foreground/70 leading-relaxed">
-                Based between Germany and Slovakia, Martina brings a cross-cultural perspective to building digital infrastructure that serves diverse communities across Europe.
+              <p className="text-muted-foreground leading-relaxed">
+                Beyond my professional role, I'm a mother of two. This life-shaping experience fuels my drive for simplification — a daily reminder that technology should remain an invisible supporter.
+              </p>
+              <p className="text-foreground leading-relaxed">
+                I design environments that turn complexity into clarity. By connecting the right data with a human-centric approach, I help create spaces, both virtual and real, where people can truly thrive.
               </p>
             </div>
           </div>
