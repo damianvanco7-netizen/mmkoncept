@@ -5,6 +5,9 @@ import mockup from "@/assets/vv-mockup-hero.png";
 import villageSekcie from "@/assets/village-sekcie.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
+import martina from "@/assets/martina.png";
+import vuyo from "@/assets/vuyo.png";
+import hans from "@/assets/hans.png";
 import { Building2, Heart, GraduationCap, Palette, Dumbbell, UtensilsCrossed, ShoppingCart } from "lucide-react";
 
 const dimensions = [
