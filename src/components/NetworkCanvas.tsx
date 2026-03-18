@@ -136,7 +136,7 @@ const NetworkCanvas = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxConnDist) {
-            const alpha = (1 - dist / maxConnDist) * 0.55;
+            const alpha = (1 - dist / maxConnDist) * 0.35;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
