@@ -106,7 +106,7 @@ const PhilosophySection = () => {
           ref={labelRef}
           className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10 opacity-0"
         >
-          Origin
+          Projects & Services
         </p>
         <div ref={contentRef}>
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">

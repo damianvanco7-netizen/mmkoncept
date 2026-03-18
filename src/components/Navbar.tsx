@@ -77,11 +77,10 @@ const Navbar = () => {
       {/* Fullscreen mobile menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 bg-card flex flex-col items-start justify-center px-10 gap-8 md:hidden">
-          <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-foreground">Origin</button>
-          <button onClick={() => scrollTo("vv-content")} className="text-2xl font-semibold text-foreground">Virtual Village</button>
-          <button onClick={() => scrollTo("tech")} className="text-2xl font-semibold text-foreground">Technology</button>
+          <button onClick={() => scrollTo("hero")} className="text-2xl font-semibold text-foreground">Origin</button>
+          <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-foreground">Projects & Services</button>
           <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-foreground">About</button>
-          <button onClick={() => scrollTo("cta")} className="pill-button text-base mt-4">Contact</button>
+          <button onClick={() => scrollTo("footer")} className="pill-button text-base mt-4">Contact</button>
         </div>
       )}
     </>
