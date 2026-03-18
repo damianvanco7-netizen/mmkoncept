@@ -19,45 +19,37 @@ const NetworkCanvas = () => {
 
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
-    const count = Math.min(120, Math.max(60, Math.floor(w * h / 12000)));
+    // Tight tangled cluster — concentrated in a small area
+    const clusterCenterX = w * 0.35;
+    const clusterCenterY = h * 0.48;
+    const clusterRadius = Math.min(w, h) * 0.18;
+    const clusterCount = 90;
 
-    // Dense cluster on the left (~60% of nodes in left 40%)
-    const leftCount = Math.floor(count * 0.6);
-    for (let i = 0; i < leftCount; i++) {
-      const bx = Math.random() * w * 0.45;
-      const by = h * 0.15 + Math.random() * h * 0.7;
+    for (let i = 0; i < clusterCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const r = Math.random() * clusterRadius * (0.3 + Math.random() * 0.7);
+      const bx = clusterCenterX + Math.cos(angle) * r;
+      const by = clusterCenterY + Math.sin(angle) * r;
       nodes.push({
         baseX: bx, baseY: by, x: bx, y: by,
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
-        radius: 2 + Math.random() * 2,
+        radius: 1.8 + Math.random() * 2,
       });
     }
 
-    // Middle transition zone
-    const midCount = Math.floor(count * 0.25);
-    for (let i = 0; i < midCount; i++) {
-      const bx = w * 0.4 + Math.random() * w * 0.3;
-      const by = h * 0.25 + Math.random() * h * 0.5;
+    // Right side — exactly 3 dots on a horizontal line
+    const lineY = h * 0.48;
+    const rightDots = [
+      { bx: w * 0.72, by: lineY },
+      { bx: w * 0.82, by: lineY },
+      { bx: w * 0.92, by: lineY },
+    ];
+    for (const dot of rightDots) {
       nodes.push({
-        baseX: bx, baseY: by, x: bx, y: by,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
-        radius: 2 + Math.random() * 1.5,
-      });
-    }
-
-    // Right side — aligned dots on a gentle horizontal line
-    const rightCount = count - leftCount - midCount;
-    const lineY = h * 0.5;
-    for (let i = 0; i < rightCount; i++) {
-      const t = i / (rightCount - 1);
-      const bx = w * 0.75 + t * w * 0.2;
-      const by = lineY + (Math.random() - 0.5) * 8;
-      nodes.push({
-        baseX: bx, baseY: by, x: bx, y: by,
+        baseX: dot.bx, baseY: dot.by, x: dot.bx, y: dot.by,
         vx: 0, vy: 0,
-        radius: 2.5 + Math.random(),
+        radius: 3,
       });
     }
 
