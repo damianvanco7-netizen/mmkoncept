@@ -10,8 +10,8 @@ const PhilosophySection = () => {
   const labelRef = useRef<HTMLParagraphElement>(null);
 
   const lines = [
-    "MM Concept connects advanced technology with human intention",
-    "from vision to architecture to execution.",
+    "At mm concept, we bridge the gap between high-level corporate strategy",
+    "and human-centric digital solutions.",
   ];
 
   const splitText = useMemo(() => {
@@ -106,7 +106,7 @@ const PhilosophySection = () => {
           ref={labelRef}
           className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10 opacity-0"
         >
-          Origin
+          Projects & Services
         </p>
         <div ref={contentRef}>
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-foreground leading-relaxed max-w-5xl">
