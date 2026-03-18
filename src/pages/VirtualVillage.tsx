@@ -137,6 +137,24 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      {/* Dark App Screens Section */}
+      <section
+        className="relative py-20 md:py-28 section-padding overflow-hidden"
+        style={{
+          backgroundImage: `url(${darkBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="w-full flex items-center justify-center">
+          <img
+            src={appScreens}
+            alt="Virtual Village app screens"
+            className="w-full max-w-[1200px]"
+          />
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
