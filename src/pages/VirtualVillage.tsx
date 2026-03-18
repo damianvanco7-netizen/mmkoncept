@@ -8,41 +8,48 @@ import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
 import vuyo from "@/assets/vuyo.png";
 import hans from "@/assets/hans.png";
-import { Building2, Heart, GraduationCap, Palette, Dumbbell, UtensilsCrossed, ShoppingCart } from "lucide-react";
+
+import iconCity from "@/assets/icons/city_and_services.svg";
+import iconHealth from "@/assets/icons/health.svg";
+import iconEducation from "@/assets/icons/education.svg";
+import iconCulture from "@/assets/icons/culture.svg";
+import iconSport from "@/assets/icons/sport.svg";
+import iconFood from "@/assets/icons/food_dining.svg";
+import iconShopping from "@/assets/icons/shopping_services.svg";
 
 const dimensions = [
   {
-    icon: Building2,
+    icon: iconCity,
     title: "City Life & Services",
     description: "Your gateway to local governance, news, and urban infrastructure.",
   },
   {
-    icon: Heart,
+    icon: iconHealth,
     title: "Health",
     description: "Instant access to personalized wellness, medical resources, and community care.",
   },
   {
-    icon: GraduationCap,
+    icon: iconEducation,
     title: "Education",
     description: "A dedicated space for lifelong learning and local educational opportunities.",
   },
   {
-    icon: Palette,
+    icon: iconCulture,
     title: "Culture",
     description: "Connecting you with local arts, events, and the unique heartbeat of your neighborhood.",
   },
   {
-    icon: Dumbbell,
+    icon: iconSport,
     title: "Sport",
     description: "Promoting an active lifestyle with integrated modules for training and local athletic groups.",
   },
   {
-    icon: UtensilsCrossed,
+    icon: iconFood,
     title: "Food & Dining",
     description: "Discovering the best local tastes, sustainable options, and neighborhood dining experiences.",
   },
   {
-    icon: ShoppingCart,
+    icon: iconShopping,
     title: "Shopping & Services",
     description: "Smart, localized commerce that prioritizes convenience and community businesses.",
   },
@@ -98,7 +105,7 @@ const VirtualVillage = () => {
         </div>
       </section>
 
-      <hr className="border-t border-border/30 mx-[clamp(1.5rem,5vw,6rem)]" />
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* 7 Life Dimensions */}
       <section className="py-28 md:py-36 section-padding">
@@ -113,10 +120,10 @@ const VirtualVillage = () => {
               harmonize every aspect of modern daily life:
             </p>
             <div className="space-y-6">
-              {dimensions.map(({ icon: Icon, title, description }) => (
+              {dimensions.map(({ icon, title, description }) => (
                 <div key={title} className="flex items-start gap-4">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 neu-inset mt-0.5">
-                    <Icon className="w-4 h-4 text-muted-foreground" />
+                    <img src={icon} alt={title} className="w-5 h-5" />
                   </div>
                   <p className="text-base text-muted-foreground leading-relaxed">
                     <span className="font-semibold text-foreground">{title}:</span>{" "}
@@ -210,7 +217,7 @@ const VirtualVillage = () => {
         </div>
       </section>
 
-      <hr className="border-t border-border/30 mx-[clamp(1.5rem,5vw,6rem)]" />
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Leadership Team Section */}
       <section
