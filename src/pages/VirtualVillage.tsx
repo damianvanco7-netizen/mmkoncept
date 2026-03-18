@@ -99,7 +99,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* 7 Life Dimensions */}
-      <section className="py-28 md:py-36 bg-card section-padding">
+      <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
           <div>
