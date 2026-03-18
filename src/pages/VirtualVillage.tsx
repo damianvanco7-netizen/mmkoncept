@@ -50,16 +50,12 @@ const dimensions = [
 
 const VirtualVillage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
       <Navbar />
 
       {/* Hero */}
       <section
         className="relative min-h-screen flex items-center section-padding pt-24"
-        style={{
-          background:
-            "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
@@ -103,7 +99,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* 7 Life Dimensions */}
-      <section className="py-28 md:py-36 bg-card section-padding">
+      <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
           <div>
@@ -161,9 +157,6 @@ const VirtualVillage = () => {
       {/* Technology Section */}
       <section
         className="py-28 md:py-36 section-padding"
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
@@ -218,9 +211,6 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <section
         className="py-28 md:py-36 section-padding"
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="w-full">
           <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
