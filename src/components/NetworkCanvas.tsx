@@ -49,7 +49,7 @@ const NetworkCanvas = () => {
       nodes.push({
         baseX: dot.bx, baseY: dot.by, x: dot.bx, y: dot.by,
         vx: 0, vy: 0,
-        radius: 3,
+        radius: 5,
       });
     }
 
