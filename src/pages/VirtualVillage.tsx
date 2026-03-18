@@ -216,16 +216,24 @@ const VirtualVillage = () => {
       </section>
 
       {/* Leadership Team Section */}
-      <section className="py-28 md:py-36 bg-background section-padding">
+      <section
+        className="py-28 md:py-36 section-padding"
+        style={{
+          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
+        }}
+      >
         <div className="w-full">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
+          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
             Meet Our Leadership Team
-          </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-16 max-w-4xl">
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
             A synergy of European strategic vision and African technical excellence.
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-16 max-w-4xl">
+            A global team for a global vision
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             {/* Martina */}
             <div>
               <img src={martina} alt="Martina Masaryková" className="w-32 h-32 object-cover rounded-xl mb-6" />
@@ -256,10 +264,6 @@ const VirtualVillage = () => {
               </p>
             </div>
           </div>
-
-          <p className="text-xl md:text-2xl font-semibold text-foreground text-right">
-            A global team for a global vision
-          </p>
         </div>
       </section>
 
