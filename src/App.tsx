@@ -9,6 +9,8 @@ import VirtualVillage from "./pages/VirtualVillage";
 import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
 
+const queryClient = new QueryClient();
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
