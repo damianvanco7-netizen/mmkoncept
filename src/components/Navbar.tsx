@@ -73,7 +73,7 @@ const Navbar = () => {
             <button onClick={goHome} className="transition-colors hover:text-foreground">Origin</button>
             <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-foreground">Projects & Services</button>
             <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-foreground">About</button>
-            <button onClick={() => scrollTo("footer")} className="pill-button text-xs !py-2 !px-5">Contact</button>
+            <button onClick={() => scrollTo("footer")} className="transition-colors hover:text-foreground">Contact</button>
           </div>
 
           {/* Mobile hamburger */}
@@ -92,7 +92,7 @@ const Navbar = () => {
           <button onClick={goHome} className="text-2xl font-semibold text-foreground">Origin</button>
           <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-foreground">Projects & Services</button>
           <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-foreground">About</button>
-          <button onClick={() => scrollTo("footer")} className="pill-button text-base mt-4">Contact</button>
+          <button onClick={() => scrollTo("footer")} className="text-2xl font-semibold text-foreground">Contact</button>
         </div>
       )}
     </>
