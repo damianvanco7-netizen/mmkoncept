@@ -27,8 +27,8 @@ const NetworkCanvas = () => {
 
     for (let i = 0; i < clusterCount; i++) {
       const angle = Math.random() * Math.PI * 2;
-      // Push nodes outward — less density in center, more spread
-      const rFactor = 0.35 + Math.random() * 0.65;
+      // Mix: some nodes near center, most spread out
+      const rFactor = Math.pow(Math.random(), 0.7);
       const r = rFactor * clusterRadius;
       const bx = clusterCenterX + Math.cos(angle) * r;
       const by = clusterCenterY + Math.sin(angle) * r;
