@@ -48,20 +48,20 @@ const PhilosophySection = () => {
     const triggers: ScrollTrigger[] = [];
 
     gsap.set(wordElements, { willChange: "opacity" });
-    gsap.set(cards, { opacity: 0, y: 60 });
-    gsap.set(cardElements, { opacity: 0, y: 30 });
+    gsap.set(cards, { opacity: 0, y: 40 });
+    gsap.set(cardElements, { opacity: 0, y: 20 });
 
     // Pin the section
     const pinTrigger = ScrollTrigger.create({
       trigger: section,
       start: "top top",
-      end: "+=250%",
+      end: "+=200%",
       pin: true,
       pinSpacing: true,
     });
     triggers.push(pinTrigger);
 
-    // Label fade in (0-15%)
+    // Label fade in (0-10%)
     const labelAnim = gsap.fromTo(
       label,
       { opacity: 0, y: 20 },
@@ -72,14 +72,14 @@ const PhilosophySection = () => {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=15%",
+          end: "+=10%",
           scrub: true,
         },
       }
     );
     if (labelAnim.scrollTrigger) triggers.push(labelAnim.scrollTrigger);
 
-    // Word reveal (10-55%)
+    // Word reveal (5-50%)
     const wordAnim = gsap.fromTo(
       wordElements,
       { opacity: 0.08 },
@@ -89,40 +89,29 @@ const PhilosophySection = () => {
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "top top+=10%",
-          end: "+=100%",
+          start: "top top+=5%",
+          end: "+=90%",
           scrub: true,
         },
       }
     );
     if (wordAnim.scrollTrigger) triggers.push(wordAnim.scrollTrigger);
 
-    // Slide inner container up & fade in cards (60-90%)
-    const slideAnim = gsap.to(inner, {
-      y: "-50%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top-=150%",
-        end: "+=80%",
-        scrub: true,
-      },
-    });
-    if (slideAnim.scrollTrigger) triggers.push(slideAnim.scrollTrigger);
-
+    // Cards container fade in (55-75%)
     const cardsContainerAnim = gsap.to(cards, {
       opacity: 1,
       y: 0,
       ease: "none",
       scrollTrigger: {
         trigger: section,
-        start: "top top-=160%",
+        start: "top top-=110%",
         end: "+=40%",
         scrub: true,
       },
     });
     if (cardsContainerAnim.scrollTrigger) triggers.push(cardsContainerAnim.scrollTrigger);
 
+    // Individual card stagger (60-80%)
     cardElements.forEach((card, i) => {
       const cardAnim = gsap.to(card, {
         opacity: 1,
@@ -130,7 +119,7 @@ const PhilosophySection = () => {
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: `top top-=${165 + i * 10}%`,
+          start: `top top-=${115 + i * 8}%`,
           end: "+=30%",
           scrub: true,
         },
@@ -149,7 +138,7 @@ const PhilosophySection = () => {
       id="philosophy"
       className="h-screen bg-card overflow-hidden section-padding"
     >
-      <div ref={innerRef} className="w-full h-full flex flex-col justify-center">
+      <div ref={innerRef} className="w-full h-full flex flex-col justify-start pt-[12vh]">
         {/* Claim text */}
         <div>
           <p
