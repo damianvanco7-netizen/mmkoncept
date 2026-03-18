@@ -6,7 +6,7 @@ const PhilosophySection = () => {
   return (
     <section
       id="philosophy"
-      className="py-28 md:py-36 bg-card section-padding"
+      className="py-28 md:py-36 section-padding"
     >
       <div className="w-full max-w-5xl">
         <p className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-10">

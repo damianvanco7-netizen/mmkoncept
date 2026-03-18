@@ -5,7 +5,6 @@ const FounderSection = () => {
     <section
       id="founder"
       className="py-28 md:py-36 section-padding overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)' }}
     >
       <div className="w-full">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">

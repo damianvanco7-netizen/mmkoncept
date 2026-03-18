@@ -4,7 +4,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center section-padding pt-24" style={{ background: 'linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)' }}>
+    <section id="hero" className="relative min-h-screen flex items-center section-padding pt-24">
       <div className="relative z-10 w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
           Life, just simplified.
