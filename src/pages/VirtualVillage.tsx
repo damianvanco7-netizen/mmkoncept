@@ -211,6 +211,8 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      <hr className="border-t border-border/30 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* Leadership Team Section */}
       <section
         className="py-28 md:py-36 section-padding"
