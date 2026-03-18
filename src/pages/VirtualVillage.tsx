@@ -120,10 +120,10 @@ const VirtualVillage = () => {
               harmonize every aspect of modern daily life:
             </p>
             <div className="space-y-6">
-              {dimensions.map(({ icon: Icon, title, description }) => (
+              {dimensions.map(({ icon, title, description }) => (
                 <div key={title} className="flex items-start gap-4">
                   <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 neu-inset mt-0.5">
-                    <Icon className="w-4 h-4 text-muted-foreground" />
+                    <img src={icon} alt={title} className="w-5 h-5" />
                   </div>
                   <p className="text-base text-muted-foreground leading-relaxed">
                     <span className="font-semibold text-foreground">{title}:</span>{" "}
