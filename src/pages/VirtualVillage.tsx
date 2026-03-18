@@ -113,7 +113,7 @@ const VirtualVillage = () => {
           {/* Left — text */}
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
-              7 Life Dimensions. 1 Intuitive Space.
+              7 Life Dimensions.<br />1 Intuitive Space.
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-10">
               Virtual Village is built on a modular architecture designed to
