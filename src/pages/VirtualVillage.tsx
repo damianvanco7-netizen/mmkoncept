@@ -269,7 +269,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* CTA Dark Section */}
-      <section className="py-28 md:py-36 section-padding" style={{ background: "#000000" }}>
+      <section className="relative py-28 md:py-36 section-padding overflow-hidden" style={{ backgroundImage: `url(${darkBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="w-full max-w-3xl">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
             Be Part of the Digital Evolution
