@@ -22,7 +22,7 @@ const NetworkCanvas = () => {
     // Tight tangled cluster — concentrated in a small area
     const clusterCenterX = w * 0.35;
     const clusterCenterY = h * 0.48;
-    const clusterRadius = Math.min(w, h) * 0.18;
+    const clusterRadius = Math.min(w, h) * 0.32;
     const clusterCount = 90;
 
     for (let i = 0; i < clusterCount; i++) {
@@ -34,7 +34,7 @@ const NetworkCanvas = () => {
         baseX: bx, baseY: by, x: bx, y: by,
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
-        radius: 1.8 + Math.random() * 2,
+        radius: 2.5 + Math.random() * 2.5,
       });
     }
 
@@ -49,7 +49,7 @@ const NetworkCanvas = () => {
       nodes.push({
         baseX: dot.bx, baseY: dot.by, x: dot.bx, y: dot.by,
         vx: 0, vy: 0,
-        radius: 3,
+        radius: 5,
       });
     }
 
@@ -157,10 +157,10 @@ const NetworkCanvas = () => {
       // Draw nodes
       for (const n of nodes) {
         const rightness = n.x / w;
-        const alpha = 0.35 + (1 - rightness) * 0.35;
+        const alpha = 0.5 + (1 - rightness) * 0.4;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(18, 20%, 35%, ${alpha})`;
+        ctx.fillStyle = `hsla(18, 20%, 30%, ${alpha})`;
         ctx.fill();
       }
 
@@ -181,7 +181,7 @@ const NetworkCanvas = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-auto"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.75 }}
     />
   );
 };
