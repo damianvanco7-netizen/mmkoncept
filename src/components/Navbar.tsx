@@ -61,9 +61,7 @@ const Navbar = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden relative z-[60] transition-colors ${
-              mobileOpen || scrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
+            className="md:hidden relative z-[60] transition-colors text-foreground"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
