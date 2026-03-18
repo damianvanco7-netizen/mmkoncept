@@ -22,7 +22,7 @@ const NetworkCanvas = () => {
     // Tight tangled cluster — concentrated in a small area
     const clusterCenterX = w * 0.35;
     const clusterCenterY = h * 0.48;
-    const clusterRadius = Math.min(w, h) * 0.18;
+    const clusterRadius = Math.min(w, h) * 0.32;
     const clusterCount = 90;
 
     for (let i = 0; i < clusterCount; i++) {
