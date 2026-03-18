@@ -215,6 +215,54 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      {/* Leadership Team Section */}
+      <section className="py-28 md:py-36 bg-background section-padding">
+        <div className="w-full">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
+            Meet Our Leadership Team
+          </h2>
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-16 max-w-4xl">
+            A synergy of European strategic vision and African technical excellence.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-16">
+            {/* Martina */}
+            <div>
+              <img src={martina} alt="Martina Masaryková" className="w-32 h-32 object-cover rounded-xl mb-6" />
+              <p className="text-base font-semibold text-foreground">Martina Masaryková</p>
+              <p className="text-sm font-semibold text-foreground mb-3">Founder, CEO & Project Lead (Slovakia)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Strategist and Entrepreneur with over a decade of experience in the global automotive industry (Volkswagen Group). A multilingual visionary bridging digital innovation with human needs across Slovakia, Germany, and Africa.
+              </p>
+            </div>
+
+            {/* Vuyo */}
+            <div>
+              <img src={vuyo} alt="Vuyolwetu Madikiza" className="w-32 h-32 object-cover rounded-xl mb-6" />
+              <p className="text-base font-semibold text-foreground">Vuyolwetu Madikiza</p>
+              <p className="text-sm font-semibold text-foreground mb-3">Chief Technology Officer (South Africa)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Senior IT Leader with 10+ years at Volkswagen Group Africa. Expert in AI architecture, Data Science, and large-scale cloud infrastructure (Google Cloud/Azure). The lead architect of the STAR Pro engine.
+              </p>
+            </div>
+
+            {/* Hans */}
+            <div>
+              <img src={hans} alt="Hans-Christian Heidecke" className="w-32 h-32 object-cover rounded-xl mb-6" />
+              <p className="text-base font-semibold text-foreground">Hans-Christian Heidecke</p>
+              <p className="text-sm font-semibold text-foreground mb-3">Investor, Strategic Partner & Board Advisor (Germany)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Seasoned executive in international IT leadership and financial governance, ensuring global scalability and operational excellence.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-xl md:text-2xl font-semibold text-foreground text-right">
+            A global team for a global vision
+          </p>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
