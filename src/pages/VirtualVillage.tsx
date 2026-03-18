@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/vv-mockup-hero.png";
 import villageSekcie from "@/assets/village-sekcie.png";
+import darkBg from "@/assets/dark-section-bg.jpg";
+import appScreens from "@/assets/vv-app-screens.png";
 import { Building2, Heart, GraduationCap, Palette, Dumbbell, UtensilsCrossed, ShoppingCart } from "lucide-react";
 
 const dimensions = [
