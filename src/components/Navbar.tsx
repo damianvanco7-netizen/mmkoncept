@@ -70,7 +70,7 @@ const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <button onClick={() => scrollTo("hero")} className="transition-colors hover:text-foreground">Origin</button>
+            <button onClick={goHome} className="transition-colors hover:text-foreground">Origin</button>
             <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-foreground">Projects & Services</button>
             <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-foreground">About</button>
             <button onClick={() => scrollTo("footer")} className="pill-button text-xs !py-2 !px-5">Contact</button>

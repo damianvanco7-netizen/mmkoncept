@@ -20,9 +20,9 @@ const VirtualVillage = () => {
           {/* Left — text */}
           <div className="flex flex-col items-start">
             <img
-              src={vvLogo}
-              alt="Virtual Village"
-              className="h-14 md:h-16 rounded-xl mb-8"
+              src={mmLogo}
+              alt="mm concept"
+              className="h-7 mb-8"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
               Your personalized Universe.
