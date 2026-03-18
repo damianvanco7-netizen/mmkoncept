@@ -211,9 +211,6 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <section
         className="py-28 md:py-36 section-padding"
-        style={{
-          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
-        }}
       >
         <div className="w-full">
           <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
