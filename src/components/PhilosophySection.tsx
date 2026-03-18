@@ -23,8 +23,8 @@ const PhilosophySection = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.
             </p>
-            <button className="text-foreground text-sm font-medium self-start flex items-center gap-2 hover:gap-3 transition-all">
-              Explore Village <ArrowRight size={16} />
+            <button className="pill-button text-xs !py-2 !px-5 self-start">
+              Explore Village
             </button>
           </div>
 
@@ -33,8 +33,8 @@ const PhilosophySection = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
             </p>
-            <button className="text-foreground text-sm font-medium self-start flex items-center gap-2 hover:gap-3 transition-all">
-              Learn more <ArrowRight size={16} />
+            <button className="pill-button text-xs !py-2 !px-5 self-start">
+              Learn more
             </button>
           </div>
         </div>
