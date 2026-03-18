@@ -10,7 +10,7 @@ const FounderSection = () => {
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
           {/* Portrait */}
           <div className="md:col-span-2">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden w-[80%]">
               <img
                 src={martinaPhoto}
                 alt="Martina Masaryková – CEO, mm concept"

@@ -10,10 +10,10 @@ const HeroSection = () => {
           Life, just simplified.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-lg">
-          MM Concept is a Strategic Innovation Group building structured, scalable digital infrastructures for citizens, cities and institutions.
+          mm concept is a Strategic Innovation Group building structured, scalable digital infrastructures for citizens, cities and institutions.
         </p>
         <button onClick={() => scrollTo("philosophy")} className="pill-button text-sm">
-          Explore MM Concept
+          Explore mm concept
         </button>
       </div>
     </section>

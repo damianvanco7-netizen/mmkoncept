@@ -99,7 +99,7 @@ const VirtualVillage = () => {
             <img
               src={mockup}
               alt="Virtual Village app mockup"
-              className="w-[280px] md:w-[340px] lg:w-[400px] xl:w-[440px] drop-shadow-2xl"
+              className="w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] drop-shadow-2xl"
             />
           </div>
         </div>
@@ -211,7 +211,7 @@ const VirtualVillage = () => {
             <img
               src={mockup}
               alt="Virtual Village technology"
-              className="w-[280px] md:w-[340px] lg:w-[400px] xl:w-[440px] drop-shadow-2xl"
+              className="w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] drop-shadow-2xl"
             />
           </div>
         </div>
