@@ -6,9 +6,10 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 25%, hsl(var(--warm-beige)) 50%, hsl(var(--warm-taupe)) 75%, hsl(var(--warm-beige)) 100%)" }}>
       <Navbar />
       <HeroSection />
+      <hr className="border-t border-border/30 mx-[clamp(1.5rem,5vw,6rem)]" />
       <PhilosophySection />
       <FounderSection />
       <Footer />
