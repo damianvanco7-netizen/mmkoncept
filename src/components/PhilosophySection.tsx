@@ -35,7 +35,7 @@ const PhilosophySection = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
             </p>
-            <button className="pill-button text-xs !py-2 !px-5 self-start">
+            <button onClick={() => navigate("/consulting")} className="pill-button text-xs !py-2 !px-5 self-start">
               Learn more
             </button>
           </div>
