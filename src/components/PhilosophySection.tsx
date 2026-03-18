@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 const PhilosophySection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="philosophy"
