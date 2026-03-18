@@ -99,6 +99,8 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      <hr className="border-t border-border/30 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* 7 Life Dimensions */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
