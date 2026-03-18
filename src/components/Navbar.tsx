@@ -6,6 +6,10 @@ import logo from "@/assets/mmconcept.svg";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
