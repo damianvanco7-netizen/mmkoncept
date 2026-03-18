@@ -155,6 +155,63 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      {/* Technology Section */}
+      <section
+        className="py-28 md:py-36 section-padding"
+        style={{
+          background: "linear-gradient(135deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 100%)",
+        }}
+      >
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Left — text */}
+          <div>
+            <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+              Technology
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
+              Cloud-native. AI-powered. Globally scalable.
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed mb-10">
+              Virtual Village runs on a modern stack built for speed and flexibility: React Native (TypeScript + Expo) for cross-platform delivery, Supabase (PostgreSQL) for real-time data, and Edge Functions (Deno) for scalable serverless logic.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <p className="text-base text-foreground font-semibold mb-1">AI Layer — STAR</p>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Our AI engine STAR, powered by Google Gemini, turns context (location, time, behavior) into real-time, actionable recommendations — proactive and on demand.
+                </p>
+              </div>
+              <div>
+                <p className="text-base text-foreground font-semibold mb-1">Data & Quality</p>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Integrated with Google Places API, enhanced by custom filtering (≥4.0 ratings) and intelligent matching for accurate, high-quality results.
+                </p>
+              </div>
+              <div>
+                <p className="text-base text-foreground font-semibold mb-1">Security & Scale</p>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Row Level Security (RLS) ensures strict data privacy. Our modular "Universe" architecture enables seamless global expansion — no new code required.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-base font-semibold text-foreground mt-10">
+              Built for performance. Designed for real life.
+            </p>
+          </div>
+
+          {/* Right — mockup */}
+          <div className="flex items-center justify-center md:justify-end">
+            <img
+              src={mockup}
+              alt="Virtual Village technology"
+              className="w-[280px] md:w-[340px] lg:w-[400px] xl:w-[440px] drop-shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
