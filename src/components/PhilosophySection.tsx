@@ -10,8 +10,8 @@ const PhilosophySection = () => {
   const labelRef = useRef<HTMLParagraphElement>(null);
 
   const lines = [
-    "MM Concept connects advanced technology with human intention",
-    "from vision to architecture to execution.",
+    "At mm concept, we bridge the gap between high-level corporate strategy",
+    "and human-centric digital solutions.",
   ];
 
   const splitText = useMemo(() => {
