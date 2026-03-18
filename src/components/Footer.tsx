@@ -11,7 +11,7 @@ const Footer = () => {
         {/* Top: Logo + Nav */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
-            <img src={logo} alt="mm concept" className="h-7 brightness-200 invert" />
+            <img src={logo} alt="mm concept" className="h-9 opacity-30 invert brightness-200" />
           </button>
 
           <div className="flex flex-wrap gap-8 text-sm font-medium text-warm-taupe">
