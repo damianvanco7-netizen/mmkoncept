@@ -1,4 +1,4 @@
-import logo from "@/assets/mmconcept.svg";
+import logo from "@/assets/mmconcept-logo.svg";
 
 const Footer = () => {
   const scrollTo = (id: string) => {
