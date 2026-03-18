@@ -115,7 +115,7 @@ const PhilosophySection = () => {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="h-screen bg-card flex items-center section-padding"
+      className="min-h-screen bg-card flex items-center section-padding py-20"
     >
       <div className="w-full">
         <p

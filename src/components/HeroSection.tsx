@@ -1,10 +1,15 @@
+import Silk from "./Silk";
+
 const HeroSection = () => {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center section-padding pt-24 bg-near-black">
+    <section id="hero" className="relative min-h-screen flex items-center section-padding pt-24 bg-near-black overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <Silk speed={3} scale={1} color="#1a1a2e" />
+      </div>
       <div className="relative z-10 w-full">
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-primary-foreground leading-[1.08] mb-6">
           Life, just
