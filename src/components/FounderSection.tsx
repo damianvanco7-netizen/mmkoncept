@@ -1,19 +1,18 @@
+import martinaPhoto from "@/assets/martina.png";
+
 const FounderSection = () => {
   return (
     <section id="founder" className="py-28 md:py-36 bg-card section-padding overflow-hidden">
       <div className="w-full">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
-          {/* Portrait placeholder */}
+          {/* Portrait */}
           <div className="md:col-span-2">
-            <div className="aspect-[3/4] rounded-2xl bg-gradient-to-b from-secondary to-muted flex items-end justify-center overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 rounded-full bg-muted-foreground/10 mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl font-light text-muted-foreground">M</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground tracking-widest uppercase">Portrait</p>
-                </div>
-              </div>
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+              <img
+                src={martinaPhoto}
+                alt="Martina Masaryková – CEO, mm concept"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
