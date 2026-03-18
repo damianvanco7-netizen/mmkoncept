@@ -60,7 +60,7 @@ const Navbar = () => {
         }`}
       >
         <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
-          <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileOpen(false); }} className="flex items-center">
+          <button onClick={goHome} className="flex items-center">
             <img
               src={logo}
               alt="mm concept"
