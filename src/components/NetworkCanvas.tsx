@@ -172,7 +172,7 @@ const NetworkCanvas = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 z-0 pointer-events-auto"
-      style={{ opacity: 0.75 }}
+      style={{ opacity: 0.9 }}
     />
   );
 };
