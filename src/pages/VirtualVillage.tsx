@@ -50,7 +50,7 @@ const dimensions = [
 
 const VirtualVillage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
       <Navbar />
 
       {/* Hero */}
