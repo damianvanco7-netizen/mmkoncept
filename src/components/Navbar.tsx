@@ -56,11 +56,10 @@ const Navbar = () => {
           <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${
             scrolled ? "text-muted-foreground" : "text-primary-foreground/80"
           }`}>
-            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>Origin</button>
-            <button onClick={() => scrollTo("vv-content")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>Virtual Village</button>
-            <button onClick={() => scrollTo("tech")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>Technology</button>
+            <button onClick={() => scrollTo("hero")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>Projects & Services</button>
             <button onClick={() => scrollTo("founder")} className={`transition-colors ${scrolled ? "hover:text-foreground" : "hover:text-primary-foreground"}`}>About</button>
-            <button onClick={() => scrollTo("cta")} className="pill-button text-xs !py-2 !px-5">Contact</button>
+            <button onClick={() => scrollTo("footer")} className="pill-button text-xs !py-2 !px-5">Contact</button>
           </div>
 
           {/* Mobile hamburger */}
