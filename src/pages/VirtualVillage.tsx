@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import vvLogo from "@/assets/vv-logo.jpg";
+import mmLogo from "@/assets/mmconcept.svg";
 import mockup from "@/assets/vv-mockup-hero.png";
 
 const VirtualVillage = () => {
