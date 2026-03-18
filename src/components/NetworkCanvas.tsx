@@ -147,6 +147,29 @@ const NetworkCanvas = () => {
         }
       }
 
+      // Draw explicit line from cluster bottom to the 3 dots
+      const clusterNodes = nodes.slice(0, 110);
+      const dotNodes = nodes.slice(110);
+      // Find the lowest cluster node near the dots X
+      let bridgeNode = clusterNodes[0];
+      let bestScore = -Infinity;
+      for (const cn of clusterNodes) {
+        const score = cn.y - Math.abs(cn.x - dotNodes[0].x) * 0.5;
+        if (score > bestScore) {
+          bestScore = score;
+          bridgeNode = cn;
+        }
+      }
+      // Draw line from bridge node through each dot
+      ctx.beginPath();
+      ctx.moveTo(bridgeNode.x, bridgeNode.y);
+      for (const dn of dotNodes) {
+        ctx.lineTo(dn.x, dn.y);
+      }
+      ctx.strokeStyle = `hsla(18, 20%, 35%, 0.3)`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
       // Draw nodes
       for (const n of nodes) {
         ctx.beginPath();
