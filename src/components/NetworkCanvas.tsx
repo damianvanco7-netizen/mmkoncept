@@ -20,34 +20,36 @@ const NetworkCanvas = () => {
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
     // Large tangled cluster on the right side
-    const clusterCenterX = w * 0.68;
-    const clusterCenterY = h * 0.42;
-    const clusterRadius = Math.min(w, h) * 0.38;
-    const clusterCount = 110;
+    const clusterCenterX = w * 0.65;
+    const clusterCenterY = h * 0.4;
+    const clusterRadius = Math.min(w, h) * 0.48;
+    const clusterCount = 120;
 
     for (let i = 0; i < clusterCount; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const r = Math.random() * clusterRadius * (0.2 + Math.random() * 0.8);
+      // Push nodes outward — less density in center, more spread
+      const rFactor = 0.35 + Math.random() * 0.65;
+      const r = rFactor * clusterRadius;
       const bx = clusterCenterX + Math.cos(angle) * r;
       const by = clusterCenterY + Math.sin(angle) * r;
       nodes.push({
         baseX: bx, baseY: by, x: bx, y: by,
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
-        radius: 2.5 + Math.random() * 3,
+        radius: 2.5 + Math.random() * 3.5,
       });
     }
 
     // 3 clean dots below the cluster, vertically aligned
-    const dotsX = w * 0.68;
-    const dotsStartY = h * 0.78;
-    const dotsSpacing = 35;
+    const dotsX = w * 0.65;
+    const dotsStartY = h * 0.82;
+    const dotsSpacing = 40;
     for (let i = 0; i < 3; i++) {
       nodes.push({
         baseX: dotsX, baseY: dotsStartY + i * dotsSpacing,
         x: dotsX, y: dotsStartY + i * dotsSpacing,
         vx: 0, vy: 0,
-        radius: 5,
+        radius: 5.5,
       });
     }
 
