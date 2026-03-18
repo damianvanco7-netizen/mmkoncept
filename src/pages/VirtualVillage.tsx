@@ -268,6 +268,27 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      {/* CTA Dark Section */}
+      <section className="py-28 md:py-36 section-padding" style={{ background: "#000000" }}>
+        <div className="w-full max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+            Be Part of the Digital Evolution
+          </h2>
+          <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
+            Join the movement to humanize technology.
+          </p>
+          <p className="text-base text-white/70 leading-relaxed mb-6">
+            Whether you are seeking clarity in the digital noise or looking to empower your community through strategic innovation, let's build this universe together.
+          </p>
+          <p className="text-base text-white/70 leading-relaxed mb-10">
+            Virtual Village isn't just another platform. It's a quiet revolution — made by people, for people.
+          </p>
+          <button className="pill-button text-sm bg-white text-black hover:bg-white/90">
+            Contact
+          </button>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
