@@ -33,8 +33,8 @@ const PhilosophySection = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.
             </p>
-            <button className="text-foreground text-sm font-medium self-start flex items-center gap-2 hover:gap-3 transition-all">
-              Learn more <ArrowRight size={16} />
+            <button className="pill-button text-xs !py-2 !px-5 self-start">
+              Learn more
             </button>
           </div>
         </div>
