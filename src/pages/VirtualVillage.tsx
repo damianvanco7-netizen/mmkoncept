@@ -4,7 +4,6 @@ import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/mockup-2.png";
 import villageSekcie from "@/assets/village-sekcie.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
-import HeroSection from "@/components/HeroSection";
 import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
 import vuyo from "@/assets/vuyo.png";
