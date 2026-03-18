@@ -149,11 +149,9 @@ const NetworkCanvas = () => {
 
       // Draw nodes
       for (const n of nodes) {
-        const rightness = n.x / w;
-        const alpha = 0.5 + (1 - rightness) * 0.4;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(18, 20%, 30%, ${alpha})`;
+        ctx.fillStyle = `hsla(18, 25%, 25%, 0.8)`;
         ctx.fill();
       }
 
