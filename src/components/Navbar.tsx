@@ -64,7 +64,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="mm concept"
-              className="h-7 transition-all duration-300"
+              className="h-9 md:h-10 transition-all duration-300"
             />
           </button>
 
