@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import DimensionsCarousel from "@/components/DimensionsCarousel";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/mockup-2.png";
-import mockup from "@/assets/mockup-2.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
