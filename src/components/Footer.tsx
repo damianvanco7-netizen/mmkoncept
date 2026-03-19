@@ -14,10 +14,10 @@ const Footer = () => {
             <img src={logo} alt="mm concept" className="h-16 md:h-20 brightness-0 invert opacity-50" />
           </button>
 
-          <div className="flex flex-wrap gap-8 text-sm font-medium text-warm-taupe">
-            <button onClick={() => scrollTo("hero")} className="transition-colors hover:text-warm-white">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-warm-white">Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-warm-white">About</button>
+          <div className="flex flex-wrap gap-8 text-sm font-medium text-white/50">
+            <button onClick={() => scrollTo("hero")} className="transition-colors hover:text-white/80">Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-white/80">Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-white/80">About</button>
           </div>
         </div>
 
