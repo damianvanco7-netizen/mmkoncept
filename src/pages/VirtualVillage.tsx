@@ -1,8 +1,10 @@
+import { useState, useRef } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TiltCard from "@/components/TiltCard";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/mockup-2.png";
-import villageSekcie from "@/assets/village-sekcie.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
@@ -109,38 +111,65 @@ const VirtualVillage = () => {
 
       {/* 7 Life Dimensions */}
       <section className="py-28 md:py-36 section-padding">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
-              7 Life Dimensions.<br />1 Intuitive Space.
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-10">
-              Virtual Village is built on a modular architecture designed to
-              harmonize every aspect of modern daily life:
-            </p>
-            <div className="space-y-6">
-              {dimensions.map(({ icon, title, description }) => (
-                <div key={title} className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 neu-inset mt-0.5">
-                    <img src={icon} alt={title} className="w-5 h-5" />
-                  </div>
-                  <p className="text-base text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-foreground">{title}:</span>{" "}
-                    {description}
-                  </p>
-                </div>
-              ))}
+        <div className="w-full">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
+                7 Life Dimensions.<br />1 Intuitive Space.
+              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+                Virtual Village is built on a modular architecture designed to
+                harmonize every aspect of modern daily life.
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('dimensions-carousel');
+                  if (el) el.scrollBy({ left: -340, behavior: 'smooth' });
+                }}
+                className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60"
+              >
+                <ChevronLeft size={18} className="text-foreground/50 hover:text-foreground/80" />
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById('dimensions-carousel');
+                  if (el) el.scrollBy({ left: 340, behavior: 'smooth' });
+                }}
+                className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60"
+              >
+                <ChevronRight size={18} className="text-foreground/50 hover:text-foreground/80" />
+              </button>
             </div>
           </div>
 
-          {/* Right — image */}
-          <div className="flex items-center justify-center">
-            <img
-              src={villageSekcie}
-              alt="Virtual Village — 7 Life Dimensions"
-              className="w-full max-w-[560px]"
-            />
+          <div
+            id="dimensions-carousel"
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {dimensions.map(({ icon, title, description }, i) => (
+              <TiltCard
+                key={title}
+                className="min-w-[280px] md:min-w-[300px] flex-shrink-0 snap-start rounded-2xl p-8 md:p-10 tilt-card-hover relative group flex flex-col justify-between"
+                tiltMaxX={6}
+                tiltMaxY={6}
+                scale={1.02}
+              >
+                <div>
+                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 group-hover:rotate-45">
+                    <ArrowUpRight size={18} className="text-white/40 transition-colors duration-300 group-hover:text-white/80" />
+                  </div>
+                  <p className="text-sm text-white/40 font-semibold mb-6">0{i + 1}</p>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 bg-white/10">
+                    <img src={icon} alt={title} className="w-5 h-5 brightness-0 invert opacity-70" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{description}</p>
+                </div>
+              </TiltCard>
+            ))}
           </div>
         </div>
       </section>
