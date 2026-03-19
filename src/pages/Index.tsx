@@ -19,9 +19,10 @@ const Index = () => {
           style={{
             zIndex: 10,
             backgroundImage: "linear-gradient(180deg, #4a4745 0%, #7a756f 30%, #a39d95 55%, #C5BEB4 80%, #C5BEB4 100%)",
+            borderTopLeftRadius: '1.25rem',
+            borderTopRightRadius: '1.25rem',
           }}
         >
-          <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
           <PhilosophySection />
           <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
           <FounderSection />
