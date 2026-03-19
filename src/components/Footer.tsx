@@ -6,12 +6,12 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="py-16 md:py-24 section-padding" style={{ background: '#000000' }}>
+    <footer id="footer" className="py-16 md:py-24 section-padding" style={{ background: '#262525' }}>
       <div className="w-full">
         {/* Top: Logo + Nav */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
-            <img src={logo} alt="mm concept" className="h-9 brightness-0 invert opacity-30" />
+            <img src={logo} alt="mm concept" className="h-12 md:h-14 brightness-0 invert opacity-30" />
           </button>
 
           <div className="flex flex-wrap gap-8 text-sm font-medium text-warm-taupe">
