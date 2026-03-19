@@ -72,11 +72,11 @@ const Navbar = () => {
           </button>
 
           {/* Desktop nav */}
-          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useLight ? "text-white/70" : "text-muted-foreground"}`}>
-            <button onClick={goHome} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>About</button>
-            <button onClick={() => scrollTo("footer")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Contact</button>
+          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useLight ? "text-white/70" : "text-white/50"}`}>
+            <button onClick={goHome} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-white/80"}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-white/80"}`}>Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-white/80"}`}>About</button>
+            <button onClick={() => scrollTo("footer")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-white/80"}`}>Contact</button>
           </div>
 
           {/* Mobile hamburger */}
