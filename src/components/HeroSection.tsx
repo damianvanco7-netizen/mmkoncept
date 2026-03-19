@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center section-padding pt-24 overflow-hidden"
+      className="relative min-h-screen flex items-center section-padding pt-24 pb-48 overflow-hidden"
       style={{
         backgroundImage: `url(${heroGradient})`,
         backgroundSize: "cover",
