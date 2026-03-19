@@ -79,8 +79,8 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
               <div className="w-10 h-10 flex items-center justify-center mb-6">
                 <img src={icon} alt={title} className="w-7 h-7 opacity-70" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{title}</h3>
-              <p className="text-sm text-foreground leading-relaxed mt-auto">{description}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground min-h-[4.5rem] md:min-h-[5rem]">{title}</h3>
+              <p className="text-sm text-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
