@@ -19,7 +19,7 @@ const HeroSection = () => {
     >
       <NetworkCanvas />
       <div className="relative z-10 w-full">
-        <h1 className="font-semibold tracking-tight leading-[0.92]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
+        <h1 className="font-semibold tracking-tight leading-[1.15]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
             <span className="block">Life, just</span>
             <span className="block">simplified</span>
@@ -35,7 +35,7 @@ const HeroSection = () => {
           width: 'clamp(280px, 30vw, 450px)',
           height: 'clamp(280px, 30vw, 450px)',
           bottom: 'clamp(-140px, -15vw, -225px)',
-          left: 'clamp(1.5rem, 5vw, 6rem)',
+          left: 'clamp(-80px, -6vw, -100px)',
           background: 'transparent',
           border: '1px solid rgba(255,255,255,0.15)',
           boxShadow: 'none',
@@ -49,7 +49,7 @@ const HeroSection = () => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
         }}
       >
-        <span className="text-white/80 text-sm md:text-base font-medium tracking-wide mt-[25%]">
+        <span className="text-white/80 text-lg md:text-xl font-medium tracking-wide mt-[25%]">
           Explore
         </span>
       </button>
