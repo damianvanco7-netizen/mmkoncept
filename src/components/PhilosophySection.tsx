@@ -24,6 +24,7 @@ const PhilosophySection = () => {
     <section
       id="philosophy"
       className="py-28 md:py-36 section-padding"
+      style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(197,190,180,0.15) 100%)' }}
     >
       <div className="w-full">
         <p className="text-sm font-semibold tracking-widest text-white/50 uppercase mb-10">

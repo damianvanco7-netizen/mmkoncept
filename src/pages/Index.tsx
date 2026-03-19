@@ -6,15 +6,12 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        backgroundImage: "linear-gradient(180deg, #302F2F 0%, #C5BEB4 100%)",
-      }}
-    >
+    <div className="min-h-screen" style={{ background: "#302F2F" }}>
       <Navbar />
       <HeroSection />
+      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
       <PhilosophySection />
+      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
       <FounderSection />
       <Footer />
     </div>

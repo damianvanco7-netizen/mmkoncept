@@ -11,7 +11,7 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex items-center section-padding pt-24"
       style={{
-        backgroundImage: `url(${heroGradient})`,
+        backgroundImage: `url(${heroGradient}), linear-gradient(180deg, #302F2F 0%, #4a4745 50%, #C5BEB4 100%)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
