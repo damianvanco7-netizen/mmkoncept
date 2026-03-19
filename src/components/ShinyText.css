@@ -1,0 +1,12 @@
+@keyframes shiny-slide {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.shiny-text {
+  animation: shiny-slide 3s linear infinite;
+}

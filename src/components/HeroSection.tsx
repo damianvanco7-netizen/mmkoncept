@@ -1,4 +1,5 @@
 import NetworkCanvas from "./NetworkCanvas";
+import ShinyText from "./ShinyText";
 import heroGradient from "@/assets/hero-gradient.jpg";
 
 const HeroSection = () => {
@@ -18,8 +19,10 @@ const HeroSection = () => {
     >
       <NetworkCanvas />
       <div className="relative z-10 w-full">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-white leading-[1.08] mb-10">
-          Life, just simplified.
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.08] mb-10">
+          <ShinyText speed={4} color="rgba(255,255,255,0.65)" shineColor="rgba(255,255,255,1)" spread={120}>
+            Life, just simplified.
+          </ShinyText>
         </h1>
         <button
           onClick={() => scrollTo("philosophy")}
