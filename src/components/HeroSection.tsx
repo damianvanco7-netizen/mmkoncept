@@ -19,7 +19,7 @@ const HeroSection = () => {
     >
       <NetworkCanvas />
       <div className="relative z-10 w-full">
-        <h1 className="font-semibold tracking-tight leading-[0.92]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
+        <h1 className="font-semibold tracking-tight leading-[1.15]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
             <span className="block">Life, just</span>
             <span className="block">simplified</span>
