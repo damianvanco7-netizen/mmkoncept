@@ -43,8 +43,8 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => goTo(Math.max(0, page - 1), "left")}
-              disabled={page === 0 || animating}
+              onClick={() => goTo(page - 1, "left")}
+              disabled={animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={18} className="text-foreground/60" />
