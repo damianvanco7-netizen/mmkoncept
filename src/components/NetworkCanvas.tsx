@@ -142,7 +142,7 @@ const NetworkCanvas = () => {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `hsla(18, 20%, 35%, ${alpha})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.5})`;
             ctx.lineWidth = 1.2;
             ctx.stroke();
           }
@@ -168,7 +168,7 @@ const NetworkCanvas = () => {
       for (const dn of dotNodes) {
         ctx.lineTo(dn.x, dn.y);
       }
-      ctx.strokeStyle = `hsla(18, 20%, 35%, 0.3)`;
+      ctx.strokeStyle = `rgba(255, 255, 255, 0.15)`;
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
@@ -176,7 +176,7 @@ const NetworkCanvas = () => {
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(18, 20%, 35%, 0.6)`;
+        ctx.fillStyle = `rgba(255, 255, 255, 0.4)`;
         ctx.fill();
       }
 
