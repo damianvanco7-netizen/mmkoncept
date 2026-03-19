@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-end section-padding pb-0 pt-24 overflow-hidden"
+      className="relative min-h-screen flex items-center section-padding pt-24 overflow-hidden"
       style={{
         backgroundImage: `url(${heroGradient})`,
         backgroundSize: "cover",
@@ -18,7 +18,7 @@ const HeroSection = () => {
       }}
     >
       <NetworkCanvas />
-      <div className="relative z-10 w-full" style={{ marginBottom: 'clamp(160px, 18vw, 280px)' }}>
+      <div className="relative z-10 w-full">
         <h1 className="font-semibold tracking-tight leading-[0.92]" style={{ fontSize: 'clamp(4.5rem, 11vw, 13rem)' }}>
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
             <span className="block">Life,</span>
