@@ -57,9 +57,10 @@ const Navbar = () => {
           mobileOpen
             ? "bg-card"
             : scrolled
-              ? "backdrop-blur-xl bg-warm-white/80 border-b border-border/40"
+              ? "backdrop-blur-xl border-b border-white/10"
               : "bg-transparent border-b border-transparent"
         }`}
+        style={!mobileOpen && scrolled ? { background: '#262525' } : undefined}
       >
         <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
           <button onClick={goHome} className="flex items-center">
