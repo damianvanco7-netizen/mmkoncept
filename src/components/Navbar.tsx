@@ -64,16 +64,16 @@ const Navbar = () => {
             <img
               src={logo}
               alt="mm concept"
-              className="h-9 md:h-10 transition-all duration-300"
+              className={`h-9 md:h-10 transition-all duration-300 ${!scrolled && isHome && !mobileOpen ? "brightness-0 invert" : ""}`}
             />
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <button onClick={goHome} className="transition-colors hover:text-foreground">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-foreground">Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-foreground">About</button>
-            <button onClick={() => scrollTo("footer")} className="transition-colors hover:text-foreground">Contact</button>
+          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${!scrolled && isHome ? "text-white/70" : "text-muted-foreground"}`}>
+            <button onClick={goHome} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>About</button>
+            <button onClick={() => scrollTo("footer")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Contact</button>
           </div>
 
           {/* Mobile hamburger */}
