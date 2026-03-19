@@ -35,7 +35,7 @@ const HeroSection = () => {
           width: 'clamp(280px, 30vw, 450px)',
           height: 'clamp(280px, 30vw, 450px)',
           bottom: 'clamp(-140px, -15vw, -225px)',
-          left: 'clamp(1.5rem, 5vw, 6rem)',
+          left: 'clamp(-80px, -6vw, -100px)',
           background: 'transparent',
           border: '1px solid rgba(255,255,255,0.15)',
           boxShadow: 'none',
