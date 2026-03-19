@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center section-padding pt-24"
+      className="relative min-h-screen flex items-end section-padding pb-0 pt-24 overflow-hidden"
       style={{
         backgroundImage: `url(${heroGradient})`,
         backgroundSize: "cover",
@@ -18,34 +18,41 @@ const HeroSection = () => {
       }}
     >
       <NetworkCanvas />
-      <div className="relative z-10 w-full">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.08] mb-10">
-          <ShinyText speed={4} color="rgba(255,255,255,0.4)" shineColor="rgba(255,255,255,1)" spread={120}>
-            Life, just simplified.
+      <div className="relative z-10 w-full mb-[18vh]">
+        <h1 className="font-semibold tracking-tight leading-[0.95]" style={{ fontSize: 'clamp(5rem, 12vw, 14rem)' }}>
+          <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+            <span className="block">Life,</span>
+            <span className="block">just simplified</span>
           </ShinyText>
         </h1>
-        <button
-          onClick={() => scrollTo("philosophy")}
-          className="w-28 h-28 md:w-32 md:h-32 rounded-full flex items-center justify-center text-sm font-medium text-white/90 transition-all duration-300"
-          style={{
-            background: 'transparent',
-            border: '1px solid rgba(255,255,255,0.15)',
-            boxShadow: 'none',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
-            e.currentTarget.style.transform = 'translateY(0)';
-          }}
-        >
-          Explore
-        </button>
       </div>
+
+      {/* Giant circle button anchored to bottom-left, only top part visible */}
+      <button
+        onClick={() => scrollTo("philosophy")}
+        className="absolute z-10 rounded-full flex items-start justify-center transition-all duration-500"
+        style={{
+          width: 'clamp(280px, 30vw, 450px)',
+          height: 'clamp(280px, 30vw, 450px)',
+          bottom: 'clamp(-140px, -15vw, -225px)',
+          left: 'clamp(1.5rem, 5vw, 6rem)',
+          background: 'transparent',
+          border: '1px solid rgba(255,255,255,0.15)',
+          boxShadow: 'none',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'transparent';
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
+        }}
+      >
+        <span className="text-white/80 text-sm md:text-base font-medium tracking-wide mt-[25%]">
+          Explore
+        </span>
+      </button>
     </section>
   );
 };
