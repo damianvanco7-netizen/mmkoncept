@@ -19,10 +19,11 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
 
   const goTo = (next: number, dir: "left" | "right") => {
     if (animating) return;
+    const wrapped = ((next % totalPages) + totalPages) % totalPages;
     setDirection(dir);
     setAnimating(true);
     setTimeout(() => {
-      setPage(next);
+      setPage(wrapped);
       setAnimating(false);
     }, 300);
   };
@@ -42,15 +43,15 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => goTo(Math.max(0, page - 1), "left")}
-              disabled={page === 0 || animating}
+              onClick={() => goTo(page - 1, "left")}
+              disabled={animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={18} className="text-foreground/60" />
             </button>
             <button
-              onClick={() => goTo(Math.min(totalPages - 1, page + 1), "right")}
-              disabled={page === totalPages - 1 || animating}
+              onClick={() => goTo(page + 1, "right")}
+              disabled={animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronRight size={18} className="text-foreground/60" />
@@ -78,8 +79,8 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
               <div className="w-10 h-10 flex items-center justify-center mb-6">
                 <img src={icon} alt={title} className="w-7 h-7 opacity-70" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{title}</h3>
-              <p className="text-sm text-foreground leading-relaxed mt-auto">{description}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground min-h-[4.5rem] md:min-h-[5rem]">{title}</h3>
+              <p className="text-sm text-foreground leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
