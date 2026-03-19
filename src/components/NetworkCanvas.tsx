@@ -168,7 +168,7 @@ const NetworkCanvas = () => {
       for (const dn of dotNodes) {
         ctx.lineTo(dn.x, dn.y);
       }
-      ctx.strokeStyle = `hsla(18, 20%, 35%, 0.3)`;
+      ctx.strokeStyle = `rgba(255, 255, 255, 0.15)`;
       ctx.lineWidth = 1.2;
       ctx.stroke();
 
