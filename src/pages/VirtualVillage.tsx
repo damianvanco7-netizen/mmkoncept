@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import TiltCard from "@/components/TiltCard";
+import DimensionsCarousel from "@/components/DimensionsCarousel";
 import vvLogo from "@/assets/logo-village.svg";
+import mockup from "@/assets/mockup-2.png";
 import mockup from "@/assets/mockup-2.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
