@@ -12,8 +12,20 @@ const ITEMS_PER_PAGE = 4;
 const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
   const totalPages = Math.ceil(dimensions.length / ITEMS_PER_PAGE);
   const [page, setPage] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState<"left" | "right">("right");
 
   const visible = dimensions.slice(page * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE + ITEMS_PER_PAGE);
+
+  const goTo = (next: number, dir: "left" | "right") => {
+    if (animating) return;
+    setDirection(dir);
+    setAnimating(true);
+    setTimeout(() => {
+      setPage(next);
+      setAnimating(false);
+    }, 300);
+  };
 
   return (
     <section className="py-28 md:py-36 section-padding">
@@ -23,22 +35,22 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
               7 Life Dimensions.<br />1 Intuitive Space.
             </h2>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-base text-foreground leading-relaxed max-w-xl">
               Virtual Village is built on a modular architecture designed to
               harmonize every aspect of modern daily life.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setPage((p) => Math.max(0, p - 1))}
-              disabled={page === 0}
+              onClick={() => goTo(Math.max(0, page - 1), "left")}
+              disabled={page === 0 || animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={18} className="text-foreground/60" />
             </button>
             <button
-              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-              disabled={page === totalPages - 1}
+              onClick={() => goTo(Math.min(totalPages - 1, page + 1), "right")}
+              disabled={page === totalPages - 1 || animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronRight size={18} className="text-foreground/60" />
@@ -46,20 +58,28 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 gap-5 transition-all duration-300 ease-in-out"
+          style={{
+            opacity: animating ? 0 : 1,
+            transform: animating
+              ? `translateX(${direction === "right" ? "-40px" : "40px"})`
+              : "translateX(0)",
+          }}
+        >
           {visible.map(({ icon, title, description }, i) => (
             <div
               key={title}
-              className="rounded-2xl border border-foreground/15 p-8 md:p-10 flex flex-col"
+              className="rounded-2xl border border-foreground/15 p-8 md:p-10 flex flex-col h-full"
             >
               <p className="text-sm text-foreground/40 font-semibold mb-6">
                 0{page * ITEMS_PER_PAGE + i + 1}
               </p>
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-6 border border-foreground/15">
-                <img src={icon} alt={title} className="w-5 h-5 opacity-70" />
+              <div className="w-10 h-10 flex items-center justify-center mb-6">
+                <img src={icon} alt={title} className="w-7 h-7 opacity-70" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">{title}</h3>
-              <p className="text-sm text-foreground leading-relaxed">{description}</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{title}</h3>
+              <p className="text-sm text-foreground leading-relaxed mt-auto">{description}</p>
             </div>
           ))}
         </div>
