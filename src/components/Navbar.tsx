@@ -67,7 +67,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="mm concept"
-              className={`h-12 md:h-14 transition-all duration-300 ${useLight ? "brightness-0 invert opacity-70" : "opacity-40"}`}
+              className={`h-12 md:h-14 transition-all duration-300 brightness-0 invert ${useLight ? "opacity-70" : "opacity-40"}`}
             />
           </button>
 
