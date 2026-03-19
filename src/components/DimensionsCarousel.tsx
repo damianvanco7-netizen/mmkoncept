@@ -50,8 +50,8 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
               <ChevronLeft size={18} className="text-foreground/60" />
             </button>
             <button
-              onClick={() => goTo(Math.min(totalPages - 1, page + 1), "right")}
-              disabled={page === totalPages - 1 || animating}
+              onClick={() => goTo(page + 1, "right")}
+              disabled={animating}
               className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center transition-all duration-300 hover:border-foreground/60 disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronRight size={18} className="text-foreground/60" />
