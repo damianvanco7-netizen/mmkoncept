@@ -1,4 +1,4 @@
-import logo from "@/assets/mmconcept-logo.svg";
+import logo from "@/assets/logo-mmconcept-new.svg";
 
 const Footer = () => {
   const scrollTo = (id: string) => {
@@ -11,7 +11,7 @@ const Footer = () => {
         {/* Top: Logo + Nav */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
-            <img src={logo} alt="mm concept" className="h-9 opacity-30 invert brightness-200" />
+            <img src={logo} alt="mm concept" className="h-9 brightness-0 invert opacity-30" />
           </button>
 
           <div className="flex flex-wrap gap-8 text-sm font-medium text-warm-taupe">
@@ -23,7 +23,6 @@ const Footer = () => {
 
         {/* Contact Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-16 border-t border-warm-taupe/20 pt-12">
-          {/* Contact */}
           <div>
             <h4 className="text-xs font-semibold tracking-widest text-warm-taupe uppercase mb-6">Contact</h4>
             <p className="text-warm-white font-semibold mb-1">Martina Masaryková</p>
@@ -35,7 +34,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Email */}
           <div>
             <h4 className="text-xs font-semibold tracking-widest text-warm-taupe uppercase mb-6">Email</h4>
             <div className="space-y-3 text-sm">
@@ -54,7 +52,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Location */}
           <div>
             <h4 className="text-xs font-semibold tracking-widest text-warm-taupe uppercase mb-6">Location</h4>
             <p className="text-warm-white text-sm mb-2">Based in Europe. Working globally.</p>

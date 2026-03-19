@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/mmconcept-logo.svg";
+import logo from "@/assets/logo-mmconcept-new.svg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,7 +20,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -48,6 +47,9 @@ const Navbar = () => {
     }
   };
 
+  // On home page before scroll: white logo. After scroll or on subpages: dark logo.
+  const useLight = !scrolled && isHome && !mobileOpen;
+
   return (
     <>
       <nav
@@ -64,22 +66,22 @@ const Navbar = () => {
             <img
               src={logo}
               alt="mm concept"
-              className={`h-9 md:h-10 transition-all duration-300 ${!scrolled && isHome && !mobileOpen ? "brightness-0 invert" : ""}`}
+              className={`h-9 md:h-10 transition-all duration-300 ${useLight ? "brightness-0 invert opacity-70" : "opacity-40"}`}
             />
           </button>
 
           {/* Desktop nav */}
-          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${!scrolled && isHome ? "text-white/70" : "text-muted-foreground"}`}>
-            <button onClick={goHome} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>About</button>
-            <button onClick={() => scrollTo("footer")} className={`transition-colors ${!scrolled && isHome ? "hover:text-white" : "hover:text-foreground"}`}>Contact</button>
+          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useLight ? "text-white/70" : "text-muted-foreground"}`}>
+            <button onClick={goHome} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>About</button>
+            <button onClick={() => scrollTo("footer")} className={`transition-colors ${useLight ? "hover:text-white" : "hover:text-foreground"}`}>Contact</button>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden relative z-[60] transition-colors ${!scrolled && isHome && !mobileOpen ? "text-white" : "text-foreground"}`}
+            className={`md:hidden relative z-[60] transition-colors ${useLight ? "text-white" : "text-foreground"}`}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
