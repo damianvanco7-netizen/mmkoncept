@@ -19,10 +19,11 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
 
   const goTo = (next: number, dir: "left" | "right") => {
     if (animating) return;
+    const wrapped = ((next % totalPages) + totalPages) % totalPages;
     setDirection(dir);
     setAnimating(true);
     setTimeout(() => {
-      setPage(next);
+      setPage(wrapped);
       setAnimating(false);
     }, 300);
   };
