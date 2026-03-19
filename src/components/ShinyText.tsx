@@ -22,6 +22,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
     <span
       className={`shiny-text ${className}`}
       style={{
+        display: "block",
         color,
         backgroundImage: `linear-gradient(${spread}deg, ${color} 40%, ${shineColor} 50%, ${color} 60%)`,
         backgroundSize: "200% 100%",
