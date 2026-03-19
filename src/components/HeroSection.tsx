@@ -49,7 +49,7 @@ const HeroSection = () => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
         }}
       >
-        <span className="text-white/80 text-sm md:text-base font-medium tracking-wide mt-[25%]">
+        <span className="text-white/80 text-lg md:text-xl font-medium tracking-wide mt-[25%]">
           Explore
         </span>
       </button>
