@@ -1,4 +1,5 @@
 import { useState } from "react";
+import techVideo from "@/assets/vv-tech-video.mp4";
 
 const tabs = [
   {
@@ -124,11 +125,28 @@ const TechTabs = ({ mockup }: { mockup: string }) => {
 
         {/* Right — mockup */}
         <div className="flex items-center justify-center md:justify-end">
-          <img
-            src={mockup}
-            alt="Virtual Village technology"
-            className="w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] drop-shadow-2xl"
-          />
+          <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
+            <img
+              src={mockup}
+              alt="Virtual Village technology"
+              className="relative z-10 w-full pointer-events-none"
+            />
+            <video
+              src={techVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute z-0 object-cover"
+              style={{
+                top: '5%',
+                left: '7.3%',
+                width: '57%',
+                height: '78%',
+                borderRadius: 'clamp(1.2rem, 3vw, 2.5rem)',
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
