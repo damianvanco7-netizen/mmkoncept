@@ -39,8 +39,8 @@ const PhilosophySection = () => {
           </div>
 
           {/* Right: circle buttons */}
-          <div className="flex flex-col items-center gap-10 md:pt-4">
-            {circles.map((item) => (
+          <div className="flex flex-col items-center gap-4 md:pt-4">
+            {circles.map((item, i) => (
               <button
                 key={item.title}
                 onClick={() => navigate(item.route)}
@@ -50,6 +50,7 @@ const PhilosophySection = () => {
                   height: "clamp(280px, 28vw, 400px)",
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.15)",
+                  alignSelf: i === 0 ? "flex-end" : "flex-start",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "rgba(255,255,255,0.06)";
@@ -63,7 +64,7 @@ const PhilosophySection = () => {
                 <span className="text-white text-lg md:text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-white">
                   {item.title}
                 </span>
-                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70 mb-3">
+                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70 mb-6">
                   {item.description}
                 </span>
                 <div className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 group-hover:rotate-45">
