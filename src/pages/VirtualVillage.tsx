@@ -139,11 +139,8 @@ const VirtualVillage = () => {
       {/* Gallery Section */}
       <section className="py-20 md:py-28 section-padding">
         <div className="w-full">
-          <div className="grid grid-cols-6 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px] lg:auto-rows-[260px]">
+          <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
-            </div>
-            <div className="col-span-1 row-span-2 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
               Photo
             </div>
             <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
@@ -152,16 +149,7 @@ const VirtualVillage = () => {
             <div className="col-span-2 row-span-2 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
               Photo
             </div>
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
-            </div>
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
-            </div>
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
-            </div>
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+            <div className="col-span-2 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
               Photo
             </div>
           </div>
