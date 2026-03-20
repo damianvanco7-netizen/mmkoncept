@@ -8,9 +8,7 @@ import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
-import martina from "@/assets/martina.png";
-import vuyo from "@/assets/vuyo.png";
-import hans from "@/assets/hans.png";
+import teamPhoto from "@/assets/team-photo.png";
 
 import iconCity from "@/assets/icons/city_and_services.svg";
 import iconHealth from "@/assets/icons/health.svg";
