@@ -99,7 +99,7 @@ const VirtualVillage = () => {
 
           {/* Right — mockup */}
           <div className="flex items-center justify-center md:justify-end">
-            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
+            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] overflow-hidden">
               {/* Phone frame overlay */}
               <img
                 src={mockup}
