@@ -107,12 +107,12 @@ const VirtualVillage = () => {
                 loop
                 muted
                 playsInline
-                className="absolute rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] object-cover"
+                className="absolute rounded-[2.5rem] md:rounded-[3rem] lg:rounded-[3.5rem] object-cover"
                 style={{
-                  top: '2.8%',
-                  left: '7.5%',
-                  width: '78%',
-                  height: '94%',
+                  top: '3.5%',
+                  left: '6%',
+                  width: '88%',
+                  height: '93%',
                 }}
               />
               {/* Phone frame overlay */}
