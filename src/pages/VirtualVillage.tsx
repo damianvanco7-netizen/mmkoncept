@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DimensionsCarousel from "@/components/DimensionsCarousel";
+import TechTabs from "@/components/TechTabs";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/mockup-2.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
@@ -76,11 +77,11 @@ const VirtualVillage = () => {
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
               Your personalized Universe.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-lg">
+            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
               More than a platform — Virtual Village is your companion, your
               guide, and your quiet coach in the background.
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6 max-w-lg">
+            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
               It helps you get things done effortlessly, so you can spend less
               time navigating technology and more time enjoying life, nature, and
               the people around you.
@@ -88,7 +89,7 @@ const VirtualVillage = () => {
             <p className="text-base font-semibold text-foreground mb-2">
               Intelligence that understands your world.
             </p>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+            <p className="text-base text-foreground leading-relaxed max-w-lg">
               Powered by Google Cloud and our proprietary STAR Pro AI engine,
               Virtual Village is your digital partner tailored to your unique
               location, needs, and life context.
@@ -130,58 +131,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* Technology Section */}
-      <section
-        className="py-28 md:py-36 section-padding"
-      >
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
-          <div>
-            <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-              Technology
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-6">
-              Cloud‑native. <span className="whitespace-nowrap">AI‑powered.</span> Globally&nbsp;scalable.
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-10">
-              Virtual Village runs on a modern stack built for speed and flexibility: React Native (TypeScript + Expo) for cross-platform delivery, Supabase (PostgreSQL) for real-time data, and Edge Functions (Deno) for scalable serverless logic.
-            </p>
-
-            <div className="space-y-8">
-              <div>
-                <p className="text-base text-foreground font-semibold mb-1">AI Layer — STAR</p>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  Our AI engine STAR, powered by Google Gemini, turns context (location, time, behavior) into real-time, actionable recommendations — proactive and on demand.
-                </p>
-              </div>
-              <div>
-                <p className="text-base text-foreground font-semibold mb-1">Data & Quality</p>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  Integrated with Google Places API, enhanced by custom filtering (≥4.0 ratings) and intelligent matching for accurate, high-quality results.
-                </p>
-              </div>
-              <div>
-                <p className="text-base text-foreground font-semibold mb-1">Security & Scale</p>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  Row Level Security (RLS) ensures strict data privacy. Our modular "Universe" architecture enables seamless global expansion — no new code required.
-                </p>
-              </div>
-            </div>
-
-            <p className="text-base font-semibold text-foreground mt-10">
-              Built for performance. Designed for real life.
-            </p>
-          </div>
-
-          {/* Right — mockup */}
-          <div className="flex items-center justify-center md:justify-end">
-            <img
-              src={mockup}
-              alt="Virtual Village technology"
-              className="w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] drop-shadow-2xl"
-            />
-          </div>
-        </div>
-      </section>
+      <TechTabs mockup={mockup} />
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
@@ -190,13 +140,13 @@ const VirtualVillage = () => {
         className="py-28 md:py-36 section-padding"
       >
         <div className="w-full">
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-foreground uppercase mb-4">
             Meet Our Leadership Team
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
             A synergy of European strategic vision and African technical excellence.
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-16 max-w-4xl">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-16 max-w-4xl">
             A global team for a global vision
           </p>
 
@@ -206,7 +156,7 @@ const VirtualVillage = () => {
               <img src={martina} alt="Martina Masaryková" className="w-32 h-32 object-cover rounded-xl mb-6" />
               <p className="text-base font-semibold text-foreground">Martina Masaryková</p>
               <p className="text-sm font-semibold text-foreground mb-3">Founder, CEO & Project Lead (Slovakia)</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-foreground/70 leading-relaxed">
                 Strategist and Entrepreneur with over a decade of experience in the global automotive industry (Volkswagen Group). A multilingual visionary bridging digital innovation with human needs across Slovakia, Germany, and Africa.
               </p>
             </div>
@@ -216,7 +166,7 @@ const VirtualVillage = () => {
               <img src={vuyo} alt="Vuyolwetu Madikiza" className="w-32 h-32 object-cover rounded-xl mb-6" />
               <p className="text-base font-semibold text-foreground">Vuyolwetu Madikiza</p>
               <p className="text-sm font-semibold text-foreground mb-3">Chief Technology Officer (South Africa)</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-foreground/70 leading-relaxed">
                 Senior IT Leader with 10+ years at Volkswagen Group Africa. Expert in AI architecture, Data Science, and large-scale cloud infrastructure (Google Cloud/Azure). The lead architect of the STAR Pro engine.
               </p>
             </div>
@@ -226,7 +176,7 @@ const VirtualVillage = () => {
               <img src={hans} alt="Hans-Christian Heidecke" className="w-32 h-32 object-cover rounded-xl mb-6" />
               <p className="text-base font-semibold text-foreground">Hans-Christian Heidecke</p>
               <p className="text-sm font-semibold text-foreground mb-3">Investor, Strategic Partner & Board Advisor (Germany)</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-foreground/70 leading-relaxed">
                 Seasoned executive in international IT leadership and financial governance, ensuring global scalability and operational excellence.
               </p>
             </div>
