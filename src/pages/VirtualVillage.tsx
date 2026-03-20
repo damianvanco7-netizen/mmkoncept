@@ -7,6 +7,7 @@ import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
 import galleryFeatured from "@/assets/gallery-featured.png";
+import galleryWide from "@/assets/gallery-wide.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
 import teamPhoto from "@/assets/team-photo.png";
