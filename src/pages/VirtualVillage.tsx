@@ -147,8 +147,8 @@ const VirtualVillage = () => {
             <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
               Photo
             </div>
-            <div className="col-span-2 row-span-2 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
+            <div className="col-span-2 row-span-2 rounded-xl overflow-hidden">
+              <img src={galleryFeatured} alt="Virtual Village app in hand" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-2 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
               Photo
