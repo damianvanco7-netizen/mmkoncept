@@ -45,8 +45,8 @@ const PhilosophySection = () => {
                 onClick={() => navigate(item.route)}
                 className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
                 style={{
-                  width: "clamp(220px, 22vw, 320px)",
-                  height: "clamp(220px, 22vw, 320px)",
+                  width: "clamp(280px, 28vw, 400px)",
+                  height: "clamp(280px, 28vw, 400px)",
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.15)",
                 }}
