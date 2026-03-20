@@ -60,7 +60,7 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
         </div>
 
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-5 transition-all duration-300 ease-in-out"
+          className="flex flex-wrap justify-center gap-6 transition-all duration-300 ease-in-out"
           style={{
             opacity: animating ? 0 : 1,
             transform: animating
@@ -71,16 +71,20 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
           {visible.map(({ icon, title, description }, i) => (
             <div
               key={title}
-              className="rounded-2xl border border-foreground/15 p-8 md:p-10 flex flex-col h-full"
+              className="rounded-full border border-foreground/15 flex flex-col items-center justify-center text-center"
+              style={{
+                width: "clamp(220px, 20vw, 280px)",
+                height: "clamp(220px, 20vw, 280px)",
+              }}
             >
-              <p className="text-sm text-foreground/40 font-semibold mb-6">
+              <p className="text-xs text-foreground/40 font-semibold mb-2">
                 0{page * ITEMS_PER_PAGE + i + 1}
               </p>
-              <div className="w-10 h-10 flex items-center justify-center mb-6">
+              <div className="w-8 h-8 flex items-center justify-center mb-2">
                 <img src={icon} alt={title} className="w-7 h-7 opacity-70" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground min-h-[4.5rem] md:min-h-[5rem]">{title}</h3>
-              <p className="text-sm text-foreground leading-relaxed">{description}</p>
+              <h3 className="text-base md:text-lg font-bold text-foreground px-6 leading-tight">{title}</h3>
+              <p className="text-xs text-foreground/60 leading-relaxed px-8 mt-1 line-clamp-2">{description}</p>
             </div>
           ))}
         </div>
