@@ -1,4 +1,5 @@
 import { useState } from "react";
+import techVideo from "@/assets/vv-tech-video.mp4";
 
 const tabs = [
   {
