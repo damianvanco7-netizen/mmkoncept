@@ -8,9 +8,7 @@ import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
-import martina from "@/assets/martina.png";
-import vuyo from "@/assets/vuyo.png";
-import hans from "@/assets/hans.png";
+import teamPhoto from "@/assets/team-photo.png";
 
 import iconCity from "@/assets/icons/city_and_services.svg";
 import iconHealth from "@/assets/icons/health.svg";
@@ -156,51 +154,25 @@ const VirtualVillage = () => {
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Leadership Team Section */}
-      <section
-        className="py-28 md:py-36 section-padding"
-      >
-        <div className="w-full">
+      <section className="py-28 md:py-36 section-padding">
+        <div className="w-full flex flex-col items-center text-center">
           <p className="text-xs font-semibold tracking-widest text-foreground uppercase mb-4">
             Meet Our Leadership Team
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
             A synergy of European strategic vision and African technical excellence.
           </h2>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-16 max-w-4xl">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-4xl">
             A global team for a global vision
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {/* Martina */}
-            <div>
-              <img src={martina} alt="Martina Masaryková" className="w-32 h-32 object-cover rounded-xl mb-6" />
-              <p className="text-base font-semibold text-foreground">Martina Masaryková</p>
-              <p className="text-sm font-semibold text-foreground mb-3">Founder, CEO & Project Lead (Slovakia)</p>
-              <p className="text-sm text-foreground/70 leading-relaxed">
-                Strategist and Entrepreneur with over a decade of experience in the global automotive industry (Volkswagen Group). A multilingual visionary bridging digital innovation with human needs across Slovakia, Germany, and Africa.
-              </p>
-            </div>
-
-            {/* Vuyo */}
-            <div>
-              <img src={vuyo} alt="Vuyolwetu Madikiza" className="w-32 h-32 object-cover rounded-xl mb-6" />
-              <p className="text-base font-semibold text-foreground">Vuyolwetu Madikiza</p>
-              <p className="text-sm font-semibold text-foreground mb-3">Chief Technology Officer (South Africa)</p>
-              <p className="text-sm text-foreground/70 leading-relaxed">
-                Senior IT Leader with 10+ years at Volkswagen Group Africa. Expert in AI architecture, Data Science, and large-scale cloud infrastructure (Google Cloud/Azure). The lead architect of the STAR Pro engine.
-              </p>
-            </div>
-
-            {/* Hans */}
-            <div>
-              <img src={hans} alt="Hans-Christian Heidecke" className="w-32 h-32 object-cover rounded-xl mb-6" />
-              <p className="text-base font-semibold text-foreground">Hans-Christian Heidecke</p>
-              <p className="text-sm font-semibold text-foreground mb-3">Investor, Strategic Partner & Board Advisor (Germany)</p>
-              <p className="text-sm text-foreground/70 leading-relaxed">
-                Seasoned executive in international IT leadership and financial governance, ensuring global scalability and operational excellence.
-              </p>
-            </div>
-          </div>
+          <img
+            src={teamPhoto}
+            alt="MM Concept Leadership Team"
+            className="w-full max-w-3xl rounded-2xl mb-10 object-cover"
+          />
+          <p className="text-base text-foreground/70 leading-relaxed max-w-3xl">
+            Behind Virtual Village stands a diverse and experienced team united by one belief: technology should serve people, not overwhelm them. We combine expertise in innovation, digital strategy, product development, and scalable technology to create a human-centered platform for everyday life. Our strength lies in connecting vision with execution — shaping Virtual Village as a trusted digital companion for citizens, families, communities, and cities.
+          </p>
         </div>
       </section>
 
