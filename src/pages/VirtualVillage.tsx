@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DimensionsCarousel from "@/components/DimensionsCarousel";
 import TechTabs from "@/components/TechTabs";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/mockup-2.png";
+import heroVideo from "@/assets/vv-hero-video.mp4";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
 import martina from "@/assets/martina.png";
