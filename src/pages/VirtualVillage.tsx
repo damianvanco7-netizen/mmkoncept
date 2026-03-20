@@ -136,21 +136,35 @@ const VirtualVillage = () => {
       {/* 7 Life Dimensions */}
       <DimensionsCarousel dimensions={dimensions} />
 
-      {/* Dark App Screens Section */}
-      <section
-        className="relative py-20 md:py-28 section-padding overflow-hidden"
-        style={{
-          backgroundImage: `url(${darkBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="w-full flex items-center justify-center">
-          <img
-            src={appScreens}
-            alt="Virtual Village app screens"
-            className="w-full max-w-[1200px]"
-          />
+      {/* Gallery Section */}
+      <section className="py-20 md:py-28 section-padding">
+        <div className="w-full">
+          <div className="grid grid-cols-6 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px] lg:auto-rows-[260px]">
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-2 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-2 row-span-2 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
+              Photo
+            </div>
+          </div>
         </div>
       </section>
 
