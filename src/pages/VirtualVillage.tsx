@@ -71,6 +71,68 @@ const VirtualVillage = () => {
         />
       </section>
 
+      {/* Your personalized Universe */}
+      <section className="relative min-h-screen flex items-center section-padding pt-24">
+        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left — text */}
+          <div className="flex flex-col items-start">
+            <img
+              src={vvLogo}
+              alt="Virtual Village"
+              className="h-14 md:h-20 mb-8"
+            />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
+              Your personalized Universe.
+            </h1>
+            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
+              More than a platform — Virtual Village is your companion, your
+              guide, and your quiet coach in the background.
+            </p>
+            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
+              It helps you get things done effortlessly, so you can spend less
+              time navigating technology and more time enjoying life, nature, and
+              the people around you.
+            </p>
+            <p className="text-base font-semibold text-foreground mb-2">
+              Intelligence that understands your world.
+            </p>
+            <p className="text-base text-foreground leading-relaxed max-w-lg">
+              Powered by Google Cloud and our proprietary STAR Pro AI engine,
+              Virtual Village is your digital partner tailored to your unique
+              location, needs, and life context.
+            </p>
+          </div>
+
+          {/* Right — mockup */}
+          <div className="flex items-center justify-center md:justify-end">
+            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
+              <img
+                src={mockup}
+                alt="Virtual Village app mockup"
+                className="relative z-10 w-full pointer-events-none"
+              />
+              <video
+                src={heroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute z-0 object-cover"
+                style={{
+                  top: '5%',
+                  left: '7.3%',
+                  width: '57%',
+                  height: '78%',
+                  borderRadius: 'clamp(1.2rem, 3vw, 2.5rem)',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* 7 Life Dimensions */}
       <DimensionsCarousel dimensions={dimensions} />
 
