@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 const circles = [
   {
