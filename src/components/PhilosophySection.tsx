@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 const circles = [
   {
@@ -45,8 +46,8 @@ const PhilosophySection = () => {
                 onClick={() => navigate(item.route)}
                 className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
                 style={{
-                  width: "clamp(220px, 22vw, 320px)",
-                  height: "clamp(220px, 22vw, 320px)",
+                  width: "clamp(280px, 28vw, 400px)",
+                  height: "clamp(280px, 28vw, 400px)",
                   background: "transparent",
                   border: "1px solid rgba(255,255,255,0.15)",
                 }}
@@ -62,9 +63,12 @@ const PhilosophySection = () => {
                 <span className="text-white text-lg md:text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-white">
                   {item.title}
                 </span>
-                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70">
+                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70 mb-3">
                   {item.description}
                 </span>
+                <div className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 group-hover:rotate-45">
+                  <ArrowUpRight size={16} className="text-white/40 transition-colors duration-300 group-hover:text-white/80" />
+                </div>
               </button>
             ))}
           </div>
