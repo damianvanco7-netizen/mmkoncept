@@ -8,19 +8,8 @@ const FounderSection = () => {
     >
       <div className="w-full">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
-          {/* Portrait */}
-          <div className="md:col-span-2">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden w-[60%]">
-              <img
-                src={martinaPhoto}
-                alt="Martina Masaryková – CEO, mm concept"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
           {/* Bio */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 order-2 md:order-1">
             <p className="text-sm font-semibold tracking-widest text-white/50 uppercase mb-4">Founder</p>
             <h2 className="text-3xl md:text-4xl font-semibold text-white mb-2">Martina</h2>
             <p className="text-lg font-medium text-white/50 mb-8">Leader & Visionary</p>
@@ -42,6 +31,18 @@ const FounderSection = () => {
               </p>
             </div>
           </div>
+
+          {/* Portrait */}
+          <div className="md:col-span-2 order-1 md:order-2 flex justify-center md:justify-end">
+            <div className="rounded-full overflow-hidden" style={{ width: "clamp(220px, 22vw, 340px)", height: "clamp(220px, 22vw, 340px)" }}>
+              <img
+                src={martinaPhoto}
+                alt="Martina Masaryková – CEO, mm concept"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </section>
