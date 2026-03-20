@@ -144,11 +144,11 @@ const VirtualVillage = () => {
       <section className="py-20 md:py-28 section-padding">
         <div className="w-full">
           <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
+            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
+              <img src={gallerySquare1} alt="Virtual Village healthcare screen" className="w-full h-full object-cover" />
             </div>
-            <div className="col-span-1 row-span-1 rounded-xl bg-foreground/10 flex items-center justify-center text-foreground/30 text-sm overflow-hidden">
-              Photo
+            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
+              <img src={gallerySquare2} alt="Virtual Village culture screen" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-2 row-span-2 rounded-xl overflow-hidden">
               <img src={galleryFeatured} alt="Virtual Village app in hand" className="w-full h-full object-cover" />
