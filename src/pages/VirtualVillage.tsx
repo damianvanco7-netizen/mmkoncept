@@ -62,25 +62,13 @@ const VirtualVillage = () => {
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
       <Navbar />
 
-      {/* Hero — full-screen photo with "virtual" text */}
-      <section className="relative min-h-screen flex items-end overflow-hidden">
+      {/* Hero — full-screen photo */}
+      <section className="relative min-h-screen overflow-hidden">
         <img
           src={vvHeroPhoto}
           alt="Virtual Village hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="relative z-10 w-full overflow-hidden" style={{ lineHeight: 0.82 }}>
-          <h1
-            className="font-semibold tracking-tighter select-none"
-            style={{
-              fontSize: 'clamp(6rem, 18vw, 22rem)',
-              color: '#E1D9D0',
-              marginBottom: '-0.08em',
-            }}
-          >
-            virtual
-          </h1>
-        </div>
       </section>
 
       {/* 7 Life Dimensions */}
