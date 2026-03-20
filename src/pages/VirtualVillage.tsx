@@ -9,6 +9,7 @@ import heroVideo from "@/assets/vv-hero-video.mp4";
 import darkBg from "@/assets/dark-section-bg.jpg";
 import appScreens from "@/assets/vv-app-screens.png";
 import teamPhoto from "@/assets/team-photo.png";
+import vvHeroPhoto from "@/assets/vv-hero-photo.png";
 
 import iconCity from "@/assets/icons/city_and_services.svg";
 import iconHealth from "@/assets/icons/health.svg";
