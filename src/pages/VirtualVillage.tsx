@@ -99,14 +99,14 @@ const VirtualVillage = () => {
 
           {/* Right — mockup */}
           <div className="flex items-center justify-center md:justify-end">
-            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px] overflow-hidden">
-              {/* Phone frame overlay */}
+            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
+              {/* Phone frame */}
               <img
                 src={mockup}
                 alt="Virtual Village app mockup"
-                className="relative z-10 w-full drop-shadow-2xl pointer-events-none"
+                className="relative z-10 w-full pointer-events-none"
               />
-              {/* Video positioned inside the phone screen area */}
+              {/* Video inside phone screen */}
               <video
                 src={heroVideo}
                 autoPlay
@@ -115,11 +115,11 @@ const VirtualVillage = () => {
                 playsInline
                 className="absolute z-0 object-cover"
                 style={{
-                  top: '2%',
-                  left: '5.5%',
-                  width: '89%',
-                  height: '96%',
-                  borderRadius: 'clamp(1.5rem, 4vw, 3rem)',
+                  top: '5%',
+                  left: '7.3%',
+                  width: '57%',
+                  height: '78%',
+                  borderRadius: 'clamp(1.2rem, 3vw, 2.5rem)',
                 }}
               />
             </div>
