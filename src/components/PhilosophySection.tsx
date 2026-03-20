@@ -62,9 +62,12 @@ const PhilosophySection = () => {
                 <span className="text-white text-lg md:text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-white">
                   {item.title}
                 </span>
-                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70">
+                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70 mb-3">
                   {item.description}
                 </span>
+                <div className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 group-hover:rotate-45">
+                  <ArrowUpRight size={16} className="text-white/40 transition-colors duration-300 group-hover:text-white/80" />
+                </div>
               </button>
             ))}
           </div>
