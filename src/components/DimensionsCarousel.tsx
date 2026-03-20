@@ -60,7 +60,7 @@ const DimensionsCarousel = ({ dimensions }: { dimensions: Dimension[] }) => {
         </div>
 
         <div
-          className="flex flex-wrap justify-center gap-6 transition-all duration-300 ease-in-out"
+          className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-6 transition-all duration-300 ease-in-out"
           style={{
             opacity: animating ? 0 : 1,
             transform: animating
