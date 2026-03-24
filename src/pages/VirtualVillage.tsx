@@ -116,7 +116,7 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground leading-tight mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-8">
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
