@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import vvLogo from "@/assets/logo-village.svg";
+import ShinyText from "./ShinyText";
 
 const circles = [
   {
@@ -9,7 +9,6 @@ const circles = [
       "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.",
     route: "/virtual-village",
     linkText: "Explore Village",
-    logo: vvLogo,
   },
   {
     title: "Consulting & Strategy",
@@ -29,12 +28,14 @@ const PhilosophySection = () => {
       className="py-28 md:py-36 section-padding"
     >
       <div className="w-full">
-        {/* Heading */}
+        {/* Heading with shiny effect like hero */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-[1.2]">
-            <span className="text-red-500">Innovation, Technology,</span>
-            <br />
-            <span className="text-red-500">and Human Experience</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.2]">
+            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+              Innovation, Technology,
+              <br />
+              and Human Experience
+            </ShinyText>
           </h2>
         </div>
 
@@ -44,7 +45,7 @@ const PhilosophySection = () => {
             <button
               key={item.title}
               onClick={() => navigate(item.route)}
-              className="group rounded-full flex flex-col items-start justify-center text-left transition-all duration-500 px-12"
+              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-12"
               style={{
                 width: "clamp(300px, 30vw, 440px)",
                 height: "clamp(300px, 30vw, 440px)",
@@ -60,9 +61,6 @@ const PhilosophySection = () => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
               }}
             >
-              {item.logo && (
-                <img src={item.logo} alt={item.title} className="h-8 mb-3 brightness-0 invert opacity-80" />
-              )}
               <span className="text-white text-lg md:text-xl font-semibold mb-2">
                 {item.title}
               </span>

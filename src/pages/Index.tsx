@@ -9,11 +9,15 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      <HeroSection />
+      <div className="relative" style={{ zIndex: 1 }}>
+        <HeroSection />
+      </div>
 
       <div
+        className="relative"
         style={{
-          backgroundImage: "linear-gradient(180deg, #4a4745 0%, #7a756f 30%, #a39d95 55%, #C5BEB4 80%, #C5BEB4 100%)",
+          zIndex: 0,
+          backgroundImage: "linear-gradient(180deg, #615F5D 0%, #7a756f 15%, #a39d95 40%, #C5BEB4 65%, #C5BEB4 100%)",
         }}
       >
         <PhilosophySection />
