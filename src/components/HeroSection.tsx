@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center section-padding pt-24 pb-48 overflow-hidden"
+      className="relative min-h-screen flex items-center section-padding pt-24 pb-48"
       style={{
         background: "linear-gradient(180deg, #272727 0%, #615F5D 100%)",
       }}
@@ -18,7 +18,6 @@ const HeroSection = () => {
       <NetworkCanvas />
       <div className="relative z-10 w-full flex justify-end">
         <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-[65%]">
-          {/* Large logo above title */}
           <img
             src={mmconceptLogo}
             alt="mm concept"
@@ -37,10 +36,10 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Explore circle — positioned at bottom, half in hero half in next section */}
+      {/* Explore circle — half in hero, half in next section */}
       <button
         onClick={() => scrollTo("philosophy")}
-        className="absolute z-10 rounded-full flex flex-col items-center justify-center transition-all duration-500"
+        className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500"
         style={{
           width: 'clamp(280px, 25vw, 400px)',
           height: 'clamp(280px, 25vw, 400px)',
