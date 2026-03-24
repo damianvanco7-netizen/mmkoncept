@@ -128,26 +128,26 @@ const TechTabs = ({ mockup }: { mockup: string }) => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         {/* Left — text */}
         <div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground/80 leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4">
             Cloud‑native.<br />AI‑powered.<br />Built to scale globally.
           </h2>
-          <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-accent leading-tight mb-12">
+          <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed mb-12">
             A modern architecture designed<br />
             for speed, intelligence, and seamless growth.
           </p>
 
           {/* Circle buttons */}
-          <div className="flex flex-wrap gap-5 mb-12">
+          <div className="flex flex-wrap gap-6 mb-12">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => switchTab(tab.id)}
-                className="flex flex-col items-center gap-2 group"
+                className="flex flex-col items-center gap-0 group"
               >
                 <div
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                  className={`w-20 h-20 md:w-24 md:h-24 rounded-full border flex items-center justify-center transition-all duration-300 ${
                     active === tab.id
-                      ? "border-foreground/40 bg-foreground/10 shadow-md"
+                      ? "border-foreground/40 shadow-md"
                       : "border-foreground/15 hover:border-foreground/30"
                   }`}
                   style={{
@@ -158,12 +158,13 @@ const TechTabs = ({ mockup }: { mockup: string }) => {
                       ? "4px 4px 12px rgba(0,0,0,0.08), -2px -2px 6px rgba(255,255,255,0.4)"
                       : "2px 2px 6px rgba(0,0,0,0.04), -1px -1px 4px rgba(255,255,255,0.3)",
                   }}
-                />
-                <span className={`text-xs md:text-sm font-semibold text-center leading-tight transition-colors duration-300 max-w-[80px] ${
-                  active === tab.id ? "text-foreground" : "text-foreground/50"
-                }`}>
-                  {tab.label}
-                </span>
+                >
+                  <span className={`text-[10px] md:text-xs font-semibold text-center leading-tight px-2 transition-colors duration-300 ${
+                    active === tab.id ? "text-foreground" : "text-foreground/50"
+                  }`}>
+                    {tab.label}
+                  </span>
+                </div>
               </button>
             ))}
           </div>
