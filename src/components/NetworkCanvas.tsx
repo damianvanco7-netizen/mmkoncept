@@ -19,9 +19,9 @@ const NetworkCanvas = () => {
 
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
-    // Large tangled cluster on the right side, upper area
-    const clusterCenterX = w * 0.62;
-    const clusterCenterY = h * 0.35;
+    // Large tangled cluster on the LEFT side
+    const clusterCenterX = w * 0.28;
+    const clusterCenterY = h * 0.4;
     const clusterRadius = Math.min(w, h) * 0.42;
     const clusterCount = 120;
 
@@ -39,10 +39,10 @@ const NetworkCanvas = () => {
       });
     }
 
-    // 3 clean dots at bottom-left, horizontally spaced
-    const dotsY = h * 0.78;
-    const dotsStartX = w * 0.08;
-    const dotsSpacing = w * 0.06;
+    // 3 clean dots at bottom-right, horizontally spaced (leading toward the title)
+    const dotsY = h * 0.55;
+    const dotsStartX = w * 0.55;
+    const dotsSpacing = w * 0.08;
     for (let i = 0; i < 3; i++) {
       nodes.push({
         baseX: dotsStartX + i * dotsSpacing,
@@ -101,7 +101,6 @@ const NetworkCanvas = () => {
 
       const interactRadius = 100;
 
-      // Update positions
       for (const n of nodes) {
         n.x += n.vx;
         n.y += n.vy;
@@ -126,7 +125,6 @@ const NetworkCanvas = () => {
       const clusterNodes = nodes.slice(0, 120);
       const dotNodes = nodes.slice(120);
 
-      // Draw cluster connections
       const maxConnDist = 150;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
@@ -148,18 +146,14 @@ const NetworkCanvas = () => {
         }
       }
 
-      // Draw "untangling" curves from cluster bottom to the 3 dots
-      // Find 3 cluster nodes near the bottom-left to serve as exit points
-      const exitNodes: Node[] = [];
+      // Curves from cluster to dots
       const sortedByExit = [...clusterNodes].sort((a, b) => {
-        // Prefer nodes that are lower and more to the left
-        const scoreA = a.y * 0.7 - a.x * 0.3;
-        const scoreB = b.y * 0.7 - b.x * 0.3;
+        const scoreA = a.x * 0.7 + a.y * 0.3;
+        const scoreB = b.x * 0.7 + b.y * 0.3;
         return scoreB - scoreA;
       });
-      exitNodes.push(sortedByExit[0], sortedByExit[1], sortedByExit[2]);
+      const exitNodes = [sortedByExit[0], sortedByExit[1], sortedByExit[2]];
 
-      // Draw smooth curves from exit nodes to dot nodes
       for (let i = 0; i < 3; i++) {
         const from = exitNodes[i];
         const to = dotNodes[i];
@@ -176,7 +170,6 @@ const NetworkCanvas = () => {
         ctx.stroke();
       }
 
-      // Draw short lines connecting the 3 dots horizontally
       for (let i = 0; i < dotNodes.length - 1; i++) {
         ctx.beginPath();
         ctx.moveTo(dotNodes[i].x, dotNodes[i].y);
@@ -186,7 +179,6 @@ const NetworkCanvas = () => {
         ctx.stroke();
       }
 
-      // Draw all nodes
       for (const n of clusterNodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
@@ -194,7 +186,6 @@ const NetworkCanvas = () => {
         ctx.fill();
       }
 
-      // Draw the 3 clean dots slightly larger and brighter
       for (const n of dotNodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
