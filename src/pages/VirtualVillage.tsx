@@ -1,7 +1,6 @@
-import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DimensionsCarousel from "@/components/DimensionsCarousel";
+import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/phone-frame.png";
@@ -11,55 +10,9 @@ import galleryWide from "@/assets/gallery-wide.png";
 import gallerySquare1 from "@/assets/gallery-square1.png";
 import gallerySquare2 from "@/assets/gallery-square2.png";
 import darkBg from "@/assets/dark-section-bg.jpg";
-import appScreens from "@/assets/vv-app-screens.png";
 import teamPhoto from "@/assets/team-photo.png";
 import vvHeroPhoto from "@/assets/vv-hero-photo.png";
-
-import iconCity from "@/assets/icons/city_and_services.svg";
-import iconHealth from "@/assets/icons/health.svg";
-import iconEducation from "@/assets/icons/education.svg";
-import iconCulture from "@/assets/icons/culture.svg";
-import iconSport from "@/assets/icons/sport.svg";
-import iconFood from "@/assets/icons/food_dining.svg";
-import iconShopping from "@/assets/icons/shopping_services.svg";
-
-const dimensions = [
-  {
-    icon: iconCity,
-    title: "City Life & Services",
-    description: "Your gateway to local governance, news, and urban infrastructure.",
-  },
-  {
-    icon: iconHealth,
-    title: "Health",
-    description: "Instant access to personalized wellness, medical resources, and community care.",
-  },
-  {
-    icon: iconEducation,
-    title: "Education",
-    description: "A dedicated space for lifelong learning and local educational opportunities.",
-  },
-  {
-    icon: iconCulture,
-    title: "Culture",
-    description: "Connecting you with local arts, events, and the unique heartbeat of your neighborhood.",
-  },
-  {
-    icon: iconSport,
-    title: "Sport",
-    description: "Promoting an active lifestyle with integrated modules for training and local athletic groups.",
-  },
-  {
-    icon: iconFood,
-    title: "Food & Dining",
-    description: "Discovering the best local tastes, sustainable options, and neighborhood dining experiences.",
-  },
-  {
-    icon: iconShopping,
-    title: "Shopping & Services",
-    description: "Smart, localized commerce that prioritizes convenience and community businesses.",
-  },
-];
+import vvKruh from "@/assets/vv-kruh.png";
 
 const VirtualVillage = () => {
   return (
@@ -75,35 +28,33 @@ const VirtualVillage = () => {
         />
       </section>
 
-      {/* Your personalized Universe */}
-      <section className="relative min-h-screen flex items-center section-padding pt-24">
+      {/* Section 2 — More than a platform */}
+      <section className="relative min-h-screen flex items-center section-padding py-24">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <img
-              src={vvLogo}
-              alt="Virtual Village"
-              className="h-14 md:h-20 mb-8"
-            />
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
-              Your personalized Universe.
-            </h1>
-            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
-              More than a platform — Virtual Village is your companion, your
-              guide, and your quiet coach in the background.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight text-foreground leading-[1.15] mb-8">
+              More than a platform<br />
+              — Virtual Village moves with you.
+            </h2>
+            <div className="mb-8">
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                A companion.<br />
+                A guide.<br />
+                A quiet intelligence <span className="font-normal">in the background.</span>
+              </p>
+            </div>
+            <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
+              It helps you get things done effortlessly —<br />
+              so you can spend less time navigating technology<br />
+              and more time enjoying life, nature, and the people around you.
             </p>
-            <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-lg">
-              It helps you get things done effortlessly, so you can spend less
-              time navigating technology and more time enjoying life, nature, and
-              the people around you.
-            </p>
-            <p className="text-base font-semibold text-foreground mb-2">
+            <p className="text-sm md:text-base font-semibold text-foreground mb-2">
               Intelligence that understands your world.
             </p>
-            <p className="text-base text-foreground leading-relaxed max-w-lg">
-              Powered by Google Cloud and our proprietary STAR Pro AI engine,
-              Virtual Village is your digital partner tailored to your unique
-              location, needs, and life context.
+            <p className="text-sm md:text-base text-foreground/80 leading-relaxed max-w-lg">
+              Powered by <strong>Google Cloud</strong> and our <strong>proprietary STAR Pro AI,</strong><br />
+              Virtual Village adapts to your location, your needs, and your everyday life.
             </p>
           </div>
 
@@ -137,8 +88,30 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* 7 Life Dimensions */}
-      <DimensionsCarousel dimensions={dimensions} />
+      {/* Section 3 — 7 Life Dimensions with vv-kruh image */}
+      <section className="py-28 md:py-36 section-padding">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col items-start">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground leading-tight mb-8">
+              7 Life Dimensions.<br />
+              One Intuitive Space.
+            </h2>
+            <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed max-w-lg">
+              Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
+            </p>
+          </div>
+          <div className="flex items-center justify-center md:justify-end">
+            <img
+              src={vvKruh}
+              alt="Virtual Village ecosystem — 7 Life Dimensions"
+              className="w-full max-w-[550px]"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 — Dimensions grid */}
+      <VVDimensionsGrid />
 
       {/* Gallery Section */}
       <section className="py-20 md:py-28 section-padding">
