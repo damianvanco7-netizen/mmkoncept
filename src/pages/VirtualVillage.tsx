@@ -165,10 +165,10 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
-          <p className="text-xs font-semibold tracking-widest text-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
             Meet Our Leadership Team
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground/80 leading-tight mb-4">
             A synergy of European strategic vision and African technical excellence.
           </h2>
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-4xl">
