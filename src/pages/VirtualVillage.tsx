@@ -46,7 +46,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — full-height hero photo */}
-          <div className="hidden md:block relative">
+          <div className="hidden md:block relative overflow-hidden" style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}>
             <img
               src={vvHeroPhoto}
               alt="Virtual Village app in hand"
