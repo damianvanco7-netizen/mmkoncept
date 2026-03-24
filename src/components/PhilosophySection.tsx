@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import vvLogo from "@/assets/logo-village.svg";
 
 const circles = [
   {
     title: "Virtual Village",
     description:
-      "Our flagship digital ecosystem powered by the STAR Pro AI engine.",
+      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.",
     route: "/virtual-village",
+    linkText: "Explore Village",
+    logo: vvLogo,
   },
   {
     title: "Consulting & Strategy",
     description:
-      "Strategic consulting for complex systems and cross-sector innovation.",
+      "Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.",
     route: "/consulting",
+    linkText: "Learn more",
   },
 ];
 
@@ -25,54 +29,51 @@ const PhilosophySection = () => {
       className="py-28 md:py-36 section-padding"
     >
       <div className="w-full">
-        <p className="text-sm font-semibold tracking-widest text-white/50 uppercase mb-10">
-          Projects & Services
-        </p>
+        {/* Heading */}
+        <div className="mb-16 md:mb-24">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-[1.2]">
+            <span className="text-red-500">Innovation, Technology,</span>
+            <br />
+            <span className="text-red-500">and Human Experience</span>
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-          {/* Left: heading */}
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-[1.4]">
-              We bridge the gap between high-level corporate strategy
-              and human-centric digital solutions.
-            </h2>
-          </div>
-
-          {/* Right: circle buttons */}
-          <div className="flex flex-col items-center gap-4 md:pt-4">
-            {circles.map((item, i) => (
-              <button
-                key={item.title}
-                onClick={() => navigate(item.route)}
-                className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
-                style={{
-                  width: "clamp(280px, 28vw, 400px)",
-                  height: "clamp(280px, 28vw, 400px)",
-                  background: "transparent",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  alignSelf: i === 0 ? "flex-end" : "flex-start",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
-                }}
-              >
-                <span className="text-white text-lg md:text-xl font-semibold mb-2 transition-colors duration-300 group-hover:text-white">
-                  {item.title}
-                </span>
-                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[70%] transition-colors duration-300 group-hover:text-white/70 mb-6">
-                  {item.description}
-                </span>
-                <div className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:border-white/60 group-hover:rotate-45">
-                  <ArrowUpRight size={16} className="text-white/40 transition-colors duration-300 group-hover:text-white/80" />
-                </div>
-              </button>
-            ))}
-          </div>
+        {/* Circle buttons */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+          {circles.map((item) => (
+            <button
+              key={item.title}
+              onClick={() => navigate(item.route)}
+              className="group rounded-full flex flex-col items-start justify-center text-left transition-all duration-500 px-12"
+              style={{
+                width: "clamp(300px, 30vw, 440px)",
+                height: "clamp(300px, 30vw, 440px)",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              {item.logo && (
+                <img src={item.logo} alt={item.title} className="h-8 mb-3 brightness-0 invert opacity-80" />
+              )}
+              <span className="text-white text-lg md:text-xl font-semibold mb-2">
+                {item.title}
+              </span>
+              <span className="text-white/50 text-sm leading-relaxed mb-6 max-w-[85%]">
+                {item.description}
+              </span>
+              <span className="text-white/70 text-sm font-medium flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                {item.linkText} <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:rotate-45" />
+              </span>
+            </button>
+          ))}
         </div>
       </div>
     </section>

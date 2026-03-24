@@ -1,6 +1,6 @@
 import NetworkCanvas from "./NetworkCanvas";
 import ShinyText from "./ShinyText";
-import heroGradient from "@/assets/hero-gradient.jpg";
+import mmconceptLogo from "@/assets/mmconcept-logo.svg";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
@@ -12,30 +12,40 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex items-center section-padding pt-24 pb-48 overflow-hidden"
       style={{
-        backgroundImage: `url(${heroGradient})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        background: "linear-gradient(180deg, #272727 0%, #615F5D 100%)",
       }}
     >
       <NetworkCanvas />
-      <div className="relative z-10 w-full">
-        <h1 className="font-semibold tracking-tight leading-[1.15]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
-          <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-            <span className="block">Life, just</span>
-            <span className="block">simplified</span>
-          </ShinyText>
-        </h1>
+      <div className="relative z-10 w-full flex justify-end">
+        <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-[65%]">
+          {/* Large logo above title */}
+          <img
+            src={mmconceptLogo}
+            alt="mm concept"
+            className="mb-8 md:mb-10"
+            style={{
+              width: 'clamp(180px, 22vw, 340px)',
+              filter: 'invert(1)',
+            }}
+          />
+          <h1 className="font-semibold tracking-tight leading-[1.15]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
+            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+              <span className="block">Life, just</span>
+              <span className="block">simplified.</span>
+            </ShinyText>
+          </h1>
+        </div>
       </div>
 
-      {/* Giant circle button anchored to bottom-left, only top part visible */}
+      {/* Explore circle — positioned at bottom, half in hero half in next section */}
       <button
         onClick={() => scrollTo("philosophy")}
-        className="absolute z-10 rounded-full flex items-start justify-center transition-all duration-500"
+        className="absolute z-10 rounded-full flex flex-col items-center justify-center transition-all duration-500"
         style={{
-          width: 'clamp(280px, 30vw, 450px)',
-          height: 'clamp(280px, 30vw, 450px)',
-          bottom: 'clamp(-140px, -15vw, -225px)',
-          left: 'clamp(-80px, -6vw, -100px)',
+          width: 'clamp(280px, 25vw, 400px)',
+          height: 'clamp(280px, 25vw, 400px)',
+          bottom: 'clamp(-140px, -12.5vw, -200px)',
+          right: 'clamp(40px, 8vw, 160px)',
           background: 'transparent',
           border: '1px solid rgba(255,255,255,0.15)',
           boxShadow: 'none',
@@ -49,8 +59,8 @@ const HeroSection = () => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
         }}
       >
-        <span className="text-white/80 text-lg md:text-xl font-medium tracking-wide mt-[25%]">
-          Explore
+        <span className="text-white/60 text-sm md:text-base font-medium tracking-wide leading-snug text-center px-8">
+          explore<br />our two core<br />pillars:
         </span>
       </button>
     </section>
