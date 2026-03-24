@@ -1,4 +1,5 @@
 import martinaPhoto from "@/assets/martina.png";
+import ShinyText from "./ShinyText";
 
 const FounderSection = () => {
   return (
@@ -8,12 +9,14 @@ const FounderSection = () => {
     >
       <div className="w-full">
         {/* Main heading */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-[1.2] mb-12 md:mb-16">
-          My mission is driven by
-          <br />
-          a simple but powerful belief:
-          <br />
-          Life, just simplified.
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.45] mb-12 md:mb-16">
+          <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+            My mission is driven by
+            <br />
+            a simple but powerful belief:
+            <br />
+            Life, just simplified.
+          </ShinyText>
         </h2>
 
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
