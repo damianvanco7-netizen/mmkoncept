@@ -56,7 +56,7 @@ const DimensionCard = ({ icon, title, description }: { icon: string; title: stri
       <img src={icon} alt={title} className="w-8 h-8 md:w-10 md:h-10 opacity-60" />
     </div>
     <div className="pt-1">
-      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground/70 mb-1">{title}</h3>
+      <h3 className="text-base md:text-lg font-bold text-foreground/70 mb-1">{title}</h3>
       <p className="text-sm md:text-base text-foreground/60 leading-relaxed max-w-[250px]">{description}</p>
     </div>
   </div>
@@ -69,9 +69,9 @@ const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full">
-        <p className="text-base md:text-lg font-semibold text-foreground leading-relaxed max-w-3xl mb-20">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground/80 leading-tight max-w-3xl mb-20">
           Virtual Village is built on a modular architecture designed to harmonize every aspect of modern daily life.
-        </p>
+        </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 mb-16">
           {topRow.map((dim) => (
