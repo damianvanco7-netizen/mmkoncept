@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
+import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
@@ -19,13 +20,34 @@ const VirtualVillage = () => {
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
       <Navbar />
 
-      {/* Hero — full-screen photo */}
-      <section className="relative min-h-screen overflow-hidden">
-        <img
-          src={vvHeroPhoto}
-          alt="Virtual Village hero"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+      {/* Hero — two-column: text left, photo right */}
+      <section className="relative min-h-screen flex items-center section-padding pt-24">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left — text */}
+          <div className="flex flex-col items-start">
+            <h1
+              className="font-light italic text-foreground/40 leading-[1.1] mb-6"
+              style={{
+                fontSize: 'clamp(4rem, 8vw, 8rem)',
+                fontFamily: "'Playfair Display', Georgia, serif",
+              }}
+            >
+              Virtual<br />Village
+            </h1>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
+              Your personalized<br />Universe.
+            </h2>
+          </div>
+
+          {/* Right — hero photo */}
+          <div className="flex items-center justify-center md:justify-end">
+            <img
+              src={vvHeroPhoto}
+              alt="Virtual Village app in hand"
+              className="w-full max-w-[600px] rounded-2xl object-cover"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Section 2 — More than a platform */}
@@ -33,9 +55,11 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight text-foreground leading-[1.15] mb-8">
-              More than a platform<br />
-              — Virtual Village moves with you.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8">
+              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+                More than a platform<br />
+                — Virtual Village moves with you.
+              </ShinyText>
             </h2>
             <div className="mb-8">
               <p className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
@@ -92,7 +116,7 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground leading-tight mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-8">
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
@@ -141,10 +165,10 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
-          <p className="text-xs font-semibold tracking-widest text-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
             Meet Our Leadership Team
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground/80 leading-tight mb-4">
             A synergy of European strategic vision and African technical excellence.
           </h2>
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-4xl">
