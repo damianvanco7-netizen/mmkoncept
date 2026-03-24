@@ -20,15 +20,20 @@ const VirtualVillage = () => {
     <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
       <Navbar />
 
-      {/* Hero — two-column: text left, photo right */}
-      <section className="relative min-h-screen flex items-center section-padding pt-24">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Hero — two-column: text left, full-height photo right */}
+      <section className="relative min-h-screen flex items-center">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col justify-center section-padding py-24">
+            <img
+              src={vvLogoSvg}
+              alt="Virtual Village logo"
+              className="w-48 md:w-56 lg:w-64 mb-8 opacity-70"
+            />
             <h1
               className="font-light italic text-foreground/40 leading-[1.1] mb-6"
               style={{
-                fontSize: 'clamp(4rem, 8vw, 8rem)',
+                fontSize: 'clamp(3.5rem, 7vw, 7rem)',
                 fontFamily: "'Playfair Display', Georgia, serif",
               }}
             >
@@ -39,12 +44,12 @@ const VirtualVillage = () => {
             </h2>
           </div>
 
-          {/* Right — hero photo */}
-          <div className="flex items-center justify-center md:justify-end">
+          {/* Right — full-height hero photo */}
+          <div className="hidden md:block relative">
             <img
               src={vvHeroPhoto}
               alt="Virtual Village app in hand"
-              className="w-full max-w-[600px] rounded-2xl object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         </div>
