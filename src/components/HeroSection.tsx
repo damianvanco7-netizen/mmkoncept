@@ -11,9 +11,6 @@ const HeroSection = () => {
     <section
       id="hero"
       className="relative min-h-screen flex items-center section-padding pt-24 pb-48"
-      style={{
-        background: "linear-gradient(180deg, #272727 0%, #615F5D 100%)",
-      }}
     >
       <NetworkCanvas />
       <div className="relative z-10 w-full flex justify-end">
