@@ -4,6 +4,7 @@ import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
 import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
+import vvLogoSvg from "@/assets/logo-virtual-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
 import galleryFeatured from "@/assets/gallery-featured.png";
