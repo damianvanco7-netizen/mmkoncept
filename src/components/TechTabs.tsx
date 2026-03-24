@@ -3,51 +3,119 @@ import techVideo from "@/assets/vv-tech-video.mp4";
 
 const tabs = [
   {
+    id: "core",
+    label: "Core Stack",
+    title: "",
+    content: (
+      <div>
+        <p className="text-lg md:text-xl font-bold text-foreground mb-1">
+          React Native <span className="font-normal">(TypeScript + Expo)</span>
+        </p>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
+          One codebase. Seamless experience across iOS and Android.
+        </p>
+        <p className="text-lg md:text-xl font-bold text-foreground mb-1">
+          Supabase <span className="font-normal">(PostgreSQL)</span>
+        </p>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
+          Real-time data, instant synchronization, scalable backend.
+        </p>
+        <p className="text-lg md:text-xl font-bold text-foreground mb-1">
+          Edge Functions <span className="font-normal">(Deno)</span>
+        </p>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+          Serverless logic that scales effortlessly with demand.
+        </p>
+      </div>
+    ),
+  },
+  {
     id: "ai",
     label: "AI Layer — STAR",
     title: "AI Layer — STAR",
-    description:
-      "Our AI engine STAR, powered by Google Gemini, turns context (location, time, behavior) into real-time, actionable recommendations — proactive and on demand.",
-    details: [
-      "Context-aware intelligence based on location, time & behavior",
-      "Real-time proactive and on-demand recommendations",
-      "Powered by Google Gemini large language models",
-    ],
+    content: (
+      <div>
+        <h3 className="text-xl md:text-2xl font-bold text-accent mb-2">
+          Intelligence that acts, not just responds
+        </h3>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
+          Powered by Google Gemini, STAR transforms context — location, time, and behavior — into real-time, actionable guidance.
+        </p>
+        <h3 className="text-xl md:text-2xl font-bold text-accent mb-1">
+          Proactive when you need it.
+        </h3>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+          On demand when you ask.
+        </p>
+      </div>
+    ),
   },
   {
     id: "data",
     label: "Data & Quality",
     title: "Data & Quality",
-    description:
-      "Integrated with Google Places API, enhanced by custom filtering (≥4.0 ratings) and intelligent matching for accurate, high-quality results.",
-    details: [
-      "Google Places API integration for rich local data",
-      "Custom quality filtering with ≥4.0 rating threshold",
-      "Intelligent matching algorithms for precision results",
-    ],
+    content: (
+      <div>
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+          Reliable, relevant, and human-centered:
+        </h3>
+        <ul className="space-y-2 text-sm md:text-base text-foreground/60">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
+            Integrated with Google Places API
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
+            Curated results (≥ 4.0 rating baseline)
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
+            Intelligent matching for precision and trust
+          </li>
+        </ul>
+      </div>
+    ),
   },
   {
     id: "security",
     label: "Security & Scale",
     title: "Security & Scale",
-    description:
-      'Row Level Security (RLS) ensures strict data privacy. Our modular "Universe" architecture enables seamless global expansion — no new code required.',
-    details: [
-      "Row Level Security (RLS) for strict data privacy",
-      'Modular "Universe" architecture for global expansion',
-      "Zero-code scaling to new regions and markets",
-    ],
+    content: (
+      <div>
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+          Built for trust.<br />Designed for global expansion.
+        </h3>
+        <ul className="space-y-2 text-sm md:text-base text-foreground/60">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
+            Row Level Security (RLS) ensures strict data protection
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
+            Modular Universe architecture enables instant rollout across cities — without rebuilding
+          </li>
+        </ul>
+      </div>
+    ),
   },
 ];
 
 const TechTabs = ({ mockup }: { mockup: string }) => {
-  const [active, setActive] = useState("ai");
+  const [active, setActive] = useState<string | null>(null);
   const [animating, setAnimating] = useState(false);
 
-  const current = tabs.find((t) => t.id === active)!;
+  const current = active ? tabs.find((t) => t.id === active) : null;
 
   const switchTab = (id: string) => {
-    if (id === active || animating) return;
+    if (animating) return;
+    if (id === active) {
+      setAnimating(true);
+      setTimeout(() => {
+        setActive(null);
+        setAnimating(false);
+      }, 250);
+      return;
+    }
     setAnimating(true);
     setTimeout(() => {
       setActive(id);
@@ -60,67 +128,58 @@ const TechTabs = ({ mockup }: { mockup: string }) => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         {/* Left — text */}
         <div>
-          <p className="text-xs font-semibold tracking-widest text-foreground uppercase mb-4">
-            Technology
-          </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
-            Cloud‑native. <span className="whitespace-nowrap">AI‑powered.</span>{" "}
-            Globally&nbsp;scalable.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground/80 leading-tight mb-4">
+            Cloud‑native.<br />AI‑powered.<br />Built to scale globally.
           </h2>
-          <p className="text-base text-foreground leading-relaxed mb-10">
-            Virtual Village runs on a modern stack built for speed and
-            flexibility: React Native (TypeScript + Expo) for cross-platform
-            delivery, Supabase (PostgreSQL) for real-time data, and Edge
-            Functions (Deno) for scalable serverless logic.
+          <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-accent leading-tight mb-12">
+            A modern architecture designed<br />
+            for speed, intelligence, and seamless growth.
           </p>
 
-          {/* Pill buttons */}
-          <div className="flex flex-wrap gap-3 mb-12">
+          {/* Circle buttons */}
+          <div className="flex flex-wrap gap-5 mb-12">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => switchTab(tab.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 ${
-                  active === tab.id
-                    ? "bg-foreground/10 border-foreground/30 text-foreground"
-                    : "border-foreground/20 text-foreground/60 hover:bg-foreground/5 hover:border-foreground/30"
-                }`}
+                className="flex flex-col items-center gap-2 group"
               >
-                {tab.label}
+                <div
+                  className={`w-16 h-16 md:w-20 md:h-20 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                    active === tab.id
+                      ? "border-foreground/40 bg-foreground/10 shadow-md"
+                      : "border-foreground/15 hover:border-foreground/30"
+                  }`}
+                  style={{
+                    background: active === tab.id
+                      ? "linear-gradient(145deg, rgba(255,255,255,0.5), rgba(200,195,190,0.3))"
+                      : "linear-gradient(145deg, rgba(255,255,255,0.3), rgba(200,195,190,0.15))",
+                    boxShadow: active === tab.id
+                      ? "4px 4px 12px rgba(0,0,0,0.08), -2px -2px 6px rgba(255,255,255,0.4)"
+                      : "2px 2px 6px rgba(0,0,0,0.04), -1px -1px 4px rgba(255,255,255,0.3)",
+                  }}
+                />
+                <span className={`text-xs md:text-sm font-semibold text-center leading-tight transition-colors duration-300 max-w-[80px] ${
+                  active === tab.id ? "text-foreground" : "text-foreground/50"
+                }`}>
+                  {tab.label}
+                </span>
               </button>
             ))}
           </div>
 
-          {/* Card */}
-          <div
-            className="rounded-2xl border border-foreground/15 p-8 md:p-10 transition-all duration-250 ease-in-out"
-            style={{
-              opacity: animating ? 0 : 1,
-              transform: animating ? "translateY(8px)" : "translateY(0)",
-            }}
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              {current.title}
-            </h3>
-            <p className="text-base text-foreground/70 leading-relaxed mb-6">
-              {current.description}
-            </p>
-            <ul className="space-y-3">
-              {current.details.map((d) => (
-                <li
-                  key={d}
-                  className="flex items-start gap-3 text-sm text-foreground/70"
-                >
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
-                  {d}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="text-base font-semibold text-foreground mt-10">
-            Built for performance. Designed for real life.
-          </p>
+          {/* Content — only shown when a circle is active */}
+          {current && (
+            <div
+              className="transition-all duration-250 ease-in-out"
+              style={{
+                opacity: animating ? 0 : 1,
+                transform: animating ? "translateY(8px)" : "translateY(0)",
+              }}
+            >
+              {current.content}
+            </div>
+          )}
         </div>
 
         {/* Right — mockup */}

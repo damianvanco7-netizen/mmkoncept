@@ -31,15 +31,6 @@ const VirtualVillage = () => {
               alt="Virtual Village logo"
               className="w-48 md:w-56 lg:w-64 mb-8 opacity-70"
             />
-            <h1
-              className="font-light italic text-foreground/40 leading-[1.1] mb-6"
-              style={{
-                fontSize: 'clamp(3.5rem, 7vw, 7rem)',
-                fontFamily: "'Playfair Display', Georgia, serif",
-              }}
-            >
-              Virtual<br />Village
-            </h1>
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
               Your personalized<br />Universe.
             </h2>
@@ -140,8 +131,12 @@ const VirtualVillage = () => {
         </div>
       </section>
 
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* Section 4 — Dimensions grid */}
       <VVDimensionsGrid />
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Gallery Section */}
       <section className="py-20 md:py-28 section-padding">
@@ -162,6 +157,8 @@ const VirtualVillage = () => {
           </div>
         </div>
       </section>
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Technology Section */}
       <TechTabs mockup={mockup} />
