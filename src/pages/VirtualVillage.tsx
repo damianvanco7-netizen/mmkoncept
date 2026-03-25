@@ -166,27 +166,7 @@ const VirtualVillage = () => {
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Leadership Team Section */}
-      <section className="py-28 md:py-36 section-padding">
-        <div className="w-full flex flex-col items-center text-center">
-          <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-            Meet Our Leadership Team
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground/80 leading-tight mb-4">
-            A synergy of European strategic vision and African technical excellence.
-          </h2>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-4xl">
-            A global team for a global vision
-          </p>
-          <img
-            src={teamPhoto}
-            alt="MM Concept Leadership Team"
-            className="w-full max-w-3xl rounded-2xl mb-10 object-cover"
-          />
-          <p className="text-base text-foreground/70 leading-relaxed max-w-3xl">
-            Behind Virtual Village stands a diverse and experienced team united by one belief: technology should serve people, not overwhelm them. We combine expertise in innovation, digital strategy, product development, and scalable technology to create a human-centered platform for everyday life. Our strength lies in connecting vision with execution — shaping Virtual Village as a trusted digital companion for citizens, families, communities, and cities.
-          </p>
-        </div>
-      </section>
+      <LeadershipTeam />
 
       {/* CTA Dark Section */}
       <section className="relative py-28 md:py-36 section-padding overflow-hidden" style={{ backgroundImage: `url(${darkBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>

@@ -117,7 +117,7 @@ const TechTabs = () => {
           Technology
         </p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4">
-          Cloud‑native.<br />AI‑powered.<br />Built to scale globally.
+          <span className="whitespace-nowrap">Cloud‑native.</span>{" "}<span className="whitespace-nowrap">AI‑powered.</span><br />Built to scale globally.
         </h2>
         <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed mb-12">
           A modern architecture designed<br />
@@ -143,7 +143,7 @@ const TechTabs = () => {
 
         {/* Content */}
         <div
-          className="max-w-2xl text-left transition-all duration-250 ease-in-out"
+          className="max-w-2xl text-center transition-all duration-250 ease-in-out"
           style={{
             opacity: animating ? 0 : 1,
             transform: animating ? "translateY(8px)" : "translateY(0)",
