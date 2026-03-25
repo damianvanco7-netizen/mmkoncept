@@ -32,13 +32,13 @@ const tabs = [
     label: "AI Layer — STAR",
     content: (
       <div>
-        <h3 className="text-xl md:text-2xl font-bold text-accent mb-2">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
           Intelligence that acts, not just responds
         </h3>
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
           Powered by Google Gemini, STAR transforms context — location, time, and behavior — into real-time, actionable guidance.
         </p>
-        <h3 className="text-xl md:text-2xl font-bold text-accent mb-1">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
           Proactive when you need it.
         </h3>
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed">

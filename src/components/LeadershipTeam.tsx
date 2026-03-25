@@ -3,11 +3,11 @@ import teamPhoto from "@/assets/team-photo.png";
 
 const members = [
   {
-    id: "martina",
-    label: "Martina Masaryková",
-    role: "Founder, CEO & Project Lead (Slovakia)",
-    bio: "A multilingual business founder and visionary with a deep focus on human-centric technology. Martina's unique perspective, shaped by her life in Slovakia, Germany, and a four-year residency in Africa, led to the creation of Virtual Village. As Project Lead, she bridges the gap between digital innovation and the real-world needs of cross-border communities.",
-    focus: "Visionary Leadership, Project Execution, Community Partnerships.",
+    id: "hans",
+    label: "Hans-Christian Heidecke",
+    role: "Investor, Strategic Partner & Board Advisor (Germany)",
+    bio: "A seasoned executive with extensive experience in international IT leadership and strategic management. As an investor and advisor, Hans-Christian provides high-level guidance on navigating the global tech landscape, ensuring that Virtual Village meets the highest standards of operational excellence and financial scalability.",
+    focus: "Strategic Planning, Global Scalability, Financial Governance.",
   },
   {
     id: "vuyo",
@@ -17,16 +17,16 @@ const members = [
     focus: "AI Architecture, Data Strategy, Cloud Infrastructure (Google Cloud / Azure).",
   },
   {
-    id: "hans",
-    label: "Hans-Christian Heidecke",
-    role: "Investor, Strategic Partner & Board Advisor (Germany)",
-    bio: "A seasoned executive with extensive experience in international IT leadership and strategic management. As an investor and advisor, Hans-Christian provides high-level guidance on navigating the global tech landscape, ensuring that Virtual Village meets the highest standards of operational excellence and financial scalability.",
-    focus: "Strategic Planning, Global Scalability, Financial Governance.",
+    id: "martina",
+    label: "Martina Masaryková",
+    role: "Founder, CEO & Project Lead (Slovakia)",
+    bio: "A multilingual business founder and visionary with a deep focus on human-centric technology. Martina's unique perspective, shaped by her life in Slovakia, Germany, and a four-year residency in Africa, led to the creation of Virtual Village. As Project Lead, she bridges the gap between digital innovation and the real-world needs of cross-border communities.",
+    focus: "Visionary Leadership, Project Execution, Community Partnerships.",
   },
 ];
 
 const LeadershipTeam = () => {
-  const [active, setActive] = useState<string>("martina");
+  const [active, setActive] = useState<string>("hans");
   const [animating, setAnimating] = useState(false);
 
   const current = members.find((m) => m.id === active)!;
