@@ -169,28 +169,46 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <LeadershipTeam />
 
-      {/* CTA Dark Section */}
-      <section className="relative py-28 md:py-36 section-padding overflow-hidden" style={{ backgroundImage: `url(${darkBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="w-full max-w-3xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
-            Be Part of the Digital Evolution
-          </h2>
-          <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
-            Join the movement to humanize technology.
-          </p>
-          <p className="text-base text-white/70 leading-relaxed mb-6">
-            Whether you are seeking clarity in the digital noise or looking to empower your community through strategic innovation, let's build this universe together.
-          </p>
-          <p className="text-base text-white/70 leading-relaxed mb-10">
-            Virtual Village isn't just another platform. It's a quiet revolution — made by people, for people.
-          </p>
-          <button className="pill-button text-sm bg-white text-black hover:bg-white/90">
-            Contact
-          </button>
-        </div>
-      </section>
+      {/* CTA + Footer with homepage dark gradient */}
+      <div style={{ background: "linear-gradient(180deg, #4a4745 0%, #615F5D 100%)" }}>
+        <section className="relative py-28 md:py-36 section-padding overflow-hidden">
+          <div className="w-full max-w-3xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+              Be Part of the Digital Evolution
+            </h2>
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
+              Join the movement to humanize technology.
+            </p>
+            <p className="text-base text-white/70 leading-relaxed mb-6">
+              Whether you are seeking clarity in the digital noise or looking to empower your community through strategic innovation, let's build this universe together.
+            </p>
+            <p className="text-base text-white/70 leading-relaxed mb-10">
+              Virtual Village isn't just another platform. It's a quiet revolution — made by people, for people.
+            </p>
+            <button
+              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
+              style={{
+                width: "clamp(160px, 16vw, 220px)",
+                height: "clamp(160px, 16vw, 220px)",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
+            </button>
+          </div>
+        </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
