@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
+import LeadershipTeam from "@/components/LeadershipTeam";
 import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
 import vvLogoSvg from "@/assets/logo-virtual-village.svg";
