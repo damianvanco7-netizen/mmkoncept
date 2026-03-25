@@ -40,10 +40,15 @@ const PhilosophySection = () => {
         </div>
 
         {/* Subtitle button */}
-        <p className="text-white/60 text-lg md:text-xl mb-12 md:mb-16">Discover our portfolio</p>
+        {/* Label pill */}
+        <div className="flex justify-center mb-12 md:mb-16">
+          <span className="inline-block rounded-full border border-white/20 px-6 py-2 text-white/60 text-sm md:text-base tracking-wide">
+            Discover our portfolio
+          </span>
+        </div>
 
         {/* Circle buttons */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           {circles.map((item) => (
             <button
               key={item.title}
