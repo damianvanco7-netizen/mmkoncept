@@ -37,7 +37,6 @@ const PhilosophySection = () => {
               and Human Experience
             </ShinyText>
           </h2>
-          <p className="text-white/60 text-lg md:text-xl mt-6">Discover our portfolio</p>
         </div>
 
         {/* Circle buttons */}
