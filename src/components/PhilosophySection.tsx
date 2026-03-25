@@ -6,16 +6,16 @@ const circles = [
   {
     title: "Virtual Village",
     description:
-      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.",
+      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it offers a personalized universe that simplifies everyday life, connects essential services, and redefines how people engage with the world around them.",
     route: "/virtual-village",
-    linkText: "Explore Village",
+    linkText: "Explore Village →",
   },
   {
     title: "Consulting & Strategy",
     description:
-      "Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.",
+      "Our strategic advisory practice. Focused on clarity, transformation, and cross-sector innovation, it helps organizations navigate complexity and shape solutions that are both future-ready and deeply human.",
     route: "/consulting",
-    linkText: "Learn more",
+    linkText: "Explore Services →",
   },
 ];
 
@@ -32,9 +32,7 @@ const PhilosophySection = () => {
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.2]">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-              Innovation, Technology,
-              <br />
-              and Human Experience
+              Discover our portfolio
             </ShinyText>
           </h2>
         </div>
@@ -67,8 +65,8 @@ const PhilosophySection = () => {
               <span className="text-white/50 text-sm leading-relaxed mb-6 max-w-[85%]">
                 {item.description}
               </span>
-              <span className="text-white/70 text-sm font-medium flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
-                {item.linkText} <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:rotate-45" />
+              <span className="text-white/80 text-sm md:text-base font-bold flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                {item.linkText}
               </span>
             </button>
           ))}
