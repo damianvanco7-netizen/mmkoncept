@@ -32,9 +32,12 @@ const PhilosophySection = () => {
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.2]">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-              Discover our portfolio
+              Innovation, Technology,
+              <br />
+              and Human Experience
             </ShinyText>
           </h2>
+          <p className="text-white/60 text-lg md:text-xl mt-6">Discover our portfolio</p>
         </div>
 
         {/* Circle buttons */}
