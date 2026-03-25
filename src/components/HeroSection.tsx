@@ -55,7 +55,7 @@ const HeroSection = () => {
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
         }}
       >
-        <span className="text-white/60 text-sm md:text-base font-medium tracking-wide leading-snug text-center px-8">
+        <span className="text-white/60 text-base md:text-lg lg:text-xl font-medium tracking-wide leading-snug text-center px-8">
           Discover<br />our portfolio
         </span>
       </button>
