@@ -40,9 +40,6 @@ const FounderSection = () => {
                 Today, as the founder of mm concept and the architect of Virtual Village, I create concepts and ecosystems that turn complexity into clarity. By combining precision, structure, and a deeply human perspective, I design solutions that help people navigate modern life with more ease, focus, and meaning.
               </p>
 
-              <p className="text-white font-bold italic leading-relaxed">
-                Life. Just simplified.
-              </p>
             </div>
           </div>
 
