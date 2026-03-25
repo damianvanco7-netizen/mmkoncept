@@ -56,7 +56,7 @@ const HeroSection = () => {
         }}
       >
         <span className="text-white/60 text-sm md:text-base font-medium tracking-wide leading-snug text-center px-8">
-          explore<br />our two core<br />pillars:
+          Discover<br />our portfolio
         </span>
       </button>
     </section>
