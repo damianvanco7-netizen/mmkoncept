@@ -6,16 +6,16 @@ const circles = [
   {
     title: "Virtual Village",
     description:
-      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it's a personalized universe designed to harmonize city life, health, and community.",
+      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it offers a personalized universe that simplifies everyday life, connects essential services, and redefines how people engage with the world around them.",
     route: "/virtual-village",
-    linkText: "Explore Village",
+    linkText: "Explore Village →",
   },
   {
     title: "Consulting & Strategy",
     description:
-      "Strategic consulting focused on simplifying complex systems, digital environments and cross-sector innovation.",
+      "Our strategic advisory practice. Focused on clarity, transformation, and cross-sector innovation, it helps organizations navigate complexity and shape solutions that are both future-ready and deeply human.",
     route: "/consulting",
-    linkText: "Learn more",
+    linkText: "Explore Services →",
   },
 ];
 

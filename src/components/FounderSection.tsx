@@ -24,14 +24,11 @@ const FounderSection = () => {
           <div className="md:col-span-3 order-2 md:order-1">
             <div className="space-y-6">
               <div>
-                <p className="text-white font-bold leading-relaxed mb-1">
+                <p className="text-white font-bold italic leading-relaxed mb-1">
                   Bridging Precision and Humanity
                 </p>
                 <p className="text-white/70 leading-relaxed">
-                  My perspective was shaped at the intersection of two very different worlds: the high-precision automotive environment of Volkswagen, where systems are built for efficiency and performance, and a life journey across Slovakia, Germany, and four transformative years in Africa with my family.
-                </p>
-                <p className="text-white/70 leading-relaxed mt-2">
-                  Between these worlds, I learned a simple truth: <strong className="text-white font-bold">the most powerful solutions are often the most intuitive and true freedom is found in simplicity.</strong>
+                  My perspective was shaped at the intersection of two very different worlds: the high-precision automotive environment of Volkswagen, where systems are built for efficiency and performance, and a life journey across Slovakia, Germany, and four transformative years in Africa with my family. Between these worlds, I learned a simple truth: <strong className="text-white font-bold italic">the most powerful solutions are often the most intuitive and true freedom is found in simplicity.</strong>
                 </p>
               </div>
 
@@ -40,10 +37,7 @@ const FounderSection = () => {
               </p>
 
               <p className="text-white/70 leading-relaxed">
-                Today, as the founder of mm concept and the architect of Virtual Village,
-                I create concepts and ecosystems that turn complexity into clarity.
-                By combining precision, structure, and a deeply human perspective,
-                I design solutions that help people navigate modern life with more ease, focus, and meaning.
+                Today, as the founder of mm concept and the architect of Virtual Village, I create concepts and ecosystems that turn complexity into clarity. By combining precision, structure, and a deeply human perspective, I design solutions that help people navigate modern life with more ease, focus, and meaning.
               </p>
 
               <p className="text-white font-bold italic leading-relaxed">

@@ -6,7 +6,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="py-16 md:py-24 section-padding" style={{ background: '#262525' }}>
+    <footer id="footer" className="py-16 md:py-24 section-padding" style={{ background: 'linear-gradient(180deg, #615F5D 0%, #4a4745 100%)' }}>
       <div className="w-full">
         {/* Top: Logo + Nav */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
