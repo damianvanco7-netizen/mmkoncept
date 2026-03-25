@@ -12,7 +12,7 @@ import galleryFeatured from "@/assets/gallery-featured.png";
 import galleryWide from "@/assets/gallery-wide.png";
 import gallerySquare1 from "@/assets/gallery-square1.png";
 import gallerySquare2 from "@/assets/gallery-square2.png";
-import darkBg from "@/assets/dark-section-bg.jpg";
+
 import teamPhoto from "@/assets/team-photo.png";
 import vvHeroPhoto from "@/assets/vv-hero-photo.png";
 import vvKruh from "@/assets/vv-kruh.png";
