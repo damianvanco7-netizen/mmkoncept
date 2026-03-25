@@ -52,10 +52,10 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-1">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than a platform<br />
-                — Virtual Village moves with you.
+                Virtual Village moves with you.
               </ShinyText>
             </h2>
             <div className="mb-8">
@@ -138,6 +138,11 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
+      {/* Technology Section */}
+      <TechTabs />
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* Gallery Section */}
       <section className="py-20 md:py-28 section-padding">
         <div className="w-full">
@@ -157,11 +162,6 @@ const VirtualVillage = () => {
           </div>
         </div>
       </section>
-
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Technology Section */}
-      <TechTabs mockup={mockup} />
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
