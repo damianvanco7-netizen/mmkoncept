@@ -1,6 +1,6 @@
 import NetworkCanvas from "./NetworkCanvas";
 import ShinyText from "./ShinyText";
-import mmconceptLogo from "@/assets/mmconcept-logo.svg";
+import mmconceptLogo from "@/assets/logo_mmc.svg";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
@@ -20,8 +20,9 @@ const HeroSection = () => {
             alt="mm concept"
             className="mb-8 md:mb-10"
             style={{
-              width: 'clamp(180px, 22vw, 340px)',
+              width: 'clamp(120px, 14vw, 220px)',
               filter: 'invert(1)',
+              opacity: 0.35,
             }}
           />
           <h1 className="font-semibold tracking-tight leading-[1.15]" style={{ fontSize: 'clamp(3.5rem, 9vw, 10.5rem)' }}>
