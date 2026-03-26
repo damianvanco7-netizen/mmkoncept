@@ -41,12 +41,13 @@ const VirtualVillage = () => {
             </h2>
           </div>
 
-          {/* Right — hero phone image */}
-          <div className="hidden md:flex items-center justify-center relative overflow-hidden py-12">
+          {/* Right — hero image */}
+          <div className="hidden md:block relative min-h-screen overflow-hidden">
             <img
               src={vvHeroPhone}
-              alt="Virtual Village app"
-              className="h-[85%] max-h-[700px] object-contain relative z-10"
+              alt="Virtual Village"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}
             />
           </div>
         </div>
@@ -148,6 +149,22 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
+      {/* Leadership Team Section */}
+      <LeadershipTeam />
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
+      {/* New section — From concept to product */}
+      <section className="py-28 md:py-36 section-padding">
+        <div className="w-full flex flex-col items-center text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4 max-w-4xl">
+            From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
+          </h2>
+        </div>
+      </section>
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* Gallery Section */}
       <section className="py-20 md:py-28 section-padding">
         <div className="w-full">
@@ -167,11 +184,6 @@ const VirtualVillage = () => {
           </div>
         </div>
       </section>
-
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Leadership Team Section */}
-      <LeadershipTeam />
 
       {/* CTA + Footer with homepage dark gradient */}
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>

@@ -46,11 +46,12 @@ const LeadershipTeam = () => {
         <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
           Meet Our Leadership Team
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground/80 leading-tight mb-4">
-          A synergy of European strategic vision and African technical excellence.
+        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4">
+          Diversity is Our Power.
         </h2>
-        <p className="text-lg md:text-xl text-foreground leading-relaxed mb-12 max-w-4xl">
-          A global team for a global vision
+        <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 max-w-4xl">
+          <em>Where African resilience meets European precision.</em><br />
+          Building impact without borders.
         </p>
         <img
           src={teamPhoto}
