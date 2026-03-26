@@ -36,9 +36,9 @@ const VirtualVillage = () => {
               className="mb-8 md:mb-10"
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
               Your personalized<br />Universe.
-            </h2>
+            </h1>
           </div>
 
           {/* Right — hero image */}
@@ -149,11 +149,6 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* Leadership Team Section */}
-      <LeadershipTeam />
-
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
       {/* New section — From concept to product */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
@@ -184,6 +179,11 @@ const VirtualVillage = () => {
           </div>
         </div>
       </section>
+
+      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+
+      {/* Leadership Team Section */}
+      <LeadershipTeam />
 
       {/* CTA + Footer with homepage dark gradient */}
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
