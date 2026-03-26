@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
-import { Globe, Languages, Heart } from "lucide-react";
+import ShinyText from "@/components/ShinyText";
 
 const services = [
   {
@@ -23,19 +23,16 @@ const services = [
 
 const whyItems = [
   {
-    icon: Globe,
     title: "Global Corporate Expertise",
     description:
       "A proven track record in transforming European production sites and providing C-level consultations in Africa.",
   },
   {
-    icon: Languages,
     title: "Multilingual Support",
     description:
       "Expert strategic advice and project management delivered fluently in Slovak, German, and English for seamless cross-border collaboration.",
   },
   {
-    icon: Heart,
     title: "Human-Centric Approach",
     description:
       "Every strategy begins with the user, ensuring technology serves as a bridge for meaningful interaction.",
@@ -48,7 +45,7 @@ const Consulting = () => {
       className="min-h-screen"
       style={{
         background:
-          "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 25%, hsl(var(--warm-beige)) 50%, hsl(var(--warm-taupe)) 75%, hsl(var(--warm-beige)) 100%)",
+          "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)",
       }}
     >
       <Navbar />
@@ -56,13 +53,13 @@ const Consulting = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center section-padding pt-24">
         <div className="relative z-10 w-full max-w-3xl">
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Consulting & Strategy
           </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-foreground leading-[1.08] mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-semibold tracking-tight text-white leading-[1.08] mb-6">
             Bridging Innovation, Technology, and Human Experience
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+          <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl">
             At mm concept, we build strategic bridges between complex
             technologies and the real world. Our consulting services are rooted
             in over a decade of experience within the global automotive industry
@@ -71,55 +68,68 @@ const Consulting = () => {
         </div>
       </section>
 
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* Service Portfolio */}
+      {/* Service Portfolio — Circle buttons like homepage */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full">
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Our Service Portfolio
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-16">
-            What we do
-          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 mt-16">
             {services.map((service) => (
-              <div key={service.title}>
-                <p className="text-base font-semibold text-foreground mb-3">
+              <div
+                key={service.title}
+                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default"
+                style={{
+                  width: "clamp(280px, 25vw, 380px)",
+                  height: "clamp(280px, 25vw, 380px)",
+                  background: "transparent",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                }}
+              >
+                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight">
                   {service.title}
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                </span>
+                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[85%]">
                   {service.description}
-                </p>
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Why mm concept */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full">
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Why mm concept?
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground leading-tight mb-16">
-            Built on experience. Driven by purpose.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold leading-tight mb-16">
+            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+              Built on experience. Driven by purpose.
+            </ShinyText>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {whyItems.map(({ icon: Icon, title, description }) => (
+            {whyItems.map(({ title, description }) => (
               <div key={title} className="flex flex-col">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center neu-inset mb-5">
-                  <Icon className="w-5 h-5 text-muted-foreground" />
-                </div>
-                <p className="text-base font-semibold text-foreground mb-3">
+                <p className="text-base font-semibold text-white mb-3">
                   {title}
                 </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-white/60 leading-relaxed">
                   {description}
                 </p>
               </div>
@@ -128,12 +138,12 @@ const Consulting = () => {
         </div>
       </section>
 
-      {/* CTA + Footer with dark gradient */}
-      <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
+      {/* CTA + Footer */}
+      <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <NetworkCanvasMirrored />
           <div className="relative z-10 w-full max-w-3xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold text-white leading-tight mb-6">
               Let's Build Something Meaningful
             </h2>
             <p className="text-base text-white/70 leading-relaxed mb-10">
