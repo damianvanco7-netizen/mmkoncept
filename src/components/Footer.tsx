@@ -8,19 +8,6 @@ const Footer = () => {
   return (
     <footer id="footer" className="py-16 md:py-24 section-padding" style={{ background: 'transparent' }}>
       <div className="w-full">
-        {/* Top: Logo + Nav */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
-            <img src={logo} alt="mm concept" className="h-16 md:h-20 brightness-0 invert opacity-50" />
-          </button>
-
-          <div className="flex flex-wrap gap-8 text-sm font-medium text-white/50">
-            <button onClick={() => scrollTo("hero")} className="transition-colors hover:text-white/80">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-white/80">Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-white/80">About</button>
-          </div>
-        </div>
-
         {/* Contact Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mb-16 border-t border-warm-taupe/20 pt-12">
           <div>
