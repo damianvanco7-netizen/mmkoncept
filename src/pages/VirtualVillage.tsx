@@ -53,7 +53,7 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-1">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-2">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than a platform<br />
                 Virtual Village moves with you.
@@ -170,7 +170,7 @@ const VirtualVillage = () => {
       <LeadershipTeam />
 
       {/* CTA + Footer with homepage dark gradient */}
-      <div style={{ background: "linear-gradient(180deg, #4a4745 0%, #615F5D 100%)" }}>
+      <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <div className="w-full max-w-3xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">

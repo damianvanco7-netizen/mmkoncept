@@ -1,4 +1,7 @@
 import { useState } from "react";
+import techReact from "@/assets/tech-react.png";
+import techSupabase from "@/assets/tech-supabase.png";
+import techGemini from "@/assets/tech-gemini.png";
 
 const tabs = [
   {
@@ -6,15 +9,21 @@ const tabs = [
     label: "Core Stack",
     content: (
       <div>
-        <p className="text-lg md:text-xl font-bold text-foreground mb-1">
-          React Native <span className="font-normal">(TypeScript + Expo)</span>
-        </p>
+        <div className="flex items-center justify-center gap-3 mb-1">
+          <img src={techReact} alt="React" className="w-8 h-8 rounded-full" />
+          <p className="text-lg md:text-xl font-bold text-foreground">
+            React Native <span className="font-normal">(TypeScript + Expo)</span>
+          </p>
+        </div>
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
           One codebase. Seamless experience across iOS and Android.
         </p>
-        <p className="text-lg md:text-xl font-bold text-foreground mb-1">
-          Supabase <span className="font-normal">(PostgreSQL)</span>
-        </p>
+        <div className="flex items-center justify-center gap-3 mb-1">
+          <img src={techSupabase} alt="Supabase" className="w-8 h-8 rounded-full" />
+          <p className="text-lg md:text-xl font-bold text-foreground">
+            Supabase <span className="font-normal">(PostgreSQL)</span>
+          </p>
+        </div>
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
           Real-time data, instant synchronization, scalable backend.
         </p>
@@ -32,9 +41,12 @@ const tabs = [
     label: "AI Layer — STAR",
     content: (
       <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-          Intelligence that acts, not just responds
-        </h3>
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <img src={techGemini} alt="Gemini" className="w-8 h-8 rounded-full" />
+          <h3 className="text-xl md:text-2xl font-bold text-foreground">
+            Intelligence that acts, not just responds
+          </h3>
+        </div>
         <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
           Powered by Google Gemini, STAR transforms context — location, time, and behavior — into real-time, actionable guidance.
         </p>
@@ -51,11 +63,11 @@ const tabs = [
     id: "data",
     label: "Data & Quality",
     content: (
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+      <div className="flex flex-col items-center">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
           Reliable, relevant, and human-centered:
         </h3>
-        <ul className="space-y-2 text-sm md:text-base text-foreground/60">
+        <ul className="space-y-2 text-sm md:text-base text-foreground/60 inline-block text-left">
           <li className="flex items-start gap-3">
             <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
             Integrated with Google Places API
@@ -76,11 +88,11 @@ const tabs = [
     id: "security",
     label: "Security & Scale",
     content: (
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+      <div className="flex flex-col items-center">
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
           Built for trust.<br />Designed for global expansion.
         </h3>
-        <ul className="space-y-2 text-sm md:text-base text-foreground/60">
+        <ul className="space-y-2 text-sm md:text-base text-foreground/60 inline-block text-left">
           <li className="flex items-start gap-3">
             <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
             Row Level Security (RLS) ensures strict data protection
