@@ -188,7 +188,7 @@ const VirtualVillage = () => {
       {/* CTA + Footer with homepage dark gradient */}
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
-          <div className="w-full max-w-3xl">
+          <NetworkCanvasMirrored />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
               Be Part of the Digital Evolution
             </h2>
