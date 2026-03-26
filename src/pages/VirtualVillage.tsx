@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
 import LeadershipTeam from "@/components/LeadershipTeam";
+import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
 import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
 import vvHeroBgVideo from "@/assets/vv-hero-bg.mp4";
@@ -189,6 +190,7 @@ const VirtualVillage = () => {
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <NetworkCanvasMirrored />
+          <div className="relative z-10 w-full max-w-3xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
               Be Part of the Digital Evolution
             </h2>
