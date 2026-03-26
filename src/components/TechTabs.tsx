@@ -88,20 +88,16 @@ const tabs = [
     id: "security",
     label: "Security & Scale",
     content: (
-      <div className="flex flex-col items-center">
+      <div>
         <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
           Built for trust.<br />Designed for global expansion.
         </h3>
-        <ul className="space-y-2 text-sm md:text-base text-foreground/60 inline-block text-left">
-          <li className="flex items-start gap-3">
-            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
-            Row Level Security (RLS) ensures strict data protection
-          </li>
-          <li className="flex items-start gap-3">
-            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-foreground/30 shrink-0" />
-            Modular Universe architecture enables instant rollout across cities — without rebuilding
-          </li>
-        </ul>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-2">
+          Row Level Security (RLS) ensures strict data protection
+        </p>
+        <p className="text-sm md:text-base text-foreground/60 leading-relaxed">
+          Modular Universe architecture enables instant rollout across cities — without rebuilding
+        </p>
       </div>
     ),
   },
