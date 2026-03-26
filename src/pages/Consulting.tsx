@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import darkBg from "@/assets/dark-section-bg.jpg";
+import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
 import { Globe, Languages, Heart } from "lucide-react";
 
 const services = [
@@ -128,30 +128,42 @@ const Consulting = () => {
         </div>
       </section>
 
-      {/* CTA Dark Section */}
-      <section
-        className="relative py-28 md:py-36 section-padding overflow-hidden"
-        style={{
-          backgroundImage: `url(${darkBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="w-full max-w-3xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
-            Let's Build Something Meaningful
-          </h2>
-          <p className="text-base text-white/70 leading-relaxed mb-10">
-            Whether you're transforming your organization or reimagining urban
-            infrastructure — we're ready to partner with you.
-          </p>
-          <button className="pill-button text-sm bg-white text-black hover:bg-white/90">
-            Contact
-          </button>
-        </div>
-      </section>
+      {/* CTA + Footer with dark gradient */}
+      <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
+        <section className="relative py-28 md:py-36 section-padding overflow-hidden">
+          <NetworkCanvasMirrored />
+          <div className="relative z-10 w-full max-w-3xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+              Let's Build Something Meaningful
+            </h2>
+            <p className="text-base text-white/70 leading-relaxed mb-10">
+              Whether you're transforming your organization or reimagining urban
+              infrastructure — we're ready to partner with you.
+            </p>
+            <button
+              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
+              style={{
+                width: "clamp(160px, 16vw, 220px)",
+                height: "clamp(160px, 16vw, 220px)",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.15)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+              }}
+            >
+              <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
+            </button>
+          </div>
+        </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
