@@ -1,12 +1,12 @@
 
 
-## Plan: Update Hero Circle Text & Clean Up Philosophy Section
+## Plan: Replace iPhone Mockup Video
 
-### Changes
+### What
+Replace the current video (`vv-hero-video.mp4`) playing inside the iPhone mockup in the "More than a platform" section with the newly uploaded video.
 
-1. **`src/components/HeroSection.tsx`** (line 58-60)
-   - Change the text inside the Explore circle from "explore our two core pillars:" to "Discover our portfolio"
+### Steps
 
-2. **`src/components/PhilosophySection.tsx`** (lines 42-48)
-   - Remove the "Discover our portfolio" pill/label element entirely (it's now in the hero circle)
+1. **Copy uploaded video** to `src/assets/vv-hero-video.mp4` (overwrite existing)
+2. No code changes needed — the import in `VirtualVillage.tsx` already references `heroVideo` from `@/assets/vv-hero-video.mp4`
 
