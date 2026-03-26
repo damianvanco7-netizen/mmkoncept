@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import darkBg from "@/assets/dark-section-bg.jpg";
+import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
 import { Globe, Languages, Heart } from "lucide-react";
 
 const services = [
