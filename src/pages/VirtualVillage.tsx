@@ -5,6 +5,7 @@ import TechTabs from "@/components/TechTabs";
 import LeadershipTeam from "@/components/LeadershipTeam";
 import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
+import vvHeroBgVideo from "@/assets/vv-hero-bg.mp4";
 import vvLogoSvg from "@/assets/logo-virtual-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
@@ -34,9 +35,12 @@ const VirtualVillage = () => {
 
           {/* Right — full-height hero photo */}
           <div className="hidden md:block relative overflow-hidden" style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}>
-            <img
-              src={vvHeroPhoto}
-              alt="Virtual Village app in hand"
+            <video
+              src={vvHeroBgVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
