@@ -9,6 +9,8 @@ import vvHeroBgVideo from "@/assets/vv-hero-bg.mp4";
 import vvLogoSvg from "@/assets/logo-virtual-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
+import vvHeroLogo from "@/assets/logo-vv-hero.svg";
+import vvHeroPhone from "@/assets/vv-hero-phone.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
 import galleryWide from "@/assets/gallery-wide.png";
 import gallerySquare1 from "@/assets/gallery-square1.png";
@@ -28,20 +30,23 @@ const VirtualVillage = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
           <div className="flex flex-col justify-center section-padding py-24">
+            <img
+              src={vvHeroLogo}
+              alt="Virtual Village"
+              className="mb-8 md:mb-10"
+              style={{ width: 'clamp(220px, 28vw, 420px)' }}
+            />
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
               Your personalized<br />Universe.
             </h2>
           </div>
 
-          {/* Right — full-height hero photo */}
-          <div className="hidden md:block relative overflow-hidden" style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}>
-            <video
-              src={vvHeroBgVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+          {/* Right — hero phone image */}
+          <div className="hidden md:flex items-center justify-center relative overflow-hidden py-12">
+            <img
+              src={vvHeroPhone}
+              alt="Virtual Village app"
+              className="h-[85%] max-h-[700px] object-contain relative z-10"
             />
           </div>
         </div>
@@ -52,7 +57,7 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-2">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than a platform<br />
                 Virtual Village moves with you.
@@ -117,7 +122,7 @@ const VirtualVillage = () => {
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed max-w-lg">
+            <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 leading-relaxed max-w-lg">
               Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
             </p>
           </div>
@@ -125,7 +130,7 @@ const VirtualVillage = () => {
             <img
               src={vvKruh}
               alt="Virtual Village ecosystem — 7 Life Dimensions"
-              className="w-full max-w-[550px]"
+              className="w-full max-w-[700px]"
             />
           </div>
         </div>

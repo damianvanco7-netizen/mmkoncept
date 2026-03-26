@@ -47,7 +47,9 @@ const Navbar = () => {
     }
   };
 
+  const isVV = location.pathname === "/virtual-village";
   const useLight = !scrolled && isHome && !mobileOpen;
+  const useDarkText = isVV && !mobileOpen;
   // Show logo only after scrolling past hero (on home), or always on subpages
   const showLogo = scrolled || !isHome;
 
@@ -65,24 +67,24 @@ const Navbar = () => {
             <img
               src={logo}
               alt="mm concept"
-              className={`h-12 md:h-14 transition-all duration-500 brightness-0 invert ${
-                showLogo ? "opacity-40" : "opacity-0 pointer-events-none"
-              }`}
+              className={`h-12 md:h-14 transition-all duration-500 ${
+                useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
+              } ${showLogo ? "" : "opacity-0 pointer-events-none"}`}
             />
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/50">
-            <button onClick={goHome} className="transition-colors hover:text-white/80">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="transition-colors hover:text-white/80">Projects & Services</button>
-            <button onClick={() => scrollTo("founder")} className="transition-colors hover:text-white/80">About</button>
-            <button onClick={() => scrollTo("footer")} className="transition-colors hover:text-white/80">Contact</button>
+          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useDarkText ? "text-foreground/50" : "text-white/50"}`}>
+            <button onClick={goHome} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>About</button>
+            <button onClick={() => scrollTo("footer")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Contact</button>
           </div>
 
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden relative z-[60] transition-colors text-white/70"
+            className={`md:hidden relative z-[60] transition-colors ${useDarkText ? "text-foreground/70" : "text-white/70"}`}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
