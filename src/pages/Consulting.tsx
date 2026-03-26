@@ -56,8 +56,10 @@ const Consulting = () => {
           <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Consulting & Strategy
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-semibold tracking-tight text-white leading-[1.08] mb-6">
-            Bridging Innovation, Technology, and Human Experience
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-semibold tracking-tight leading-[1.08] mb-6">
+            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+              Bridging Innovation, Technology, and Human Experience
+            </ShinyText>
           </h1>
           <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl">
             At mm concept, we build strategic bridges between complex
@@ -138,6 +140,8 @@ const Consulting = () => {
         </div>
       </section>
 
+      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
+
       {/* CTA + Footer */}
       <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
@@ -151,6 +155,7 @@ const Consulting = () => {
               infrastructure — we're ready to partner with you.
             </p>
             <button
+              onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
               style={{
                 width: "clamp(160px, 16vw, 220px)",
