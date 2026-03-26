@@ -27,11 +27,6 @@ const VirtualVillage = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
           <div className="flex flex-col justify-center section-padding py-24">
-            <img
-              src={vvLogoSvg}
-              alt="Virtual Village logo"
-              className="w-48 md:w-56 lg:w-64 mb-8 opacity-70"
-            />
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
               Your personalized<br />Universe.
             </h2>
