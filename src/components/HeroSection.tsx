@@ -1,6 +1,5 @@
 import NetworkCanvas from "./NetworkCanvas";
 import ShinyText from "./ShinyText";
-import mmconceptLogo from "@/assets/logo_mmc.svg";
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
