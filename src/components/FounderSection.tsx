@@ -1,4 +1,4 @@
-import martinaPhoto from "@/assets/martina.png";
+import founderPhoto from "@/assets/founder-photo.png";
 import ShinyText from "./ShinyText";
 
 const FounderSection = () => {
@@ -9,7 +9,7 @@ const FounderSection = () => {
     >
       <div className="w-full">
         {/* Small label above heading */}
-        <p className="text-sm md:text-base uppercase tracking-[0.2em] text-white/40 mb-4">About</p>
+        <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">About</p>
 
         {/* Main heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.45] mb-12 md:mb-16">
@@ -20,7 +20,7 @@ const FounderSection = () => {
           </ShinyText>
         </h2>
 
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-end">
           {/* Bio */}
           <div className="md:col-span-3 order-2 md:order-1">
             <div className="space-y-6">
@@ -42,14 +42,14 @@ const FounderSection = () => {
             </div>
           </div>
 
-          {/* Portrait — B&W */}
-          <div className="md:col-span-2 order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="rounded-full overflow-hidden" style={{ width: "clamp(280px, 28vw, 420px)", height: "clamp(280px, 28vw, 420px)" }}>
+          {/* Portrait */}
+          <div className="md:col-span-2 order-1 md:order-2 flex justify-end items-end">
+            <div className="rounded-2xl overflow-hidden w-full" style={{ maxWidth: "380px", aspectRatio: "3/4" }}>
               <img
-                src={martinaPhoto}
+                src={founderPhoto}
                 alt="Martina Masaryková – CEO, mm concept"
-                className="w-full h-full object-cover grayscale"
-                style={{ objectPosition: 'center 15%' }}
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'center 20%' }}
               />
             </div>
           </div>
