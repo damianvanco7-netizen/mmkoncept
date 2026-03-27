@@ -49,7 +49,7 @@ const FounderSection = () => {
                 src={founderPhoto}
                 alt="Martina Masaryková – CEO, mm concept"
                 className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 20%' }}
+                style={{ objectPosition: 'center 15%', transform: 'scale(1.3)' }}
               />
             </div>
           </div>
