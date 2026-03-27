@@ -40,19 +40,6 @@ const FounderSection = () => {
                 Today, as the founder of mm concept and the architect of Virtual Village, I create concepts and ecosystems that turn complexity into clarity. By combining precision, structure, and a deeply human perspective, I design solutions that help people navigate modern life with more ease, focus, and meaning.
               </p>
             </div>
-          </div>
-
-          {/* Portrait */}
-          <div className="md:col-span-2 order-1 md:order-2 flex justify-end items-end">
-            <div className="rounded-2xl overflow-hidden w-full" style={{ maxWidth: "380px", aspectRatio: "3/4" }}>
-              <img
-                src={founderPhoto}
-                alt="Martina Masaryková – CEO, mm concept"
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 15%', transform: 'scale(1.3)' }}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
