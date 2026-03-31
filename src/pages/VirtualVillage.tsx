@@ -37,7 +37,7 @@ const VirtualVillage = () => {
               className="mb-8 md:mb-10"
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
+            <h1 className="heading-h2 text-foreground/80">
               Your personalized<br />Universe.
             </h1>
           </div>
@@ -59,14 +59,14 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-4">
+            <h2 className="heading-h2 mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than a platform<br />
                 Virtual Village moves with you.
               </ShinyText>
             </h2>
             <div className="mb-8">
-              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+              <p className="heading-h3 text-foreground">
                 A companion.<br />
                 A guide.<br />
                 A quiet intelligence <span className="font-normal">in the background.</span>
@@ -120,11 +120,11 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-8">
+            <h2 className="heading-h2 text-foreground/80 mb-8">
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 leading-relaxed max-w-lg">
+            <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
               Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
             </p>
           </div>
@@ -153,7 +153,7 @@ const VirtualVillage = () => {
       {/* New section — From concept to product */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4 max-w-4xl">
+          <h2 className="heading-h2 text-foreground/80 mb-4 max-w-4xl">
             From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
           </h2>
         </div>
@@ -191,7 +191,7 @@ const VirtualVillage = () => {
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <NetworkCanvasMirrored />
           <div className="relative z-10 w-full max-w-3xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+            <h2 className="heading-h2 text-white mb-6">
               Be Part of the Digital Evolution
             </h2>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
