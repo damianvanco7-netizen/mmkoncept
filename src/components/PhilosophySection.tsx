@@ -46,20 +46,10 @@ const PhilosophySection = () => {
             <button
               key={item.title}
               onClick={() => navigate(item.route)}
-              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-12"
+              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-12 liquid-glass-circle"
               style={{
                 width: "clamp(300px, 30vw, 440px)",
                 height: "clamp(300px, 30vw, 440px)",
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
               }}
             >
               <span className="text-white text-lg md:text-xl font-semibold mb-2">
