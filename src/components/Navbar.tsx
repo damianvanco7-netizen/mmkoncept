@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-mmconcept-new.svg";
+import logo from "@/assets/logo-mmconcept-2.svg";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -50,8 +50,10 @@ const Navbar = () => {
   const isVV = location.pathname === "/virtual-village";
   const useLight = !scrolled && isHome && !mobileOpen;
   const useDarkText = isVV && !mobileOpen;
-  // Show logo only after scrolling past hero (on home), or always on subpages
   const showLogo = scrolled || !isHome;
+
+  // Glass effect: show when scrolled or on subpages (not on home hero)
+  const showGlass = scrolled || !isHome;
 
   return (
     <>
@@ -59,7 +61,11 @@ const Navbar = () => {
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
           mobileOpen
             ? "bg-card"
-            : "bg-transparent border-b border-transparent"
+            : showGlass
+              ? useDarkText
+                ? "backdrop-blur-xl bg-white/60 border-b border-foreground/5"
+                : "backdrop-blur-xl bg-white/5 border-b border-white/10"
+              : "bg-transparent border-b border-transparent"
         }`}
       >
         <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
