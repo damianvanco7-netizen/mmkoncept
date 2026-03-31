@@ -83,20 +83,10 @@ const Consulting = () => {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default"
+                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default liquid-glass-circle"
                 style={{
                   width: "clamp(280px, 25vw, 380px)",
                   height: "clamp(280px, 25vw, 380px)",
-                  background: "transparent",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
                 }}
               >
                 <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight">
