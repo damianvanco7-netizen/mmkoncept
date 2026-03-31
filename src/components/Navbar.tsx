@@ -55,18 +55,27 @@ const Navbar = () => {
   // Glass effect: show when scrolled or on subpages (not on home hero)
   const showGlass = scrolled || !isHome;
 
+  const liquidGlassStyle = showGlass && !mobileOpen ? {
+    backdropFilter: 'blur(40px) saturate(1.8) brightness(1.1)',
+    WebkitBackdropFilter: 'blur(40px) saturate(1.8) brightness(1.1)',
+    background: useDarkText
+      ? 'linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.25) 100%)'
+      : 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+    borderBottom: useDarkText
+      ? '1px solid rgba(255,255,255,0.5)'
+      : '1px solid rgba(255,255,255,0.12)',
+    boxShadow: useDarkText
+      ? 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.04), 0 4px 30px rgba(0,0,0,0.06)'
+      : 'inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(255,255,255,0.05), 0 4px 30px rgba(0,0,0,0.1)',
+  } : {};
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-          mobileOpen
-            ? "bg-card"
-            : showGlass
-              ? useDarkText
-                ? "backdrop-blur-xl bg-white/60 border-b border-foreground/5"
-                : "backdrop-blur-xl bg-white/5 border-b border-white/10"
-              : "bg-transparent border-b border-transparent"
+          mobileOpen ? "bg-card" : !showGlass ? "bg-transparent" : ""
         }`}
+        style={liquidGlassStyle}
       >
         <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
           <button onClick={goHome} className="flex items-center">
