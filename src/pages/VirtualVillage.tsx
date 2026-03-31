@@ -66,7 +66,7 @@ const VirtualVillage = () => {
               </ShinyText>
             </h2>
             <div className="mb-8">
-              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+              <p className="heading-h3 text-foreground">
                 A companion.<br />
                 A guide.<br />
                 A quiet intelligence <span className="font-normal">in the background.</span>
