@@ -26,23 +26,12 @@ const HeroSection = () => {
       {/* Explore circle — half in hero, half in next section */}
       <button
         onClick={() => scrollTo("philosophy")}
-        className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500"
+        className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500 liquid-glass-circle"
         style={{
           width: 'clamp(280px, 25vw, 400px)',
           height: 'clamp(280px, 25vw, 400px)',
           bottom: 'clamp(-140px, -12.5vw, -200px)',
           right: 'clamp(40px, 8vw, 160px)',
-          background: 'transparent',
-          border: '1px solid rgba(255,255,255,0.15)',
-          boxShadow: 'none',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'transparent';
-          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
         }}
       >
         <span className="text-white/60 text-base md:text-lg lg:text-xl font-medium tracking-wide leading-snug text-center px-8">
