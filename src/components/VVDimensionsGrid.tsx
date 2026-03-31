@@ -56,7 +56,7 @@ const DimensionCard = ({ icon, title, description }: { icon: string; title: stri
       <img src={icon} alt={title} className="w-8 h-8 md:w-10 md:h-10 opacity-60" />
     </div>
     <div className="pt-1">
-      <h3 className="text-base md:text-lg font-bold text-foreground/70 mb-1">{title}</h3>
+      <h3 className="heading-h4 text-foreground/70 mb-1">{title}</h3>
       <p className="text-sm md:text-base text-foreground/60 leading-relaxed max-w-[250px]">{description}</p>
     </div>
   </div>
