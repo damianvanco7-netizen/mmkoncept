@@ -23,6 +23,7 @@ const ScrollToTop = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <LiquidGlassFilter />
       <Toaster />
       <Sonner />
       <BrowserRouter>
