@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import VirtualVillage from "./pages/VirtualVillage";
 import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
+import LiquidGlassFilter from "./components/LiquidGlassFilter";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const ScrollToTop = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <LiquidGlassFilter />
       <Toaster />
       <Sonner />
       <BrowserRouter>

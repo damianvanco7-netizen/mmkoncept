@@ -52,29 +52,21 @@ const Navbar = () => {
   const useDarkText = isVV && !mobileOpen;
   const showLogo = scrolled || !isHome;
 
-  // Glass effect: always visible
   const showGlass = !mobileOpen;
-
-  const liquidGlassStyle = showGlass ? {
-    backdropFilter: 'blur(20px) saturate(1.8) brightness(1.1)',
-    WebkitBackdropFilter: 'blur(20px) saturate(1.8) brightness(1.1)',
-    background: useDarkText
-      ? 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.18) 100%)'
-      : 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
-    boxShadow: useDarkText
-      ? 'inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.03), 0 4px 24px rgba(0,0,0,0.05)'
-      : 'inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.08)',
-  } : {};
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-          mobileOpen ? "bg-card" : !showGlass ? "bg-transparent" : ""
-        }`}
-        style={liquidGlassStyle}
+          mobileOpen ? "bg-card" : ""
+        } ${showGlass && !mobileOpen ? "liquid-glass-nav" : ""}`}
+        style={showGlass && !mobileOpen ? {
+          background: useDarkText
+            ? 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.18) 100%)'
+            : 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
+        } : undefined}
       >
-        <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4">
+        <div className="w-full flex items-center justify-between px-6 md:px-12 lg:px-20 xl:px-32 py-4 relative z-10">
           <button onClick={goHome} className="flex items-center">
             <img
               src={logo}
