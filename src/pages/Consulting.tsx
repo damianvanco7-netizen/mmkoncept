@@ -119,7 +119,7 @@ const Consulting = () => {
           <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Why mm concept?
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold leading-tight mb-16">
+          <h2 className="heading-h2 mb-16">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
               Built on experience. Driven by purpose.
             </ShinyText>
