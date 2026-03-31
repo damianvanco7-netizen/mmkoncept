@@ -191,7 +191,7 @@ const VirtualVillage = () => {
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <NetworkCanvasMirrored />
           <div className="relative z-10 w-full max-w-3xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-6">
+            <h2 className="heading-h2 text-white mb-6">
               Be Part of the Digital Evolution
             </h2>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
