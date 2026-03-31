@@ -1,35 +1,47 @@
 
 
-## Plan: Network Canvas Changes + Footer Unification
+## Plan: New Logo + Glass Header + Heading System
 
-### 1. Remove logo from Homepage Hero
-**File:** `src/components/HeroSection.tsx`
-- Remove the `<img>` element (lines 18-27) showing `mmconceptLogo` above the title
-- Remove the unused import on line 3
+### 1. Replace Navbar logo with uploaded SVG
+**File:** `src/assets/logo-mmconcept-new.svg` (overwrite) or new file
+- Copy `user-uploads://logo_mmconcept-2.svg` to `src/assets/logo-mmconcept-2.svg`
+- Update import in `src/components/Navbar.tsx` to use the new logo
 
-### 2. Create mirrored NetworkCanvas component
-**File:** `src/components/NetworkCanvasMirrored.tsx` (new)
-- Copy NetworkCanvas but mirror it horizontally — cluster on the RIGHT side instead of left
-- Change `clusterCenterX` from `w * 0.28` to `w * 0.72`
-- Adjust dot positions to start from right and go left
-- Adjust exit node sorting to favor left-side nodes
-- This creates a mirrored version for CTA sections
+### 2. Glassmorphism header effect
+**File:** `src/components/Navbar.tsx`
 
-### 3. Add mirrored network to Virtual Village CTA
-**File:** `src/pages/VirtualVillage.tsx` (lines 189-224)
-- Import `NetworkCanvasMirrored`
-- Add `<NetworkCanvasMirrored />` inside the "Be Part of the Digital Evolution" section as absolute background
+The FluidGlass component from reactbits requires Three.js, react-three/fiber, react-three/drei, and GLB model files — this is extremely heavy (~500KB+) just for a navbar background and would hurt performance significantly.
 
-### 4. Add mirrored network to Consulting CTA
-**File:** `src/pages/Consulting.tsx` (lines 131-152)
-- Import `NetworkCanvasMirrored`
-- Remove the `darkBg` background image
-- Replace with dark gradient background matching Virtual Village/homepage (`#272727 → #615F5D`)
-- Add `<NetworkCanvasMirrored />` as absolute background
+**Recommended approach:** CSS `backdrop-filter: blur()` glassmorphism that achieves a similar frosted glass look without the 3D overhead:
+- When scrolled: `backdrop-blur-xl bg-white/5 border-b border-white/10` (on dark pages) or `bg-black/5 border-b border-black/10` (on light pages like VV)
+- Smooth transition on scroll
+- This gives the "fluid glass" translucent blur effect natively with zero dependencies
 
-### 5. Unify Consulting footer & CTA with Virtual Village style
-**File:** `src/pages/Consulting.tsx`
-- Wrap CTA section + Footer in a `<div>` with the same dark gradient as Virtual Village: `linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)`
-- Replace the "Contact" pill button with the same circle button style as Virtual Village ("Connect")
-- Remove unused `darkBg` import
+### 3. Define heading hierarchy (H1-H4)
+**File:** `src/index.css` (add utility classes) + update all pages
+
+Based on current usage:
+
+| Level | Reference | Sizes |
+|-------|-----------|-------|
+| **H1** | "Life, just simplified." | `clamp(3.5rem, 9vw, 10.5rem)`, font-semibold, tracking-tight, leading-[1.15] |
+| **H2** | "Bridging Precision and Humanity" | `text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem]`, font-semibold, tracking-tight, leading-[1.15] |
+| **H3** | "A companion. A guide..." | `text-xl md:text-2xl lg:text-3xl`, font-bold, leading-tight |
+| **H4** | Icon section titles in VV dimensions | `text-base md:text-lg`, font-semibold |
+
+Create Tailwind `@apply` classes `.heading-h1` through `.heading-h4` in `src/index.css` and apply them consistently across all pages.
+
+### 4. Ensure "Bridging Precision and Humanity" uses `<h2>` tag
+**File:** `src/components/FounderSection.tsx`
+- Already uses `<h2>` — just ensure it has the standardized H2 class
+
+### Files to edit
+1. `src/assets/logo-mmconcept-2.svg` — copy new logo
+2. `src/components/Navbar.tsx` — new logo import + glass blur effect
+3. `src/index.css` — heading utility classes
+4. `src/components/HeroSection.tsx` — apply `.heading-h1`
+5. `src/components/FounderSection.tsx` — apply `.heading-h2`
+6. `src/pages/VirtualVillage.tsx` — apply heading classes consistently
+7. `src/components/VVDimensionsGrid.tsx` — apply `.heading-h4`
+8. `src/pages/Consulting.tsx` — apply heading classes
 
