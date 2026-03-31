@@ -59,7 +59,7 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div className="flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-semibold tracking-tight leading-[1.15] mb-8 pb-4">
+            <h2 className="heading-h2 mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than a platform<br />
                 Virtual Village moves with you.
