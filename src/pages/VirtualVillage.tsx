@@ -124,7 +124,7 @@ const VirtualVillage = () => {
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 leading-relaxed max-w-lg">
+            <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
               Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
             </p>
           </div>
