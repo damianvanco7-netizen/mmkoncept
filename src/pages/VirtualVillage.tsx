@@ -37,7 +37,7 @@ const VirtualVillage = () => {
               className="mb-8 md:mb-10"
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-bold tracking-tight text-foreground/80 leading-[1.1]">
+            <h1 className="heading-h2 text-foreground/80">
               Your personalized<br />Universe.
             </h1>
           </div>
