@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
-import VVDimensionsAccordion from "@/components/VVDimensionsAccordion";
+
 import TechTabs from "@/components/TechTabs";
 import LeadershipTeam from "@/components/LeadershipTeam";
 
@@ -146,10 +146,6 @@ const VirtualVillage = () => {
       {/* Section 4 — Dimensions grid */}
       <VVDimensionsGrid />
 
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Section 4b — Dimensions accordion */}
-      <VVDimensionsAccordion />
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
