@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
 import ShinyText from "@/components/ShinyText";
+import ContactFormDialog from "@/components/ContactFormDialog";
 
 const services = [
   {
