@@ -205,6 +205,7 @@ const Gdpr = () => {
       </section>
 
       <Footer />
+      </div>
     </div>
   );
 };
