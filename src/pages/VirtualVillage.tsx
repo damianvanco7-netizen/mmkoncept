@@ -77,13 +77,13 @@ const VirtualVillage = () => {
           <div className="flex flex-col items-start">
             <h2 className="heading-h2 mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
-                More than a platform<br />
+                More than<br />a platform<br />
                 Virtual Village moves with you.
               </ShinyText>
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal mb-8">
               A companion.<br />
-              A guide. A quiet intelligence in the background.
+              A guide. A quiet intelligence<br />in the background.
             </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
               It helps you get things done effortlessly —<br />
