@@ -226,133 +226,173 @@
      iOS-style Liquid Glass Effect
      ═══════════════════════════════════════════ */
 
-  /* ═══════════════════════════════════════════
-     Liquid Glass — Dark variant (tmavé pozadie)
-     ═══════════════════════════════════════════ */
-
   .liquid-glass-circle {
     position: relative;
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(18px) saturate(1.6);
-    -webkit-backdrop-filter: blur(18px) saturate(1.6);
-    overflow: visible;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.03) 30%,
+      rgba(255, 255, 255, 0.01) 60%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+    border: 0.5px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
     box-shadow:
-      0 -1px 0 1.5px rgba(255,255,255,0.55),
-      0  1px 0 1.5px rgba(0,0,0,0.6),
-     -1px 0 0 1px   rgba(255,255,255,0.3),
-      1px 0 0 1px   rgba(0,0,0,0.35),
-      0 12px 36px rgba(0,0,0,0.55),
-      0  3px 10px rgba(0,0,0,0.4),
-      0  3px 10px rgba(255,255,255,0.12) inset,
-      0 -3px  8px rgba(0,0,0,0.4) inset;
-    border: 1px solid rgba(255,255,255,0.18);
+      /* outer glow */
+      0 8px 40px rgba(0, 0, 0, 0.15),
+      0 2px 12px rgba(0, 0, 0, 0.08),
+      /* specular top edge — iOS signature */
+      inset 0 1px 1px rgba(255, 255, 255, 0.25),
+      /* subtle bottom reflection */
+      inset 0 -1px 1px rgba(255, 255, 255, 0.06),
+      /* inner depth */
+      inset 0 0 20px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Top specular highlight band — iOS liquid glass signature */
   .liquid-glass-circle::before {
     content: '';
     position: absolute;
-    top: 6px; left: 18px; right: 18px;
-    height: 22px;
-    border-radius: 20px;
-    background: linear-gradient(180deg,
-      rgba(255,255,255,0.32) 0%,
-      rgba(255,255,255,0.0) 100%
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 45%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.08) 30%,
+      rgba(255, 255, 255, 0.02) 60%,
+      transparent 100%
     );
-    filter: blur(2px);
+    border-radius: inherit;
     pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
   }
 
+  /* Caustic light refraction — subtle moving light */
   .liquid-glass-circle::after {
     content: '';
     position: absolute;
-    bottom: 7px; left: 22px; right: 22px;
-    height: 10px;
-    border-radius: 10px;
-    background: linear-gradient(0deg,
-      rgba(255,255,255,0.18) 0%,
-      rgba(255,255,255,0.0) 100%
-    );
-    filter: blur(1.5px);
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(ellipse 60% 50% at 25% 15%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 30% at 50% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
     pointer-events: none;
+    animation: liquid-caustic 8s ease-in-out infinite alternate;
   }
 
   .liquid-glass-circle:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 255, 255, 0.02) 60%,
+      rgba(255, 255, 255, 0.12) 100%
+    );
+    border-color: rgba(255, 255, 255, 0.28);
     box-shadow:
-      0 -1px 0 1.5px rgba(255,255,255,0.65),
-      0  1px 0 1.5px rgba(0,0,0,0.7),
-     -1px 0 0 1px   rgba(255,255,255,0.4),
-      1px 0 0 1px   rgba(0,0,0,0.45),
-      0 16px 44px rgba(0,0,0,0.65),
-      0  4px 12px rgba(0,0,0,0.5),
-      0  4px 12px rgba(255,255,255,0.15) inset,
-      0 -4px 10px rgba(0,0,0,0.5) inset;
+      0 12px 48px rgba(0, 0, 0, 0.2),
+      0 4px 16px rgba(0, 0, 0, 0.1),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.08),
+      inset 0 0 30px rgba(255, 255, 255, 0.05);
     transform: translateY(-2px);
   }
 
   /* ═══════════════════════════════════════════
-     Liquid Glass — Light variant (svetlé pozadie)
+     Liquid Glass Circle — Light Background
      ═══════════════════════════════════════════ */
 
   .liquid-glass-circle-light {
     position: relative;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(18px) saturate(1.6);
-    -webkit-backdrop-filter: blur(18px) saturate(1.6);
-    overflow: visible;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.25) 30%,
+      rgba(255, 255, 255, 0.15) 60%,
+      rgba(255, 255, 255, 0.40) 100%
+    );
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6) brightness(1.08);
     box-shadow:
-      0 -1px 0 1.5px rgba(255,255,255,0.95),
-      0  1px 0 1.5px rgba(160,158,154,0.55),
-     -1px 0 0 1px   rgba(255,255,255,0.7),
-      1px 0 0 1px   rgba(200,198,194,0.4),
-      0 8px 24px rgba(0,0,0,0.13),
-      0 2px 6px  rgba(0,0,0,0.08),
-      0  3px 8px rgba(255,255,255,0.9) inset,
-      0 -3px 8px rgba(180,178,172,0.35) inset;
-    border: 1px solid rgba(255,255,255,0.6);
+      0 8px 32px rgba(0, 0, 0, 0.10),
+      0 2px 8px rgba(0, 0, 0, 0.06),
+      inset 0 1px 1px rgba(255, 255, 255, 0.6),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.15);
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .liquid-glass-circle-light::before {
     content: '';
     position: absolute;
-    top: 6px; left: 18px; right: 18px;
-    height: 22px;
-    border-radius: 20px;
-    background: linear-gradient(180deg,
-      rgba(255,255,255,0.72) 0%,
-      rgba(255,255,255,0.0) 100%
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 45%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.50) 0%,
+      rgba(255, 255, 255, 0.25) 30%,
+      rgba(255, 255, 255, 0.08) 60%,
+      transparent 100%
     );
-    filter: blur(2px);
+    border-radius: inherit;
     pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
   }
 
   .liquid-glass-circle-light::after {
     content: '';
     position: absolute;
-    bottom: 7px; left: 22px; right: 22px;
-    height: 10px;
-    border-radius: 10px;
-    background: linear-gradient(0deg,
-      rgba(255,255,255,0.45) 0%,
-      rgba(255,255,255,0.0) 100%
-    );
-    filter: blur(1.5px);
+    inset: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(ellipse 60% 50% at 25% 15%, rgba(255, 255, 255, 0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 75% 75%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 30% at 50% 100%, rgba(255, 255, 255, 0.10) 0%, transparent 60%);
     pointer-events: none;
+    animation: liquid-caustic 8s ease-in-out infinite alternate;
   }
 
   .liquid-glass-circle-light:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.35) 30%,
+      rgba(255, 255, 255, 0.20) 60%,
+      rgba(255, 255, 255, 0.50) 100%
+    );
+    border-color: rgba(0, 0, 0, 0.12);
     box-shadow:
-      0 -1px 0 1.5px rgba(255,255,255,1),
-      0  1px 0 1.5px rgba(160,158,154,0.65),
-     -1px 0 0 1px   rgba(255,255,255,0.8),
-      1px 0 0 1px   rgba(200,198,194,0.5),
-      0 12px 32px rgba(0,0,0,0.16),
-      0 3px 8px  rgba(0,0,0,0.10),
-      0  4px 10px rgba(255,255,255,1) inset,
-      0 -4px 10px rgba(180,178,172,0.4) inset;
+      0 12px 40px rgba(0, 0, 0, 0.14),
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 1px 2px rgba(255, 255, 255, 0.7),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+      inset 0 0 30px rgba(255, 255, 255, 0.20);
     transform: translateY(-2px);
   }
+
+  @keyframes liquid-caustic {
+    0% {
+      opacity: 0.6;
+      transform: scale(1) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.05) rotate(3deg);
+    }
+  }
+
   /* ═══════════════════════════════════════════
      Liquid Glass Navbar — iOS style
      ═══════════════════════════════════════════ */
