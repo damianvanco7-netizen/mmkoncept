@@ -47,11 +47,7 @@ const dimensions = [
 const DimensionCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => (
   <div className="flex items-start gap-5">
     <div
-      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full border border-foreground/15 flex items-center justify-center"
-      style={{
-        background: "linear-gradient(145deg, rgba(255,255,255,0.5), rgba(200,195,190,0.3))",
-        boxShadow: "4px 4px 10px rgba(0,0,0,0.06), -2px -2px 6px rgba(255,255,255,0.4)",
-      }}
+      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full liquid-glass-circle flex items-center justify-center"
     >
       <img src={icon} alt={title} className="w-8 h-8 md:w-10 md:h-10 opacity-60" />
     </div>
@@ -69,9 +65,9 @@ const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full">
-        <h2 className="heading-h2 text-foreground/80 max-w-3xl mb-20">
+        <h3 className="heading-h3 text-foreground/80 max-w-3xl mb-20">
           Virtual Village is built on a modular architecture designed to harmonize every aspect of modern daily life.
-        </h2>
+        </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 mb-16">
           {topRow.map((dim) => (

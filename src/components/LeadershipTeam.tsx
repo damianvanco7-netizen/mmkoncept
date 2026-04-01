@@ -46,7 +46,7 @@ const LeadershipTeam = () => {
         <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
           Meet Our Leadership Team
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-foreground/80 leading-tight mb-4">
+        <h2 className="heading-h2 text-foreground/80 mb-4">
           Diversity is Our Power.
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 max-w-4xl">
@@ -65,9 +65,9 @@ const LeadershipTeam = () => {
             <button
               key={member.id}
               onClick={() => switchMember(member.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle transition-all duration-300 ${
                 active === member.id
-                  ? "border-foreground/40 text-foreground bg-foreground/10 shadow-sm"
+                  ? "border-foreground/40 text-foreground"
                   : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
               }`}
             >
