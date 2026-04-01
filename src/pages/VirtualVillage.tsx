@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 import TechTabs from "@/components/TechTabs";
 import LeadershipTeam from "@/components/LeadershipTeam";
-import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
+
 import ShinyText from "@/components/ShinyText";
 import vvLogo from "@/assets/logo-village.svg";
 import vvHeroBgVideo from "@/assets/vv-hero-bg.mp4";
