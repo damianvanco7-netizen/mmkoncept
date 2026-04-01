@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
+import VVDimensionsAccordion from "@/components/VVDimensionsAccordion";
 import TechTabs from "@/components/TechTabs";
 import LeadershipTeam from "@/components/LeadershipTeam";
 
