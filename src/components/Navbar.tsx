@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-mmconcept-2.svg";
+import ContactFormDialog from "@/components/ContactFormDialog";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -82,7 +84,7 @@ const Navbar = () => {
             <button onClick={goHome} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Origin</button>
             <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Projects & Services</button>
             <button onClick={() => scrollTo("founder")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>About</button>
-            <button onClick={() => scrollTo("footer")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Contact</button>
+            <button onClick={() => setContactOpen(true)} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Contact</button>
           </div>
 
           {/* Mobile hamburger */}
@@ -101,9 +103,11 @@ const Navbar = () => {
           <button onClick={goHome} className="text-2xl font-semibold text-foreground">Origin</button>
           <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-foreground">Projects & Services</button>
           <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-foreground">About</button>
-          <button onClick={() => scrollTo("footer")} className="text-2xl font-semibold text-foreground">Contact</button>
+          <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-foreground">Contact</button>
         </div>
       )}
+
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </>
   );
 };

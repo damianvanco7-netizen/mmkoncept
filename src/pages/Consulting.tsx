@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
 import ShinyText from "@/components/ShinyText";
+import ContactFormDialog from "@/components/ContactFormDialog";
 
 const services = [
   {
@@ -40,6 +42,8 @@ const whyItems = [
 ];
 
 const Consulting = () => {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <div
       className="min-h-screen"
@@ -156,7 +160,7 @@ const Consulting = () => {
               infrastructure — we're ready to partner with you.
             </p>
             <button
-              onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setContactOpen(true)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle"
               style={{
                 width: "clamp(160px, 16vw, 220px)",
@@ -170,6 +174,7 @@ const Consulting = () => {
 
         <Footer />
       </div>
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </div>
   );
 };
