@@ -174,6 +174,7 @@ const Consulting = () => {
 
         <Footer />
       </div>
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </div>
   );
 };
