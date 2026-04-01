@@ -1,26 +1,28 @@
 
 
-## Plan: Liquid Glass efekt na bledom pozadí (Modular Architecture)
+## Plan: Vylepšenie Liquid Glass efektu podľa referencie
 
-### Problém
-Aktuálny `.liquid-glass-circle` používa biele (`rgba(255,255,255,...)`) highlights, bordery a gradienty — tie sú navrhnuté pre tmavé pozadie. Na bledom/béžovom pozadí sekcie Modular Architecture sú tieto efekty prakticky neviditeľné.
+Referenčný obrázok ukazuje čisté sklenené objekty s výrazným **tenkým bielym border/edge highlight**, jemným **vnútorným tieňom (inset shadow)** a takmer **transparentným pozadím** — sklo je priesvitné, nie mliečne. Kľúčové rozdiely oproti aktuálnemu stavu:
 
-### Riešenie
-Vytvoríme novú CSS triedu `.liquid-glass-circle-light` optimalizovanú pre svetlé pozadie:
+1. **Aktuálny problém**: Príliš veľa bielej výplne (opacity), nedostatočný border highlight, slabý vnútorný tieň
+2. **Cieľ**: Skutočne transparentné sklo s ostrým edge highlight a jemným depth shadow
 
-**Súbor: `src/index.css`**
-- Nová trieda `.liquid-glass-circle-light` s týmito odlišnosťami oproti dark variante:
-  - **Background gradient** — jemný mix tmavších a svetlejších tónov namiesto čisto bielych (`rgba(0,0,0,0.04)` až `rgba(255,255,255,0.5)`)
-  - **Border** — tmavší, viditeľnejší: `rgba(0,0,0,0.08)` + biely inner glow
-  - **Box-shadow** — outer shadow s tmavými tieňmi (`rgba(0,0,0,0.12)`), inner specular s bielou
-  - **Backdrop-filter** — rovnaký blur(24px), saturácia, brightness
-  - **`::before`** — specular highlight zostáva biely (na svetlom pozadí stále funguje ako odlesk)
-  - **`::after`** — caustic efekty s mix bielych a tmavých radiálnych gradientov pre lepší kontrast
-  - **Hover** — výraznejší shadow + lift
+### Zmeny v `src/index.css`
 
-**Súbor: `src/components/VVDimensionsGrid.tsx`**
-- Zmeniť triedu kruhov z `liquid-glass-circle` na `liquid-glass-circle-light`
+**`.liquid-glass-circle` (tmavé pozadie):**
+- Background gradient — znížiť opacity na minimum (0.03–0.06) pre skutočnú transparentnosť
+- Border — zvýrazniť na ~0.8px, `rgba(255,255,255,0.35)` pre ostrý edge
+- Box-shadow — pridať výraznejší inset shadow po celom obvode pre „vhĺbený" glass efekt, jemný outer glow
+- `::before` — zúžiť specular highlight, zvýšiť kontrast (top edge reflection)
+- Odstrániť animáciu caustics (na referencii nie je)
 
-### Výsledok
-Kruhy v sekcii Modular Architecture budú mať viditeľný glass efekt — jemné tiene, specular odlesky a hĺbku — rovnako výrazný ako na tmavom pozadí homepage, ale prispôsobený svetlému béžovému pozadiu.
+**`.liquid-glass-circle-light` (svetlé pozadie):**
+- Background gradient — takmer transparentný (opacity 0.08–0.15)
+- Border — tenký ale viditeľný, `rgba(0,0,0,0.12)` + jemný biely inner edge
+- Box-shadow — výrazný inset tieň okolo vnútorného okraja (~`inset 0 2px 8px rgba(0,0,0,0.08)`) + outer drop shadow
+- `::before` — top specular edge highlight ako na referencii
+- Rovnako bez caustic animácie
+
+### Súbory
+- `src/index.css` — prepísať obe triedy `.liquid-glass-circle` a `.liquid-glass-circle-light`
 
