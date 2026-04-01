@@ -212,6 +212,7 @@ const VirtualVillage = () => {
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
         <Footer />
       </div>
+      </div>
     </div>
   );
 };
