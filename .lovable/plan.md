@@ -1,47 +1,26 @@
 
 
-## Plan: New Logo + Glass Header + Heading System
+## Plan: Liquid Glass efekt na bledom pozadí (Modular Architecture)
 
-### 1. Replace Navbar logo with uploaded SVG
-**File:** `src/assets/logo-mmconcept-new.svg` (overwrite) or new file
-- Copy `user-uploads://logo_mmconcept-2.svg` to `src/assets/logo-mmconcept-2.svg`
-- Update import in `src/components/Navbar.tsx` to use the new logo
+### Problém
+Aktuálny `.liquid-glass-circle` používa biele (`rgba(255,255,255,...)`) highlights, bordery a gradienty — tie sú navrhnuté pre tmavé pozadie. Na bledom/béžovom pozadí sekcie Modular Architecture sú tieto efekty prakticky neviditeľné.
 
-### 2. Glassmorphism header effect
-**File:** `src/components/Navbar.tsx`
+### Riešenie
+Vytvoríme novú CSS triedu `.liquid-glass-circle-light` optimalizovanú pre svetlé pozadie:
 
-The FluidGlass component from reactbits requires Three.js, react-three/fiber, react-three/drei, and GLB model files — this is extremely heavy (~500KB+) just for a navbar background and would hurt performance significantly.
+**Súbor: `src/index.css`**
+- Nová trieda `.liquid-glass-circle-light` s týmito odlišnosťami oproti dark variante:
+  - **Background gradient** — jemný mix tmavších a svetlejších tónov namiesto čisto bielych (`rgba(0,0,0,0.04)` až `rgba(255,255,255,0.5)`)
+  - **Border** — tmavší, viditeľnejší: `rgba(0,0,0,0.08)` + biely inner glow
+  - **Box-shadow** — outer shadow s tmavými tieňmi (`rgba(0,0,0,0.12)`), inner specular s bielou
+  - **Backdrop-filter** — rovnaký blur(24px), saturácia, brightness
+  - **`::before`** — specular highlight zostáva biely (na svetlom pozadí stále funguje ako odlesk)
+  - **`::after`** — caustic efekty s mix bielych a tmavých radiálnych gradientov pre lepší kontrast
+  - **Hover** — výraznejší shadow + lift
 
-**Recommended approach:** CSS `backdrop-filter: blur()` glassmorphism that achieves a similar frosted glass look without the 3D overhead:
-- When scrolled: `backdrop-blur-xl bg-white/5 border-b border-white/10` (on dark pages) or `bg-black/5 border-b border-black/10` (on light pages like VV)
-- Smooth transition on scroll
-- This gives the "fluid glass" translucent blur effect natively with zero dependencies
+**Súbor: `src/components/VVDimensionsGrid.tsx`**
+- Zmeniť triedu kruhov z `liquid-glass-circle` na `liquid-glass-circle-light`
 
-### 3. Define heading hierarchy (H1-H4)
-**File:** `src/index.css` (add utility classes) + update all pages
-
-Based on current usage:
-
-| Level | Reference | Sizes |
-|-------|-----------|-------|
-| **H1** | "Life, just simplified." | `clamp(3.5rem, 9vw, 10.5rem)`, font-semibold, tracking-tight, leading-[1.15] |
-| **H2** | "Bridging Precision and Humanity" | `text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem]`, font-semibold, tracking-tight, leading-[1.15] |
-| **H3** | "A companion. A guide..." | `text-xl md:text-2xl lg:text-3xl`, font-bold, leading-tight |
-| **H4** | Icon section titles in VV dimensions | `text-base md:text-lg`, font-semibold |
-
-Create Tailwind `@apply` classes `.heading-h1` through `.heading-h4` in `src/index.css` and apply them consistently across all pages.
-
-### 4. Ensure "Bridging Precision and Humanity" uses `<h2>` tag
-**File:** `src/components/FounderSection.tsx`
-- Already uses `<h2>` — just ensure it has the standardized H2 class
-
-### Files to edit
-1. `src/assets/logo-mmconcept-2.svg` — copy new logo
-2. `src/components/Navbar.tsx` — new logo import + glass blur effect
-3. `src/index.css` — heading utility classes
-4. `src/components/HeroSection.tsx` — apply `.heading-h1`
-5. `src/components/FounderSection.tsx` — apply `.heading-h2`
-6. `src/pages/VirtualVillage.tsx` — apply heading classes consistently
-7. `src/components/VVDimensionsGrid.tsx` — apply `.heading-h4`
-8. `src/pages/Consulting.tsx` — apply heading classes
+### Výsledok
+Kruhy v sekcii Modular Architecture budú mať viditeľný glass efekt — jemné tiene, specular odlesky a hĺbku — rovnako výrazný ako na tmavom pozadí homepage, ale prispôsobený svetlému béžovému pozadiu.
 
