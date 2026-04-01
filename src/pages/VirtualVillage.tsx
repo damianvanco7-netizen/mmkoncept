@@ -13,9 +13,9 @@ import heroVideo from "@/assets/vv-hero-video.mp4";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
 import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
-import galleryWide from "@/assets/gallery-wide.png";
-import gallerySquare1 from "@/assets/gallery-square1.png";
-import gallerySquare2 from "@/assets/gallery-square2.png";
+import gallerySquare1 from "@/assets/vv-photo-2-1.png";
+import gallerySquare2 from "@/assets/vv-photo-3-1.png";
+import galleryWide from "@/assets/vv-photo-1-1.png";
 
 import teamPhoto from "@/assets/team-photo.png";
 import vvHeroPhoto from "@/assets/vv-hero-photo.png";
