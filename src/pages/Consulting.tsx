@@ -160,7 +160,7 @@ const Consulting = () => {
               infrastructure — we're ready to partner with you.
             </p>
             <button
-              onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setContactOpen(true)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle"
               style={{
                 width: "clamp(160px, 16vw, 220px)",
