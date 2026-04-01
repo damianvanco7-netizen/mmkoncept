@@ -27,9 +27,9 @@ const VirtualVillage = () => {
   return (
     <div className="min-h-screen relative">
       <Grainient
-        color1="#BEB4A2"
-        color2="#E8E2D9"
-        color3="#D5CEC3"
+        color1="#A69C8D"
+        color2="#D3CFC8"
+        color3="#BDB5A9"
         timeSpeed={0.55}
         warpFrequency={4.0}
         warpSpeed={2.5}
@@ -137,8 +137,10 @@ const VirtualVillage = () => {
               Everyday Ecosystem
             </p>
             <h2 className="heading-h2 text-foreground/80 mb-8">
-              7 Life Dimensions.<br />
-              One Intuitive Space.
+              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+                7 Life Dimensions.<br />
+                One Intuitive Space.
+              </ShinyText>
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
               Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
