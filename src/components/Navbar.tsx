@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-mmconcept-2.svg";
+import logo from "@/assets/logo-vv-2.svg";
 import ContactFormDialog from "@/components/ContactFormDialog";
 
 const Navbar = () => {
@@ -68,12 +68,15 @@ const Navbar = () => {
         }`}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
-            transitionDuration: '1.6s',
-            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            transitionDuration: '2.4s',
+            transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             ...(scrolled && !mobileOpen ? {
               background: useDarkText
                 ? 'linear-gradient(135deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.15) 100%)'
                 : 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
+              border: useDarkText
+                ? '1px solid rgba(0,0,0,0.06)'
+                : '1px solid rgba(255,255,255,0.08)',
               backdropFilter: 'blur(28px) saturate(1.6)',
               WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
               boxShadow: useDarkText
@@ -81,6 +84,7 @@ const Navbar = () => {
                 : '0 4px 24px rgba(0,0,0,0.08)',
             } : {
               background: 'transparent',
+              border: '1px solid transparent',
               backdropFilter: 'none',
               boxShadow: 'none',
             }),
