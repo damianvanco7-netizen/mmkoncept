@@ -70,7 +70,7 @@ const CookieConsent = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 animate-in slide-in-from-bottom-4 duration-500">
       <div
-        className="mx-auto max-w-4xl rounded-2xl p-6 md:p-8"
+        className="mx-auto max-w-4xl rounded-full p-6 md:p-8"
         style={{
           background: glassBg,
           backdropFilter: "blur(24px) saturate(1.4)",

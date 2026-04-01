@@ -43,7 +43,7 @@ const NetworkCanvas = () => {
     // 3 trailing dots - horizontal, same Y, ending before "LIFE"
     const dotsY = h * 0.5;
     const dotsStartX = clusterCenterX + clusterRadius + 20;
-    const dotsEndX = w * 0.44; // stop well before title
+    const dotsEndX = w * 0.34; // stop before the "L" in "Life"
     const dotsSpacing = (dotsEndX - dotsStartX) / 2;
     
     for (let i = 0; i < 3; i++) {
