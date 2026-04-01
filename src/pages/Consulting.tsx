@@ -51,8 +51,8 @@ const Consulting = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center section-padding pt-24">
-        <div className="relative z-10 w-full max-w-3xl">
+      <section className="relative min-h-screen flex items-center justify-center section-padding pt-24">
+        <div className="relative z-10 w-full max-w-3xl text-center">
           <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
             Consulting & Strategy
           </p>
@@ -61,7 +61,7 @@ const Consulting = () => {
               Bridging Innovation, Technology, and Human Experience
             </ShinyText>
           </h1>
-          <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl">
+          <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
             At mm concept, we build strategic bridges between complex
             technologies and the real world. Our consulting services are rooted
             in over a decade of experience within the global automotive industry
@@ -119,7 +119,7 @@ const Consulting = () => {
             </p>
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Built on experience.{"\n"}Driven by purpose.
+                Built on experience.<br />Driven by purpose.
               </ShinyText>
             </h2>
           </div>
