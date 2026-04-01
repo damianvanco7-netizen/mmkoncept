@@ -154,7 +154,9 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
           <h2 className="heading-h2 text-foreground/80 mb-4 max-w-4xl">
-            From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
+            <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+              From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
+            </ShinyText>
           </h2>
         </div>
       </section>
