@@ -38,7 +38,9 @@ const VirtualVillage = () => {
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
             <h1 className="heading-h2 text-foreground/80">
-              Your personalized<br />Universe.
+              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+                Your personalized<br />Universe.
+              </ShinyText>
             </h1>
           </div>
 
