@@ -309,20 +309,20 @@
     position: relative;
     background: linear-gradient(
       145deg,
-      rgba(0, 0, 0, 0.06) 0%,
-      rgba(0, 0, 0, 0.02) 30%,
-      rgba(0, 0, 0, 0.01) 60%,
-      rgba(0, 0, 0, 0.05) 100%
+      rgba(0, 0, 0, 0.03) 0%,
+      rgba(0, 0, 0, 0.01) 30%,
+      rgba(0, 0, 0, 0.005) 60%,
+      rgba(0, 0, 0, 0.025) 100%
     );
-    border: 0.5px solid rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(20px) saturate(1.4) brightness(0.97);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4) brightness(0.97);
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(24px) saturate(1.6) brightness(0.98);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6) brightness(0.98);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(0, 0, 0, 0.05),
-      inset 0 1px 1px rgba(255, 255, 255, 0.45),
-      inset 0 -1px 1px rgba(0, 0, 0, 0.06),
-      inset 0 0 20px rgba(0, 0, 0, 0.03);
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 1px rgba(255, 255, 255, 0.4),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.04),
+      inset 0 0 20px rgba(0, 0, 0, 0.02);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }

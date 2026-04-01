@@ -57,26 +57,30 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-[60] ${
           mobileOpen ? "bg-card" : ""
         }`}
       >
-        <div className={`transition-all duration-500 mx-auto ${
+        <div className={`transition-all mx-auto ${
           scrolled && !mobileOpen
             ? "mt-3 max-w-3xl rounded-full px-6 py-3"
             : "mt-0 max-w-none rounded-none px-6 md:px-12 lg:px-20 xl:px-32 py-4"
         }`}
-          style={scrolled && !mobileOpen ? {
-            background: useDarkText
-              ? 'linear-gradient(135deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.25) 100%)'
-              : 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
-            backdropFilter: 'blur(24px) saturate(1.4)',
-            WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
-            border: useDarkText ? '1px solid rgba(0,0,0,0.08)' : '1px solid rgba(255,255,255,0.15)',
-            boxShadow: useDarkText
-              ? '0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.4)'
-              : '0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.15)',
-          } : undefined}
+          style={{
+            transitionProperty: 'all',
+            transitionDuration: '700ms',
+            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            ...(scrolled && !mobileOpen ? {
+              background: useDarkText
+                ? 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.18) 100%)'
+                : 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+              backdropFilter: 'blur(28px) saturate(1.6)',
+              WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
+              boxShadow: useDarkText
+                ? '0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.3)'
+                : '0 8px 32px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.1)',
+            } : {}),
+          }}
         >
           <div className="flex items-center justify-between relative z-10">
             <button onClick={goHome} className="flex items-center">
