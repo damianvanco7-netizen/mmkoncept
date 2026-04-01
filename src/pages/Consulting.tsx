@@ -126,7 +126,7 @@ const Consulting = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             {whyItems.map(({ title, description }) => (
-              <div key={title} className="flex flex-col">
+              <div key={title} className="flex flex-col items-center text-center">
                 <p className="text-base font-semibold text-white mb-3">
                   {title}
                 </p>
