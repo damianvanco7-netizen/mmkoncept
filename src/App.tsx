@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import VirtualVillage from "./pages/VirtualVillage";
 import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
+import Gdpr from "./pages/Gdpr";
 import LiquidGlassFilter from "./components/LiquidGlassFilter";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/virtual-village" element={<VirtualVillage />} />
           <Route path="/consulting" element={<Consulting />} />
+          <Route path="/gdpr" element={<Gdpr />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

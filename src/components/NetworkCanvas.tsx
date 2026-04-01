@@ -19,38 +19,43 @@ const NetworkCanvas = () => {
 
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
-    // Large tangled cluster on the LEFT side
-    const clusterCenterX = w * 0.28;
-    const clusterCenterY = h * 0.4;
-    const clusterRadius = Math.min(w, h) * 0.42;
-    const clusterCount = 120;
+    // Compact ball/sphere-shaped cluster on the LEFT side
+    const clusterCenterX = w * 0.22;
+    const clusterCenterY = h * 0.45;
+    const clusterRadius = Math.min(w, h) * 0.28; // smaller, tighter ball
+    const clusterCount = 100;
 
     for (let i = 0; i < clusterCount; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const rFactor = Math.pow(Math.random(), 0.7);
+      // Use gaussian-like distribution for more spherical density
+      const rFactor = Math.pow(Math.random(), 0.5);
       const r = rFactor * clusterRadius;
       const bx = clusterCenterX + Math.cos(angle) * r;
       const by = clusterCenterY + Math.sin(angle) * r;
       nodes.push({
         baseX: bx, baseY: by, x: bx, y: by,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: 2.5 + Math.random() * 3.5,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: 2 + Math.random() * 3,
       });
     }
 
-    // 3 clean dots at bottom-right, horizontally spaced (leading toward the title)
-    const dotsY = h * 0.55;
-    const dotsStartX = w * 0.55;
-    const dotsSpacing = w * 0.08;
+    // 3 trailing dots - must end BEFORE the title text
+    // Title "Life, just simplified" is right-aligned, starts around 55-60% of width
+    // So dots must stay before ~48% of width
+    const dotsY = h * 0.5;
+    const dotsStartX = clusterCenterX + clusterRadius + 20;
+    const dotsEndX = w * 0.46; // stop well before title
+    const dotsSpacing = (dotsEndX - dotsStartX) / 2;
+    
     for (let i = 0; i < 3; i++) {
       nodes.push({
         baseX: dotsStartX + i * dotsSpacing,
-        baseY: dotsY,
+        baseY: dotsY + (i - 1) * 15, // slight vertical spread
         x: dotsStartX + i * dotsSpacing,
-        y: dotsY,
+        y: dotsY + (i - 1) * 15,
         vx: 0, vy: 0,
-        radius: 5,
+        radius: 4.5 - i * 0.5,
       });
     }
 
@@ -93,6 +98,8 @@ const NetworkCanvas = () => {
     canvas.addEventListener('mousemove', onMove);
     canvas.addEventListener('mouseleave', onLeave);
 
+    const clusterCount = 100;
+
     const draw = () => {
       const { w, h } = sizeRef.current;
       const nodes = nodesRef.current;
@@ -122,10 +129,11 @@ const NetworkCanvas = () => {
         n.vy *= 0.95;
       }
 
-      const clusterNodes = nodes.slice(0, 120);
-      const dotNodes = nodes.slice(120);
+      const clusterNodes = nodes.slice(0, clusterCount);
+      const dotNodes = nodes.slice(clusterCount);
 
-      const maxConnDist = 150;
+      // Connections within cluster - shorter range for tighter ball look
+      const maxConnDist = 120;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
           const a = clusterNodes[i];
@@ -146,7 +154,7 @@ const NetworkCanvas = () => {
         }
       }
 
-      // Curves from cluster to dots
+      // Curves from cluster to trailing dots
       const sortedByExit = [...clusterNodes].sort((a, b) => {
         const scoreA = a.x * 0.7 + a.y * 0.3;
         const scoreB = b.x * 0.7 + b.y * 0.3;
@@ -170,6 +178,7 @@ const NetworkCanvas = () => {
         ctx.stroke();
       }
 
+      // Lines between trailing dots
       for (let i = 0; i < dotNodes.length - 1; i++) {
         ctx.beginPath();
         ctx.moveTo(dotNodes[i].x, dotNodes[i].y);
@@ -179,6 +188,7 @@ const NetworkCanvas = () => {
         ctx.stroke();
       }
 
+      // Draw cluster nodes
       for (const n of clusterNodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
@@ -186,6 +196,7 @@ const NetworkCanvas = () => {
         ctx.fill();
       }
 
+      // Draw trailing dots
       for (const n of dotNodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);

@@ -51,6 +51,9 @@ const Footer = () => {
           <p className="text-sm text-warm-taupe">
             © {new Date().getFullYear()} mm concept. All rights reserved.
           </p>
+          <a href="/gdpr" className="text-sm text-warm-taupe hover:text-warm-white transition-colors">
+            GDPR
+          </a>
         </div>
       </div>
     </footer>
