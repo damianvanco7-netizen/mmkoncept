@@ -101,13 +101,9 @@ const Consulting = () => {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default liquid-glass-circle"
-                style={{
-                  width: "clamp(280px, 25vw, 380px)",
-                  height: "clamp(280px, 25vw, 380px)",
-                }}
+                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(280px,25vw,380px)] md:h-[clamp(280px,25vw,380px)]"
               >
-                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight">
+                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight max-w-[75%]">
                   {service.title}
                 </span>
                 <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[85%]">

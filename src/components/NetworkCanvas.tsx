@@ -25,11 +25,11 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
     const nodes: Node[] = [];
 
     if (direction === 'down') {
-      // Mobile: cluster at top center, dots trailing downward
+      // Mobile: cluster at top center, dots trailing downward — larger & less dense
       const clusterCenterX = w * 0.5;
-      const clusterCenterY = h * 0.25;
-      const clusterRadius = Math.min(w, h) * 0.22;
-      const clusterCount = 80;
+      const clusterCenterY = h * 0.3;
+      const clusterRadius = Math.min(w, h) * 0.35;
+      const clusterCount = 50;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
