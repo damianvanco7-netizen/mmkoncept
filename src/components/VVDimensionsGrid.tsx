@@ -83,7 +83,7 @@ const VVDimensionsGrid = () => {
           {bottomRow.map((dim) => (
             <div
               key={dim.title}
-              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle"
+              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle-light"
               style={{
                 width: "clamp(200px, 20vw, 280px)",
                 height: "clamp(200px, 20vw, 280px)",
