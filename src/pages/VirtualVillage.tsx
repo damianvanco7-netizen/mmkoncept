@@ -68,10 +68,8 @@ const VirtualVillage = () => {
               </ShinyText>
             </h2>
             <div className="mb-8">
-              <p className="heading-h3 text-foreground">
-                A companion.<br />
-                A guide.<br />
-                A quiet intelligence <span className="font-normal">in the background.</span>
+              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg">
+                Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
               </p>
             </div>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
