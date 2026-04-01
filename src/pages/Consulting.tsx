@@ -88,7 +88,7 @@ const Consulting = () => {
         <div className="w-full">
           <div className="text-center">
             <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
-              Our Service Portfolio
+              What We Do
             </p>
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>

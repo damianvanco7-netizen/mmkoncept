@@ -100,7 +100,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex items-center justify-center md:justify-end">
+          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-2 md:pr-[-2rem] lg:pr-0 md:translate-x-8">
             <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
               <img
                 src={mockup}
