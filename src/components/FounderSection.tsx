@@ -39,8 +39,8 @@ const FounderSection = () => {
             </p>
           </div>
 
-          {/* Circle image placeholder - aligned bottom-right */}
-          <div className="hidden md:flex absolute bottom-0 right-0 w-[clamp(196px,15.4vw,266px)] h-[clamp(196px,15.4vw,266px)] rounded-full overflow-hidden border border-white/10 bg-white/5 items-center justify-center">
+          {/* Circle image — desktop: absolute bottom-right, mobile: left-aligned below text */}
+          <div className="mt-8 md:mt-0 md:absolute md:bottom-0 md:right-0 w-[160px] h-[160px] md:w-[clamp(196px,15.4vw,266px)] md:h-[clamp(196px,15.4vw,266px)] rounded-full overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
             <span className="text-white/20 text-sm tracking-widest uppercase">Photo</span>
           </div>
         </div>
