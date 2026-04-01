@@ -113,14 +113,16 @@ const Consulting = () => {
       {/* Why mm concept */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full">
-          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
-            Why mm concept?
-          </p>
-          <h2 className="heading-h2 mb-16">
-            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-              Built on experience. Driven by purpose.
-            </ShinyText>
-          </h2>
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
+              Why mm concept?
+            </p>
+            <h2 className="heading-h2">
+              <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+                Built on experience.{"\n"}Driven by purpose.
+              </ShinyText>
+            </h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             {whyItems.map(({ title, description }) => (
