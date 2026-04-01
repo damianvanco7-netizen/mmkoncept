@@ -48,13 +48,13 @@ const Consulting = () => {
   return (
     <div className="min-h-screen relative">
       <Grainient
-        color1="#4a4745"
-        color2="#3a3937"
-        color3="#272727"
-        timeSpeed={0.15}
-        warpFrequency={3.0}
-        warpSpeed={1.0}
-        grainAmount={0.05}
+        color1="#868380"
+        color2="#575451"
+        color3="#282828"
+        timeSpeed={0.35}
+        warpFrequency={4.0}
+        warpSpeed={1.5}
+        grainAmount={0.06}
         contrast={1.3}
         saturation={0.8}
       />
