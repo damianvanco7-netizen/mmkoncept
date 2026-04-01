@@ -11,7 +11,7 @@ import vvLogoSvg from "@/assets/logo-virtual-village.svg";
 import mockup from "@/assets/phone-frame.png";
 import heroVideo from "@/assets/vv-hero-video.mp4";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
-import vvHeroPhone from "@/assets/vv-hero-phone.png";
+import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
 import galleryWide from "@/assets/gallery-wide.png";
 import gallerySquare1 from "@/assets/gallery-square1.png";
