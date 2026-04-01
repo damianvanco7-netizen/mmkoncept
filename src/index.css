@@ -308,8 +308,8 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 0.12) 100%
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 100%
     );
     border: 0.5px solid rgba(0, 0, 0, 0.06);
     backdrop-filter: blur(28px) saturate(1.6);
@@ -320,39 +320,6 @@
       inset 0 -1px 1px rgba(0, 0, 0, 0.03);
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .liquid-glass-circle-light::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-    height: 45%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.35) 0%,
-      rgba(255, 255, 255, 0.15) 30%,
-      rgba(0, 0, 0, 0.02) 60%,
-      transparent 100%
-    );
-    border-radius: inherit;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 0%, transparent 100%);
-  }
-
-  .liquid-glass-circle-light::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      radial-gradient(ellipse 60% 50% at 25% 15%, rgba(0, 0, 0, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 75% 75%, rgba(0, 0, 0, 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 30% at 50% 100%, rgba(0, 0, 0, 0.03) 0%, transparent 60%);
-    pointer-events: none;
-    animation: liquid-caustic 8s ease-in-out infinite alternate;
   }
 
   .liquid-glass-circle-light:hover {
