@@ -40,40 +40,43 @@ const PhilosophySection = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           {circles.map((item) => (
-            <LiquidGlass
+            <div
               key={item.title}
               onClick={() => navigate(item.route)}
-              glassStyle={{
-                depth: 0.8,
-                segments: 64,
-                radius: 0.5,
-                transmission: 0.95,
-                roughness: 0.05,
-              }}
-              style={{
-                width: '300px',
-                height: '300px',
-                borderRadius: '50%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                padding: '40px 36px',
-                cursor: 'pointer',
-              }}
-              className="group transition-all duration-500"
+              className="group cursor-pointer"
+              style={{ width: 300, height: 300 }}
             >
-              <span className="text-white text-lg md:text-xl font-semibold mb-2">
-                {item.title}
-              </span>
-              <span className="text-white/50 text-sm leading-relaxed mb-6 max-w-[85%]">
-                {item.description}
-              </span>
-              <span className="text-white/80 text-sm md:text-base font-bold flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
-                {item.linkText}
-              </span>
-            </LiquidGlass>
+              <LiquidGlass
+                glassStyle={{
+                  depth: 0.8,
+                  segments: 64,
+                  radius: 0.5,
+                  transmission: 0.95,
+                  roughness: 0.05,
+                }}
+                style={`
+                  width: 300px;
+                  height: 300px;
+                  border-radius: 50%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  text-align: center;
+                  padding: 40px 36px;
+                `}
+              >
+                <span className="text-white text-lg md:text-xl font-semibold mb-2">
+                  {item.title}
+                </span>
+                <span className="text-white/50 text-sm leading-relaxed mb-6 max-w-[85%]">
+                  {item.description}
+                </span>
+                <span className="text-white/80 text-sm md:text-base font-bold flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                  {item.linkText}
+                </span>
+              </LiquidGlass>
+            </div>
           ))}
         </div>
       </div>

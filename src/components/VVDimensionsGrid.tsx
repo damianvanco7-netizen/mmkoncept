@@ -46,35 +46,36 @@ const dimensions = [
 ];
 
 const DimensionCircle = ({ dim }: { dim: typeof dimensions[number] }) => (
-  <LiquidGlass
-    glassStyle={{
-      depth: 0.8,
-      segments: 64,
-      radius: 0.5,
-      transmission: 0.95,
-      roughness: 0.05,
-    }}
-    style={{
-      width: '250px',
-      height: '250px',
-      borderRadius: '50%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-      padding: '32px 28px',
-    }}
-    className="transition-all duration-500 cursor-default"
-  >
-    <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
-    <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
-      {dim.title}
-    </span>
-    <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
-      {dim.description}
-    </span>
-  </LiquidGlass>
+  <div style={{ width: 250, height: 250 }}>
+    <LiquidGlass
+      glassStyle={{
+        depth: 0.8,
+        segments: 64,
+        radius: 0.5,
+        transmission: 0.95,
+        roughness: 0.05,
+      }}
+      style={`
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 32px 28px;
+      `}
+    >
+      <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
+      <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
+        {dim.title}
+      </span>
+      <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
+        {dim.description}
+      </span>
+    </LiquidGlass>
+  </div>
 );
 
 const VVDimensionsGrid = () => {
