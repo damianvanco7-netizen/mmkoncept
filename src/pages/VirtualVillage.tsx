@@ -38,7 +38,9 @@ const VirtualVillage = () => {
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
             <h1 className="heading-h2 text-foreground/80">
-              Your personalized<br />Universe.
+              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+                Your personalized<br />Universe.
+              </ShinyText>
             </h1>
           </div>
 
@@ -120,6 +122,9 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
+            <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
+              Your Everyday Ecosystem
+            </p>
             <h2 className="heading-h2 text-foreground/80 mb-8">
               7 Life Dimensions.<br />
               One Intuitive Space.
@@ -153,6 +158,9 @@ const VirtualVillage = () => {
       {/* New section — From concept to product */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full flex flex-col items-center text-center">
+          <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
+            Real Ecosystem
+          </p>
           <h2 className="heading-h2 text-foreground/80 mb-4 max-w-4xl">
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
               From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
