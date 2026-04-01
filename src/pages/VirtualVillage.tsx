@@ -188,45 +188,8 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <LeadershipTeam />
 
-      {/* CTA + Footer with homepage dark gradient */}
+      {/* Footer with dark gradient */}
       <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
-        <section className="relative py-28 md:py-36 section-padding overflow-hidden">
-          <NetworkCanvasMirrored />
-          <div className="relative z-10 w-full max-w-3xl">
-            <h2 className="heading-h2 text-white mb-6">
-              Be Part of the Digital Evolution
-            </h2>
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-6">
-              Join the movement to humanize technology.
-            </p>
-            <p className="text-base text-white/70 leading-relaxed mb-6">
-              Whether you are seeking clarity in the digital noise or looking to empower your community through strategic innovation, let's build this universe together.
-            </p>
-            <p className="text-base text-white/70 leading-relaxed mb-10">
-              Virtual Village isn't just another platform. It's a quiet revolution — made by people, for people.
-            </p>
-            <button
-              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500"
-              style={{
-                width: "clamp(160px, 16vw, 220px)",
-                height: "clamp(160px, 16vw, 220px)",
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
-              }}
-            >
-              <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
-            </button>
-          </div>
-        </section>
-
         <Footer />
       </div>
     </div>
