@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Grainient from "@/components/Grainient";
 
 const Gdpr = () => {
   return (
