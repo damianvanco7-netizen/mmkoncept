@@ -67,7 +67,7 @@ const VVDimensionsGrid = () => {
       <div className="w-full">
         <h3 className="heading-h3 text-foreground/80 max-w-3xl mb-20">
           Virtual Village is built on a modular architecture designed to harmonize every aspect of modern daily life.
-        </h2>
+        </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 mb-16">
           {topRow.map((dim) => (
