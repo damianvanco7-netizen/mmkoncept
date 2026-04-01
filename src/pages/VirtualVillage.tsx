@@ -159,7 +159,7 @@ const VirtualVillage = () => {
           <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
             Real Ecosystem
           </p>
-          <h2 className="heading-h2 text-foreground/80 mb-4 max-w-4xl">
+          <h2 className="heading-h2 text-foreground/80 mb-4" style={{ maxWidth: '60rem' }}>
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
               From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
             </ShinyText>
