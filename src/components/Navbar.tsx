@@ -55,19 +55,25 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[60]">
-        {/* Mobile menu blur overlay */}
-        {mobileOpen && (
-          <div
-            className="fixed inset-0 z-[-1] md:hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
-              backdropFilter: 'blur(28px) saturate(1.6)',
-              WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
-            }}
-          />
-        )}
+      {/* Mobile fullscreen blur + menu */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[59] md:hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
+            backdropFilter: 'blur(28px) saturate(1.6)',
+            WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
+          }}
+        >
+          <div className="flex flex-col items-start justify-center h-full px-10 gap-8">
+            <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Projects & Services</button>
+            <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
+            <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
+          </div>
+        </div>
+      )}
 
+      <nav className="fixed top-0 left-0 right-0 z-[60]">
         <div className={`mx-auto ${
           scrolled && !mobileOpen
             ? "mt-4 max-w-3xl rounded-full px-8 py-3"
@@ -103,8 +109,8 @@ const Navbar = () => {
                 src={logo}
                 alt="mm concept"
                 className={`h-10 md:h-12 transition-all duration-500 ${
-                  useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
-                } ${showLogo ? "" : "opacity-0 pointer-events-none"}`}
+                  mobileOpen ? "brightness-0 invert opacity-40" : useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
+                } ${showLogo || mobileOpen ? "" : "opacity-0 pointer-events-none"}`}
               />
             </button>
 
@@ -128,16 +134,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-
-      {/* Fullscreen mobile menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[55] flex flex-col items-start justify-center px-10 gap-8 md:hidden">
-          <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
-          <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Projects & Services</button>
-          <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
-          <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
-        </div>
-      )}
 
       <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </>
