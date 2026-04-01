@@ -58,6 +58,7 @@ const Consulting = () => {
         contrast={1.3}
         saturation={0.8}
       />
+      <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
 
       {/* Hero */}
