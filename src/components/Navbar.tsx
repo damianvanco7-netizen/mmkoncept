@@ -50,27 +50,24 @@ const Navbar = () => {
   };
 
   const isVV = location.pathname === "/virtual-village";
-  const useLight = !scrolled && isHome && !mobileOpen;
   const useDarkText = isVV && !mobileOpen;
   const showLogo = scrolled || !isHome;
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-[60] ${
-          mobileOpen ? "" : ""
-        }`}
-      >
+      <nav className="fixed top-0 left-0 right-0 z-[60]">
         {/* Mobile menu blur overlay */}
         {mobileOpen && (
-          <div className="fixed inset-0 z-[-1] md:hidden"
+          <div
+            className="fixed inset-0 z-[-1] md:hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
               backdropFilter: 'blur(28px) saturate(1.6)',
               WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
             }}
           />
-      >
+        )}
+
         <div className={`mx-auto ${
           scrolled && !mobileOpen
             ? "mt-4 max-w-3xl rounded-full px-8 py-3"
@@ -122,7 +119,9 @@ const Navbar = () => {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`md:hidden relative z-[60] transition-colors ${useDarkText ? "text-foreground/70" : "text-white/70"}`}
+              className={`md:hidden relative z-[60] transition-colors ${
+                mobileOpen ? "text-white/70" : useDarkText ? "text-foreground/70" : "text-white/70"
+              }`}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -132,11 +131,11 @@ const Navbar = () => {
 
       {/* Fullscreen mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-card flex flex-col items-start justify-center px-10 gap-8 md:hidden">
-          <button onClick={goHome} className="text-2xl font-semibold text-foreground">Origin</button>
-          <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-foreground">Projects & Services</button>
-          <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-foreground">About</button>
-          <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-foreground">Contact</button>
+        <div className="fixed inset-0 z-40 flex flex-col items-start justify-center px-10 gap-8 md:hidden">
+          <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
+          <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Projects & Services</button>
+          <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
+          <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
         </div>
       )}
 
