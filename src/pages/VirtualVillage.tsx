@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Grainient from "@/components/Grainient";
 import Footer from "@/components/Footer";
 import VVDimensionsGrid from "@/components/VVDimensionsGrid";
 
