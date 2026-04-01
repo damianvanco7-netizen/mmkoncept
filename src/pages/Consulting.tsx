@@ -42,6 +42,8 @@ const whyItems = [
 ];
 
 const Consulting = () => {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <div
       className="min-h-screen"
