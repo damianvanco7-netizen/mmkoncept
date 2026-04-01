@@ -145,9 +145,11 @@ const Consulting = () => {
       <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
           <NetworkCanvasMirrored />
-          <div className="relative z-10 w-full max-w-3xl">
-            <h2 className="heading-h2 text-white mb-6">
-              Let's Build Something Meaningful
+          <div className="relative z-10 w-full max-w-xl">
+            <h2 className="heading-h2 mb-6">
+              <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+                Let's Build Something Meaningful
+              </ShinyText>
             </h2>
             <p className="text-base text-white/70 leading-relaxed mb-10">
               Whether you're transforming your organization or reimagining urban
