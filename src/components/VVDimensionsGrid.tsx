@@ -64,7 +64,7 @@ const VVDimensionsGrid = () => {
 
   return (
     <section className="py-20 md:py-28 section-padding">
-      <div className="w-full">
+      <div className="w-full flex flex-col items-center">
         <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
           Modular Architecture
         </p>
