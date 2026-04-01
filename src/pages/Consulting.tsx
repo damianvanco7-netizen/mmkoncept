@@ -119,7 +119,7 @@ const Consulting = () => {
             </p>
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Built on experience.{"\n"}Driven by purpose.
+                Built on experience.<br />Driven by purpose.
               </ShinyText>
             </h2>
           </div>
