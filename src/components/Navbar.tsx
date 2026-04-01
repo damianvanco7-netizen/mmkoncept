@@ -68,8 +68,8 @@ const Navbar = () => {
         }`}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
-            transitionDuration: '1s',
-            transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            transitionDuration: '1.6s',
+            transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
             ...(scrolled && !mobileOpen ? {
               background: useDarkText
                 ? 'linear-gradient(135deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.15) 100%)'
