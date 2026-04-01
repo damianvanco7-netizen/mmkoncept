@@ -128,7 +128,7 @@ const VirtualVillage = () => {
               One Intuitive Space.
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
-              Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
+              A companion. A guide. A quiet intelligence in the background.
             </p>
           </div>
           <div className="flex items-center justify-center md:justify-end">

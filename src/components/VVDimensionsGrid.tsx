@@ -44,20 +44,6 @@ const dimensions = [
   },
 ];
 
-const DimensionCard = ({ icon, title, description }: { icon: string; title: string; description: string }) => (
-  <div className="flex items-start gap-5">
-    <div
-      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full liquid-glass-circle flex items-center justify-center"
-    >
-      <img src={icon} alt={title} className="w-8 h-8 md:w-10 md:h-10 opacity-60" />
-    </div>
-    <div className="pt-1">
-      <h3 className="heading-h4 text-foreground/70 mb-1">{title}</h3>
-      <p className="text-sm md:text-base text-foreground/60 leading-relaxed max-w-[250px]">{description}</p>
-    </div>
-  </div>
-);
-
 const VVDimensionsGrid = () => {
   const topRow = dimensions.slice(0, 4);
   const bottomRow = dimensions.slice(4);
@@ -68,19 +54,49 @@ const VVDimensionsGrid = () => {
         <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
           Modular Architecture
         </p>
-        <h2 className="heading-h2 text-foreground/80 max-w-4xl mb-20 text-center mx-auto">
+        <h2 className="heading-h2 text-foreground/80 mb-20 text-center mx-auto" style={{ maxWidth: '60rem' }}>
           Virtual Village is built on a modular architecture designed to harmonize every aspect of modern daily life.
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 mb-16">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-8">
           {topRow.map((dim) => (
-            <DimensionCard key={dim.title} {...dim} />
+            <div
+              key={dim.title}
+              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle"
+              style={{
+                width: "clamp(200px, 20vw, 280px)",
+                height: "clamp(200px, 20vw, 280px)",
+              }}
+            >
+              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
+              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
+                {dim.title}
+              </span>
+              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
+                {dim.description}
+              </span>
+            </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 md:max-w-[75%] md:mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
           {bottomRow.map((dim) => (
-            <DimensionCard key={dim.title} {...dim} />
+            <div
+              key={dim.title}
+              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle"
+              style={{
+                width: "clamp(200px, 20vw, 280px)",
+                height: "clamp(200px, 20vw, 280px)",
+              }}
+            >
+              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
+              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
+                {dim.title}
+              </span>
+              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
+                {dim.description}
+              </span>
+            </div>
           ))}
         </div>
       </div>
