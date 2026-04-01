@@ -37,6 +37,7 @@ const VirtualVillage = () => {
         contrast={1.2}
         saturation={0.7}
       />
+      <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
 
       {/* Hero — two-column: text left, full-height photo right */}
