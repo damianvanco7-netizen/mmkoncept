@@ -1,26 +1,60 @@
 
 
-## Plan: Liquid Glass efekt na bledom pozadí (Modular Architecture)
+## Plan: Kontaktný formulár s liquid glass popup
 
-### Problém
-Aktuálny `.liquid-glass-circle` používa biele (`rgba(255,255,255,...)`) highlights, bordery a gradienty — tie sú navrhnuté pre tmavé pozadie. Na bledom/béžovom pozadí sekcie Modular Architecture sú tieto efekty prakticky neviditeľné.
+### Prehľad
+Vytvoríme kontaktný popup (Dialog) s liquid glass efektom, ktorý sa otvorí po kliknutí na "Contact" v navbar a "Connect" button na Consulting stránke. Formulár odošle email na martina.masarykova@mmconcept.sk.
 
-### Riešenie
-Vytvoríme novú CSS triedu `.liquid-glass-circle-light` optimalizovanú pre svetlé pozadie:
+### 1. Vytvorenie ContactFormDialog komponentu
+
+**Nový súbor: `src/components/ContactFormDialog.tsx`**
+
+- Radix Dialog (z existujúceho `ui/dialog.tsx`) s custom liquid glass štýlom
+- Overlay: tmavý blur backdrop
+- Content panel: liquid glass efekt (backdrop-filter blur, gradient, border, shadows — rovnaký vzor ako navbar/buttony)
+- Formulárové polia:
+  - **Meno a Priezvisko** (input, required)
+  - **E-mail** (input type=email, required)
+  - **Správa** (textarea, required)
+  - **Checkbox** — súhlas so spracovaním osobných údajov s odkazom na GDPR podstránku
+  - **Send button** — liquid glass štýl ako ostatné buttony
+- Validácia na client-side (required fields, email format)
+- Po odoslaní: toast notifikácia (úspech/chyba)
+
+### 2. Email odosielanie
+
+**Nový súbor: `supabase/functions/send-contact-email/index.ts`** (Edge Function)
+
+- Prijme POST s menom, emailom, správou
+- Validácia vstupov (zod)
+- Odošle email na `martina.masarykova@mmconcept.sk` cez Resend alebo SMTP
+- CORS headers pre webový klient
+
+**Poznámka:** Pre odosielanie emailu bude potrebný email service. Keďže projekt nemá Lovable Cloud / Supabase pripojené, najjednoduchšie riešenie je použiť `mailto:` link alebo integrovať email API (napr. Resend). Overím dostupnosť Supabase/Cloud a podľa toho zvolím prístup.
+
+### 3. Napojenie na existujúce buttony
+
+**Súbor: `src/components/Navbar.tsx`**
+- "Contact" button (desktop aj mobile) → namiesto scrollTo("footer") otvorí ContactFormDialog
+- Navbar bude držať stav `contactOpen` a renderovať `<ContactFormDialog />`
+
+**Súbor: `src/pages/Consulting.tsx`**
+- "Connect" button → namiesto scrollTo footer otvorí ContactFormDialog
+- Pridať stav a renderovanie dialogu
+
+### 4. Liquid glass CSS pre dialog
 
 **Súbor: `src/index.css`**
-- Nová trieda `.liquid-glass-circle-light` s týmito odlišnosťami oproti dark variante:
-  - **Background gradient** — jemný mix tmavších a svetlejších tónov namiesto čisto bielych (`rgba(0,0,0,0.04)` až `rgba(255,255,255,0.5)`)
-  - **Border** — tmavší, viditeľnejší: `rgba(0,0,0,0.08)` + biely inner glow
-  - **Box-shadow** — outer shadow s tmavými tieňmi (`rgba(0,0,0,0.12)`), inner specular s bielou
-  - **Backdrop-filter** — rovnaký blur(24px), saturácia, brightness
-  - **`::before`** — specular highlight zostáva biely (na svetlom pozadí stále funguje ako odlesk)
-  - **`::after`** — caustic efekty s mix bielych a tmavých radiálnych gradientov pre lepší kontrast
-  - **Hover** — výraznejší shadow + lift
+- Nová trieda `.liquid-glass-dialog` — backdrop-filter blur(20px), gradient background s tmavými tónmi, border, shadows, specular highlights (::before/::after) — konzistentné s existujúcim liquid glass systémom
 
-**Súbor: `src/components/VVDimensionsGrid.tsx`**
-- Zmeniť triedu kruhov z `liquid-glass-circle` na `liquid-glass-circle-light`
+### Súbory na úpravu/vytvorenie
+1. `src/components/ContactFormDialog.tsx` — nový komponent
+2. `src/index.css` — nová `.liquid-glass-dialog` trieda
+3. `src/components/Navbar.tsx` — Contact otvára popup
+4. `src/pages/Consulting.tsx` — Connect otvára popup
 
-### Výsledok
-Kruhy v sekcii Modular Architecture budú mať viditeľný glass efekt — jemné tiene, specular odlesky a hĺbku — rovnako výrazný ako na tmavom pozadí homepage, ale prispôsobený svetlému béžovému pozadiu.
+### Technické detaily
+- Dialog používa existujúci Radix `Dialog` z `ui/dialog.tsx`
+- Formulár: react-hook-form + zod validácia (obe knižnice sú v projekte)
+- Email: overím dostupnosť Supabase — ak je k dispozícii, Edge Function; ak nie, `mailto:` fallback alebo pripojíme email service
 
