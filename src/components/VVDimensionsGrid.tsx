@@ -65,9 +65,12 @@ const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full">
-        <h3 className="heading-h3 text-foreground/80 max-w-3xl mb-20">
+        <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
+          Modular Architecture
+        </p>
+        <h2 className="heading-h2 text-foreground/80 max-w-4xl mb-20 text-center mx-auto">
           Virtual Village is built on a modular architecture designed to harmonize every aspect of modern daily life.
-        </h3>
+        </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 mb-16">
           {topRow.map((dim) => (
