@@ -5,6 +5,7 @@ import iconCulture from "@/assets/icons/culture.svg";
 import iconSport from "@/assets/icons/sport.svg";
 import iconFood from "@/assets/icons/food_dining.svg";
 import iconShopping from "@/assets/icons/shopping_services.svg";
+import { LiquidGlass } from "@specy/liquid-glass-react";
 
 const dimensions = [
   {
@@ -44,6 +45,38 @@ const dimensions = [
   },
 ];
 
+const DimensionCircle = ({ dim }: { dim: typeof dimensions[number] }) => (
+  <LiquidGlass
+    glassStyle={{
+      depth: 0.8,
+      segments: 64,
+      radius: 0.5,
+      transmission: 0.95,
+      roughness: 0.05,
+    }}
+    style={{
+      width: '250px',
+      height: '250px',
+      borderRadius: '50%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      padding: '32px 28px',
+    }}
+    className="transition-all duration-500 cursor-default"
+  >
+    <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
+    <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
+      {dim.title}
+    </span>
+    <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
+      {dim.description}
+    </span>
+  </LiquidGlass>
+);
+
 const VVDimensionsGrid = () => {
   const topRow = dimensions.slice(0, 4);
   const bottomRow = dimensions.slice(4);
@@ -60,43 +93,13 @@ const VVDimensionsGrid = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-8">
           {topRow.map((dim) => (
-            <div
-              key={dim.title}
-              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle-light"
-              style={{
-                width: "clamp(200px, 20vw, 280px)",
-                height: "clamp(200px, 20vw, 280px)",
-              }}
-            >
-              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
-              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
-                {dim.title}
-              </span>
-              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
-                {dim.description}
-              </span>
-            </div>
+            <DimensionCircle key={dim.title} dim={dim} />
           ))}
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
           {bottomRow.map((dim) => (
-            <div
-              key={dim.title}
-              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle-light"
-              style={{
-                width: "clamp(200px, 20vw, 280px)",
-                height: "clamp(200px, 20vw, 280px)",
-              }}
-            >
-              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
-              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
-                {dim.title}
-              </span>
-              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
-                {dim.description}
-              </span>
-            </div>
+            <DimensionCircle key={dim.title} dim={dim} />
           ))}
         </div>
       </div>

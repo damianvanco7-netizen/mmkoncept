@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import ShinyText from "./ShinyText";
+import { LiquidGlass } from "@specy/liquid-glass-react";
 
 const circles = [
   {
@@ -28,7 +28,6 @@ const PhilosophySection = () => {
       className="py-28 md:py-36 section-padding"
     >
       <div className="w-full">
-        {/* Heading with shiny effect like hero */}
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.2]">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
@@ -39,18 +38,31 @@ const PhilosophySection = () => {
           </h2>
         </div>
 
-
-        {/* Circle buttons */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
           {circles.map((item) => (
-            <button
+            <LiquidGlass
               key={item.title}
               onClick={() => navigate(item.route)}
-              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-12 liquid-glass-circle"
-              style={{
-                width: "clamp(300px, 30vw, 440px)",
-                height: "clamp(300px, 30vw, 440px)",
+              glassStyle={{
+                depth: 0.8,
+                segments: 64,
+                radius: 0.5,
+                transmission: 0.95,
+                roughness: 0.05,
               }}
+              style={{
+                width: '300px',
+                height: '300px',
+                borderRadius: '50%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                padding: '40px 36px',
+                cursor: 'pointer',
+              }}
+              className="group transition-all duration-500"
             >
               <span className="text-white text-lg md:text-xl font-semibold mb-2">
                 {item.title}
@@ -61,7 +73,7 @@ const PhilosophySection = () => {
               <span className="text-white/80 text-sm md:text-base font-bold flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
                 {item.linkText}
               </span>
-            </button>
+            </LiquidGlass>
           ))}
         </div>
       </div>
