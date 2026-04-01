@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
