@@ -65,7 +65,7 @@ const LeadershipTeam = () => {
             <button
               key={member.id}
               onClick={() => switchMember(member.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 ${
                 active === member.id
                   ? "border-foreground/40 text-foreground"
                   : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"

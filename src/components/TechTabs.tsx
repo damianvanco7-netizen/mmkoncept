@@ -138,7 +138,7 @@ const TechTabs = () => {
             <button
               key={tab.id}
               onClick={() => switchTab(tab.id)}
-              className={`px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 ${
                 active === tab.id
                   ? "border-foreground/30 text-foreground"
                   : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
