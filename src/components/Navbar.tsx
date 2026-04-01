@@ -77,7 +77,7 @@ const Navbar = () => {
         <div className={`mx-auto ${
           scrolled && !mobileOpen
             ? "mt-4 max-w-3xl rounded-full px-8 py-3"
-            : "mt-0 max-w-none rounded-none px-6 md:px-12 lg:px-20 xl:px-32 py-4"
+            : "mt-0 max-w-none rounded-none section-padding py-4"
         }`}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
