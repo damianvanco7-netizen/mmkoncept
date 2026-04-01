@@ -1,45 +1,36 @@
 
 
-## Plan
+## Plan: Aktualizácia Grainient komponentu podľa referenčného kódu
 
-### 1. Galéria — výmena obrázkov
+### Rozdiely medzi aktuálnym a referenčným kódom
 
-Skopírovať 3 nahrané fotky do `src/assets/` a nahradiť existujúce obrázky v galérii:
+Shader kód (vertex + fragment) je **identický**. Rozdiely sú len v TypeScript časti:
 
-| Pozícia | Aktuálny súbor | Nový súbor |
-|---------|---------------|------------|
-| Ľavý horný roh (square1) | gallerySquare1 | vv_photo_2_1.png |
-| Malá fotka vpravo (square2) | gallerySquare2 | vv_photo_3_1.png |
-| Dolná široká vľavo (wide) | galleryWide | vv_photo_1_1.png |
-| Veľká vpravo (featured) | galleryFeatured | **bez zmeny** |
+| Čo | Aktuálne | Referencia |
+|---|---|---|
+| Default hodnoty props | `timeSpeed=0.15`, `warpFrequency=3.0`, `warpSpeed=1.0`, `grainAmount=0.05`, `grainAnimated=true`, `contrast=1.3`, `saturation=0.8` | `timeSpeed=0.25`, `warpFrequency=5.0`, `warpSpeed=2.0`, `grainAmount=0.1`, `grainAnimated=false`, `contrast=1.5`, `saturation=1.0` |
+| useEffect deps | `[]` (empty) | Všetky props v dependency array |
+| Resize logika | `container.clientWidth/Height` → `renderer.setSize` | `getBoundingClientRect` → `renderer.setSize` → `gl.drawingBufferWidth/Height` do resolution |
+| Animation loop | `requestAnimationFrame` pred renderom | `requestAnimationFrame` po renderi |
+| Cleanup | Odstraní canvas + `loseContext()` | Len `removeChild` v try/catch |
+| Container styling | Inline `position:fixed; inset:0` | CSS trieda `grainient-container` |
+| Container className | `className` prop | `grainient-container ${className}` |
 
-**Súbor:** `src/pages/VirtualVillage.tsx` — nové importy a výmena src v galérii.
+### Zmeny v súbore `src/components/Grainient.tsx`
 
----
+1. **Zmeniť default prop hodnoty** na referenčné (`timeSpeed=0.25`, `warpFrequency=5.0`, `warpSpeed=2.0`, `grainAmount=0.1`, `grainAnimated=false`, `contrast=1.5`, `saturation=1.0`, default farby `#FF9FFC`, `#5227FF`, `#B19EEF`)
+2. **Pridať všetky props do useEffect dependency array** — aby sa efekt reinicializoval pri zmene props
+3. **Aktualizovať resize logiku** — použiť `getBoundingClientRect()` a `gl.drawingBufferWidth/Height`
+4. **Aktualizovať animation loop** — `raf = requestAnimationFrame(loop)` po renderi
+5. **Zjednodušiť cleanup** — try/catch `removeChild`, bez `loseContext()`
+6. **Zmeniť container na CSS triedu** — odstrániť inline style, pridať `grainient-container` CSS triedu
+7. **Pridať `src/components/Grainient.css`** s `.grainient-container` štýlmi (position fixed, inset 0, overflow hidden)
 
-### 2. Cookie oznámenie + funkcionalita
+### Zmeny v stránkach
 
-**Nový komponent: `src/components/CookieConsent.tsx`**
-- Fixný banner na spodku stránky (cookie bar)
-- Liquid glass štýl konzistentný s dizajnom webu
-- Text: informácia o používaní cookies s odkazom na GDPR podstránku
-- Tlačidlá: **Accept All** / **Reject** (príp. **Manage Preferences**)
-- Po kliknutí: uloží voľbu do `localStorage` a banner zmizne
-- Pri ďalšej návšteve: ak je voľba uložená, banner sa nezobrazí
-
-**Funkcionalita cookies:**
-- Cookie kategórie: **Necessary** (vždy aktívne), **Analytics** (voliteľné)
-- Ak používateľ odmietne analytics cookies, žiadne tracking skripty sa nenačítajú
-- Helper funkcia `getCookieConsent()` na čítanie stavu kdekoľvek v appke
-
-**Súbor: `src/App.tsx`**
-- Pridať `<CookieConsent />` do layoutu (zobrazuje sa na všetkých stránkach)
+Stránky (Index, Consulting, VirtualVillage, Gdpr) už odovzdávajú vlastné farby a parametre cez props — tieto **ostanú nezmenené**, pretože override default hodnoty.
 
 ### Súbory na úpravu/vytvorenie
-1. `src/assets/vv-photo-2-1.png` — skopírovaný upload
-2. `src/assets/vv-photo-3-1.png` — skopírovaný upload
-3. `src/assets/vv-photo-1-1.png` — skopírovaný upload
-4. `src/pages/VirtualVillage.tsx` — nové importy v galérii
-5. `src/components/CookieConsent.tsx` — nový komponent
-6. `src/App.tsx` — pridanie CookieConsent
+1. `src/components/Grainient.tsx` — prepísať na 1:1 kópiu referenčného kódu (s TypeScript typmi)
+2. `src/components/Grainient.css` — nový súbor pre container štýly
 
