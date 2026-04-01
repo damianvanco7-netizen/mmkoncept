@@ -75,9 +75,16 @@ const Consulting = () => {
       {/* Service Portfolio — Circle buttons like homepage */}
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full">
-          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
-            Our Service Portfolio
-          </p>
+          <div className="text-center">
+            <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
+              Our Service Portfolio
+            </p>
+            <h2 className="heading-h2">
+              <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+                Our Service Portfolio
+              </ShinyText>
+            </h2>
+          </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 mt-16">
             {services.map((service) => (
