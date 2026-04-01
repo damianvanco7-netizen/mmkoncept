@@ -67,11 +67,10 @@ const VirtualVillage = () => {
                 Virtual Village moves with you.
               </ShinyText>
             </h2>
-            <div className="mb-8">
-              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg">
-                Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
-              </p>
-            </div>
+            <p className="heading-h3 text-foreground/80 max-w-lg font-normal mb-8">
+              A companion.<br />
+              A guide. A quiet intelligence in the background.
+            </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
               It helps you get things done effortlessly —<br />
               so you can spend less time navigating technology<br />
