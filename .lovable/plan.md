@@ -1,60 +1,45 @@
 
 
-## Plan: Kontaktný formulár s liquid glass popup
+## Plan
 
-### Prehľad
-Vytvoríme kontaktný popup (Dialog) s liquid glass efektom, ktorý sa otvorí po kliknutí na "Contact" v navbar a "Connect" button na Consulting stránke. Formulár odošle email na martina.masarykova@mmconcept.sk.
+### 1. Galéria — výmena obrázkov
 
-### 1. Vytvorenie ContactFormDialog komponentu
+Skopírovať 3 nahrané fotky do `src/assets/` a nahradiť existujúce obrázky v galérii:
 
-**Nový súbor: `src/components/ContactFormDialog.tsx`**
+| Pozícia | Aktuálny súbor | Nový súbor |
+|---------|---------------|------------|
+| Ľavý horný roh (square1) | gallerySquare1 | vv_photo_2_1.png |
+| Malá fotka vpravo (square2) | gallerySquare2 | vv_photo_3_1.png |
+| Dolná široká vľavo (wide) | galleryWide | vv_photo_1_1.png |
+| Veľká vpravo (featured) | galleryFeatured | **bez zmeny** |
 
-- Radix Dialog (z existujúceho `ui/dialog.tsx`) s custom liquid glass štýlom
-- Overlay: tmavý blur backdrop
-- Content panel: liquid glass efekt (backdrop-filter blur, gradient, border, shadows — rovnaký vzor ako navbar/buttony)
-- Formulárové polia:
-  - **Meno a Priezvisko** (input, required)
-  - **E-mail** (input type=email, required)
-  - **Správa** (textarea, required)
-  - **Checkbox** — súhlas so spracovaním osobných údajov s odkazom na GDPR podstránku
-  - **Send button** — liquid glass štýl ako ostatné buttony
-- Validácia na client-side (required fields, email format)
-- Po odoslaní: toast notifikácia (úspech/chyba)
+**Súbor:** `src/pages/VirtualVillage.tsx` — nové importy a výmena src v galérii.
 
-### 2. Email odosielanie
+---
 
-**Nový súbor: `supabase/functions/send-contact-email/index.ts`** (Edge Function)
+### 2. Cookie oznámenie + funkcionalita
 
-- Prijme POST s menom, emailom, správou
-- Validácia vstupov (zod)
-- Odošle email na `martina.masarykova@mmconcept.sk` cez Resend alebo SMTP
-- CORS headers pre webový klient
+**Nový komponent: `src/components/CookieConsent.tsx`**
+- Fixný banner na spodku stránky (cookie bar)
+- Liquid glass štýl konzistentný s dizajnom webu
+- Text: informácia o používaní cookies s odkazom na GDPR podstránku
+- Tlačidlá: **Accept All** / **Reject** (príp. **Manage Preferences**)
+- Po kliknutí: uloží voľbu do `localStorage` a banner zmizne
+- Pri ďalšej návšteve: ak je voľba uložená, banner sa nezobrazí
 
-**Poznámka:** Pre odosielanie emailu bude potrebný email service. Keďže projekt nemá Lovable Cloud / Supabase pripojené, najjednoduchšie riešenie je použiť `mailto:` link alebo integrovať email API (napr. Resend). Overím dostupnosť Supabase/Cloud a podľa toho zvolím prístup.
+**Funkcionalita cookies:**
+- Cookie kategórie: **Necessary** (vždy aktívne), **Analytics** (voliteľné)
+- Ak používateľ odmietne analytics cookies, žiadne tracking skripty sa nenačítajú
+- Helper funkcia `getCookieConsent()` na čítanie stavu kdekoľvek v appke
 
-### 3. Napojenie na existujúce buttony
-
-**Súbor: `src/components/Navbar.tsx`**
-- "Contact" button (desktop aj mobile) → namiesto scrollTo("footer") otvorí ContactFormDialog
-- Navbar bude držať stav `contactOpen` a renderovať `<ContactFormDialog />`
-
-**Súbor: `src/pages/Consulting.tsx`**
-- "Connect" button → namiesto scrollTo footer otvorí ContactFormDialog
-- Pridať stav a renderovanie dialogu
-
-### 4. Liquid glass CSS pre dialog
-
-**Súbor: `src/index.css`**
-- Nová trieda `.liquid-glass-dialog` — backdrop-filter blur(20px), gradient background s tmavými tónmi, border, shadows, specular highlights (::before/::after) — konzistentné s existujúcim liquid glass systémom
+**Súbor: `src/App.tsx`**
+- Pridať `<CookieConsent />` do layoutu (zobrazuje sa na všetkých stránkach)
 
 ### Súbory na úpravu/vytvorenie
-1. `src/components/ContactFormDialog.tsx` — nový komponent
-2. `src/index.css` — nová `.liquid-glass-dialog` trieda
-3. `src/components/Navbar.tsx` — Contact otvára popup
-4. `src/pages/Consulting.tsx` — Connect otvára popup
-
-### Technické detaily
-- Dialog používa existujúci Radix `Dialog` z `ui/dialog.tsx`
-- Formulár: react-hook-form + zod validácia (obe knižnice sú v projekte)
-- Email: overím dostupnosť Supabase — ak je k dispozícii, Edge Function; ak nie, `mailto:` fallback alebo pripojíme email service
+1. `src/assets/vv-photo-2-1.png` — skopírovaný upload
+2. `src/assets/vv-photo-3-1.png` — skopírovaný upload
+3. `src/assets/vv-photo-1-1.png` — skopírovaný upload
+4. `src/pages/VirtualVillage.tsx` — nové importy v galérii
+5. `src/components/CookieConsent.tsx` — nový komponent
+6. `src/App.tsx` — pridanie CookieConsent
 
