@@ -10,6 +10,7 @@ import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
 import Gdpr from "./pages/Gdpr";
 import LiquidGlassFilter from "./components/LiquidGlassFilter";
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
