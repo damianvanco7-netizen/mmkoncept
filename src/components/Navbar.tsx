@@ -58,8 +58,18 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[60] ${
-          mobileOpen ? "bg-card" : ""
+          mobileOpen ? "" : ""
         }`}
+      >
+        {/* Mobile menu blur overlay */}
+        {mobileOpen && (
+          <div className="fixed inset-0 z-[-1] md:hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
+              backdropFilter: 'blur(28px) saturate(1.6)',
+              WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
+            }}
+          />
       >
         <div className={`mx-auto ${
           scrolled && !mobileOpen
