@@ -20,9 +20,7 @@ const Index = () => {
         saturation={0.8}
       />
 
-      <div className="relative" style={{ zIndex: 1 }}>
-        <Navbar />
-      </div>
+      <Navbar />
 
       <div className="relative" style={{ zIndex: 1 }}>
         <HeroSection />
