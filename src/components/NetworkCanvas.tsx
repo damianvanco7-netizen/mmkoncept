@@ -40,20 +40,18 @@ const NetworkCanvas = () => {
       });
     }
 
-    // 3 trailing dots - must end BEFORE the title text
-    // Title "Life, just simplified" is right-aligned, starts around 55-60% of width
-    // So dots must stay before ~48% of width
+    // 3 trailing dots - horizontal, same Y, ending before "LIFE"
     const dotsY = h * 0.5;
     const dotsStartX = clusterCenterX + clusterRadius + 20;
-    const dotsEndX = w * 0.46; // stop well before title
+    const dotsEndX = w * 0.44; // stop well before title
     const dotsSpacing = (dotsEndX - dotsStartX) / 2;
     
     for (let i = 0; i < 3; i++) {
       nodes.push({
         baseX: dotsStartX + i * dotsSpacing,
-        baseY: dotsY + (i - 1) * 15, // slight vertical spread
+        baseY: dotsY,
         x: dotsStartX + i * dotsSpacing,
-        y: dotsY + (i - 1) * 15,
+        y: dotsY,
         vx: 0, vy: 0,
         radius: 4.5 - i * 0.5,
       });

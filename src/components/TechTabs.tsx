@@ -138,19 +138,11 @@ const TechTabs = () => {
             <button
               key={tab.id}
               onClick={() => switchTab(tab.id)}
-              className={`px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle transition-all duration-300 ${
                 active === tab.id
                   ? "border-foreground/30 text-foreground"
                   : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
               }`}
-              style={{
-                background: active === tab.id
-                  ? "linear-gradient(145deg, rgba(255,255,255,0.5), rgba(200,195,190,0.3))"
-                  : "linear-gradient(145deg, rgba(255,255,255,0.3), rgba(200,195,190,0.15))",
-                boxShadow: active === tab.id
-                  ? "4px 4px 10px rgba(0,0,0,0.06), -2px -2px 6px rgba(255,255,255,0.4)"
-                  : "2px 2px 6px rgba(0,0,0,0.03), -1px -1px 4px rgba(255,255,255,0.3)",
-              }}
             >
               {tab.label}
             </button>
