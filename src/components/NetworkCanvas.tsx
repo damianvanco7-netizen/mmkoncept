@@ -138,7 +138,7 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
     canvas.addEventListener('mousemove', onMove);
     canvas.addEventListener('mouseleave', onLeave);
 
-    const clusterCount = direction === 'down' ? 80 : 100;
+    const clusterCount = direction === 'down' ? 50 : 100;
 
     const draw = () => {
       const { w, h } = sizeRef.current;
