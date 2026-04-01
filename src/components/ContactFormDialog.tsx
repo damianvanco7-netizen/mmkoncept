@@ -62,7 +62,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
         <DialogPrimitive.Overlay className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
         {/* Content */}
-        <DialogPrimitive.Content className="fixed left-[50%] top-[50%] z-[70] w-[90vw] max-w-lg translate-x-[-50%] translate-y-[-50%] liquid-glass-dialog rounded-2xl p-8 md:p-10 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
+        <DialogPrimitive.Content className="fixed left-[50%] top-[50%] z-[70] w-[92vw] max-w-2xl translate-x-[-50%] translate-y-[-50%] liquid-glass-dialog rounded-2xl p-10 md:p-14 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
           {/* Close button */}
           <DialogPrimitive.Close className="absolute right-4 top-4 rounded-full p-1 text-white/50 hover:text-white/80 transition-colors focus:outline-none">
             <X className="h-5 w-5" />
