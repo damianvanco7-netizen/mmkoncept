@@ -12,9 +12,9 @@ const Index = () => {
         color1="#868380"
         color2="#575451"
         color3="#282828"
-        timeSpeed={0.35}
+        timeSpeed={0.55}
         warpFrequency={4.0}
-        warpSpeed={1.5}
+        warpSpeed={2.5}
         grainAmount={0.06}
         contrast={1.3}
         saturation={0.8}
