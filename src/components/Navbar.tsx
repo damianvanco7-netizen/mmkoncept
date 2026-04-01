@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-mmconcept-2.svg";
+import logo from "@/assets/logo-vv-2.svg";
 import ContactFormDialog from "@/components/ContactFormDialog";
 
 const Navbar = () => {
