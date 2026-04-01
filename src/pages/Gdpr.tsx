@@ -16,6 +16,7 @@ const Gdpr = () => {
         contrast={1.3}
         saturation={0.8}
       />
+      <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
 
       <section className="pt-32 pb-20 section-padding">
