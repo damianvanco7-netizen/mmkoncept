@@ -68,10 +68,8 @@ const VirtualVillage = () => {
               </ShinyText>
             </h2>
             <div className="mb-8">
-              <p className="heading-h3 text-foreground">
-                A companion.<br />
-                A guide.<br />
-                A quiet intelligence <span className="font-normal">in the background.</span>
+              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg">
+                Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
               </p>
             </div>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
@@ -123,14 +121,14 @@ const VirtualVillage = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
             <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-              Your Everyday Ecosystem
+              Everyday Ecosystem
             </p>
             <h2 className="heading-h2 text-foreground/80 mb-8">
               7 Life Dimensions.<br />
               One Intuitive Space.
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
-              Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
+              A companion. A guide. A quiet intelligence in the background.
             </p>
           </div>
           <div className="flex items-center justify-center md:justify-end">
@@ -161,7 +159,7 @@ const VirtualVillage = () => {
           <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
             Real Ecosystem
           </p>
-          <h2 className="heading-h2 text-foreground/80 mb-4 max-w-4xl">
+          <h2 className="heading-h2 text-foreground/80 mb-4" style={{ maxWidth: '60rem' }}>
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
               From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
             </ShinyText>
