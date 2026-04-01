@@ -137,8 +137,10 @@ const VirtualVillage = () => {
               Everyday Ecosystem
             </p>
             <h2 className="heading-h2 text-foreground/80 mb-8">
-              7 Life Dimensions.<br />
-              One Intuitive Space.
+              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+                7 Life Dimensions.<br />
+                One Intuitive Space.
+              </ShinyText>
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
               Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
