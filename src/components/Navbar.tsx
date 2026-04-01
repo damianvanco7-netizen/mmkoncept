@@ -131,7 +131,7 @@ const Navbar = () => {
 
       {/* Fullscreen mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col items-start justify-center px-10 gap-8 md:hidden">
+        <div className="fixed inset-0 z-[55] flex flex-col items-start justify-center px-10 gap-8 md:hidden">
           <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
           <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Projects & Services</button>
           <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
