@@ -12,7 +12,7 @@ const Gdpr = () => {
       <Navbar />
 
       <section className="pt-32 pb-20 section-padding">
-        <div className="w-full max-w-3xl">
+        <div className="w-full max-w-3xl mx-auto">
           <h1 className="heading-h2 text-white mb-4">Privacy Policy</h1>
           <p className="text-white/50 text-sm mb-16">Active since January 2026</p>
 
