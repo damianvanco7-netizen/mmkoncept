@@ -4,12 +4,18 @@ import Grainient from "@/components/Grainient";
 
 const Gdpr = () => {
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)",
-      }}
-    >
+    <div className="min-h-screen relative">
+      <Grainient
+        color1="#4a4745"
+        color2="#3a3937"
+        color3="#272727"
+        timeSpeed={0.15}
+        warpFrequency={3.0}
+        warpSpeed={1.0}
+        grainAmount={0.05}
+        contrast={1.3}
+        saturation={0.8}
+      />
       <Navbar />
 
       <section className="pt-32 pb-20 section-padding">

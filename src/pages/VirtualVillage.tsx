@@ -25,7 +25,18 @@ import vvKruh from "@/assets/vv-kruh.png";
 
 const VirtualVillage = () => {
   return (
-    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, hsl(var(--warm-beige)) 0%, hsl(var(--warm-taupe)) 15%, hsl(var(--warm-beige)) 35%, hsl(var(--warm-taupe)) 55%, hsl(var(--warm-beige)) 75%, hsl(var(--warm-taupe)) 100%)" }}>
+    <div className="min-h-screen relative">
+      <Grainient
+        color1="#E3D5C3"
+        color2="#C9BAA8"
+        color3="#DED0BF"
+        timeSpeed={0.15}
+        warpFrequency={3.0}
+        warpSpeed={1.0}
+        grainAmount={0.04}
+        contrast={1.2}
+        saturation={0.7}
+      />
       <Navbar />
 
       {/* Hero — two-column: text left, full-height photo right */}
