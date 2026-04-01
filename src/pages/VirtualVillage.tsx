@@ -27,9 +27,9 @@ const VirtualVillage = () => {
   return (
     <div className="min-h-screen relative">
       <Grainient
-        color1="#BEB4A2"
-        color2="#E8E2D9"
-        color3="#D5CEC3"
+        color1="#A69C8D"
+        color2="#D3CFC8"
+        color3="#BDB5A9"
         timeSpeed={0.55}
         warpFrequency={4.0}
         warpSpeed={2.5}
