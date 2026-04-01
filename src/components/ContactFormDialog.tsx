@@ -77,12 +77,9 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
           </DialogPrimitive.Description>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name */}
             <div>
-              <label htmlFor="cf-name" className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-2">
-                Full Name
-              </label>
               <input
                 id="cf-name"
                 type="text"
@@ -90,16 +87,13 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                 maxLength={100}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                className="w-full rounded-xl bg-white/[0.06] border border-white/[0.12] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
+                placeholder="Name and surname"
+                className="w-full bg-transparent border-0 border-b border-white/20 px-0 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="cf-email" className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-2">
-                E-mail
-              </label>
               <input
                 id="cf-email"
                 type="email"
@@ -107,36 +101,42 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
                 maxLength={255}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="w-full rounded-xl bg-white/[0.06] border border-white/[0.12] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
+                placeholder="E-mail"
+                className="w-full bg-transparent border-0 border-b border-white/20 px-0 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors"
               />
             </div>
 
             {/* Message */}
             <div>
-              <label htmlFor="cf-msg" className="block text-xs font-medium text-white/60 uppercase tracking-wider mb-2">
-                Message
-              </label>
               <textarea
                 id="cf-msg"
                 required
                 maxLength={1000}
-                rows={4}
+                rows={3}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="How can we help you?"
-                className="w-full rounded-xl bg-white/[0.06] border border-white/[0.12] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all resize-none"
+                placeholder="Message"
+                className="w-full bg-transparent border-0 border-b border-white/20 px-0 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors resize-none"
               />
             </div>
 
             {/* GDPR Consent */}
             <label className="flex items-start gap-3 cursor-pointer group">
-              <input
-                type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/[0.06] accent-white/80"
-              />
+              <button
+                type="button"
+                onClick={() => setConsent(!consent)}
+                className={`mt-0.5 h-4 w-4 rounded flex-shrink-0 border transition-all flex items-center justify-center ${
+                  consent
+                    ? "border-white/50 text-white"
+                    : "border-white/25 text-transparent"
+                }`}
+              >
+                {consent && (
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+              </button>
               <span className="text-xs text-white/50 leading-relaxed">
                 I agree to the processing of my personal data in accordance with the{" "}
                 <Link
