@@ -252,63 +252,37 @@
     transform: translateY(-2px);
   }
 
-  /* Star Border — animated glowing border on glass circles */
-  .star-border-ring {
+  /* Edge glow — specular light spots on circle border */
+  .liquid-glass-shine::before {
+    content: '';
     position: absolute;
-    inset: 0;
+    inset: -1px;
     border-radius: inherit;
-    overflow: hidden;
     pointer-events: none;
     z-index: 2;
-    /* Mask: show only a 3px ring around the edge */
-    -webkit-mask: radial-gradient(circle at center, transparent calc(50% - 1.5px), black calc(50% - 0.5px));
-    mask: radial-gradient(circle at center, transparent calc(50% - 1.5px), black calc(50% - 0.5px));
+    background:
+      /* Bright vertical glow on left edge */
+      radial-gradient(ellipse 8% 35% at 2% 45%, rgba(255, 255, 255, 0.55) 0%, transparent 100%),
+      /* Subtle top-left arc highlight */
+      radial-gradient(ellipse 30% 6% at 30% 1%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+      /* Small warm sparkle bottom-right */
+      radial-gradient(circle at 82% 92%, rgba(255, 240, 210, 0.4) 0%, transparent 8%),
+      /* Very faint top arc */
+      radial-gradient(ellipse 50% 4% at 55% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
   }
 
-  .star-border-ring .star-glow-top,
-  .star-border-ring .star-glow-bottom {
+  .liquid-glass-shine::after {
+    content: '';
     position: absolute;
-    width: 300%;
-    height: 50%;
-    border-radius: 50%;
+    inset: -1px;
+    border-radius: inherit;
     pointer-events: none;
-    opacity: 0.9;
-  }
-
-  .star-border-ring .star-glow-top {
-    top: -11px;
-    left: -250%;
-    background: radial-gradient(circle, white, transparent 35%);
-    animation: star-movement-top 6.5s linear infinite alternate;
-  }
-
-  .star-border-ring .star-glow-bottom {
-    bottom: -11px;
-    right: -250%;
-    background: radial-gradient(circle, white, transparent 35%);
-    animation: star-movement-bottom 6.5s linear infinite alternate;
-  }
-
-  @keyframes star-movement-top {
-    0% {
-      transform: translate(0%, 0%);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(100%, 0%);
-      opacity: 0;
-    }
-  }
-
-  @keyframes star-movement-bottom {
-    0% {
-      transform: translate(0%, 0%);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-100%, 0%);
-      opacity: 0;
-    }
+    z-index: 2;
+    background:
+      /* Faint right edge highlight */
+      radial-gradient(ellipse 6% 20% at 98% 55%, rgba(255, 255, 255, 0.12) 0%, transparent 100%),
+      /* Bottom center soft reflection */
+      radial-gradient(ellipse 40% 5% at 50% 99%, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
   }
 
   /* ═══════════════════════════════════════════
