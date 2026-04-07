@@ -1,25 +1,15 @@
 
 
-## Plan: Zjednotenie glass efektu s headerom
+## Plan: Match right column stagger to left column diagonal
 
-### Problém
-`.liquid-glass-circle-light` v CSS má rovnaký `backdrop-filter: blur(28px) saturate(1.6)` ako header, ale navyše obsahuje:
-- `::before` pseudo-element — biely gradient odlesk zhora
-- `::after` pseudo-element — tmavé radial gradienty + animácia `liquid-caustic`
+The issue is that the right column (items 5, 6, 7) currently staggers using `marginRight` (pushing from the right edge inward), while the screenshot shows both columns staggering in the same diagonal direction — items shifting progressively to the right from top to bottom.
 
-Tieto extra vrstvy pridávajú viditeľné tmavé škvrny a odlesky, ktoré header nemá, preto elementy vyzerajú inak.
+### Change in `src/components/VVDimensionsGrid.tsx`
 
-### Riešenie
-Odstrániť `::before` a `::after` pseudo-elementy z `.liquid-glass-circle-light` a ponechať len čistý glass efekt identický s headerom:
+**DimensionItem component** (lines 64-94): Change the right column offset from `marginRight` to `marginLeft`, so both columns stagger in the same direction (left-to-right, top-to-bottom):
 
-**Súbor: `src/index.css`**
-- `.liquid-glass-circle-light` — ponechať background, border, backdrop-filter, box-shadow (už sú takmer 1:1 s headerom)
-- Odstrániť celý blok `::before` (riadky 325-343)
-- Odstrániť celý blok `::after` (riadky 345-356)
-- Mierne zvýšiť background opacity na presne rovnaké hodnoty ako header: `rgba(255,255,255,0.30)` → `rgba(255,255,255,0.15)` 
+- Left column: `marginLeft: index * 3rem` (0, 3, 6, 9) — unchanged
+- Right column: `marginLeft: index * 3rem` (0, 3, 6) — same diagonal direction as left
 
-Výsledok: kruhy aj pill buttony budú mať presne rovnaký čistý glass blur ako header pill shape.
-
-### Súbory na úpravu
-1. `src/index.css` — úprava `.liquid-glass-circle-light` a odstránenie pseudo-elementov
+This single change makes both columns flow diagonally like the screenshot reference.
 
