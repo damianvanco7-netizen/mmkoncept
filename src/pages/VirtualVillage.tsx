@@ -98,29 +98,12 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-2 md:pr-[-2rem] lg:pr-0 md:translate-x-8">
-            <div className="relative w-[350px] md:w-[425px] lg:w-[500px] xl:w-[550px]">
-              <img
-                src={mockup}
-                alt="Virtual Village app mockup"
-                className="relative z-10 w-full pointer-events-none"
-              />
-              <video
-                src={heroVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute z-0 object-cover"
-                style={{
-                  top: '5%',
-                  left: '7.3%',
-                  width: '57%',
-                  height: '78%',
-                  borderRadius: 'clamp(1.2rem, 3vw, 2.5rem)',
-                }}
-              />
-            </div>
+          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-2 lg:pr-0 md:translate-x-8">
+            <img
+              src={vvMockup}
+              alt="Virtual Village app mockup"
+              className="w-full max-w-[650px] pointer-events-none"
+            />
           </div>
         </div>
       </section>
