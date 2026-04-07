@@ -52,10 +52,6 @@ const PhilosophySection = () => {
               onClick={() => navigate(item.route)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-8 md:px-12 liquid-glass-circle liquid-glass-shine w-[320px] h-[320px] md:w-[clamp(300px,30vw,440px)] md:h-[clamp(300px,30vw,440px)]"
             >
-              <div className="star-border-ring">
-                <div className="star-glow-top" />
-                <div className="star-glow-bottom" />
-              </div>
               <img src={item.logo} alt={item.logoAlt} className="relative z-[1] h-14 md:h-[72px] mb-4 brightness-0 invert opacity-80" />
               <span className="relative z-[1] text-white text-lg md:text-xl font-semibold mb-2 whitespace-nowrap leading-tight">
                 {item.title}
