@@ -16,7 +16,7 @@ const HeroSection = () => {
         <h1 className="heading-h1 text-left">
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
             <span className="block">Life, just</span>
-            <span className="block">simplified.</span>
+            <span className="block">simplified</span>
           </ShinyText>
         </h1>
         <div className="relative w-full" style={{ height: '45vh' }}>
@@ -33,7 +33,7 @@ const HeroSection = () => {
           <h1 className="heading-h1">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
               <span className="block">Life, just</span>
-              <span className="block">simplified.</span>
+              <span className="block">simplified</span>
             </ShinyText>
           </h1>
         </div>

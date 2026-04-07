@@ -104,7 +104,7 @@ const VVDimensionsGrid = () => {
             shineColor="hsl(var(--foreground))"
             spread={140}
           >
-            One Intuitive Space.
+            One Intuitive Space
           </ShinyText>
         </h2>
 
@@ -123,7 +123,7 @@ const VVDimensionsGrid = () => {
             shineColor="hsl(var(--foreground))"
             spread={140}
           >
-            7 Life Dimensions.
+            7 Life Dimensions
           </ShinyText>
         </h2>
 
