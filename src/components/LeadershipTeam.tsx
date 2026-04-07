@@ -43,15 +43,11 @@ const LeadershipTeam = () => {
   return (
     <section className="py-28 md:py-36 section-padding">
       <div className="w-full flex flex-col items-center text-center">
-        <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-          Meet Our Leadership Team
-        </p>
         <h2 className="heading-h2 text-foreground/80 mb-4">
           Diversity is Our Power.
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 max-w-4xl">
-          <em>Where African resilience meets European precision.</em><br />
-          Building impact without borders.
+          <em>Where African resilience meets European precision.</em>
         </p>
         <img
           src={teamPhoto}

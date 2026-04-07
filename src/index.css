@@ -252,38 +252,6 @@
     transform: translateY(-2px);
   }
 
-  /* Edge glow — specular light spots on circle border */
-  .liquid-glass-shine::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 2;
-    background:
-      /* Bright vertical glow on left edge */
-      radial-gradient(ellipse 8% 35% at 2% 45%, rgba(255, 255, 255, 0.55) 0%, transparent 100%),
-      /* Subtle top-left arc highlight */
-      radial-gradient(ellipse 30% 6% at 30% 1%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
-      /* Small warm sparkle bottom-right */
-      radial-gradient(circle at 82% 92%, rgba(255, 240, 210, 0.4) 0%, transparent 8%),
-      /* Very faint top arc */
-      radial-gradient(ellipse 50% 4% at 55% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-  }
-
-  .liquid-glass-shine::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 2;
-    background:
-      /* Faint right edge highlight */
-      radial-gradient(ellipse 6% 20% at 98% 55%, rgba(255, 255, 255, 0.12) 0%, transparent 100%),
-      /* Bottom center soft reflection */
-      radial-gradient(ellipse 40% 5% at 50% 99%, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
-  }
 
   /* ═══════════════════════════════════════════
      Liquid Glass Circle — Light Background
