@@ -66,7 +66,7 @@ const Navbar = () => {
         >
           <div className="flex flex-col items-start justify-center h-full px-10 gap-8">
             <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Projects & Services</button>
+            <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Our Portfolio</button>
             <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
             <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
           </div>
@@ -117,7 +117,7 @@ const Navbar = () => {
             {/* Desktop nav */}
             <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useDarkText ? "text-foreground/50" : "text-white/50"}`}>
               <button onClick={goHome} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Origin</button>
-              <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Projects & Services</button>
+              <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Our Portfolio</button>
               <button onClick={() => scrollTo("founder")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>About</button>
               <button onClick={() => setContactOpen(true)} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Contact</button>
             </div>

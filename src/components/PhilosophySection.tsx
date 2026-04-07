@@ -1,19 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import ShinyText from "./ShinyText";
+import logoVV from "@/assets/logo-virtual-village-2.svg";
+import logoConsulting from "@/assets/logo-consulting.svg";
 
 const circles = [
   {
-    title: "Virtual Village",
+    logo: logoVV,
+    logoAlt: "Virtual Village",
+    title: "Our flagship digital ecosystem",
     description:
-      "Our flagship digital ecosystem. Powered by the STAR Pro AI engine, it offers a personalized universe that simplifies everyday life, connects essential services, and redefines how people engage with the world around them.",
+      "Powered by STAR Pro AI, it simplifies everyday life, connects essential services, and creates a more intuitive way to engage with the world around you.",
     route: "/virtual-village",
     linkText: "Explore Village →",
   },
   {
+    logo: logoConsulting,
+    logoAlt: "Consulting & Strategy",
     title: "Consulting & Strategy",
     description:
-      "Our strategic advisory practice. Focused on clarity, transformation, and cross-sector innovation, it helps organizations navigate complexity and shape solutions that are both future-ready and deeply human.",
+      "Our strategic advisory practice. We help organizations navigate complexity, shape digital transformation, and unlock future-ready solutions with clarity and purpose.",
     route: "/consulting",
     linkText: "Explore Services →",
   },
@@ -39,16 +44,16 @@ const PhilosophySection = () => {
           </h2>
         </div>
 
-
         {/* Circle buttons */}
         <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-16">
           {circles.map((item) => (
             <button
-              key={item.title}
+              key={item.logoAlt}
               onClick={() => navigate(item.route)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-8 md:px-12 liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(300px,30vw,440px)] md:h-[clamp(300px,30vw,440px)]"
             >
-              <span className="text-white text-lg md:text-xl font-semibold mb-2 max-w-[70%] leading-tight">
+              <img src={item.logo} alt={item.logoAlt} className="h-8 md:h-10 mb-3 brightness-0 invert opacity-70" />
+              <span className="text-white text-base md:text-lg font-semibold mb-2 max-w-[75%] leading-tight">
                 {item.title}
               </span>
               <span className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 max-w-[85%]">

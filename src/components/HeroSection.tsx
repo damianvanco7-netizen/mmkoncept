@@ -46,8 +46,8 @@ const HeroSection = () => {
           md:bottom-[clamp(-140px,-12.5vw,-200px)] md:right-[clamp(40px,8vw,160px)]
           bottom-8 -right-8 w-[220px] h-[220px] md:w-[clamp(200px,25vw,400px)] md:h-[clamp(200px,25vw,400px)]"
       >
-        <span className="text-white/60 text-base md:text-lg lg:text-xl font-medium tracking-wide leading-snug text-center px-8">
-          Discover<br />our portfolio
+        <span className="text-white/60 text-lg md:text-xl lg:text-2xl font-medium tracking-wide leading-snug text-center px-8">
+          Our Portfolio
         </span>
       </button>
     </section>
