@@ -21,7 +21,7 @@ import galleryWide from "@/assets/vv-photo-1-1.png";
 
 import teamPhoto from "@/assets/team-photo.png";
 import vvHeroPhoto from "@/assets/vv-hero-photo.png";
-import vvKruh from "@/assets/vv-kruh.png";
+
 
 const VirtualVillage = () => {
   return (
