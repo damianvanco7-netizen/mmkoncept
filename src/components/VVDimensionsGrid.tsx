@@ -5,12 +5,13 @@ import iconCulture from "@/assets/icons/culture.svg";
 import iconSport from "@/assets/icons/sport.svg";
 import iconFood from "@/assets/icons/food_dining.svg";
 import iconShopping from "@/assets/icons/shopping_services.svg";
+import ShinyText from "@/components/ShinyText";
 
 const dimensions = [
   {
-    icon: iconEducation,
-    title: "Education",
-    description: "A space for lifelong learning — from local schools to personal growth.",
+    icon: iconCity,
+    title: "City",
+    description: "Your connection to local services, governance, and what's happening around you.",
   },
   {
     icon: iconFood,
@@ -23,75 +24,94 @@ const dimensions = [
     description: "Stay active with local activities, training, and sports communities.",
   },
   {
-    icon: iconShopping,
-    title: "Shopping",
-    description: "Smart, local commerce — convenient, relevant, and community-driven.",
-  },
-  {
     icon: iconCulture,
     title: "Culture",
     description: "Discover events, arts, and the unique rhythm of your community.",
-  },
-  {
-    icon: iconCity,
-    title: "City",
-    description: "Your connection to local services, governance, and what's happening around you.",
   },
   {
     icon: iconHealth,
     title: "Health",
     description: "Personalized access to wellness, care, and trusted medical resources.",
   },
+  {
+    icon: iconEducation,
+    title: "Education",
+    description: "A space for lifelong learning — from local schools to personal growth.",
+  },
+  {
+    icon: iconShopping,
+    title: "Shopping",
+    description: "Smart, local commerce — convenient, relevant, and community-driven.",
+  },
 ];
 
-const VVDimensionsGrid = () => {
-  const topRow = dimensions.slice(0, 4);
-  const bottomRow = dimensions.slice(4);
+const leftColumn = dimensions.slice(0, 4);
+const rightColumn = dimensions.slice(4);
 
+const DimensionItem = ({
+  dim,
+  index,
+  align,
+}: {
+  dim: (typeof dimensions)[0];
+  index: number;
+  align: "left" | "right";
+}) => (
+  <div
+    className={`flex items-center gap-5 ${
+      align === "left" ? "flex-row" : "flex-row-reverse"
+    }`}
+    style={{
+      marginLeft: align === "left" ? `${index * 2.5}rem` : undefined,
+      marginRight: align === "right" ? `${index * 2.5}rem` : undefined,
+    }}
+  >
+    <div
+      className="rounded-full flex items-center justify-center shrink-0 liquid-glass-circle-light"
+      style={{ width: 72, height: 72 }}
+    >
+      <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-60" />
+    </div>
+    <div className={align === "right" ? "text-right" : ""}>
+      <h4 className="text-sm md:text-base font-bold text-foreground/80 leading-tight">
+        {index + 1}. {dim.title}
+      </h4>
+      <p className="text-xs text-foreground/50 leading-relaxed max-w-[260px] mt-0.5">
+        {dim.description}
+      </p>
+    </div>
+  </div>
+);
+
+const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
-      <div className="w-full flex flex-col items-center">
+      <div className="w-full">
+        <h2 className="heading-h2 text-foreground/80 mb-16">
+          <ShinyText
+            speed={4}
+            color="hsl(var(--foreground) / 0.35)"
+            shineColor="hsl(var(--foreground))"
+            spread={140}
+          >
+            7 Life Dimensions.
+          </ShinyText>
+        </h2>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mb-8">
-          {topRow.map((dim) => (
-            <div
-              key={dim.title}
-              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle-light"
-              style={{
-                width: "clamp(200px, 20vw, 280px)",
-                height: "clamp(200px, 20vw, 280px)",
-              }}
-            >
-              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
-              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
-                {dim.title}
-              </span>
-              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
-                {dim.description}
-              </span>
-            </div>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+          {/* Left column — staggered down-right */}
+          <div className="flex flex-col gap-8">
+            {leftColumn.map((dim, i) => (
+              <DimensionItem key={dim.title} dim={dim} index={i} align="left" />
+            ))}
+          </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
-          {bottomRow.map((dim) => (
-            <div
-              key={dim.title}
-              className="rounded-full flex flex-col items-center justify-center text-center px-8 transition-all duration-500 cursor-default liquid-glass-circle-light"
-              style={{
-                width: "clamp(200px, 20vw, 280px)",
-                height: "clamp(200px, 20vw, 280px)",
-              }}
-            >
-              <img src={dim.icon} alt={dim.title} className="w-10 h-10 md:w-12 md:h-12 opacity-60 mb-3" />
-              <span className="text-foreground/80 text-sm md:text-base font-semibold mb-1 leading-tight">
-                {dim.title}
-              </span>
-              <span className="text-foreground/50 text-xs leading-relaxed max-w-[85%]">
-                {dim.description}
-              </span>
-            </div>
-          ))}
+          {/* Right column — staggered down-left, offset from top */}
+          <div className="flex flex-col gap-8 mt-8 md:mt-16">
+            {rightColumn.map((dim, i) => (
+              <DimensionItem key={dim.title} dim={dim} index={i} align="right" />
+            ))}
+          </div>
         </div>
       </div>
     </section>
