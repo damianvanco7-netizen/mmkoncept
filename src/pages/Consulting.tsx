@@ -120,11 +120,9 @@ const Consulting = () => {
       {/* CTA + Footer */}
       <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
-          <div className="flex-1 flex justify-center md:justify-start">
-            <NetworkCanvasMirrored />
-          </div>
-          <div className="flex-1 max-w-xl">
+          <NetworkCanvasMirrored />
+          <div className="relative z-10 w-full flex justify-end">
+          <div className="max-w-xl md:text-right">
             <h2 className="heading-h2 mb-6">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
                 Let's Build Something Meaningful
@@ -134,6 +132,7 @@ const Consulting = () => {
               Whether you're transforming your organization or reimagining urban
               infrastructure — we're ready to partner with you.
             </p>
+            <div className="flex md:justify-end">
             <button
               onClick={() => setContactOpen(true)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle"
@@ -144,6 +143,7 @@ const Consulting = () => {
             >
               <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
             </button>
+            </div>
           </div>
           </div>
         </section>
