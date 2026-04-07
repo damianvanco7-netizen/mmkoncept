@@ -261,8 +261,8 @@
     pointer-events: none;
     z-index: 2;
     /* Mask: show only a 3px ring around the edge */
-    -webkit-mask: radial-gradient(circle at center, transparent calc(50% - 3px), black calc(50% - 2px));
-    mask: radial-gradient(circle at center, transparent calc(50% - 3px), black calc(50% - 2px));
+    -webkit-mask: radial-gradient(circle at center, transparent calc(50% - 1.5px), black calc(50% - 0.5px));
+    mask: radial-gradient(circle at center, transparent calc(50% - 1.5px), black calc(50% - 0.5px));
   }
 
   .star-border-ring .star-glow-top,
