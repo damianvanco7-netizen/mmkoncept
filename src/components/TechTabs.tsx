@@ -122,7 +122,9 @@ const TechTabs = () => {
     <section className="py-28 md:py-36 section-padding">
       <div className="w-full flex flex-col items-center text-center">
         <h2 className="heading-h2 text-foreground/80 mb-4">
-          <span className="whitespace-nowrap">Cloud‑native.</span>{" "}<span className="whitespace-nowrap">AI‑powered.</span><br />Built to scale globally.
+          <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
+            <span className="whitespace-nowrap">Cloud‑native.</span>{" "}<span className="whitespace-nowrap">AI‑powered.</span><br />Built to scale globally.
+          </ShinyText>
         </h2>
         <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed mb-12">
           A modular architecture designed<br />

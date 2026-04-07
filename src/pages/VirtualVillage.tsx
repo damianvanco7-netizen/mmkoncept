@@ -52,7 +52,7 @@ const VirtualVillage = () => {
             />
             <h1 className="heading-h2 text-foreground/80">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
-                Your personalized<br />Universe.
+                Your personalized<br />Universe
               </ShinyText>
             </h1>
           </div>
