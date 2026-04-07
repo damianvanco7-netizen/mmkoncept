@@ -20,7 +20,7 @@ const NetworkCanvasMirrored = () => {
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
     // Mirrored: cluster on the RIGHT side
-    const clusterCenterX = w * 0.72;
+    const clusterCenterX = w * 0.28;
     const clusterCenterY = h * 0.4;
     const clusterRadius = Math.min(w, h) * 0.42;
     const clusterCount = 120;
