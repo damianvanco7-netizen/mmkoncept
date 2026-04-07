@@ -133,16 +133,16 @@ const VirtualVillage = () => {
         <div className="w-full">
           <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
-              <img src={gallerySquare1} alt="Virtual Village healthcare screen" className="w-full h-full object-cover" />
+              <img src={gallerySquare2} alt="Virtual Village city screen" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
-              <img src={gallerySquare2} alt="Virtual Village culture screen" className="w-full h-full object-cover" />
+              <img src={galleryFeatured} alt="Virtual Village location select" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-2 row-span-2 rounded-xl overflow-hidden">
-              <img src={galleryFeatured} alt="Virtual Village app in hand" className="w-full h-full object-cover" />
+              <img src={galleryWide} alt="Virtual Village Bratislava Castle" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-2 row-span-1 rounded-xl overflow-hidden">
-              <img src={galleryWide} alt="Virtual Village restaurant view" className="w-full h-full object-cover" />
+              <img src={gallerySquare1} alt="Virtual Village app in use" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
