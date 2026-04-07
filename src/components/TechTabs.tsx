@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ShinyText from "@/components/ShinyText";
 import techReact from "@/assets/tech-react.png";
 import techSupabase from "@/assets/tech-supabase.png";
 import techGemini from "@/assets/tech-gemini.png";
