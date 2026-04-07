@@ -253,28 +253,39 @@
   }
 
   /* Star Border — animated glowing border on glass circles */
-  .liquid-glass-shine .star-glow-top,
-  .liquid-glass-shine .star-glow-bottom {
+  .star-border-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+    /* Mask: show only a 3px ring around the edge */
+    -webkit-mask: radial-gradient(circle at center, transparent calc(50% - 3px), black calc(50% - 2px));
+    mask: radial-gradient(circle at center, transparent calc(50% - 3px), black calc(50% - 2px));
+  }
+
+  .star-border-ring .star-glow-top,
+  .star-border-ring .star-glow-bottom {
     position: absolute;
     width: 300%;
     height: 50%;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 0;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
-  .liquid-glass-shine .star-glow-top {
+  .star-border-ring .star-glow-top {
     top: -11px;
     left: -250%;
-    background: radial-gradient(circle, white, transparent 40%);
+    background: radial-gradient(circle, white, transparent 35%);
     animation: star-movement-top 6.5s linear infinite alternate;
   }
 
-  .liquid-glass-shine .star-glow-bottom {
+  .star-border-ring .star-glow-bottom {
     bottom: -11px;
     right: -250%;
-    background: radial-gradient(circle, white, transparent 40%);
+    background: radial-gradient(circle, white, transparent 35%);
     animation: star-movement-bottom 6.5s linear infinite alternate;
   }
 
