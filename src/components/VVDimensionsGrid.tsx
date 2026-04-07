@@ -52,43 +52,52 @@ const rightColumn = dimensions.slice(4);
 const DimensionItem = ({
   dim,
   index,
-  align,
+  column,
 }: {
   dim: (typeof dimensions)[0];
   index: number;
-  align: "left" | "right";
-}) => (
-  <div
-    className={`flex items-center gap-5 ${
-      align === "left" ? "flex-row" : "flex-row-reverse"
-    }`}
-    style={{
-      marginLeft: align === "left" ? `${index * 2.5}rem` : undefined,
-      marginRight: align === "right" ? `${(2 - index) * 2.5}rem` : undefined,
-    }}
-  >
+  column: "left" | "right";
+}) => {
+  const number = column === "left" ? index + 1 : index + 5;
+  const offsetRem = column === "left" ? index * 3 : index * 3;
+
+  return (
     <div
-      className="rounded-full flex items-center justify-center shrink-0 liquid-glass-circle-light"
-      style={{ width: 72, height: 72 }}
+      className="flex items-center gap-5"
+      style={{
+        marginLeft: column === "left" ? `${offsetRem}rem` : undefined,
+        marginRight: column === "right" ? `${(2 - index) * 3}rem` : undefined,
+      }}
     >
-      <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-60" />
+      <div
+        className="rounded-full flex items-center justify-center shrink-0 liquid-glass-circle-light"
+        style={{ width: 100, height: 100 }}
+      >
+        <img src={dim.icon} alt={dim.title} className="w-10 h-10 opacity-60" />
+      </div>
+      <div>
+        <h4 className="text-base md:text-lg font-bold leading-tight">
+          <ShinyText
+            speed={4}
+            color="hsl(var(--foreground) / 0.5)"
+            shineColor="hsl(var(--foreground))"
+            spread={120}
+          >
+            {number}. {dim.title}
+          </ShinyText>
+        </h4>
+        <p className="text-xs md:text-sm text-foreground/50 leading-relaxed max-w-[280px] mt-1">
+          {dim.description}
+        </p>
+      </div>
     </div>
-    <div className={align === "right" ? "text-right" : ""}>
-      <h4 className="text-sm md:text-base font-bold text-foreground/80 leading-tight">
-        {index + (align === "left" ? 1 : 5)}. {dim.title}
-      </h4>
-      <p className="text-xs text-foreground/50 leading-relaxed max-w-[260px] mt-0.5">
-        {dim.description}
-      </p>
-    </div>
-  </div>
-);
+  );
+};
 
 const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full flex flex-col items-start">
-        {/* One Intuitive Space heading */}
         <h2 className="heading-h2 text-foreground/80 mb-12">
           <ShinyText
             speed={4}
@@ -100,7 +109,6 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* vv-kruh image centered */}
         <div className="w-full flex justify-center mb-20">
           <img
             src={vvKruh}
@@ -109,7 +117,6 @@ const VVDimensionsGrid = () => {
           />
         </div>
 
-        {/* 7 Life Dimensions heading */}
         <h2 className="heading-h2 text-foreground/80 mb-16">
           <ShinyText
             speed={4}
@@ -121,16 +128,18 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* Staggered two-column dimension list */}
+        {/* Staggered two-column layout matching reference */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0 w-full">
-          <div className="flex flex-col gap-8">
+          {/* Left column — items 1-4, staggered right */}
+          <div className="flex flex-col gap-10">
             {leftColumn.map((dim, i) => (
-              <DimensionItem key={dim.title} dim={dim} index={i} align="left" />
+              <DimensionItem key={dim.title} dim={dim} index={i} column="left" />
             ))}
           </div>
-          <div className="flex flex-col gap-8 mt-8 md:mt-16">
+          {/* Right column — items 5-7, staggered left, icon on left */}
+          <div className="flex flex-col gap-10 mt-8 md:mt-20">
             {rightColumn.map((dim, i) => (
-              <DimensionItem key={dim.title} dim={dim} index={i} align="right" />
+              <DimensionItem key={dim.title} dim={dim} index={i} column="right" />
             ))}
           </div>
         </div>
