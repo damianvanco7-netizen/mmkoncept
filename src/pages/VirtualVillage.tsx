@@ -98,11 +98,11 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-2 lg:pr-0 md:translate-x-8">
+          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-0 lg:pr-0">
             <img
               src={vvMockup}
               alt="Virtual Village app mockup"
-              className="w-full max-w-[650px] pointer-events-none"
+              className="w-full max-w-[750px] pointer-events-none"
             />
           </div>
         </div>
