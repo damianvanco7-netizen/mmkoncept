@@ -2,13 +2,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import VirtualVillage from "./pages/VirtualVillage";
 import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
-import Gdpr from "./pages/Gdpr";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 import LiquidGlassFilter from "./components/LiquidGlassFilter";
 import CookieConsent from "./components/CookieConsent";
 
@@ -34,7 +35,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/virtual-village" element={<VirtualVillage />} />
           <Route path="/consulting" element={<Consulting />} />
-          <Route path="/gdpr" element={<Gdpr />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/gdpr" element={<Navigate to="/privacy-policy" replace />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
