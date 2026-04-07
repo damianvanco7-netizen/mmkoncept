@@ -65,8 +65,7 @@ const DimensionItem = ({
     <div
       className="flex items-center gap-5"
       style={{
-        marginLeft: column === "left" ? `${offsetRem}rem` : undefined,
-        marginRight: column === "right" ? `${(2 - index) * 3}rem` : undefined,
+        marginLeft: `${offsetRem}rem`,
       }}
     >
       <div
