@@ -77,8 +77,7 @@ const VirtualVillage = () => {
           <div className="flex flex-col items-start">
             <h2 className="heading-h2 mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
-                More than<br />a platform<br />
-                Virtual Village moves with you.
+                More than<br />a platform...
               </ShinyText>
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal mb-8">
@@ -133,18 +132,12 @@ const VirtualVillage = () => {
       <section className="py-28 md:py-36 section-padding">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col items-start">
-            <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-              Everyday Ecosystem
-            </p>
             <h2 className="heading-h2 text-foreground/80 mb-8">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 7 Life Dimensions.<br />
                 One Intuitive Space.
               </ShinyText>
             </h2>
-            <p className="heading-h3 text-foreground/80 max-w-lg font-normal">
-              Virtual Village brings together everything you need for everyday life — in one seamless, human-centered experience.
-            </p>
           </div>
           <div className="flex items-center justify-center md:justify-end">
             <img
@@ -169,24 +162,15 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* New section — From concept to product */}
-      <section className="py-28 md:py-36 section-padding">
-        <div className="w-full flex flex-col items-center text-center">
-          <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-            Real Ecosystem
-          </p>
-          <h2 className="heading-h2 text-foreground/80 mb-4" style={{ maxWidth: '60rem' }}>
+      {/* Gallery Section */}
+      <section className="py-20 md:py-28 section-padding">
+        <div className="w-full flex flex-col items-center text-center mb-12">
+          <h2 className="heading-h2 text-foreground/80">
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
-              From concept to product, Virtual Village is taking shape as a real ecosystem for everyday life.
+              Product Gallery
             </ShinyText>
           </h2>
         </div>
-      </section>
-
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Gallery Section */}
-      <section className="py-20 md:py-28 section-padding">
         <div className="w-full">
           <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">

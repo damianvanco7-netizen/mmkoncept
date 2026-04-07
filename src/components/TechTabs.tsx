@@ -121,14 +121,11 @@ const TechTabs = () => {
   return (
     <section className="py-28 md:py-36 section-padding">
       <div className="w-full flex flex-col items-center text-center">
-        <p className="text-xs font-semibold tracking-widest text-foreground/60 uppercase mb-4">
-          Technology
-        </p>
         <h2 className="heading-h2 text-foreground/80 mb-4">
           <span className="whitespace-nowrap">Cloud‑native.</span>{" "}<span className="whitespace-nowrap">AI‑powered.</span><br />Built to scale globally.
         </h2>
         <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 leading-relaxed mb-12">
-          A modern architecture designed<br />
+          A modular architecture designed<br />
           for speed, intelligence, and seamless growth.
         </p>
 
