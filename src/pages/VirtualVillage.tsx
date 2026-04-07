@@ -128,30 +128,7 @@ const VirtualVillage = () => {
 
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* Section 3 — 7 Life Dimensions with vv-kruh image */}
-      <section className="py-28 md:py-36 section-padding">
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col items-start">
-            <h2 className="heading-h2 text-foreground/80 mb-8">
-              <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
-                7 Life Dimensions.<br />
-                One Intuitive Space.
-              </ShinyText>
-            </h2>
-          </div>
-          <div className="flex items-center justify-center md:justify-end">
-            <img
-              src={vvKruh}
-              alt="Virtual Village ecosystem — 7 Life Dimensions"
-              className="w-full max-w-[700px]"
-            />
-          </div>
-        </div>
-      </section>
-
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Section 4 — Dimensions grid */}
+      {/* Section 3+4 — One Intuitive Space + 7 Life Dimensions */}
       <VVDimensionsGrid />
 
 
