@@ -5,6 +5,7 @@ import iconCulture from "@/assets/icons/culture.svg";
 import iconSport from "@/assets/icons/sport.svg";
 import iconFood from "@/assets/icons/food_dining.svg";
 import iconShopping from "@/assets/icons/shopping_services.svg";
+import vvKruh from "@/assets/vv-kruh.png";
 import ShinyText from "@/components/ShinyText";
 
 const dimensions = [
@@ -74,7 +75,7 @@ const DimensionItem = ({
     </div>
     <div className={align === "right" ? "text-right" : ""}>
       <h4 className="text-sm md:text-base font-bold text-foreground/80 leading-tight">
-        {index + 1}. {dim.title}
+        {index + (align === "left" ? 1 : 5)}. {dim.title}
       </h4>
       <p className="text-xs text-foreground/50 leading-relaxed max-w-[260px] mt-0.5">
         {dim.description}
@@ -86,7 +87,29 @@ const DimensionItem = ({
 const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
-      <div className="w-full">
+      <div className="w-full flex flex-col items-start">
+        {/* One Intuitive Space heading */}
+        <h2 className="heading-h2 text-foreground/80 mb-12">
+          <ShinyText
+            speed={4}
+            color="hsl(var(--foreground) / 0.35)"
+            shineColor="hsl(var(--foreground))"
+            spread={140}
+          >
+            One Intuitive Space.
+          </ShinyText>
+        </h2>
+
+        {/* vv-kruh image centered */}
+        <div className="w-full flex justify-center mb-20">
+          <img
+            src={vvKruh}
+            alt="Virtual Village ecosystem — 7 Life Dimensions"
+            className="w-full max-w-[650px]"
+          />
+        </div>
+
+        {/* 7 Life Dimensions heading */}
         <h2 className="heading-h2 text-foreground/80 mb-16">
           <ShinyText
             speed={4}
@@ -98,15 +121,13 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
-          {/* Left column — staggered down-right */}
+        {/* Staggered two-column dimension list */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0 w-full">
           <div className="flex flex-col gap-8">
             {leftColumn.map((dim, i) => (
               <DimensionItem key={dim.title} dim={dim} index={i} align="left" />
             ))}
           </div>
-
-          {/* Right column — staggered down-left, offset from top */}
           <div className="flex flex-col gap-8 mt-8 md:mt-16">
             {rightColumn.map((dim, i) => (
               <DimensionItem key={dim.title} dim={dim} index={i} align="right" />
