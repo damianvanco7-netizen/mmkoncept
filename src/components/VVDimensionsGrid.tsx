@@ -64,7 +64,7 @@ const DimensionItem = ({
     }`}
     style={{
       marginLeft: align === "left" ? `${index * 2.5}rem` : undefined,
-      marginRight: align === "right" ? `${index * 2.5}rem` : undefined,
+      marginRight: align === "right" ? `${(2 - index) * 2.5}rem` : undefined,
     }}
   >
     <div

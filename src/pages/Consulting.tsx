@@ -8,17 +8,17 @@ import ContactFormDialog from "@/components/ContactFormDialog";
 
 const services = [
   {
-    title: "Digital Transformation & Smart City Consulting",
+    title: "Digital Transformation",
     description:
       "We design comprehensive digitalization concepts that simplify urban infrastructure and corporate processes to create intuitive, future-ready environments.",
   },
   {
-    title: "IT Marketing & UX Strategy",
+    title: "IT Marketing",
     description:
       "We bridge the gap between technical complexity and user-centered communication. We help organizations define their identity and design Human-Machine Interfaces (HMI) where User Experience (UX) is the priority.",
   },
   {
-    title: "Innovation Management & Strategic Events",
+    title: "Innovation Management",
     description:
       "We design and facilitate large-scale innovation events (e.g., Innovation Days) to ignite creativity and drive sustainable cultural change.",
   },
@@ -69,7 +69,7 @@ const Consulting = () => {
           </p>
           <h1 className="heading-h2 mb-6">
             <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-              Bridging Innovation, Technology, and Human Experience
+              Bridging Innovation and Technology...
             </ShinyText>
           </h1>
           <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
@@ -92,7 +92,7 @@ const Consulting = () => {
             </p>
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Our Service Portfolio
+                Our Portfolio
               </ShinyText>
             </h2>
           </div>
@@ -117,42 +117,14 @@ const Consulting = () => {
 
       <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
 
-      {/* Why mm concept */}
-      <section className="py-28 md:py-36 section-padding">
-        <div className="w-full">
-          <div className="text-center mb-16">
-            <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
-              Why mm concept?
-            </p>
-            <h2 className="heading-h2">
-              <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Built on experience.<br />Driven by purpose.
-              </ShinyText>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {whyItems.map(({ title, description }) => (
-              <div key={title} className="flex flex-col items-center text-center">
-                <p className="text-base font-semibold text-white mb-3">
-                  {title}
-                </p>
-                <p className="text-sm text-white/60 leading-relaxed">
-                  {description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
-
       {/* CTA + Footer */}
       <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
-          <NetworkCanvasMirrored />
-          <div className="relative z-10 w-full max-w-xl">
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
+          <div className="flex-1 flex justify-center md:justify-start">
+            <NetworkCanvasMirrored />
+          </div>
+          <div className="flex-1 max-w-xl">
             <h2 className="heading-h2 mb-6">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
                 Let's Build Something Meaningful
@@ -172,6 +144,7 @@ const Consulting = () => {
             >
               <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
             </button>
+          </div>
           </div>
         </section>
 
