@@ -70,10 +70,10 @@ const VirtualVillage = () => {
       </section>
 
       {/* Section 2 — More than a platform */}
-      <section className="relative min-h-screen flex items-center section-padding py-24">
-        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="relative min-h-screen flex items-start py-24 overflow-hidden">
+        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 items-start section-padding pr-0">
           {/* Left — text */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start pt-8">
             <h2 className="heading-h2 mb-8 pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than<br />a platform...
@@ -98,11 +98,11 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex items-start justify-center md:justify-end pt-0 md:pt-0 lg:pr-0">
+          <div className="flex items-start justify-end pt-0">
             <img
               src={vvMockup}
               alt="Virtual Village app mockup"
-              className="w-full max-w-[850px] pointer-events-none"
+              className="w-full pointer-events-none"
             />
           </div>
         </div>
