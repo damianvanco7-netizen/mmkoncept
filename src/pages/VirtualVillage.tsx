@@ -102,7 +102,7 @@ const VirtualVillage = () => {
             <img
               src={vvMockup}
               alt="Virtual Village app mockup"
-              className="w-full max-w-[750px] pointer-events-none"
+              className="w-full max-w-[850px] pointer-events-none"
             />
           </div>
         </div>
