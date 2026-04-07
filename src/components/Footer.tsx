@@ -51,9 +51,15 @@ const Footer = () => {
           <p className="text-sm text-warm-taupe">
             © {new Date().getFullYear()} mm concept. All rights reserved.
           </p>
-          <a href="/gdpr" className="text-sm text-warm-taupe hover:text-warm-white transition-colors">
-            GDPR
-          </a>
+          <div className="flex items-center gap-4">
+            <a href="/privacy-policy" className="text-sm text-warm-taupe hover:text-warm-white transition-colors">
+              Privacy Policy
+            </a>
+            <span className="text-warm-taupe/40">|</span>
+            <a href="/cookie-policy" className="text-sm text-warm-taupe hover:text-warm-white transition-colors">
+              Cookie Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>

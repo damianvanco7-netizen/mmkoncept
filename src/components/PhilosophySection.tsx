@@ -52,8 +52,8 @@ const PhilosophySection = () => {
               onClick={() => navigate(item.route)}
               className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 px-8 md:px-12 liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(300px,30vw,440px)] md:h-[clamp(300px,30vw,440px)]"
             >
-              <img src={item.logo} alt={item.logoAlt} className="h-8 md:h-10 mb-3 brightness-0 invert opacity-70" />
-              <span className="text-white text-base md:text-lg font-semibold mb-2 max-w-[75%] leading-tight">
+              <img src={item.logo} alt={item.logoAlt} className="h-10 md:h-14 mb-3 brightness-0 invert opacity-70" />
+              <span className="text-white text-base md:text-lg font-semibold mb-2 whitespace-nowrap leading-tight">
                 {item.title}
               </span>
               <span className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 max-w-[85%]">

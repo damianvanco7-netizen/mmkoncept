@@ -84,7 +84,7 @@ const CookieConsent = () => {
             <p className={`text-sm ${textColor} leading-relaxed`}>
               We use cookies to enhance your experience. Necessary cookies ensure the site works properly.
               Analytics cookies help us improve.{" "}
-              <Link to="/gdpr" className={`underline underline-offset-2 ${linkColor} transition-colors`}>
+              <Link to="/privacy-policy" className={`underline underline-offset-2 ${linkColor} transition-colors`}>
                 Privacy Policy
               </Link>
             </p>
