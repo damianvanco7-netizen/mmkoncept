@@ -64,8 +64,8 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
     } else {
       // Desktop: same style as consulting mirrored canvas but cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
       const clusterCenterX = w * 0.28;
-      const clusterCenterY = h * 0.4;
-      const clusterRadius = Math.min(w, h) * 0.42;
+      const clusterCenterY = h * 0.55;
+      const clusterRadius = Math.min(w, h) * 0.35;
       const clusterCount = 120;
 
       for (let i = 0; i < clusterCount; i++) {
@@ -82,11 +82,11 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
         });
       }
 
-      // 3 trailing dots in a straight line toward bottom-right (Our Portfolio button)
-      const trailStartX = w * 0.50;
-      const trailStartY = h * 0.55;
+      // 3 trailing dots toward bottom-right (Our Portfolio button)
+      const trailStartX = w * 0.52;
+      const trailStartY = h * 0.72;
       const trailEndX = w * 0.68;
-      const trailEndY = h * 0.82;
+      const trailEndY = h * 0.92;
 
       for (let i = 0; i < 3; i++) {
         const t = i / 2;
