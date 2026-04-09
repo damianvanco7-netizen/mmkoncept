@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Layers, MessageSquare, Lightbulb } from "lucide-react";
 import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,19 +9,22 @@ import ContactFormDialog from "@/components/ContactFormDialog";
 
 const services = [
   {
+    icon: Layers,
     title: "Digital Transformation",
     description:
-      "We design comprehensive digitalization concepts that simplify urban infrastructure and corporate processes to create intuitive, future-ready environments.",
+      "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
   },
   {
-    title: "IT Marketing",
+    icon: MessageSquare,
+    title: "IT Marketing & UX Strategy",
     description:
-      "We bridge the gap between technical complexity and user-centered communication. We help organizations define their identity and design Human-Machine Interfaces (HMI) where User Experience (UX) is the priority.",
+      "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
   },
   {
+    icon: Lightbulb,
     title: "Innovation Management",
     description:
-      "We design and facilitate large-scale innovation events (e.g., Innovation Days) to ignite creativity and drive sustainable cultural change.",
+      "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
   },
 ];
 
@@ -43,27 +47,33 @@ const Consulting = () => {
       <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
 
-      {/* Service Portfolio — starts the page */}
+      {/* Service Portfolio */}
       <section className="min-h-screen flex flex-col justify-center py-28 md:py-36 section-padding pt-32">
         <div className="w-full">
-          <div className="text-center">
+          <div className="text-center mb-4">
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Built on Experience,<br />Driven by Purpose
+                Strategy. Experience. Execution.
               </ShinyText>
             </h2>
           </div>
+          <p className="text-center text-white/50 text-sm md:text-base max-w-xl mx-auto mb-16">
+            We connect thinking, design, and implementation into one seamless flow.
+          </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
             {services.map((service) => (
               <div
                 key={service.title}
-                className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(280px,25vw,380px)] md:h-[clamp(280px,25vw,380px)]"
+                className="flex flex-col items-center text-center px-6 py-10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm"
               >
-                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight whitespace-nowrap">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10 bg-white/[0.05]">
+                  <service.icon className="w-6 h-6 text-white/60" />
+                </div>
+                <span className="text-white text-base md:text-lg font-semibold mb-3 leading-tight">
                   {service.title}
                 </span>
-                <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[85%]">
+                <span className="text-white/50 text-xs md:text-sm leading-relaxed">
                   {service.description}
                 </span>
               </div>
