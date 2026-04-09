@@ -80,7 +80,7 @@ const VVDimensionsGrid = () => {
         </h2>
 
         {/* Two-column: image + dimensions accordion */}
-        <div className="w-full flex flex-col md:flex-row items-start gap-8 md:gap-12">
+        <div className="w-full flex flex-col md:flex-row items-start gap-12 md:gap-20">
           {/* Left — image */}
           <div className="shrink-0 -ml-4">
             <img
@@ -90,8 +90,8 @@ const VVDimensionsGrid = () => {
             />
           </div>
 
-          {/* Right — 7 dimensions accordion, stretched to match image height */}
-          <div className="flex flex-col w-full md:flex-1 max-w-[480px] justify-between" style={{ minHeight: 630 }}>
+          {/* Right — 7 dimensions accordion */}
+          <div className="flex flex-col w-full md:flex-1 justify-between" style={{ minHeight: 630 }}>
             {dimensions.map((dim, i) => (
               <div key={dim.title} className="flex-1 flex flex-col justify-center">
                 {i > 0 && (
