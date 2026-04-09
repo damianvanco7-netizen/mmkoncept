@@ -2,7 +2,7 @@ import { useState } from "react";
 import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import NetworkCanvasMirrored from "@/components/NetworkCanvasMirrored";
+import NetworkCanvas from "@/components/NetworkCanvas";
 import ShinyText from "@/components/ShinyText";
 import ContactFormDialog from "@/components/ContactFormDialog";
 
@@ -77,7 +77,7 @@ const Consulting = () => {
       {/* CTA + Footer */}
       <div>
         <section className="relative py-28 md:py-36 section-padding overflow-hidden">
-          <NetworkCanvasMirrored />
+          <NetworkCanvas variant="consulting" />
           <div className="relative z-10 w-full flex justify-end">
           <div className="max-w-xl md:text-right">
             <h2 className="heading-h2 mb-6">
