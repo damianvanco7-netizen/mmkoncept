@@ -86,14 +86,14 @@ const VVDimensionsGrid = () => {
             <img
               src={vvKruh}
               alt="Virtual Village ecosystem — 7 Life Dimensions"
-              className="w-full max-w-[420px]"
+              className="w-full max-w-[525px]"
             />
           </div>
 
           {/* Right — 7 dimensions accordion, stretched to match image height */}
-          <div className="flex flex-col w-full max-w-[340px]" style={{ minHeight: 420 }}>
+          <div className="flex flex-col w-full max-w-[380px] justify-between" style={{ minHeight: 525 }}>
             {dimensions.map((dim, i) => (
-              <div key={dim.title}>
+              <div key={dim.title} className="flex-1 flex flex-col justify-center">
                 {i > 0 && (
                   <hr className="border-t border-foreground/10 my-2" />
                 )}
