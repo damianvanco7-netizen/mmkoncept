@@ -10,6 +10,7 @@ import Consulting from "./pages/Consulting";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
+import Unsubscribe from "./pages/Unsubscribe";
 import LiquidGlassFilter from "./components/LiquidGlassFilter";
 import CookieConsent from "./components/CookieConsent";
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/gdpr" element={<Navigate to="/privacy-policy" replace />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

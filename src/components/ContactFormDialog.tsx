@@ -3,6 +3,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactFormDialogProps {
   open: boolean;
@@ -26,19 +27,23 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     setSending(true);
 
     try {
-      // mailto fallback — opens user's email client with pre-filled data
-      const subject = encodeURIComponent(`Contact from ${name.trim()}`);
-      const body = encodeURIComponent(
-        `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`
-      );
-      window.location.href = `mailto:martina.masarykova@mmconcept.sk?subject=${subject}&body=${body}`;
-
-      toast({
-        title: "Opening email client…",
-        description: "Your default email app will open with the message pre-filled.",
+      const idempotencyKey = `contact-${Date.now()}-${crypto.randomUUID()}`;
+      const { error } = await supabase.functions.invoke('send-transactional-email', {
+        body: {
+          templateName: 'contact-form-notification',
+          recipientEmail: 'martina.masarykova@mmconcept.sk',
+          idempotencyKey,
+          templateData: { name: name.trim(), email: email.trim(), message: message.trim() },
+        },
       });
 
-      // Reset form
+      if (error) throw error;
+
+      toast({
+        title: "Správa bola odoslaná",
+        description: "Ďakujeme, ozveme sa vám čo najskôr.",
+      });
+
       setName("");
       setEmail("");
       setMessage("");
