@@ -63,7 +63,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         });
       }
     } else if (variant === 'consulting') {
-      // Consulting: cluster on LEFT (same as hero), dots trailing to bottom-left toward Connect button
+      // Consulting: same network geometry as hero, with the final chain leading toward Connect
       const clusterCenterX = w * 0.22;
       const clusterCenterY = h * 0.45;
       const clusterRadius = Math.min(w, h) * 0.35;
@@ -83,11 +83,11 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         });
       }
 
-      // 3 trailing dots toward bottom-left (Connect button)
-      const trailStartX = w * 0.38;
-      const trailStartY = h * 0.68;
-      const trailEndX = w * 0.22;
-      const trailEndY = h * 0.90;
+      // 3 trailing dots toward bottom-right, matching the home hero flow and aiming at Connect
+      const trailStartX = w * 0.52;
+      const trailStartY = h * 0.72;
+      const trailEndX = w * 0.68;
+      const trailEndY = h * 0.92;
 
       for (let i = 0; i < 3; i++) {
         const t = i / 2;
