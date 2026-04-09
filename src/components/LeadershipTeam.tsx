@@ -50,7 +50,7 @@ const LeadershipTeam = () => {
           </ShinyText>
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 max-w-4xl">
-          <em>Where African resilience meets European precision.</em>
+          Where African resilience meets European precision.
         </p>
         <img
           src={teamPhoto}

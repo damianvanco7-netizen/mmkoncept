@@ -77,7 +77,7 @@ const Navbar = () => {
         <div className={`mx-auto ${
           scrolled && !mobileOpen
             ? "mt-4 max-w-3xl rounded-full px-8 py-3"
-            : "mt-0 max-w-none rounded-none section-padding py-4"
+            : "mt-0 max-w-none rounded-none section-padding py-6"
         }`}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
@@ -108,14 +108,18 @@ const Navbar = () => {
               <img
                 src={logo}
                 alt="mm concept"
-                className={`h-10 md:h-12 transition-all duration-500 ${
+                className={`transition-all duration-500 ${
+                  scrolled ? "h-10 md:h-12" : "h-14 md:h-16"
+                } ${
                   mobileOpen ? "brightness-0 invert opacity-40" : useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
                 } ${showLogo || mobileOpen ? "" : "opacity-0 pointer-events-none"}`}
               />
             </button>
 
             {/* Desktop nav */}
-            <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${useDarkText ? "text-foreground/50" : "text-white/50"}`}>
+            <div className={`hidden md:flex items-center gap-8 font-medium transition-all duration-500 ${
+              scrolled ? "text-sm" : "text-base"
+            } ${useDarkText ? "text-foreground/50" : "text-white/50"}`}>
               <button onClick={goHome} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Origin</button>
               <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Our Portfolio</button>
               <button onClick={() => scrollTo("founder")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>About</button>

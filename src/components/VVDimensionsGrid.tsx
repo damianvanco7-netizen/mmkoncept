@@ -46,58 +46,11 @@ const dimensions = [
   },
 ];
 
-const leftColumn = dimensions.slice(0, 4);
-const rightColumn = dimensions.slice(4);
-
-const DimensionItem = ({
-  dim,
-  index,
-  column,
-}: {
-  dim: (typeof dimensions)[0];
-  index: number;
-  column: "left" | "right";
-}) => {
-  const number = column === "left" ? index + 1 : index + 5;
-  const offsetRem = column === "left" ? index * 3 : index * 3;
-
-  return (
-    <div
-      className="flex items-center gap-5"
-      style={{
-        marginLeft: `${offsetRem}rem`,
-      }}
-    >
-      <div
-        className="rounded-full flex items-center justify-center shrink-0 liquid-glass-circle-light"
-        style={{ width: 100, height: 100 }}
-      >
-        <img src={dim.icon} alt={dim.title} className="w-10 h-10 opacity-60" />
-      </div>
-      <div>
-        <h4 className="text-base md:text-lg font-bold leading-tight">
-          <ShinyText
-            speed={4}
-            color="hsl(var(--foreground) / 0.5)"
-            shineColor="hsl(var(--foreground))"
-            spread={120}
-          >
-            {number}. {dim.title}
-          </ShinyText>
-        </h4>
-        <p className="text-xs md:text-sm text-foreground/50 leading-relaxed max-w-[280px] mt-1">
-          {dim.description}
-        </p>
-      </div>
-    </div>
-  );
-};
-
 const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full flex flex-col items-start">
-        <h2 className="heading-h2 text-foreground/80 mb-12">
+        <h2 className="heading-h2 text-foreground/80 mb-2">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -107,16 +60,7 @@ const VVDimensionsGrid = () => {
             One Intuitive Space
           </ShinyText>
         </h2>
-
-        <div className="w-full flex justify-center mb-20">
-          <img
-            src={vvKruh}
-            alt="Virtual Village ecosystem — 7 Life Dimensions"
-            className="w-full max-w-[650px]"
-          />
-        </div>
-
-        <h2 className="heading-h2 text-foreground/80 mb-16">
+        <h2 className="heading-h2 text-foreground/80 mb-12">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -127,18 +71,38 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* Staggered two-column layout matching reference */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0 w-full">
-          {/* Left column — items 1-4, staggered right */}
-          <div className="flex flex-col gap-10">
-            {leftColumn.map((dim, i) => (
-              <DimensionItem key={dim.title} dim={dim} index={i} column="left" />
-            ))}
+        {/* Two-column layout: image left, dimensions list right */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 items-start">
+          {/* Left — image */}
+          <div className="flex items-start">
+            <img
+              src={vvKruh}
+              alt="Virtual Village ecosystem — 7 Life Dimensions"
+              className="w-full max-w-[550px]"
+            />
           </div>
-          {/* Right column — items 5-7, staggered left, icon on left */}
-          <div className="flex flex-col gap-10 mt-8 md:mt-20">
-            {rightColumn.map((dim, i) => (
-              <DimensionItem key={dim.title} dim={dim} index={i} column="right" />
+
+          {/* Right — 7 dimensions list */}
+          <div className="flex flex-col gap-6">
+            {dimensions.map((dim, i) => (
+              <div key={dim.title} className="flex items-start gap-4">
+                <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-50 mt-1 shrink-0" />
+                <div>
+                  <h4 className="text-base md:text-lg font-bold leading-tight">
+                    <ShinyText
+                      speed={4}
+                      color="hsl(var(--foreground) / 0.5)"
+                      shineColor="hsl(var(--foreground))"
+                      spread={120}
+                    >
+                      {i + 1}. {dim.title}
+                    </ShinyText>
+                  </h4>
+                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed max-w-[280px] mt-1">
+                    {dim.description}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
