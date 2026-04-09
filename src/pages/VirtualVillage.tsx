@@ -71,7 +71,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* Section 2 — More than a platform */}
-      <section className="relative min-h-screen flex items-start py-16 overflow-hidden">
+      <section className="relative min-h-screen flex items-start py-10 overflow-hidden">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding pr-0">
           {/* Left — text */}
           <div className="flex flex-col items-start pt-8">
@@ -114,7 +114,6 @@ const VirtualVillage = () => {
       {/* Section 3+4 — One Intuitive Space + 7 Life Dimensions */}
       <VVDimensionsGrid />
 
-
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Technology Section */}
@@ -123,7 +122,7 @@ const VirtualVillage = () => {
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Gallery Section */}
-      <section className="py-16 md:py-20 section-padding">
+      <section className="py-10 md:py-14 section-padding">
         <div className="w-full flex flex-col items-center text-center mb-12">
           <h2 className="heading-h2 text-foreground/80">
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
