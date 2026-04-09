@@ -42,16 +42,13 @@ const LeadershipTeam = () => {
   };
 
   return (
-    <section className="py-28 md:py-36 section-padding">
+    <section className="py-16 md:py-20 section-padding">
       <div className="w-full flex flex-col items-center text-center">
         <h2 className="heading-h2 text-foreground/80 mb-4">
           <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
             Diversity is Our Power
           </ShinyText>
         </h2>
-        <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 max-w-4xl">
-          Where African resilience meets European precision.
-        </p>
         <img
           src={teamPhoto}
           alt="MM Concept Leadership Team"

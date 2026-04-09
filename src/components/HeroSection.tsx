@@ -44,7 +44,7 @@ const HeroSection = () => {
         onClick={() => scrollTo("philosophy")}
         className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500 liquid-glass-circle
           md:bottom-[clamp(-140px,-12.5vw,-200px)] md:right-[clamp(40px,8vw,160px)]
-          bottom-8 -right-8 w-[220px] h-[220px] md:w-[clamp(200px,25vw,400px)] md:h-[clamp(200px,25vw,400px)]"
+          bottom-8 -right-8 w-[187px] h-[187px] md:w-[clamp(170px,21.25vw,340px)] md:h-[clamp(170px,21.25vw,340px)]"
       >
         <span className="text-white/60 text-lg md:text-xl lg:text-2xl font-medium tracking-wide leading-snug text-center px-8">
           Our Portfolio
