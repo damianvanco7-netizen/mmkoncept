@@ -71,7 +71,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* Section 2 — More than a platform */}
-      <section className="relative min-h-screen flex items-start py-6 overflow-hidden">
+      <section className="relative min-h-screen flex items-start pt-24 md:pt-32 py-6 overflow-hidden">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding pr-0">
           {/* Left — text */}
           <div className="flex flex-col items-start pt-8">
@@ -112,7 +112,7 @@ const VirtualVillage = () => {
       {/* divider removed */}
 
       {/* Section 3+4 — One Intuitive Space + 7 Life Dimensions */}
-      <div className="-mt-16">
+      <div className="-mt-28">
         <VVDimensionsGrid />
       </div>
 
