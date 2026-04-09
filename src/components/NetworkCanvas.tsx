@@ -62,41 +62,41 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
         });
       }
     } else {
-      // Desktop: tight cluster ball, trailing dots aim toward bottom-right (Our Portfolio button)
-      const clusterCenterX = w * 0.18;
+      // Desktop: same style as consulting mirrored canvas but cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
+      const clusterCenterX = w * 0.28;
       const clusterCenterY = h * 0.4;
-      const clusterRadius = Math.min(w, h) * 0.22;
-      const clusterCount = 100;
+      const clusterRadius = Math.min(w, h) * 0.42;
+      const clusterCount = 120;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const rFactor = Math.pow(Math.random(), 0.6); // tighter cluster
+        const rFactor = Math.pow(Math.random(), 0.7);
         const r = rFactor * clusterRadius;
         const bx = clusterCenterX + Math.cos(angle) * r;
         const by = clusterCenterY + Math.sin(angle) * r;
         nodes.push({
           baseX: bx, baseY: by, x: bx, y: by,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          radius: 2 + Math.random() * 3,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: 2.5 + Math.random() * 3.5,
         });
       }
 
       // 3 trailing dots in a straight line toward bottom-right (Our Portfolio button)
-      const trailStartX = clusterCenterX + clusterRadius + 25;
-      const trailStartY = clusterCenterY + clusterRadius * 0.3;
-      const trailEndX = w * 0.52;
-      const trailEndY = h * 0.78;
-      
+      const trailStartX = w * 0.50;
+      const trailStartY = h * 0.55;
+      const trailEndX = w * 0.68;
+      const trailEndY = h * 0.82;
+
       for (let i = 0; i < 3; i++) {
-        const t = i / 2; // 0, 0.5, 1
+        const t = i / 2;
         nodes.push({
           baseX: trailStartX + (trailEndX - trailStartX) * t,
           baseY: trailStartY + (trailEndY - trailStartY) * t,
           x: trailStartX + (trailEndX - trailStartX) * t,
           y: trailStartY + (trailEndY - trailStartY) * t,
           vx: 0, vy: 0,
-          radius: 5 - i * 0.5,
+          radius: 5,
         });
       }
     }
@@ -140,7 +140,7 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
     canvas.addEventListener('mousemove', onMove);
     canvas.addEventListener('mouseleave', onLeave);
 
-    const clusterCount = direction === 'down' ? 50 : 100;
+    const clusterCount = direction === 'down' ? 50 : 120;
 
     const draw = () => {
       const { w, h } = sizeRef.current;
@@ -174,7 +174,7 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
       const clusterNodes = nodes.slice(0, clusterCount);
       const dotNodes = nodes.slice(clusterCount);
 
-      const maxConnDist = 120;
+      const maxConnDist = direction === 'down' ? 120 : 150;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
           const a = clusterNodes[i];
