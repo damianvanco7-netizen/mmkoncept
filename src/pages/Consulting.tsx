@@ -65,11 +65,9 @@ const Consulting = () => {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col items-center text-center px-6 py-10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm"
+                className="flex flex-col items-center text-center px-6 py-10"
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 border border-white/10 bg-white/[0.05]">
-                  <service.icon className="w-6 h-6 text-white/60" />
-                </div>
+                <service.icon className="w-7 h-7 text-white/50 mb-6" />
                 <span className="text-white text-base md:text-lg font-semibold mb-3 leading-tight">
                   {service.title}
                 </span>
