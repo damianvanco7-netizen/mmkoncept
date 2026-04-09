@@ -12,9 +12,10 @@ interface Node {
 
 interface NetworkCanvasProps {
   direction?: 'right' | 'down';
+  variant?: 'hero' | 'consulting';
 }
 
-const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
+const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
