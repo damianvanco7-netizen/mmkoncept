@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import iconCity from "@/assets/icons/city_and_services.svg";
 import iconHealth from "@/assets/icons/health.svg";
 import iconEducation from "@/assets/icons/education.svg";
@@ -48,10 +49,10 @@ const dimensions = [
 ];
 
 const VVDimensionsGrid = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
+    setOpenIndex(openIndex === i ? -1 : i);
   };
 
   return (
@@ -78,7 +79,7 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* Centered two-column: image + dimensions list */}
+        {/* Centered two-column: image + dimensions accordion */}
         <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
           {/* Left — image */}
           <div className="shrink-0">
@@ -89,19 +90,19 @@ const VVDimensionsGrid = () => {
             />
           </div>
 
-          {/* Right — 7 dimensions accordion list */}
-          <div className="flex flex-col w-full max-w-[340px]">
+          {/* Right — 7 dimensions accordion, stretched to match image height */}
+          <div className="flex flex-col w-full max-w-[340px] justify-between" style={{ minHeight: 420 }}>
             {dimensions.map((dim, i) => (
-              <div key={dim.title}>
+              <div key={dim.title} className="flex-1 flex flex-col">
                 {i > 0 && (
                   <hr className="border-t border-foreground/10" />
                 )}
                 <button
                   onClick={() => toggle(i)}
-                  className="flex items-center gap-4 w-full py-3 text-left cursor-pointer"
+                  className="flex items-center gap-4 w-full py-2 text-left cursor-pointer group"
                 >
-                  <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-50 shrink-0" />
-                  <h4 className="text-base md:text-lg font-bold leading-tight">
+                  <img src={dim.icon} alt={dim.title} className="w-7 h-7 opacity-50 shrink-0" />
+                  <h4 className="text-base md:text-lg font-bold leading-tight flex-1">
                     <ShinyText
                       speed={4}
                       color="hsl(var(--foreground) / 0.5)"
@@ -111,15 +112,21 @@ const VVDimensionsGrid = () => {
                       {i + 1}. {dim.title}
                     </ShinyText>
                   </h4>
+                  <ChevronDown
+                    size={18}
+                    className={`text-foreground/30 shrink-0 transition-transform duration-300 group-hover:text-foreground/50 ${
+                      openIndex === i ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </button>
                 <div
                   className="overflow-hidden transition-all duration-300 ease-in-out"
                   style={{
-                    maxHeight: openIndex === i ? "120px" : "0px",
+                    maxHeight: openIndex === i ? "80px" : "0px",
                     opacity: openIndex === i ? 1 : 0,
                   }}
                 >
-                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed pl-12 pb-3">
+                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed pl-11 pb-2">
                     {dim.description}
                   </p>
                 </div>

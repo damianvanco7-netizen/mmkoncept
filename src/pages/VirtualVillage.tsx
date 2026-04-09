@@ -11,6 +11,7 @@ import vvLogo from "@/assets/logo-village.svg";
 import vvHeroBgVideo from "@/assets/vv-hero-bg.mp4";
 import vvLogoSvg from "@/assets/logo-virtual-village.svg";
 import vvMockup from "@/assets/vv-mockup.png";
+import vvMockupPhones from "@/assets/vv-mockup-phones.png";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
 import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
@@ -97,10 +98,10 @@ const VirtualVillage = () => {
             </p>
           </div>
 
-          {/* Right — mockup */}
+          {/* Right — mockup phones */}
           <div className="flex items-start justify-end pt-0">
             <img
-              src={vvMockup}
+              src={vvMockupPhones}
               alt="Virtual Village app mockup"
               className="w-full pointer-events-none"
             />
