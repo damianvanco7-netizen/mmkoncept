@@ -56,7 +56,7 @@ const VVDimensionsGrid = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 section-padding">
+    <section className="py-10 md:py-14 section-padding">
       <div className="w-full flex flex-col items-start">
         <h2 className="heading-h2 text-foreground/80 mb-2 text-left">
           <ShinyText

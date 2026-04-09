@@ -120,7 +120,7 @@ const TechTabs = () => {
   };
 
   return (
-    <section className="py-28 md:py-36 section-padding">
+    <section className="py-10 md:py-14 section-padding">
       <div className="w-full flex flex-col items-center text-center">
         <h2 className="heading-h2 text-foreground/80 mb-4">
           <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
