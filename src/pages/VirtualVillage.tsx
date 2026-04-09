@@ -82,7 +82,7 @@ const VirtualVillage = () => {
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal mb-8">
               A companion.<br />
-              A guide. A quiet intelligence<br />in the background.
+              A guide.<br />A quiet intelligence<br />in the background.
             </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
               It helps you get things done effortlessly —<br />
@@ -99,7 +99,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup phones */}
-          <div className="flex items-start justify-end pt-0">
+          <div className="flex items-start justify-end pt-0 -ml-12">
             <img
               src={vvMockupPhones}
               alt="Virtual Village app mockup"
