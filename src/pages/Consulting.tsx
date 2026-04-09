@@ -76,7 +76,7 @@ const Consulting = () => {
 
       {/* CTA + Footer */}
       <div>
-        <section className="relative py-28 md:py-36 section-padding overflow-hidden">
+        <section className="relative min-h-screen flex flex-col justify-center section-padding overflow-hidden">
           <NetworkCanvas variant="consulting" />
           <div className="relative z-10 w-full flex justify-end">
           <div className="max-w-xl md:text-right">
