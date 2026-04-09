@@ -91,7 +91,7 @@ const VVDimensionsGrid = () => {
           </div>
 
           {/* Right — 7 dimensions accordion */}
-          <div className="flex flex-col w-full md:max-w-[420px] justify-between" style={{ minHeight: 630 }}>
+          <div className="flex flex-col w-full md:max-w-[520px] md:ml-auto justify-between" style={{ minHeight: 630 }}>
             {dimensions.map((dim, i) => (
               <div key={dim.title} className="flex-1 flex flex-col justify-center">
                 {i > 0 && (

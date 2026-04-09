@@ -135,7 +135,7 @@ const VirtualVillage = () => {
         <div className="w-full">
           <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
-              <img src={gallerySquare2} alt="Virtual Village city screen" className="w-full h-full object-cover" />
+              <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png" alt="Virtual Village mockup 4" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
               <img src={galleryFeatured} alt="Virtual Village location select" className="w-full h-full object-cover" />

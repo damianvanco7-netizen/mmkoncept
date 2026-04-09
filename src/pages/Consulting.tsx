@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layers, MessageSquare, Lightbulb } from "lucide-react";
+import { Workflow, PenTool, Rocket } from "lucide-react";
 import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,19 +9,19 @@ import ContactFormDialog from "@/components/ContactFormDialog";
 
 const services = [
   {
-    icon: Layers,
+    icon: Workflow,
     title: "Digital Transformation",
     description:
       "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
   },
   {
-    icon: MessageSquare,
+    icon: PenTool,
     title: "IT Marketing & UX Strategy",
     description:
       "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
   },
   {
-    icon: Lightbulb,
+    icon: Rocket,
     title: "Innovation Management",
     description:
       "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
