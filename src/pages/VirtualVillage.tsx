@@ -61,7 +61,7 @@ const VirtualVillage = () => {
           {/* Right — hero image */}
           <div className="hidden md:block relative min-h-screen overflow-hidden">
             <img
-              src={vvHeroPhone}
+              src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}
