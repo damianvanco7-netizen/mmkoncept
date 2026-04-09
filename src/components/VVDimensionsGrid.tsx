@@ -1,3 +1,4 @@
+import { useState } from "react";
 import iconCity from "@/assets/icons/city_and_services.svg";
 import iconHealth from "@/assets/icons/health.svg";
 import iconEducation from "@/assets/icons/education.svg";
@@ -47,6 +48,12 @@ const dimensions = [
 ];
 
 const VVDimensionsGrid = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (i: number) => {
+    setOpenIndex(openIndex === i ? null : i);
+  };
+
   return (
     <section className="py-20 md:py-28 section-padding">
       <div className="w-full flex flex-col items-center">
@@ -82,12 +89,18 @@ const VVDimensionsGrid = () => {
             />
           </div>
 
-          {/* Right — 7 dimensions list */}
-          <div className="flex flex-col gap-6">
+          {/* Right — 7 dimensions accordion list */}
+          <div className="flex flex-col w-full max-w-[340px]">
             {dimensions.map((dim, i) => (
-              <div key={dim.title} className="flex items-start gap-4">
-                <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-50 mt-1 shrink-0" />
-                <div>
+              <div key={dim.title}>
+                {i > 0 && (
+                  <hr className="border-t border-foreground/10" />
+                )}
+                <button
+                  onClick={() => toggle(i)}
+                  className="flex items-center gap-4 w-full py-3 text-left cursor-pointer"
+                >
+                  <img src={dim.icon} alt={dim.title} className="w-8 h-8 opacity-50 shrink-0" />
                   <h4 className="text-base md:text-lg font-bold leading-tight">
                     <ShinyText
                       speed={4}
@@ -98,7 +111,15 @@ const VVDimensionsGrid = () => {
                       {i + 1}. {dim.title}
                     </ShinyText>
                   </h4>
-                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed max-w-[280px] mt-1">
+                </button>
+                <div
+                  className="overflow-hidden transition-all duration-300 ease-in-out"
+                  style={{
+                    maxHeight: openIndex === i ? "120px" : "0px",
+                    opacity: openIndex === i ? 1 : 0,
+                  }}
+                >
+                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed pl-12 pb-3">
                     {dim.description}
                   </p>
                 </div>
