@@ -64,9 +64,9 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
     } else if (variant === 'consulting') {
       // Consulting: cluster on LEFT (same as hero), dots trailing to bottom-left toward Connect button
-      const clusterCenterX = w * 0.28;
-      const clusterCenterY = h * 0.4;
-      const clusterRadius = Math.min(w, h) * 0.42;
+      const clusterCenterX = w * 0.22;
+      const clusterCenterY = h * 0.45;
+      const clusterRadius = Math.min(w, h) * 0.35;
       const clusterCount = 120;
 
       for (let i = 0; i < clusterCount; i++) {
@@ -102,8 +102,8 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
     } else {
       // Hero desktop: cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
-      const clusterCenterX = w * 0.28;
-      const clusterCenterY = h * 0.55;
+      const clusterCenterX = w * 0.22;
+      const clusterCenterY = h * 0.45;
       const clusterRadius = Math.min(w, h) * 0.35;
       const clusterCount = 120;
 
