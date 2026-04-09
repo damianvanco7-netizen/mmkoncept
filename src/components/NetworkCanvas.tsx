@@ -62,8 +62,46 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           radius: 4.5 - i * 0.5,
         });
       }
+    } else if (variant === 'consulting') {
+      // Consulting: cluster on RIGHT, dots trailing to bottom-left toward Connect button
+      const clusterCenterX = w * 0.72;
+      const clusterCenterY = h * 0.4;
+      const clusterRadius = Math.min(w, h) * 0.42;
+      const clusterCount = 120;
+
+      for (let i = 0; i < clusterCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const rFactor = Math.pow(Math.random(), 0.7);
+        const r = rFactor * clusterRadius;
+        const bx = clusterCenterX + Math.cos(angle) * r;
+        const by = clusterCenterY + Math.sin(angle) * r;
+        nodes.push({
+          baseX: bx, baseY: by, x: bx, y: by,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: 2.5 + Math.random() * 3.5,
+        });
+      }
+
+      // 3 trailing dots toward bottom-left (Connect button)
+      const trailStartX = w * 0.48;
+      const trailStartY = h * 0.60;
+      const trailEndX = w * 0.28;
+      const trailEndY = h * 0.85;
+
+      for (let i = 0; i < 3; i++) {
+        const t = i / 2;
+        nodes.push({
+          baseX: trailStartX + (trailEndX - trailStartX) * t,
+          baseY: trailStartY + (trailEndY - trailStartY) * t,
+          x: trailStartX + (trailEndX - trailStartX) * t,
+          y: trailStartY + (trailEndY - trailStartY) * t,
+          vx: 0, vy: 0,
+          radius: 5,
+        });
+      }
     } else {
-      // Desktop: same style as consulting mirrored canvas but cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
+      // Hero desktop: cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
       const clusterCenterX = w * 0.28;
       const clusterCenterY = h * 0.55;
       const clusterRadius = Math.min(w, h) * 0.35;
@@ -103,7 +141,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     }
 
     return nodes;
-  }, [direction]);
+  }, [direction, variant]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
