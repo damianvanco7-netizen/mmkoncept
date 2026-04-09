@@ -62,15 +62,15 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
         });
       }
     } else {
-      // Desktop: original horizontal layout
-      const clusterCenterX = w * 0.22;
-      const clusterCenterY = h * 0.45;
-      const clusterRadius = Math.min(w, h) * 0.28;
+      // Desktop: tight cluster ball, trailing dots aim toward bottom-right (Our Portfolio button)
+      const clusterCenterX = w * 0.18;
+      const clusterCenterY = h * 0.4;
+      const clusterRadius = Math.min(w, h) * 0.22;
       const clusterCount = 100;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const rFactor = Math.pow(Math.random(), 0.5);
+        const rFactor = Math.pow(Math.random(), 0.6); // tighter cluster
         const r = rFactor * clusterRadius;
         const bx = clusterCenterX + Math.cos(angle) * r;
         const by = clusterCenterY + Math.sin(angle) * r;
@@ -82,19 +82,21 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
         });
       }
 
-      const dotsY = h * 0.5;
-      const dotsStartX = clusterCenterX + clusterRadius + 20;
-      const dotsEndX = w * 0.34;
-      const dotsSpacing = (dotsEndX - dotsStartX) / 2;
-
+      // 3 trailing dots in a straight line toward bottom-right (Our Portfolio button)
+      const trailStartX = clusterCenterX + clusterRadius + 25;
+      const trailStartY = clusterCenterY + clusterRadius * 0.3;
+      const trailEndX = w * 0.52;
+      const trailEndY = h * 0.78;
+      
       for (let i = 0; i < 3; i++) {
+        const t = i / 2; // 0, 0.5, 1
         nodes.push({
-          baseX: dotsStartX + i * dotsSpacing,
-          baseY: dotsY,
-          x: dotsStartX + i * dotsSpacing,
-          y: dotsY,
+          baseX: trailStartX + (trailEndX - trailStartX) * t,
+          baseY: trailStartY + (trailEndY - trailStartY) * t,
+          x: trailStartX + (trailEndX - trailStartX) * t,
+          y: trailStartY + (trailEndY - trailStartY) * t,
           vx: 0, vy: 0,
-          radius: 4.5 - i * 0.5,
+          radius: 5 - i * 0.5,
         });
       }
     }
