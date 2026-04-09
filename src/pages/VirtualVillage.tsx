@@ -72,7 +72,7 @@ const VirtualVillage = () => {
 
       {/* Section 2 — More than a platform */}
       <section className="relative min-h-screen flex items-start py-24 overflow-hidden">
-        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 items-start section-padding pr-0">
+        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding pr-0">
           {/* Left — text */}
           <div className="flex flex-col items-start pt-8">
             <h2 className="heading-h2 mb-8 pb-4">
