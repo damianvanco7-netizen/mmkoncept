@@ -143,7 +143,7 @@ const VirtualVillage = () => {
               <img src={galleryWide} alt="Virtual Village Bratislava Castle" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-2 row-span-1 rounded-xl overflow-hidden">
-              <img src={gallerySquare1} alt="Virtual Village app in use" className="w-full h-full object-cover" />
+              <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png" alt="Virtual Village app mockup" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
