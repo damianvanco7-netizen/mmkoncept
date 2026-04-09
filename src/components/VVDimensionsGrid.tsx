@@ -91,11 +91,11 @@ const VVDimensionsGrid = () => {
           </div>
 
           {/* Right — 7 dimensions accordion, stretched to match image height */}
-          <div className="flex flex-col w-full max-w-[340px] justify-between" style={{ minHeight: 420 }}>
+          <div className="flex flex-col w-full max-w-[340px]" style={{ minHeight: 420 }}>
             {dimensions.map((dim, i) => (
-              <div key={dim.title} className="flex-1 flex flex-col">
+              <div key={dim.title}>
                 {i > 0 && (
-                  <hr className="border-t border-foreground/10" />
+                  <hr className="border-t border-foreground/10 my-2" />
                 )}
                 <button
                   onClick={() => toggle(i)}
