@@ -24,24 +24,6 @@ const services = [
   },
 ];
 
-const whyItems = [
-  {
-    title: "Global Corporate Expertise",
-    description:
-      "A proven track record in transforming European production sites and providing C-level consultations in Africa.",
-  },
-  {
-    title: "Multilingual Support",
-    description:
-      "Expert strategic advice and project management delivered fluently in Slovak, German, and English for seamless cross-border collaboration.",
-  },
-  {
-    title: "Human-Centric Approach",
-    description:
-      "Every strategy begins with the user, ensuring technology serves as a bridge for meaningful interaction.",
-  },
-];
-
 const Consulting = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
@@ -61,35 +43,13 @@ const Consulting = () => {
       <div className="relative" style={{ zIndex: 1 }}>
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center section-padding pt-24">
-        <div className="relative z-10 w-full max-w-3xl text-center">
-          <p className="text-xs font-semibold tracking-widest text-white/50 uppercase mb-4">
-            Consulting & Strategy
-          </p>
-          <h1 className="heading-h2 mb-6">
-            <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-              Bridging Innovation and Technology...
-            </ShinyText>
-          </h1>
-          <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
-            At mm concept, we build strategic bridges between complex
-            technologies and the real world. Our consulting services are rooted
-            in over a decade of experience within the global automotive industry
-            and international innovation management.
-          </p>
-        </div>
-      </section>
-
-      <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
-
-      {/* Service Portfolio — Circle buttons like homepage */}
-      <section className="py-28 md:py-36 section-padding">
+      {/* Service Portfolio — starts the page */}
+      <section className="min-h-screen flex flex-col justify-center py-28 md:py-36 section-padding pt-32">
         <div className="w-full">
           <div className="text-center">
             <h2 className="heading-h2">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Our Portfolio
+                Built on Experience,<br />Driven by Purpose
               </ShinyText>
             </h2>
           </div>
@@ -100,7 +60,7 @@ const Consulting = () => {
                 key={service.title}
                 className="rounded-full flex flex-col items-center justify-center text-center px-10 transition-all duration-500 cursor-default liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(280px,25vw,380px)] md:h-[clamp(280px,25vw,380px)]"
               >
-                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight max-w-[75%]">
+                <span className="text-white text-base md:text-lg font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
                 <span className="text-white/50 text-xs md:text-sm leading-relaxed max-w-[85%]">

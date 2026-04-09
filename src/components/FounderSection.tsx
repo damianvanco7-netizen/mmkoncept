@@ -1,4 +1,5 @@
 import ShinyText from "./ShinyText";
+import aboutPhoto from "@/assets/about-photo.png";
 
 const FounderSection = () => {
   return (
@@ -43,8 +44,8 @@ const FounderSection = () => {
           </div>
 
           {/* Circle image — desktop: absolute bottom-right, mobile: left-aligned below text */}
-          <div className="mt-8 md:mt-0 md:absolute md:bottom-0 md:right-0 w-[160px] h-[160px] md:w-[clamp(196px,15.4vw,266px)] md:h-[clamp(196px,15.4vw,266px)] rounded-full overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
-            <span className="text-white/20 text-sm tracking-widest uppercase">Photo</span>
+          <div className="mt-8 md:mt-0 md:absolute md:bottom-0 md:right-0 w-[160px] h-[160px] md:w-[clamp(196px,15.4vw,266px)] md:h-[clamp(196px,15.4vw,266px)] rounded-full overflow-hidden border border-white/10">
+            <img src={aboutPhoto} alt="Martina Masaryková" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
