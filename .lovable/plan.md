@@ -1,15 +1,18 @@
 
 
-## Plan: Match right column stagger to left column diagonal
+## Problem
 
-The issue is that the right column (items 5, 6, 7) currently staggers using `marginRight` (pushing from the right edge inward), while the screenshot shows both columns staggering in the same diagonal direction — items shifting progressively to the right from top to bottom.
+The network animation on the Consulting page looks different from the hero section because the CTA section container is much smaller (`py-28 md:py-36`) than the hero (`min-h-screen`). Since the node positions are calculated as proportions of the container's width/height, a smaller container produces a visually different (compressed) network.
 
-### Change in `src/components/VVDimensionsGrid.tsx`
+## Solution
 
-**DimensionItem component** (lines 64-94): Change the right column offset from `marginRight` to `marginLeft`, so both columns stagger in the same direction (left-to-right, top-to-bottom):
+Make the Consulting CTA section `min-h-screen` so the NetworkCanvas has the same dimensions as the hero section. This will make the cluster and connections look identical since the proportional coordinates are already the same.
 
-- Left column: `marginLeft: index * 3rem` (0, 3, 6, 9) — unchanged
-- Right column: `marginLeft: index * 3rem` (0, 3, 6) — same diagonal direction as left
+### Changes
 
-This single change makes both columns flow diagonally like the screenshot reference.
+**`src/pages/Consulting.tsx`** (line 79):
+- Change the CTA section from `py-28 md:py-36` to `min-h-screen flex flex-col justify-center` so it matches the hero section's height
+- Keep `section-padding` and `overflow-hidden`
+
+**`src/components/NetworkCanvas.tsx`** — no changes needed. The consulting variant already uses the same cluster parameters as hero (position `w * 0.22, h * 0.45`, radius `Math.min(w,h) * 0.35`, 120 nodes, same `rFactor`). Only the trailing dots direction differs (bottom-left for Connect vs bottom-right for Our Portfolio), which is correct.
 
