@@ -71,7 +71,7 @@ const VirtualVillage = () => {
       </section>
 
       {/* Section 2 — More than a platform */}
-      <section className="relative min-h-screen flex items-start py-24 overflow-hidden">
+      <section className="relative min-h-screen flex items-start py-16 overflow-hidden">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding pr-0">
           {/* Left — text */}
           <div className="flex flex-col items-start pt-8">
@@ -82,7 +82,7 @@ const VirtualVillage = () => {
             </h2>
             <p className="heading-h3 text-foreground/80 max-w-lg font-normal mb-8">
               A companion.<br />
-              A guide.<br />A quiet intelligence<br />in the background.
+              A guide. A quiet intelligence<br />in the background.
             </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
               It helps you get things done effortlessly —<br />
@@ -99,7 +99,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup phones */}
-          <div className="flex items-start justify-end pt-0 -ml-12">
+          <div className="flex items-start justify-end pt-8 -ml-12">
             <img
               src={vvMockupPhones}
               alt="Virtual Village app mockup"
@@ -109,7 +109,7 @@ const VirtualVillage = () => {
         </div>
       </section>
 
-      <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
+      {/* divider removed */}
 
       {/* Section 3+4 — One Intuitive Space + 7 Life Dimensions */}
       <VVDimensionsGrid />
@@ -123,7 +123,7 @@ const VirtualVillage = () => {
       <hr className="border-t border-foreground/20 mx-[clamp(1.5rem,5vw,6rem)]" />
 
       {/* Gallery Section */}
-      <section className="py-20 md:py-28 section-padding">
+      <section className="py-16 md:py-20 section-padding">
         <div className="w-full flex flex-col items-center text-center mb-12">
           <h2 className="heading-h2 text-foreground/80">
             <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>

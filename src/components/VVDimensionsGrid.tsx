@@ -56,9 +56,9 @@ const VVDimensionsGrid = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 section-padding">
-      <div className="w-full flex flex-col items-center">
-        <h2 className="heading-h2 text-foreground/80 mb-2 text-center">
+    <section className="py-16 md:py-20 section-padding">
+      <div className="w-full flex flex-col items-start">
+        <h2 className="heading-h2 text-foreground/80 mb-2 text-left">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -68,7 +68,7 @@ const VVDimensionsGrid = () => {
             One Intuitive Space
           </ShinyText>
         </h2>
-        <h2 className="heading-h2 text-foreground/80 mb-12 text-center">
+        <h2 className="heading-h2 text-foreground/80 mb-12 text-left">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -79,10 +79,10 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* Centered two-column: image + dimensions accordion */}
-        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+        {/* Two-column: image + dimensions accordion */}
+        <div className="w-full flex flex-col md:flex-row items-start gap-8 md:gap-12">
           {/* Left — image */}
-          <div className="shrink-0">
+          <div className="shrink-0 -ml-4">
             <img
               src={vvKruh}
               alt="Virtual Village ecosystem — 7 Life Dimensions"
@@ -91,7 +91,7 @@ const VVDimensionsGrid = () => {
           </div>
 
           {/* Right — 7 dimensions accordion, stretched to match image height */}
-          <div className="flex flex-col w-full max-w-[380px] justify-between" style={{ minHeight: 630 }}>
+          <div className="flex flex-col w-full md:flex-1 max-w-[480px] justify-between" style={{ minHeight: 630 }}>
             {dimensions.map((dim, i) => (
               <div key={dim.title} className="flex-1 flex flex-col justify-center">
                 {i > 0 && (
