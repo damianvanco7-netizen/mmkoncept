@@ -49,8 +49,8 @@ const dimensions = [
 const VVDimensionsGrid = () => {
   return (
     <section className="py-20 md:py-28 section-padding">
-      <div className="w-full flex flex-col items-start">
-        <h2 className="heading-h2 text-foreground/80 mb-2">
+      <div className="w-full flex flex-col items-center">
+        <h2 className="heading-h2 text-foreground/80 mb-2 text-center">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -60,7 +60,7 @@ const VVDimensionsGrid = () => {
             One Intuitive Space
           </ShinyText>
         </h2>
-        <h2 className="heading-h2 text-foreground/80 mb-12">
+        <h2 className="heading-h2 text-foreground/80 mb-12 text-center">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -71,14 +71,14 @@ const VVDimensionsGrid = () => {
           </ShinyText>
         </h2>
 
-        {/* Two-column layout: image left, dimensions list right */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8 items-start">
+        {/* Centered two-column: image + dimensions list */}
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
           {/* Left — image */}
-          <div className="flex items-start">
+          <div className="shrink-0">
             <img
               src={vvKruh}
               alt="Virtual Village ecosystem — 7 Life Dimensions"
-              className="w-full max-w-[550px]"
+              className="w-full max-w-[420px]"
             />
           </div>
 
