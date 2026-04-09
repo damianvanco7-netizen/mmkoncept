@@ -174,7 +174,7 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
       const clusterNodes = nodes.slice(0, clusterCount);
       const dotNodes = nodes.slice(clusterCount);
 
-      const maxConnDist = 120;
+      const maxConnDist = direction === 'down' ? 120 : 150;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
           const a = clusterNodes[i];
