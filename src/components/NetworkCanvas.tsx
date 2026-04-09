@@ -195,37 +195,34 @@ const NetworkCanvas = ({ direction = 'right' }: NetworkCanvasProps) => {
         }
       }
 
-      // Curves from cluster to trailing dots
-      const sortKey = direction === 'down'
-        ? (a: Node, b: Node) => (b.y * 0.7 + b.x * 0.3) - (a.y * 0.7 + a.x * 0.3)
-        : (a: Node, b: Node) => (b.x * 0.7 + b.y * 0.3) - (a.x * 0.7 + a.y * 0.3);
-      
-      const sortedByExit = [...clusterNodes].sort(sortKey);
-      const exitNodes = [sortedByExit[0], sortedByExit[1], sortedByExit[2]];
-
-      for (let i = 0; i < 3; i++) {
-        const from = exitNodes[i];
-        const to = dotNodes[i];
-        if (!from || !to) continue;
-
-        if (direction === 'down') {
-          const midY = (from.y + to.y) / 2;
-          const midX = from.x - (from.x - to.x) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(from.x, from.y);
-          ctx.quadraticCurveTo(midX + (i - 1) * 30, midY, to.x, to.y);
-        } else {
-          const midX = (from.x + to.x) / 2;
-          const midY = to.y - (to.y - from.y) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(from.x, from.y);
-          ctx.quadraticCurveTo(midX + (i - 1) * 30, midY, to.x, to.y);
+      // Single chain: cluster -> dot0 -> dot1 -> dot2 (one line between each)
+      // Find the closest cluster node to the first trailing dot
+      const firstDot = dotNodes[0];
+      if (firstDot) {
+        let closestIdx = 0;
+        let closestDist = Infinity;
+        for (let i = 0; i < clusterNodes.length; i++) {
+          const dx = clusterNodes[i].x - firstDot.x;
+          const dy = clusterNodes[i].y - firstDot.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < closestDist) {
+            closestDist = d;
+            closestIdx = i;
+          }
         }
+        // Draw curve from closest cluster node to first dot
+        const from = clusterNodes[closestIdx];
+        const midX = (from.x + firstDot.x) / 2;
+        const midY = (from.y + firstDot.y) / 2 - 15;
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.quadraticCurveTo(midX, midY, firstDot.x, firstDot.y);
         ctx.strokeStyle = `rgba(255, 255, 255, 0.18)`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
 
+      // Connect trailing dots: dot0—dot1, dot1—dot2
       for (let i = 0; i < dotNodes.length - 1; i++) {
         ctx.beginPath();
         ctx.moveTo(dotNodes[i].x, dotNodes[i].y);
