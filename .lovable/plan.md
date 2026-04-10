@@ -1,27 +1,34 @@
 
 
-## Plán: Opraviť kontaktný formulár aby fungoval HNEĎ
+## Plan: Kontaktný formulár cez Resend
 
-### Problém
-DNS pre `notify.mmconcept.sk` nie je overená → emaily sa nedoručujú. Toto sa nedá obísť ani cez Resend (tiež vyžaduje DNS verifikáciu domény).
+### Aktuálny stav
+Formulár ukladá dáta do `contact_submissions` tabuľky (funguje) a volá `send-transactional-email` Edge Function, ktorá používa Lovable Email infraštruktúru cez subdoménu `notify.mmconcept.sk`. DNS verifikácia stále čaká, preto emaily neodchádzajú.
 
-### Riešenie
+### Čo spravím
 
-**Krok 1: Overiť, či je edge funkcia vôbec nasadená**
-- Deploynúť `send-transactional-email` a `process-email-queue` aby boli pripravené
-- Otestovať volanie cez curl
+**Krok 1: Pripojiť Resend konektor**
+- Resend je dostupný ako konektor v Lovable. Prepojím ho s projektom -- budeš vyzvaný na zadanie Resend API kľúča.
+- Potrebuješ mať Resend účet s overenou doménou (napr. `mmconcept.sk` alebo iná). Overenie domény v Resend je cez DKIM/SPF záznamy (nie NS delegácia).
 
-**Krok 2: Skontrolovať DNS nastavenie**
-- Používateľ musí overiť, že NS záznamy pre `notify.mmconcept.sk` sú správne nastavené u jeho DNS providera (smerujú na `ns3.lovable.cloud` a `ns4.lovable.cloud`)
-- Toto je jediná vec, ktorá blokuje doručovanie
+**Krok 2: Vytvoriť novú Edge Function `send-contact-email`**
+- Jednoduchá funkcia, ktorá prijme meno, email a správu z formulára.
+- Pošle email cez Resend connector gateway na `martina.masarykova@mmconcept.sk`.
+- Bude obsahovať CORS, validáciu vstupov a error handling.
 
-**Krok 3: Pridať fallback pre okamžité fungovanie (voliteľné)**
-- Ak chceš aby formulár fungoval OKAMŽITE aj bez overenej domény, môžem zmeniť kontaktný formulár tak, aby dáta ukladal do databázy (nová tabuľka `contact_submissions`)
-- Ty si ich budeš môcť pozrieť v backende
-- Keď sa DNS overí, emaily sa automaticky začnú posielať popri tom
+**Krok 3: Upraviť `ContactFormDialog.tsx`**
+- Nahradiť volanie `send-transactional-email` volaním novej `send-contact-email` funkcie.
+- Zachovám ukladanie do `contact_submissions` tabuľky ako fallback.
+
+**Krok 4: Deploynúť a otestovať**
+
+### Dôležité
+- V Resend dashboarde musíš mať overenú doménu, z ktorej chceš posielať (napr. `mmconcept.sk`). Overenie v Resend je cez DNS záznamy typu DKIM/SPF/MX -- nie NS delegácia ako v Lovable.
+- Existujúca Lovable Email infraštruktúra zostane nedotknutá (pre prípad, že by si ju chcel v budúcnosti použiť).
 
 ### Technické detaily
-- **Súbory**: `src/components/ContactFormDialog.tsx`, prípadne nová migrácia pre `contact_submissions` tabuľku
-- **Edge funkcie**: deploy `send-transactional-email`, `process-email-queue`
-- Kontaktný formulár bude ukladať dáta DO databázy + posielať email (keď DNS bude ready, email pôjde; medzitým máš dáta v DB)
+- Nový súbor: `supabase/functions/send-contact-email/index.ts`
+- Editovaný súbor: `src/components/ContactFormDialog.tsx`
+- Connector: Resend (connector gateway pattern)
+- Secrets: `RESEND_API_KEY` + `LOVABLE_API_KEY` (automaticky)
 
