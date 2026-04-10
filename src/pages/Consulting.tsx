@@ -85,7 +85,7 @@ const Consulting = () => {
                 <span className="text-white/40 text-[10px] md:text-xs italic mb-2 leading-tight">
                   {service.subtitle}
                 </span>
-                <span className="text-white/50 text-[10px] md:text-xs leading-relaxed px-6">
+                <span className="text-white/50 text-[10px] md:text-xs leading-relaxed px-8 max-w-[85%]">
                   {service.description}
                 </span>
               </div>
@@ -107,8 +107,8 @@ const Consulting = () => {
                 Let's Build Something Meaningful
               </ShinyText>
             </h2>
-            <div className="text-base text-white/50 heading-h3 font-normal leading-relaxed mb-10">
-              <span className="block">Whether you're transforming your organization or reimagining urban</span>
+            <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10">
+              <span className="block md:whitespace-nowrap">Whether you're transforming your organization or reimagining urban</span>
               <span className="block">infrastructure — we're ready to partner with you.</span>
             </div>
             <div className="flex md:justify-end">
