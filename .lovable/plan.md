@@ -1,11 +1,14 @@
 
 
-## Plán: Zmeniť meno odosielateľa na "mm concept"
+## Plán: Nastaviť nový favicon
 
-Jednoduchá zmena v Edge Function `send-contact-email/index.ts` — zmeniť `from` pole z `MM Concept <noreply@mmconcept.sk>` na `mm concept <noreply@mmconcept.sk>`.
+Používateľ nahral SVG súbor (`fav_cicon.svg`) ako favicon.
+
+### Kroky
+1. Skopírovať `user-uploads://fav_cicon.svg` do `public/favicon.svg`
+2. Odstrániť existujúci `public/favicon.ico` ak existuje
+3. Aktualizovať `index.html` — pridať `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`
 
 ### Technické detaily
-- **Súbor:** `supabase/functions/send-contact-email/index.ts`
-- **Riadok:** cca 53 — zmena `'MM Concept <noreply@mmconcept.sk>'` → `'mm concept <noreply@mmconcept.sk>'`
-- Deploy edge function po zmene
+- Súbory: `public/favicon.svg` (nový), `index.html` (editovaný)
 
