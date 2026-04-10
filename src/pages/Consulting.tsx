@@ -107,9 +107,10 @@ const Consulting = () => {
                 Let's Build Something Meaningful
               </ShinyText>
             </h2>
-            <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10">
-              <span className="block md:whitespace-nowrap">Whether you're transforming your organization or reimagining urban</span>
-              <span className="block">infrastructure — we're ready to partner with you.</span>
+            <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10 md:text-right md:ml-auto">
+              <span className="block">Whether you're transforming your organization</span>
+              <span className="block">or reimagining urban infrastructure —</span>
+              <span className="block">we're ready to partner with you.</span>
             </div>
             <div className="flex md:justify-end">
             <button
