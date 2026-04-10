@@ -67,7 +67,7 @@ const Consulting = () => {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col items-center justify-center text-center liquid-glass-circle"
+                className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
                   width: "clamp(220px, 18vw, 280px)",
                   height: "clamp(220px, 18vw, 280px)",
