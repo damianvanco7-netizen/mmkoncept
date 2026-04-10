@@ -1,27 +1,29 @@
 import { useState } from "react";
-import { Workflow, PenTool, Rocket } from "lucide-react";
 import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvas from "@/components/NetworkCanvas";
 import ShinyText from "@/components/ShinyText";
 import ContactFormDialog from "@/components/ContactFormDialog";
+import digitalTransformationIcon from "@/assets/icons/digital_transformation.svg";
+import itMarketingIcon from "@/assets/icons/it_marketing.svg";
+import innovationManagementIcon from "@/assets/icons/inovation_management.svg";
 
 const services = [
   {
-    icon: Workflow,
+    icon: digitalTransformationIcon,
     title: "Digital Transformation",
     description:
       "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
   },
   {
-    icon: PenTool,
+    icon: itMarketingIcon,
     title: "IT Marketing & UX Strategy",
     description:
       "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
   },
   {
-    icon: Rocket,
+    icon: innovationManagementIcon,
     title: "Innovation Management",
     description:
       "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
@@ -57,8 +59,8 @@ const Consulting = () => {
               </ShinyText>
             </h2>
           </div>
-          <p className="text-center text-white/50 heading-h3 font-normal max-w-md mx-auto mb-16">
-            We connect thinking, design, and implementation<br />into one seamless flow.
+          <p className="text-center text-white/50 heading-h3 font-normal max-w-lg mx-auto mb-16">
+            We connect thinking, design,<br />and implementation into one seamless flow.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto justify-items-center">
@@ -72,7 +74,7 @@ const Consulting = () => {
                   borderRadius: "50%",
                 }}
               >
-                <service.icon className="w-7 h-7 text-white/50 mb-4" />
+                <img src={service.icon} alt={service.title} className="w-10 h-10 mb-4 opacity-50" />
                 <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
