@@ -360,6 +360,18 @@
     pointer-events: none;
   }
 
+  /* Override browser autofill background in glass dialogs */
+  .liquid-glass-dialog input:-webkit-autofill,
+  .liquid-glass-dialog input:-webkit-autofill:hover,
+  .liquid-glass-dialog input:-webkit-autofill:focus,
+  .liquid-glass-dialog textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   /* Top specular line */
   .liquid-glass-nav::before {
     content: '';
