@@ -235,7 +235,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
 
       // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
-      const trailConnDist = direction === 'down' ? 300 : 400;
+      const trailConnDist = direction === 'down' ? 300 : 650;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {
