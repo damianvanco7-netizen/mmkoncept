@@ -64,14 +64,14 @@ const Consulting = () => {
             <span className="block">into one seamless flow.</span>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12 max-w-6xl mx-auto">
             {services.map((service) => (
               <div
                 key={service.title}
                 className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(200px, 22vw, 300px)",
-                  height: "clamp(200px, 22vw, 300px)",
+                  width: "clamp(220px, 24vw, 330px)",
+                  height: "clamp(220px, 24vw, 330px)",
                   borderRadius: "50%",
                 }}
               >
