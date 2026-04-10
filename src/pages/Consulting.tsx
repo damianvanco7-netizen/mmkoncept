@@ -79,8 +79,11 @@ const Consulting = () => {
                 }}
               >
                 <img src={service.icon} alt={service.title} className="w-[76px] h-[76px] mb-4 opacity-50" />
-                <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
+                <span className="text-white text-sm md:text-base font-semibold mb-1 leading-tight whitespace-nowrap">
                   {service.title}
+                </span>
+                <span className="text-white/40 text-[10px] md:text-xs italic mb-2 leading-tight">
+                  {service.subtitle}
                 </span>
                 <span className="text-white/50 text-[10px] md:text-xs leading-relaxed px-6">
                   {service.description}
@@ -104,10 +107,10 @@ const Consulting = () => {
                 Let's Build Something Meaningful
               </ShinyText>
             </h2>
-            <p className="text-base text-white/70 leading-relaxed mb-10">
-              Whether you're transforming your organization or reimagining urban
-              infrastructure — we're ready to partner with you.
-            </p>
+            <div className="text-base text-white/50 heading-h3 font-normal leading-relaxed mb-10">
+              <span className="block">Whether you're transforming your organization or reimagining urban</span>
+              <span className="block">infrastructure — we're ready to partner with you.</span>
+            </div>
             <div className="flex md:justify-end">
             <button
               onClick={() => setContactOpen(true)}
