@@ -69,8 +69,8 @@ const Consulting = () => {
                 key={service.title}
                 className="flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(300px, 30vw, 440px)",
-                  height: "clamp(300px, 30vw, 440px)",
+                  width: "clamp(260px, 24vw, 360px)",
+                  height: "clamp(260px, 24vw, 360px)",
                   borderRadius: "50%",
                 }}
               >
