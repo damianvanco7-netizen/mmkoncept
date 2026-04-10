@@ -11,7 +11,7 @@ import innovationManagementIcon from "@/assets/icons/inovation_management.svg";
 
 const services = [
   {
-    icon: digitalTransformationIcon,
+    icon: innovationManagementIcon,
     title: "Digital Transformation",
     description:
       "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
@@ -23,7 +23,7 @@ const services = [
       "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
   },
   {
-    icon: innovationManagementIcon,
+    icon: digitalTransformationIcon,
     title: "Innovation Management",
     description:
       "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
