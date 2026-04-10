@@ -1,14 +1,13 @@
 
 
-## Plán: Nastaviť nový favicon
+## Plán: Zmeniť farbu favicon na tmavú
 
-Používateľ nahral SVG súbor (`fav_cicon.svg`) ako favicon.
+Aktuálne má favicon `fill="white"`, čo je neviditeľné na svetlom pozadí (napr. záložka v Chrome light mode).
 
-### Kroky
-1. Skopírovať `user-uploads://fav_cicon.svg` do `public/favicon.svg`
-2. Odstrániť existujúci `public/favicon.ico` ak existuje
-3. Aktualizovať `index.html` — pridať `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`
+### Zmena
+- **Súbor:** `public/favicon.svg`
+- Zmeniť `fill="white"` na tmavú farbu zodpovedajúcu brand palete — `fill="hsl(18, 100%, 3%)"` (near-black z vášho dizajnu), čo je prakticky `#0F0200`
 
-### Technické detaily
-- Súbory: `public/favicon.svg` (nový), `index.html` (editovaný)
+### Poznámka
+SVG favicon nepodporuje automatické prepínanie light/dark v záložke prehliadača. Zvolíme tmavú farbu, ktorá bude viditeľná na svetlom aj tmavom pozadí záložiek (na tmavom pozadí bude menej kontrastná, ale stále viditeľná). Alternatívne sa dá použiť stredne tmavá farba pre lepší kompromis.
 
