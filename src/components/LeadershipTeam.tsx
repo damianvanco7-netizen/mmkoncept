@@ -44,7 +44,7 @@ const LeadershipTeam = () => {
   return (
     <section className="py-16 md:py-20 section-padding">
       <div className="w-full flex flex-col items-center text-center">
-        <h2 className="heading-h2 text-foreground/80 mb-4">
+        <h2 className="heading-h2 text-foreground/80 mb-12">
           <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
             Diversity is Our Power
           </ShinyText>

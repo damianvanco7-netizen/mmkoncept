@@ -234,31 +234,29 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         }
       }
 
-      // Single chain: cluster -> dot0 -> dot1 -> dot2 (one line between each)
-      // Find the closest cluster node to the first trailing dot
-      const firstDot = dotNodes[0];
-      if (firstDot) {
-        let closestIdx = 0;
-        let closestDist = Infinity;
+      // Each trailing dot connects to nearest 4 cluster nodes
+      const trailConnDist = direction === 'down' ? 200 : 250;
+      for (const dot of dotNodes) {
+        const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {
-          const dx = clusterNodes[i].x - firstDot.x;
-          const dy = clusterNodes[i].y - firstDot.y;
+          const dx = clusterNodes[i].x - dot.x;
+          const dy = clusterNodes[i].y - dot.y;
           const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < closestDist) {
-            closestDist = d;
-            closestIdx = i;
+          if (d < trailConnDist) {
+            distances.push({ idx: i, dist: d });
           }
         }
-        // Draw curve from closest cluster node to first dot
-        const from = clusterNodes[closestIdx];
-        const midX = (from.x + firstDot.x) / 2;
-        const midY = (from.y + firstDot.y) / 2 - 15;
-        ctx.beginPath();
-        ctx.moveTo(from.x, from.y);
-        ctx.quadraticCurveTo(midX, midY, firstDot.x, firstDot.y);
-        ctx.strokeStyle = `rgba(255, 255, 255, 0.18)`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+        distances.sort((a, b) => a.dist - b.dist);
+        const nearest = distances.slice(0, 4);
+        for (const { idx, dist } of nearest) {
+          const alpha = (1 - dist / trailConnDist) * 0.3;
+          ctx.beginPath();
+          ctx.moveTo(clusterNodes[idx].x, clusterNodes[idx].y);
+          ctx.lineTo(dot.x, dot.y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+          ctx.lineWidth = 1.3;
+          ctx.stroke();
+        }
       }
 
       // Connect trailing dots: dot0—dot1, dot1—dot2

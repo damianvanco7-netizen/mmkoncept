@@ -112,7 +112,7 @@ const VirtualVillage = () => {
       {/* divider removed */}
 
       {/* Section 3+4 — One Intuitive Space + 7 Life Dimensions */}
-      <div className="-mt-28">
+      <div className="mt-8">
         <VVDimensionsGrid />
       </div>
 
@@ -155,10 +155,7 @@ const VirtualVillage = () => {
       {/* Leadership Team Section */}
       <LeadershipTeam />
 
-      {/* Footer with dark gradient */}
-      <div style={{ background: "linear-gradient(180deg, #272727 0%, #3a3937 30%, #4a4745 60%, #615F5D 100%)" }}>
-        <Footer />
-      </div>
+      <Footer variant="light" />
       </div>
     </div>
   );
