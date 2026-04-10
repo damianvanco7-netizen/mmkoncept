@@ -27,17 +27,26 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     setSending(true);
 
     try {
-      const idempotencyKey = `contact-${Date.now()}-${crypto.randomUUID()}`;
-      const { error } = await supabase.functions.invoke('send-transactional-email', {
+      const submissionId = crypto.randomUUID();
+      const trimmed = { name: name.trim(), email: email.trim(), message: message.trim() };
+
+      // Save to database first (works immediately, no DNS needed)
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert({ id: submissionId, ...trimmed });
+
+      if (dbError) throw dbError;
+
+      // Also try to send email (will work once DNS is verified)
+      const idempotencyKey = `contact-${submissionId}`;
+      await supabase.functions.invoke('send-transactional-email', {
         body: {
           templateName: 'contact-form-notification',
           recipientEmail: 'martina.masarykova@mmconcept.sk',
           idempotencyKey,
-          templateData: { name: name.trim(), email: email.trim(), message: message.trim() },
+          templateData: trimmed,
         },
       });
-
-      if (error) throw error;
 
       toast({
         title: "Správa bola odoslaná",
@@ -51,8 +60,8 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
       onOpenChange(false);
     } catch {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Chyba",
+        description: "Niečo sa pokazilo. Skúste to znova.",
         variant: "destructive",
       });
     } finally {
