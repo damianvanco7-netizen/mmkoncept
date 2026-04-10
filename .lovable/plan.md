@@ -1,27 +1,27 @@
 
 
-## Plan
+## Plán: Opraviť kontaktný formulár aby fungoval HNEĎ
 
-### 1. Zväčšiť guľôčky o 10% a zachovať medzery
+### Problém
+DNS pre `notify.mmconcept.sk` nie je overená → emaily sa nedoručujú. Toto sa nedá obísť ani cez Resend (tiež vyžaduje DNS verifikáciu domény).
 
-**Súbor:** `src/pages/Consulting.tsx`
+### Riešenie
 
-Aktuálne rozmery: `clamp(200px, 22vw, 300px)` → nové: `clamp(220px, 24vw, 330px)`
+**Krok 1: Overiť, či je edge funkcia vôbec nasadená**
+- Deploynúť `send-transactional-email` a `process-email-queue` aby boli pripravené
+- Otestovať volanie cez curl
 
-Zároveň zvýšim gap z `md:gap-8` na `md:gap-12`, aby sa medzery zachovali aj pri väčších kruhoch.
+**Krok 2: Skontrolovať DNS nastavenie**
+- Používateľ musí overiť, že NS záznamy pre `notify.mmconcept.sk` sú správne nastavené u jeho DNS providera (smerujú na `ns3.lovable.cloud` a `ns4.lovable.cloud`)
+- Toto je jediná vec, ktorá blokuje doručovanie
 
-### 2. Pridať prepojenia trailing bodiek aj na druhú guľôčku
-
-**Súbor:** `src/components/NetworkCanvas.tsx`
-
-Aktuálne sa trailing bodky (dot0, dot1, dot2) prepájajú len postupne: dot0→dot1, dot1→dot2. Pridám ďalšie čiary:
-- dot0→dot2 (prvá na tretiu)
-
-Tým vznikne hustejšia sieť medzi trailing bodkami — každá bude prepojená aj s druhou, nielen s najbližšou susednou.
+**Krok 3: Pridať fallback pre okamžité fungovanie (voliteľné)**
+- Ak chceš aby formulár fungoval OKAMŽITE aj bez overenej domény, môžem zmeniť kontaktný formulár tak, aby dáta ukladal do databázy (nová tabuľka `contact_submissions`)
+- Ty si ich budeš môcť pozrieť v backende
+- Keď sa DNS overí, emaily sa automaticky začnú posielať popri tom
 
 ### Technické detaily
-
-- `Consulting.tsx` riadok 73-74: zmeniť clamp hodnoty
-- `Consulting.tsx` riadok 67: zmeniť gap
-- `NetworkCanvas.tsx` riadky 262-269: rozšíriť prepojenia trailing bodiek — namiesto len `i → i+1` pridať aj `i → i+2` (ak existuje)
+- **Súbory**: `src/components/ContactFormDialog.tsx`, prípadne nová migrácia pre `contact_submissions` tabuľku
+- **Edge funkcie**: deploy `send-transactional-email`, `process-email-queue`
+- Kontaktný formulár bude ukladať dáta DO databázy + posielať email (keď DNS bude ready, email pôjde; medzitým máš dáta v DB)
 
