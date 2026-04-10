@@ -259,14 +259,16 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         }
       }
 
-      // Connect trailing dots: dot0—dot1, dot1—dot2
-      for (let i = 0; i < dotNodes.length - 1; i++) {
-        ctx.beginPath();
-        ctx.moveTo(dotNodes[i].x, dotNodes[i].y);
-        ctx.lineTo(dotNodes[i + 1].x, dotNodes[i + 1].y);
-        ctx.strokeStyle = `rgba(255, 255, 255, 0.25)`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
+      // Connect trailing dots: dot0—dot1, dot1—dot2, and dot0—dot2
+      for (let i = 0; i < dotNodes.length; i++) {
+        for (let j = i + 1; j < dotNodes.length; j++) {
+          ctx.beginPath();
+          ctx.moveTo(dotNodes[i].x, dotNodes[i].y);
+          ctx.lineTo(dotNodes[j].x, dotNodes[j].y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${j - i === 1 ? 0.25 : 0.15})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
       }
 
       for (const n of clusterNodes) {
