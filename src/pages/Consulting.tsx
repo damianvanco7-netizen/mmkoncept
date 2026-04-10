@@ -59,8 +59,8 @@ const Consulting = () => {
               </ShinyText>
             </h2>
           </div>
-          <p className="text-center text-white/50 heading-h3 font-normal max-w-md mx-auto mb-16">
-            We connect thinking, design, and implementation<br />into one seamless flow.
+          <p className="text-center text-white/50 heading-h3 font-normal max-w-lg mx-auto mb-16">
+            We connect thinking, design,<br />and implementation into one seamless flow.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto justify-items-center">
@@ -74,7 +74,7 @@ const Consulting = () => {
                   borderRadius: "50%",
                 }}
               >
-                <service.icon className="w-7 h-7 text-white/50 mb-4" />
+                <img src={service.icon} alt={service.title} className="w-10 h-10 mb-4 opacity-50" />
                 <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
