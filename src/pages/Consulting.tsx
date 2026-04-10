@@ -1,27 +1,29 @@
 import { useState } from "react";
-import { Workflow, PenTool, Rocket } from "lucide-react";
 import Grainient from "@/components/Grainient";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NetworkCanvas from "@/components/NetworkCanvas";
 import ShinyText from "@/components/ShinyText";
 import ContactFormDialog from "@/components/ContactFormDialog";
+import digitalTransformationIcon from "@/assets/icons/digital_transformation.svg";
+import itMarketingIcon from "@/assets/icons/it_marketing.svg";
+import innovationManagementIcon from "@/assets/icons/inovation_management.svg";
 
 const services = [
   {
-    icon: Workflow,
+    icon: digitalTransformationIcon,
     title: "Digital Transformation",
     description:
       "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
   },
   {
-    icon: PenTool,
+    icon: itMarketingIcon,
     title: "IT Marketing & UX Strategy",
     description:
       "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
   },
   {
-    icon: Rocket,
+    icon: innovationManagementIcon,
     title: "Innovation Management",
     description:
       "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
