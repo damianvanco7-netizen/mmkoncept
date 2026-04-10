@@ -59,22 +59,22 @@ const Consulting = () => {
               </ShinyText>
             </h2>
           </div>
-          <p className="text-center text-white/50 heading-h3 font-normal max-w-lg mx-auto mb-16">
-            We connect thinking, design,<br />and implementation into one seamless flow.
+          <p className="text-center text-white/50 heading-h3 font-normal max-w-2xl mx-auto mb-16">
+            We connect thinking, design, and implementation<br />into one seamless flow.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 max-w-6xl mx-auto">
             {services.map((service) => (
               <div
                 key={service.title}
                 className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(220px, 18vw, 280px)",
-                  height: "clamp(220px, 18vw, 280px)",
+                  width: "clamp(200px, 22vw, 300px)",
+                  height: "clamp(200px, 22vw, 300px)",
                   borderRadius: "50%",
                 }}
               >
-                <img src={service.icon} alt={service.title} className="w-16 h-16 mb-4 opacity-50" />
+                <img src={service.icon} alt={service.title} className="w-[76px] h-[76px] mb-4 opacity-50" />
                 <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
