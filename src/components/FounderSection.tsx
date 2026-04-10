@@ -14,7 +14,7 @@ const FounderSection = () => {
         {/* Main heading */}
         <h2 className="heading-h2 mb-12 md:mb-16">
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-            Bridging Precision
+            Bridging Technology
             <br />
             and Humanity
           </ShinyText>

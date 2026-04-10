@@ -13,20 +13,23 @@ const services = [
   {
     icon: innovationManagementIcon,
     title: "Digital Transformation",
+    subtitle: "Creating efficiency in complex systems",
     description:
-      "Define clarity in complex systems. We design digital concepts that simplify processes and create intuitive environments.",
+      "We design digital concepts that simplify processes and create intuitive environments.",
   },
   {
     icon: itMarketingIcon,
-    title: "IT Marketing & UX Strategy",
+    title: "IT Marketing",
+    subtitle: "Technology, Clearly Communicated",
     description:
-      "Make technology understandable. We translate complexity into clear communication and meaningful user experiences.",
+      "We turn complexity into clear communication and intuitive experiences.",
   },
   {
     icon: digitalTransformationIcon,
     title: "Innovation Management",
+    subtitle: "Turning ideas into impact.",
     description:
-      "From idea to execution. We structure innovation and support its transformation into real, scalable solutions.",
+      "We create ideas and shape them into structured, scalable solutions.",
   },
 ];
 
