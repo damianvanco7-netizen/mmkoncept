@@ -63,7 +63,7 @@ const Consulting = () => {
             We connect thinking, design,<br />and implementation into one seamless flow.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto justify-items-center">
             {services.map((service) => (
               <div
                 key={service.title}
