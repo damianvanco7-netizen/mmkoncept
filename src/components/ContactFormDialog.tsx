@@ -37,15 +37,9 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
 
       if (dbError) throw dbError;
 
-      // Also try to send email (will work once DNS is verified)
-      const idempotencyKey = `contact-${submissionId}`;
-      await supabase.functions.invoke('send-transactional-email', {
-        body: {
-          templateName: 'contact-form-notification',
-          recipientEmail: 'martina.masarykova@mmconcept.sk',
-          idempotencyKey,
-          templateData: trimmed,
-        },
+      // Send email via Resend
+      await supabase.functions.invoke('send-contact-email', {
+        body: trimmed,
       });
 
       toast({
