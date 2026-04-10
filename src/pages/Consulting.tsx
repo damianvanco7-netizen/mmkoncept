@@ -69,12 +69,12 @@ const Consulting = () => {
                 key={service.title}
                 className="flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(240px, 26vw, 320px)",
-                  height: "clamp(240px, 26vw, 320px)",
+                  width: "clamp(300px, 30vw, 440px)",
+                  height: "clamp(300px, 30vw, 440px)",
                   borderRadius: "50%",
                 }}
               >
-                <img src={service.icon} alt={service.title} className="w-10 h-10 mb-4 opacity-50" />
+                <img src={service.icon} alt={service.title} className="w-[52px] h-[52px] mb-4 opacity-50" />
                 <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
