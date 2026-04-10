@@ -59,9 +59,10 @@ const Consulting = () => {
               </ShinyText>
             </h2>
           </div>
-          <p className="text-center text-white/50 heading-h3 font-normal max-w-2xl mx-auto mb-16">
-            We connect thinking, design, and implementation<br />into one seamless flow.
-          </p>
+          <div className="text-center text-white/50 heading-h3 font-normal max-w-4xl mx-auto mb-16">
+            <span className="block md:whitespace-nowrap">We connect thinking, design, and implementation</span>
+            <span className="block">into one seamless flow.</span>
+          </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 max-w-6xl mx-auto">
             {services.map((service) => (
