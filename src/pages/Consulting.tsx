@@ -57,8 +57,8 @@ const Consulting = () => {
               </ShinyText>
             </h2>
           </div>
-          <p className="text-center text-white/50 heading-h3 font-normal max-w-xl mx-auto mb-16">
-            We connect thinking, design, and implementation into one seamless flow.
+          <p className="text-center text-white/50 heading-h3 font-normal max-w-md mx-auto mb-16">
+            We connect thinking, design, and implementation<br />into one seamless flow.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto justify-items-center">
@@ -67,8 +67,8 @@ const Consulting = () => {
                 key={service.title}
                 className="flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(200px, 22vw, 280px)",
-                  height: "clamp(200px, 22vw, 280px)",
+                  width: "clamp(240px, 26vw, 320px)",
+                  height: "clamp(240px, 26vw, 320px)",
                   borderRadius: "50%",
                 }}
               >

@@ -234,8 +234,8 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         }
       }
 
-      // Each trailing dot connects to nearest 4 cluster nodes
-      const trailConnDist = direction === 'down' ? 200 : 250;
+      // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
+      const trailConnDist = direction === 'down' ? 300 : 400;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {
@@ -247,7 +247,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           }
         }
         distances.sort((a, b) => a.dist - b.dist);
-        const nearest = distances.slice(0, 4);
+        const nearest = distances.slice(0, 6);
         for (const { idx, dist } of nearest) {
           const alpha = (1 - dist / trailConnDist) * 0.3;
           ctx.beginPath();
