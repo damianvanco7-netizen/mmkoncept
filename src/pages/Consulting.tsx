@@ -63,18 +63,18 @@ const Consulting = () => {
             We connect thinking, design,<br />and implementation into one seamless flow.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto justify-items-center">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 max-w-6xl mx-auto">
             {services.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col items-center justify-center text-center liquid-glass-circle"
+                className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle"
                 style={{
-                  width: "clamp(260px, 24vw, 360px)",
-                  height: "clamp(260px, 24vw, 360px)",
+                  width: "clamp(220px, 18vw, 280px)",
+                  height: "clamp(220px, 18vw, 280px)",
                   borderRadius: "50%",
                 }}
               >
-                <img src={service.icon} alt={service.title} className="w-[52px] h-[52px] mb-4 opacity-50" />
+                <img src={service.icon} alt={service.title} className="w-16 h-16 mb-4 opacity-50" />
                 <span className="text-white text-sm md:text-base font-semibold mb-2 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
