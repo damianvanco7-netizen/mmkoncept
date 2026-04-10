@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
         'X-Connection-Api-Key': RESEND_API_KEY,
       },
       body: JSON.stringify({
-        from: 'MM Concept <onboarding@resend.dev>',
+        from: 'MM Concept <noreply@mmconcept.sk>',
         to: ['martina.masarykova@mmconcept.sk'],
         reply_to: email,
         subject: `Kontaktný formulár: ${name}`,
