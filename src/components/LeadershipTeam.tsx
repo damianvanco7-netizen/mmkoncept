@@ -29,8 +29,18 @@ const members = [
 const LeadershipTeam = () => {
   const [active, setActive] = useState<string>("hans");
   const [animating, setAnimating] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = members.find((m) => m.id === active)!;
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement;
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  }, [active]);
 
   const switchMember = (id: string) => {
     if (animating || id === active) return;
