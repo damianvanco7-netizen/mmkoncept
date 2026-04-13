@@ -36,8 +36,14 @@ const LeadershipTeam = () => {
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
-    const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement;
+    const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement | null;
     if (!activeBtn) return;
+
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      activeBtn.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      return;
+    }
+
     const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
     container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
   }, [active]);
@@ -68,7 +74,7 @@ const LeadershipTeam = () => {
         {/* Pill buttons — horizontal scroll on mobile */}
         <div
           ref={scrollRef}
-          className="w-full mb-10 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-6 px-6 md:mx-0 md:px-0"
+          className="relative left-1/2 w-screen -translate-x-1/2 mb-10 overflow-x-auto md:left-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
           <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3">
@@ -77,7 +83,7 @@ const LeadershipTeam = () => {
                 key={member.id}
                 data-member={member.id}
                 onClick={() => switchMember(member.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 select-none ${
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-start flex-shrink-0 select-none ${
                   active === member.id
                     ? "border-foreground/40 text-foreground"
                     : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
