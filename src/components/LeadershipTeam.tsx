@@ -67,7 +67,7 @@ const LeadershipTeam = () => {
         />
 
         {/* Pill buttons — horizontal scroll on mobile */}
-        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
+        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
           {members.map((member) => (
             <button
               key={member.id}
