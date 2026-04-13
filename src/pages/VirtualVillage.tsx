@@ -63,8 +63,7 @@ const VirtualVillage = () => {
             <img
               src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ borderBottomLeftRadius: window.innerWidth < 768 ? '0' : 'clamp(2rem, 5vw, 5rem)' }}
+              className="absolute inset-0 w-full h-full object-cover md:[border-bottom-left-radius:clamp(2rem,5vw,5rem)]"
             />
           </div>
         </div>
