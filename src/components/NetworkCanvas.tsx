@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Node {
   baseX: number;
@@ -15,7 +16,12 @@ interface NetworkCanvasProps {
   variant?: 'hero' | 'consulting';
 }
 
+const MOBILE_CLUSTER_COUNT = 35;
+const DESKTOP_CLUSTER_COUNT = 120;
+const MOBILE_MAX_DPR = 1.25;
+
 const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasProps) => {
+  const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
@@ -30,7 +36,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       const clusterCenterX = w * 0.5;
       const clusterCenterY = h * 0.3;
       const clusterRadius = Math.min(w, h) * 0.50;
-      const clusterCount = 35;
+      const clusterCount = MOBILE_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
@@ -67,7 +73,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       const clusterCenterX = w * 0.22;
       const clusterCenterY = h * 0.45;
       const clusterRadius = Math.min(w, h) * 0.35;
-      const clusterCount = 120;
+      const clusterCount = DESKTOP_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
@@ -105,7 +111,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       const clusterCenterX = w * 0.22;
       const clusterCenterY = h * 0.45;
       const clusterRadius = Math.min(w, h) * 0.35;
-      const clusterCount = 120;
+      const clusterCount = DESKTOP_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
@@ -152,7 +158,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     const resize = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, direction === 'down' || isMobile ? MOBILE_MAX_DPR : 2);
       const w = parent.clientWidth;
       const h = parent.clientHeight;
       canvas.width = w * dpr;
@@ -176,10 +182,12 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       mouseRef.current = { x: -9999, y: -9999 };
     };
 
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('mouseleave', onLeave);
+    if (!isMobile) {
+      canvas.addEventListener('mousemove', onMove);
+      canvas.addEventListener('mouseleave', onLeave);
+    }
 
-    const clusterCount = direction === 'down' ? 50 : 120;
+    const clusterCount = direction === 'down' ? MOBILE_CLUSTER_COUNT : DESKTOP_CLUSTER_COUNT;
 
     const draw = () => {
       const { w, h } = sizeRef.current;
@@ -293,15 +301,17 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     return () => {
       cancelAnimationFrame(animRef.current);
       ro.disconnect();
-      canvas.removeEventListener('mousemove', onMove);
-      canvas.removeEventListener('mouseleave', onLeave);
+      if (!isMobile) {
+        canvas.removeEventListener('mousemove', onMove);
+        canvas.removeEventListener('mouseleave', onLeave);
+      }
     };
-  }, [generateNodes, direction]);
+  }, [generateNodes, direction, isMobile]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-auto"
+      className={`absolute inset-0 z-0 ${direction === 'down' || isMobile ? 'pointer-events-none' : 'pointer-events-auto'}`}
       style={{ opacity: 0.9 }}
     />
   );
