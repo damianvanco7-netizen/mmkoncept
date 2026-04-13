@@ -108,6 +108,7 @@ const tabs = [
 const TechTabs = () => {
   const [active, setActive] = useState<string>("core");
   const [animating, setAnimating] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = tabs.find((t) => t.id === active)!;
