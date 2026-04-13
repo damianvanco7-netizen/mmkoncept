@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import teamPhoto from "@/assets/team-photo.png";
 import ShinyText from "@/components/ShinyText";
 
@@ -29,8 +29,18 @@ const members = [
 const LeadershipTeam = () => {
   const [active, setActive] = useState<string>("hans");
   const [animating, setAnimating] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = members.find((m) => m.id === active)!;
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement;
+    if (!activeBtn) return;
+    const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+  }, [active]);
 
   const switchMember = (id: string) => {
     if (animating || id === active) return;
@@ -56,10 +66,11 @@ const LeadershipTeam = () => {
         />
 
         {/* Pill buttons — horizontal scroll on mobile */}
-        <div className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
+        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
           {members.map((member) => (
             <button
               key={member.id}
+              data-member={member.id}
               onClick={() => switchMember(member.id)}
               className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 ${
                 active === member.id
