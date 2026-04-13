@@ -17,7 +17,7 @@ interface NetworkCanvasProps {
 }
 
 const MOBILE_CLUSTER_COUNT = 35;
-const DESKTOP_CLUSTER_COUNT = 120;
+const DESKTOP_CLUSTER_COUNT = 80;
 const MOBILE_MAX_DPR = 1.25;
 const MOBILE_TARGET_FPS = 18;
 const MOBILE_TRAIL_CONNECTIONS = 4;
