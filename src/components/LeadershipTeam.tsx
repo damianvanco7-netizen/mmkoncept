@@ -37,10 +37,9 @@ const LeadershipTeam = () => {
     const container = scrollRef.current;
     if (!container) return;
     const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement;
-    if (activeBtn) {
-      const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: active === "hans" ? "instant" : "smooth" });
-    }
+    if (!activeBtn) return;
+    const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
   }, [active]);
 
   const switchMember = (id: string) => {
