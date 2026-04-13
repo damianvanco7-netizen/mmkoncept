@@ -15,7 +15,7 @@ const members = [
     label: "Vuyolwetu Madikiza",
     role: "Chief Technology Officer (South Africa)",
     bio: "A senior IT leader with over 10 years of experience at Volkswagen Group Africa, where he managed complex software portfolios and led digital transformation projects. Vuyo leads the development of our STAR Pro AI engine, utilizing his extensive expertise in large-scale system architecture, Data Science, and cloud infrastructure to build a scalable, enterprise-grade platform.",
-    focus: "AI Architecture, Data Strategy, Cloud Infrastructure (Google Cloud / Azure).",
+    focus: "AI Architecture, Data Strategy, Cloud Infrastructure.",
   },
   {
     id: "martina",

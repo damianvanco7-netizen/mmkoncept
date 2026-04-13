@@ -104,12 +104,11 @@ const Consulting = () => {
           <div className="max-w-xl md:text-right">
             <h2 className="heading-h2 mb-6">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
-                Let's Build Something Meaningful
+                Complexity is everywhere. Simplicity is a choice.
               </ShinyText>
             </h2>
             <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10 md:text-right md:ml-auto">
-              <span className="block">Whether you're transforming your organization or</span>
-              <span className="block">reimagining urban infrastructure — we're ready to partner with you.</span>
+              If this resonates, let's talk.
             </div>
             <div className="flex md:justify-end">
             <button
@@ -120,7 +119,7 @@ const Consulting = () => {
                 height: "clamp(160px, 16vw, 220px)",
               }}
             >
-              <span className="text-white text-lg md:text-xl font-semibold">Connect</span>
+              <span className="text-white text-sm md:text-base font-semibold">Start the conversation</span>
             </button>
             </div>
           </div>
