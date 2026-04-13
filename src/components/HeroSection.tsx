@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48"
+      className="relative min-h-[100svh] md:min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48"
     >
       {/* Mobile: title at top left, then network canvas below */}
       <div className="relative z-10 w-full flex flex-col md:hidden mt-8">
@@ -19,7 +19,7 @@ const HeroSection = () => {
             <span className="block">simplified</span>
           </ShinyText>
         </h1>
-        <div className="relative w-full" style={{ height: '45vh' }}>
+        <div className="relative w-full h-[45svh] min-h-[320px] max-h-[420px]">
           <NetworkCanvas direction="down" />
         </div>
       </div>

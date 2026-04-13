@@ -5,4 +5,27 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
+  pointer-events: none;
+}
+
+.grainient-static {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.grainient-static::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 38%),
+    radial-gradient(circle at 78% 82%, rgba(255, 255, 255, 0.05) 0%, transparent 34%);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .grainient-container {
+    height: 100svh;
+  }
 }

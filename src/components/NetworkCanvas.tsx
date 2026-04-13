@@ -19,6 +19,8 @@ interface NetworkCanvasProps {
 const MOBILE_CLUSTER_COUNT = 35;
 const DESKTOP_CLUSTER_COUNT = 120;
 const MOBILE_MAX_DPR = 1.25;
+const MOBILE_TARGET_FPS = 18;
+const MOBILE_TRAIL_CONNECTIONS = 4;
 
 const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasProps) => {
   const isMobile = useIsMobile();
@@ -27,6 +29,8 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
+  const scrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
 
   const generateNodes = useCallback((w: number, h: number): Node[] => {
     const nodes: Node[] = [];
@@ -154,11 +158,12 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const mobileMode = direction === 'down' || isMobile;
 
     const resize = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, direction === 'down' || isMobile ? MOBILE_MAX_DPR : 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, mobileMode ? MOBILE_MAX_DPR : 2);
       const w = parent.clientWidth;
       const h = parent.clientHeight;
       canvas.width = w * dpr;
@@ -187,9 +192,41 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       canvas.addEventListener('mouseleave', onLeave);
     }
 
-    const clusterCount = direction === 'down' ? MOBILE_CLUSTER_COUNT : DESKTOP_CLUSTER_COUNT;
+    const handleScroll = () => {
+      if (!mobileMode) return;
 
-    const draw = () => {
+      scrollingRef.current = true;
+      if (scrollTimeoutRef.current !== null) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = window.setTimeout(() => {
+        scrollingRef.current = false;
+      }, 140);
+    };
+
+    if (mobileMode) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    const clusterCount = direction === 'down' ? MOBILE_CLUSTER_COUNT : DESKTOP_CLUSTER_COUNT;
+    let lastFrameTime = 0;
+
+    const draw = (time = 0) => {
+      if (mobileMode && scrollingRef.current) {
+        animRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
+      if (mobileMode) {
+        const frameInterval = 1000 / MOBILE_TARGET_FPS;
+        if (time - lastFrameTime < frameInterval) {
+          animRef.current = requestAnimationFrame(draw);
+          return;
+        }
+        lastFrameTime = time;
+      }
+
       const { w, h } = sizeRef.current;
       const nodes = nodesRef.current;
       const mouse = mouseRef.current;
@@ -221,7 +258,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       const clusterNodes = nodes.slice(0, clusterCount);
       const dotNodes = nodes.slice(clusterCount);
 
-      const maxConnDist = direction === 'down' ? 120 : 150;
+      const maxConnDist = direction === 'down' ? 110 : 150;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
           const a = clusterNodes[i];
@@ -243,7 +280,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
 
       // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
-      const trailConnDist = direction === 'down' ? 300 : 650;
+      const trailConnDist = direction === 'down' ? 240 : 650;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {
@@ -255,7 +292,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           }
         }
         distances.sort((a, b) => a.dist - b.dist);
-        const nearest = distances.slice(0, 6);
+        const nearest = distances.slice(0, direction === 'down' ? MOBILE_TRAIL_CONNECTIONS : 6);
         for (const { idx, dist } of nearest) {
           const alpha = (1 - dist / trailConnDist) * 0.3;
           ctx.beginPath();
@@ -301,6 +338,12 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     return () => {
       cancelAnimationFrame(animRef.current);
       ro.disconnect();
+      if (mobileMode) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+      if (scrollTimeoutRef.current !== null) {
+        window.clearTimeout(scrollTimeoutRef.current);
+      }
       if (!isMobile) {
         canvas.removeEventListener('mousemove', onMove);
         canvas.removeEventListener('mouseleave', onLeave);
