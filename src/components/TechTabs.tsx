@@ -113,13 +113,16 @@ const TechTabs = () => {
 
   // Scroll active pill into view
   useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
-    if (activeBtn) {
-      const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: active === "core" ? "instant" : "smooth" });
-    }
+    const timer = setTimeout(() => {
+      const container = scrollRef.current;
+      if (!container) return;
+      const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
+      if (activeBtn) {
+        const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
+        container.scrollTo({ left: Math.max(0, scrollLeft), behavior: active === "core" ? "instant" : "smooth" });
+      }
+    }, 50);
+    return () => clearTimeout(timer);
   }, [active]);
 
   const switchTab = (id: string) => {
