@@ -98,11 +98,8 @@ const Consulting = () => {
 
       {/* CTA + Footer */}
       <div>
-        <section className="relative min-h-screen flex flex-col justify-end section-padding overflow-hidden pb-24 md:pb-32">
-          <div className="absolute inset-0 top-[30%] z-0">
-            <NetworkCanvas variant="consulting" />
-          </div>
-          <div className="relative z-10 w-full flex justify-end">
+        <section className="relative section-padding overflow-hidden pb-0">
+          <div className="relative z-10 w-full flex justify-end pt-24 md:pt-32">
           <div className="max-w-xl md:text-right">
             <h2 className="heading-h2 mb-6">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
@@ -128,6 +125,9 @@ const Consulting = () => {
             </button>
             </div>
           </div>
+          </div>
+          <div className="relative w-full h-[50vh] md:h-[60vh] mt-8">
+            <NetworkCanvas variant="consulting" />
           </div>
         </section>
 

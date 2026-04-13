@@ -18,8 +18,8 @@ interface NetworkCanvasProps {
 
 const MOBILE_CLUSTER_COUNT = 35;
 const DESKTOP_CLUSTER_COUNT = 80;
-const MOBILE_MAX_DPR = 1.25;
-const MOBILE_TARGET_FPS = 18;
+const MOBILE_MAX_DPR = 2;
+const MOBILE_TARGET_FPS = 24;
 const MOBILE_TRAIL_CONNECTIONS = 4;
 
 const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasProps) => {
