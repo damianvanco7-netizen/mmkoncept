@@ -126,7 +126,7 @@ const Consulting = () => {
             </div>
           </div>
           </div>
-          <div className="relative w-full h-[50vh] md:h-[60vh] mt-8">
+          <div className="relative w-full h-[50vh] md:h-[60vh] mt-8 md:mt-0 md:-mt-16">
             <NetworkCanvas variant="consulting" />
           </div>
         </section>
