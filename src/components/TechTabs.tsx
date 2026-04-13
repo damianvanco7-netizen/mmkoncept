@@ -111,26 +111,14 @@ const TechTabs = () => {
 
   const current = tabs.find((t) => t.id === active)!;
 
-  // Scroll active pill into view on mount and tab change
+  // Scroll active pill into view
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
-    // Force scroll to start on mount
-    container.scrollLeft = 0;
-  }, []);
-
-  useEffect(() => {
-    if (active === "core") return; // first tab is already visible at scroll 0
-    const timer = setTimeout(() => {
-      const container = scrollRef.current;
-      if (!container) return;
-      const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
-      if (activeBtn) {
-        const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
-        container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
-      }
-    }, 50);
-    return () => clearTimeout(timer);
+    const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
+    if (!activeBtn) return;
+    const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
   }, [active]);
 
   const switchTab = (id: string) => {
