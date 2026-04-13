@@ -105,7 +105,20 @@ const Navbar = () => {
             <button onClick={goHome} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Origin</button>
             <button onClick={() => scrollTo("philosophy")} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Our Portfolio</button>
             <button onClick={() => scrollTo("founder")} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>About</button>
-            <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Contact</button>
+            <button
+              onClick={() => { setMobileOpen(false); setContactOpen(true); }}
+              className={`text-2xl font-semibold rounded-full px-7 py-3 mt-2 transition-all duration-300 ${menuDarkText ? 'text-foreground' : 'text-white'}`}
+              style={{
+                background: menuDarkText
+                  ? "linear-gradient(135deg, hsl(0 0% 100% / 0.35) 0%, hsl(0 0% 100% / 0.18) 100%)"
+                  : "linear-gradient(135deg, hsl(0 0% 100% / 0.12) 0%, hsl(0 0% 100% / 0.05) 100%)",
+                border: menuDarkText
+                  ? "1px solid hsl(18 100% 3% / 0.08)"
+                  : "1px solid hsl(0 0% 100% / 0.12)",
+                backdropFilter: "blur(20px) saturate(1.4)",
+                WebkitBackdropFilter: "blur(20px) saturate(1.4)",
+              }}
+            >Contact</button>
           </div>
           {/* Contact info */}
           <div className={`absolute bottom-12 left-10 right-10 text-xs leading-relaxed ${menuDarkText ? 'text-foreground/50' : 'text-white/50'}`}>

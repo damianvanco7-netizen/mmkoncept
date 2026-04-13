@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ShinyText from "@/components/ShinyText";
+import ContactFormDialog from "@/components/ContactFormDialog";
 import techReact from "@/assets/tech-react.png";
 import techSupabase from "@/assets/tech-supabase.png";
 import techGemini from "@/assets/tech-gemini.png";
@@ -107,6 +108,7 @@ const tabs = [
 const TechTabs = () => {
   const [active, setActive] = useState<string>("core");
   const [animating, setAnimating] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = tabs.find((t) => t.id === active)!;
@@ -177,8 +179,15 @@ const TechTabs = () => {
           }}
         >
           {current.content}
+          <button
+            onClick={() => setContactOpen(true)}
+            className="mt-8 rounded-full px-6 py-2.5 text-sm font-semibold liquid-glass-circle-light text-foreground/60 hover:text-foreground/90 transition-all duration-300"
+          >
+            Get more info
+          </button>
         </div>
       </div>
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>
   );
 };
