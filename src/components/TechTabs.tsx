@@ -157,7 +157,7 @@ const TechTabs = () => {
           className="relative left-1/2 w-screen -translate-x-1/2 mb-12 overflow-x-auto md:left-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
-          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-4">
+          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-4 px-6 md:px-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -187,7 +187,7 @@ const TechTabs = () => {
           {current.content}
           <button
             onClick={() => setContactOpen(true)}
-            className="mt-8 rounded-full px-6 py-2.5 text-sm font-semibold liquid-glass-circle-light text-foreground/60 hover:text-foreground/90 transition-all duration-300"
+            className={`mt-8 px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70`}
           >
             Get more info
           </button>

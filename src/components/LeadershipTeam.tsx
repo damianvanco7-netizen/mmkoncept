@@ -77,7 +77,7 @@ const LeadershipTeam = () => {
           className="relative left-1/2 w-screen -translate-x-1/2 mb-10 overflow-x-auto md:left-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
-          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3">
+          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3 px-6 md:px-0">
             {members.map((member) => (
               <button
                 key={member.id}
