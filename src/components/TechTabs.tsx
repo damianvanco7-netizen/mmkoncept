@@ -179,8 +179,15 @@ const TechTabs = () => {
           }}
         >
           {current.content}
+          <button
+            onClick={() => setContactOpen(true)}
+            className="mt-8 rounded-full px-6 py-2.5 text-sm font-semibold liquid-glass-circle-light text-foreground/60 hover:text-foreground/90 transition-all duration-300"
+          >
+            Get more info
+          </button>
         </div>
       </div>
+      <ContactFormDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>
   );
 };
