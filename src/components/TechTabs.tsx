@@ -107,8 +107,19 @@ const tabs = [
 const TechTabs = () => {
   const [active, setActive] = useState<string>("core");
   const [animating, setAnimating] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = tabs.find((t) => t.id === active)!;
+
+  // Scroll active pill into view
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  }, [active]);
 
   const switchTab = (id: string) => {
     if (animating || id === active) return;
