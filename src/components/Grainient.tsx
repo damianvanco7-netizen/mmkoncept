@@ -167,39 +167,17 @@ const Grainient = ({
   className = '',
 }: GrainientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [useStaticMobileBackground, setUseStaticMobileBackground] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth < 768
-  );
-
-  const staticBackgroundStyle = useMemo(
-    () => ({
-      background: `radial-gradient(circle at 24% 20%, ${color1} 0%, ${color2} 42%, ${color3} 100%)`,
-    }),
-    [color1, color2, color3]
-  );
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-    const updateMobileMode = () => setUseStaticMobileBackground(mediaQuery.matches);
-
-    updateMobileMode();
-    mediaQuery.addEventListener('change', updateMobileMode);
-
-    return () => mediaQuery.removeEventListener('change', updateMobileMode);
-  }, []);
-
-  useEffect(() => {
-    if (useStaticMobileBackground) return;
     if (!containerRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
     const renderer = new Renderer({
       // @ts-ignore
       webgl: 2,
       alpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2),
     });
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
