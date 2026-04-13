@@ -76,7 +76,7 @@ const Navbar = () => {
       <nav className="fixed top-0 left-0 right-0 z-[60]">
         <div className={`mx-auto ${
           scrolled && !mobileOpen
-            ? "mt-4 section-padding md:section-padding-reset md:max-w-3xl rounded-2xl md:rounded-full md:px-8 py-3"
+            ? "mt-4 px-6 md:px-8 md:max-w-3xl rounded-2xl md:rounded-full py-3"
             : "mt-0 max-w-none rounded-none section-padding py-6"
         }`}
           style={{
