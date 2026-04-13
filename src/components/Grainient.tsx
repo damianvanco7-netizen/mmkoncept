@@ -190,16 +190,8 @@ const Grainient = ({
     return () => mediaQuery.removeEventListener('change', updateMobileMode);
   }, []);
 
-  if (useStaticMobileBackground) {
-    return (
-      <div
-        className={`grainient-container grainient-static ${className}`.trim()}
-        style={staticBackgroundStyle}
-      />
-    );
-  }
-
   useEffect(() => {
+    if (useStaticMobileBackground) return;
     if (!containerRef.current) return;
 
     const renderer = new Renderer({
@@ -284,11 +276,21 @@ const Grainient = ({
       }
     };
   }, [
+    useStaticMobileBackground,
     timeSpeed, colorBalance, warpStrength, warpFrequency, warpSpeed, warpAmplitude,
     blendAngle, blendSoftness, rotationAmount, noiseScale, grainAmount, grainScale,
     grainAnimated, contrast, gamma, saturation, centerX, centerY, zoom,
     color1, color2, color3,
   ]);
+
+  if (useStaticMobileBackground) {
+    return (
+      <div
+        className={`grainient-container grainient-static ${className}`.trim()}
+        style={staticBackgroundStyle}
+      />
+    );
+  }
 
   return <div ref={containerRef} className={`grainient-container ${className}`.trim()} />;
 };
