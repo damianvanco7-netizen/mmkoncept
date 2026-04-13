@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ShinyText from "@/components/ShinyText";
 import techReact from "@/assets/tech-react.png";
 import techSupabase from "@/assets/tech-supabase.png";
