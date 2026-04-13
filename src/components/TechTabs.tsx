@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import ShinyText from "@/components/ShinyText";
+import ContactFormDialog from "@/components/ContactFormDialog";
 import techReact from "@/assets/tech-react.png";
 import techSupabase from "@/assets/tech-supabase.png";
 import techGemini from "@/assets/tech-gemini.png";
