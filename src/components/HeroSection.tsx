@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] md:min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48"
+      className="relative min-h-[100svh] md:min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48 overflow-hidden"
     >
       {/* Mobile: title at top left, then network canvas below */}
       <div className="relative z-10 w-full flex flex-col md:hidden mt-8">
@@ -42,9 +42,9 @@ const HeroSection = () => {
       {/* Explore circle — desktop: bottom right, mobile: right side partially offscreen */}
       <button
         onClick={() => scrollTo("philosophy")}
-        className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500 liquid-glass-circle
+        className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500 liquid-glass-circle overflow-hidden
           md:bottom-[clamp(-140px,-12.5vw,-200px)] md:right-[clamp(40px,8vw,160px)]
-          bottom-8 -right-8 w-[187px] h-[187px] md:w-[clamp(170px,21.25vw,340px)] md:h-[clamp(170px,21.25vw,340px)]"
+          bottom-8 -right-12 w-[187px] h-[187px] md:w-[clamp(170px,21.25vw,340px)] md:h-[clamp(170px,21.25vw,340px)]"
       >
         <span className="text-white/60 text-lg md:text-xl lg:text-2xl font-medium tracking-wide leading-snug text-center px-8">
           Our Portfolio
