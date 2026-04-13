@@ -53,6 +53,7 @@ const Navbar = () => {
 
   const isVV = location.pathname === "/virtual-village";
   const useDarkText = isVV && !mobileOpen;
+  const menuDarkText = isVV;
   const showLogo = scrolled || !isHome;
   const shellClassName = scrolled && !mobileOpen
     ? isMobile
@@ -93,27 +94,29 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="fixed inset-0 z-[59] md:hidden"
           style={{
-            background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.03) 100%)',
+            background: menuDarkText
+              ? 'linear-gradient(135deg, hsl(0 0% 100% / 0.85) 0%, hsl(0 0% 100% / 0.75) 100%)'
+              : 'linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.03) 100%)',
             backdropFilter: 'blur(24px) saturate(1.4)',
             WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
           }}
         >
           <div className="flex flex-col items-start justify-center h-full px-10 gap-8">
-            <button onClick={goHome} className="text-2xl font-semibold text-white">Origin</button>
-            <button onClick={() => scrollTo("philosophy")} className="text-2xl font-semibold text-white">Our Portfolio</button>
-            <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
-            <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
+            <button onClick={goHome} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Origin</button>
+            <button onClick={() => scrollTo("philosophy")} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Our Portfolio</button>
+            <button onClick={() => scrollTo("founder")} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>About</button>
+            <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className={`text-2xl font-semibold ${menuDarkText ? 'text-foreground' : 'text-white'}`}>Contact</button>
           </div>
           {/* Contact info */}
-          <div className="absolute bottom-12 left-10 right-10 text-white/50 text-xs leading-relaxed">
-            <p className="font-semibold text-white/70 text-sm mb-1">Martina Masaryková</p>
+          <div className={`absolute bottom-12 left-10 right-10 text-xs leading-relaxed ${menuDarkText ? 'text-foreground/50' : 'text-white/50'}`}>
+            <p className={`font-semibold text-sm mb-1 ${menuDarkText ? 'text-foreground/70' : 'text-white/70'}`}>Martina Masaryková</p>
             <p>CEO, mm concept</p>
             <p>Vision & Project Lead, Virtual Village</p>
             <p className="mt-2">
-              <a href="tel:+421908168840" className="hover:text-white/80 transition-colors">Slovakia +421 908 168 840</a>
+              <a href="tel:+421908168840" className={`transition-colors ${menuDarkText ? 'hover:text-foreground/80' : 'hover:text-white/80'}`}>Slovakia +421 908 168 840</a>
             </p>
             <p>
-              <a href="tel:+491728890408" className="hover:text-white/80 transition-colors">Germany +49 172 8890408</a>
+              <a href="tel:+491728890408" className={`transition-colors ${menuDarkText ? 'hover:text-foreground/80' : 'hover:text-white/80'}`}>Germany +49 172 8890408</a>
             </p>
           </div>
         </div>
@@ -143,7 +146,7 @@ const Navbar = () => {
                 className={`transition-all duration-500 ${
                   scrolled ? "h-10 md:h-12" : "h-14 md:h-16"
                 } ${
-                  mobileOpen ? "brightness-0 invert opacity-40" : useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
+                  mobileOpen ? (menuDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40") : useDarkText ? "brightness-0 opacity-40" : "brightness-0 invert opacity-40"
                 } ${showLogo || mobileOpen ? "" : "opacity-0 pointer-events-none"}`}
               />
             </button>
@@ -162,7 +165,7 @@ const Navbar = () => {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`md:hidden relative z-[60] transition-colors ${
-                mobileOpen ? "text-white/70" : useDarkText ? "text-foreground/70" : "text-white/70"
+                mobileOpen ? (menuDarkText ? "text-foreground/70" : "text-white/70") : useDarkText ? "text-foreground/70" : "text-white/70"
               }`}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
