@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-vv-2.svg";
 import ContactFormDialog from "@/components/ContactFormDialog";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   const isHome = location.pathname === "/";
 
@@ -52,6 +54,38 @@ const Navbar = () => {
   const isVV = location.pathname === "/virtual-village";
   const useDarkText = isVV && !mobileOpen;
   const showLogo = scrolled || !isHome;
+  const shellClassName = scrolled && !mobileOpen
+    ? isMobile
+      ? "mt-4 mx-6 rounded-2xl px-6 py-3"
+      : "mt-4 mx-auto max-w-3xl rounded-full px-6 md:px-8 py-3"
+    : "mt-0 max-w-none rounded-none section-padding py-6";
+  const scrolledSurfaceStyle = isMobile
+    ? {
+        background: useDarkText
+          ? "linear-gradient(135deg, hsl(0 0% 100% / 0.72) 0%, hsl(0 0% 100% / 0.56) 100%)"
+          : "linear-gradient(135deg, hsl(0 0% 100% / 0.12) 0%, hsl(0 0% 100% / 0.05) 100%)",
+        border: useDarkText
+          ? "1px solid hsl(18 100% 3% / 0.08)"
+          : "1px solid hsl(0 0% 100% / 0.12)",
+        backdropFilter: "none",
+        WebkitBackdropFilter: "none",
+        boxShadow: useDarkText
+          ? "0 4px 18px hsl(18 100% 3% / 0.08)"
+          : "0 4px 18px hsl(18 100% 3% / 0.12)",
+      }
+    : {
+        background: useDarkText
+          ? "linear-gradient(135deg, hsl(0 0% 100% / 0.30) 0%, hsl(0 0% 100% / 0.15) 100%)"
+          : "linear-gradient(135deg, hsl(0 0% 100% / 0.07) 0%, hsl(0 0% 100% / 0.03) 100%)",
+        border: useDarkText
+          ? "1px solid hsl(18 100% 3% / 0.06)"
+          : "1px solid hsl(0 0% 100% / 0.08)",
+        backdropFilter: "blur(28px) saturate(1.6)",
+        WebkitBackdropFilter: "blur(28px) saturate(1.6)",
+        boxShadow: useDarkText
+          ? "0 4px 24px hsl(18 100% 3% / 0.05)"
+          : "0 4px 24px hsl(18 100% 3% / 0.08)",
+      };
 
   return (
     <>
@@ -59,9 +93,9 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="fixed inset-0 z-[59] md:hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
-            backdropFilter: 'blur(28px) saturate(1.6)',
-            WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
+            background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.10) 0%, hsl(0 0% 100% / 0.04) 100%)',
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
           }}
         >
           <div className="flex flex-col items-start justify-center h-full px-10 gap-8">
@@ -74,27 +108,13 @@ const Navbar = () => {
       )}
 
       <nav className="fixed top-0 left-0 right-0 z-[60]">
-        <div className={`mx-auto ${
-          scrolled && !mobileOpen
-            ? "mt-4 px-6 md:px-8 md:max-w-3xl rounded-2xl md:rounded-full py-3"
-            : "mt-0 max-w-none rounded-none section-padding py-6"
-        }`}
+        <div className={shellClassName}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
-            transitionDuration: '2.4s',
+            transitionDuration: isMobile ? '0.45s' : '2.4s',
             transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
             ...(scrolled && !mobileOpen ? {
-              background: useDarkText
-                ? 'linear-gradient(135deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.15) 100%)'
-                : 'linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)',
-              border: useDarkText
-                ? '1px solid rgba(0,0,0,0.06)'
-                : '1px solid rgba(255,255,255,0.08)',
-              backdropFilter: 'blur(28px) saturate(1.6)',
-              WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
-              boxShadow: useDarkText
-                ? '0 4px 24px rgba(0,0,0,0.05)'
-                : '0 4px 24px rgba(0,0,0,0.08)',
+              ...scrolledSurfaceStyle,
             } : {
               background: 'transparent',
               border: '1px solid transparent',
