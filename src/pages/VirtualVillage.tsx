@@ -44,7 +44,7 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
-          <div className="flex flex-col justify-center section-padding py-24">
+          <div className="flex flex-col justify-center section-padding py-24 pt-[35vh] md:pt-24">
             <img
               src={vvHeroLogo}
               alt="Virtual Village"
@@ -64,7 +64,7 @@ const VirtualVillage = () => {
               src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
               className="absolute inset-0 w-full h-full object-cover"
-              style={{ borderBottomLeftRadius: 'clamp(2rem, 5vw, 5rem)' }}
+              style={{ borderBottomLeftRadius: window.innerWidth < 768 ? '0' : 'clamp(2rem, 5vw, 5rem)' }}
             />
           </div>
         </div>

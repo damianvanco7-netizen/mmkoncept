@@ -104,6 +104,18 @@ const Navbar = () => {
             <button onClick={() => scrollTo("founder")} className="text-2xl font-semibold text-white">About</button>
             <button onClick={() => { setMobileOpen(false); setContactOpen(true); }} className="text-2xl font-semibold text-white">Contact</button>
           </div>
+          {/* Contact info */}
+          <div className="absolute bottom-12 left-10 right-10 text-white/50 text-xs leading-relaxed">
+            <p className="font-semibold text-white/70 text-sm mb-1">Martina Masaryková</p>
+            <p>CEO, mm concept</p>
+            <p>Vision & Project Lead, Virtual Village</p>
+            <p className="mt-2">
+              <a href="tel:+421908168840" className="hover:text-white/80 transition-colors">Slovakia +421 908 168 840</a>
+            </p>
+            <p>
+              <a href="tel:+491728890408" className="hover:text-white/80 transition-colors">Germany +49 172 8890408</a>
+            </p>
+          </div>
         </div>
       )}
 
