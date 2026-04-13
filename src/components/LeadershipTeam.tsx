@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import teamPhoto from "@/assets/team-photo.png";
 import ShinyText from "@/components/ShinyText";
 
