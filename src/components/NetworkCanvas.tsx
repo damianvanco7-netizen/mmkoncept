@@ -75,9 +75,9 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
     } else if (variant === 'consulting') {
       // Consulting: same network geometry as hero, with the final chain leading toward Connect
-      const clusterCenterX = w * 0.22;
-      const clusterCenterY = h * 0.45;
-      const clusterRadius = Math.min(w, h) * 0.35;
+      const clusterCenterX = w * 0.25;
+      const clusterCenterY = h * 0.40;
+      const clusterRadius = Math.min(w, h) * 0.32;
       const clusterCount = DESKTOP_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
