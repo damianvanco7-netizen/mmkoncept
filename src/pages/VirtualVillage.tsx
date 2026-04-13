@@ -59,7 +59,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — hero image */}
-          <div className="hidden md:block relative min-h-screen overflow-hidden">
+          <div className="relative min-h-[50vh] md:min-h-screen overflow-hidden">
             <img
               src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
@@ -99,11 +99,11 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup phones */}
-          <div className="flex items-start justify-end pt-8 -ml-12">
+          <div className="flex items-start justify-center md:justify-end pt-8 md:-ml-12">
             <img
               src={vvMockupPhones}
               alt="Virtual Village app mockup"
-              className="w-full pointer-events-none"
+              className="w-[90%] md:w-full pointer-events-none"
             />
           </div>
         </div>
@@ -133,7 +133,8 @@ const VirtualVillage = () => {
           </h2>
         </div>
         <div className="w-full">
-          <div className="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[260px] lg:auto-rows-[300px]">
+          {/* Desktop grid */}
+          <div className="hidden md:grid grid-cols-4 gap-3 md:gap-4 auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
               <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png" alt="Virtual Village mockup 4" className="w-full h-full object-cover" />
             </div>
@@ -146,6 +147,19 @@ const VirtualVillage = () => {
             <div className="col-span-2 row-span-1 rounded-xl overflow-hidden">
               <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png" alt="Virtual Village app mockup" className="w-full h-full object-cover" />
             </div>
+          </div>
+          {/* Mobile carousel */}
+          <div className="md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-[clamp(1.5rem,5vw,6rem)]  px-[clamp(1.5rem,5vw,6rem)]">
+            {[
+              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png", alt: "Virtual Village mockup 4" },
+              { src: galleryFeatured, alt: "Virtual Village location select" },
+              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png", alt: "Virtual Village mockup" },
+              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png", alt: "Virtual Village app mockup" },
+            ].map((img, i) => (
+              <div key={i} className="flex-shrink-0 w-[75vw] h-[55vw] rounded-xl overflow-hidden snap-center">
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+              </div>
+            ))}
           </div>
         </div>
       </section>

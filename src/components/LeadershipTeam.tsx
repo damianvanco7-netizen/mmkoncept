@@ -55,13 +55,13 @@ const LeadershipTeam = () => {
           className="w-full max-w-3xl rounded-2xl mb-12 object-cover grayscale"
         />
 
-        {/* Pill buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {/* Pill buttons — horizontal scroll on mobile */}
+        <div className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
           {members.map((member) => (
             <button
               key={member.id}
               onClick={() => switchMember(member.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 ${
                 active === member.id
                   ? "border-foreground/40 text-foreground"
                   : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
