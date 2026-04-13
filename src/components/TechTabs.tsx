@@ -43,9 +43,9 @@ const tabs = [
     label: "AI Layer — STAR",
     content: (
       <div>
-        <div className="flex items-center justify-center gap-3 mb-2">
-          <img src={techGemini} alt="Gemini" className="w-8 h-8 rounded-full" />
-          <h3 className="text-xl md:text-2xl font-bold text-foreground">
+        <div className="flex flex-col items-center justify-center mb-2">
+          <img src={techGemini} alt="Gemini" className="w-8 h-8 rounded-full mb-2" />
+          <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">
             Intelligence that acts, not just responds
           </h3>
         </div>
@@ -148,7 +148,7 @@ const TechTabs = () => {
         {/* Pill buttons — horizontal scroll on mobile */}
         <div
           ref={scrollRef}
-          className="w-full mb-12 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
+          className="w-full mb-12 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-6 px-6 md:mx-0 md:px-0"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
           <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-4">
