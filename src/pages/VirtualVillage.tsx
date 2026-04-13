@@ -25,7 +25,7 @@ import vvHeroPhoto from "@/assets/vv-hero-photo.png";
 
 const VirtualVillage = () => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-x-hidden">
       <Grainient
         color1="#A69C8D"
         color2="#D3CFC8"

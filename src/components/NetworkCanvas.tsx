@@ -17,7 +17,7 @@ interface NetworkCanvasProps {
 }
 
 const MOBILE_CLUSTER_COUNT = 35;
-const DESKTOP_CLUSTER_COUNT = 120;
+const DESKTOP_CLUSTER_COUNT = 80;
 const MOBILE_MAX_DPR = 1.25;
 const MOBILE_TARGET_FPS = 18;
 const MOBILE_TRAIL_CONNECTIONS = 4;
@@ -75,9 +75,9 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
     } else if (variant === 'consulting') {
       // Consulting: same network geometry as hero, with the final chain leading toward Connect
-      const clusterCenterX = w * 0.22;
-      const clusterCenterY = h * 0.45;
-      const clusterRadius = Math.min(w, h) * 0.35;
+      const clusterCenterX = w * 0.25;
+      const clusterCenterY = h * 0.40;
+      const clusterRadius = Math.min(w, h) * 0.32;
       const clusterCount = DESKTOP_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
@@ -259,7 +259,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       const clusterNodes = nodes.slice(0, clusterCount);
       const dotNodes = nodes.slice(clusterCount);
 
-      const maxConnDist = direction === 'down' ? 110 : 150;
+      const maxConnDist = direction === 'down' ? 110 : 130;
       for (let i = 0; i < clusterNodes.length; i++) {
         for (let j = i + 1; j < clusterNodes.length; j++) {
           const a = clusterNodes[i];
@@ -281,7 +281,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
 
       // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
-      const trailConnDist = direction === 'down' ? 400 : 650;
+      const trailConnDist = direction === 'down' ? 400 : 550;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {

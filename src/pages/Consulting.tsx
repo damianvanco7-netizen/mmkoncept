@@ -98,8 +98,10 @@ const Consulting = () => {
 
       {/* CTA + Footer */}
       <div>
-        <section className="relative min-h-screen flex flex-col justify-center section-padding overflow-hidden">
-          <NetworkCanvas variant="consulting" />
+        <section className="relative min-h-screen flex flex-col justify-end section-padding overflow-hidden pb-24 md:pb-32">
+          <div className="absolute inset-0 top-[30%] z-0">
+            <NetworkCanvas variant="consulting" />
+          </div>
           <div className="relative z-10 w-full flex justify-end">
           <div className="max-w-xl md:text-right">
             <h2 className="heading-h2 mb-6">
