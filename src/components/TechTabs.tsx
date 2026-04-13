@@ -43,9 +43,9 @@ const tabs = [
     label: "AI Layer — STAR",
     content: (
       <div>
-        <div className="flex items-center justify-center gap-3 mb-2">
-          <img src={techGemini} alt="Gemini" className="w-8 h-8 rounded-full" />
-          <h3 className="text-xl md:text-2xl font-bold text-foreground">
+        <div className="flex flex-col items-center justify-center mb-2">
+          <img src={techGemini} alt="Gemini" className="w-8 h-8 rounded-full mb-2" />
+          <h3 className="text-xl md:text-2xl font-bold text-foreground text-center">
             Intelligence that acts, not just responds
           </h3>
         </div>
