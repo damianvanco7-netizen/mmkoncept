@@ -38,7 +38,8 @@ const LeadershipTeam = () => {
     if (!container) return;
     const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement;
     if (activeBtn) {
-      activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
+      container.scrollTo({ left: scrollLeft, behavior: active === "hans" ? "instant" : "smooth" });
     }
   }, [active]);
 
