@@ -22,11 +22,11 @@ const Index = () => {
 
       <Navbar />
 
-      <div className="relative" style={{ zIndex: 1 }}>
+      <div className="relative">
         <HeroSection />
       </div>
 
-      <div className="relative" style={{ zIndex: 0 }}>
+      <div className="relative">
         <PhilosophySection />
         <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
         <FounderSection />

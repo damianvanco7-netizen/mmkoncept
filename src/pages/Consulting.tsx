@@ -119,7 +119,10 @@ const Consulting = () => {
                 height: "clamp(160px, 16vw, 220px)",
               }}
             >
-              <span className="text-white text-sm md:text-base font-semibold">Start the conversation</span>
+              <span className="text-white text-base md:text-lg font-semibold leading-tight text-center">
+                <span className="block">Start the</span>
+                <span className="block">conversation</span>
+              </span>
             </button>
             </div>
           </div>
