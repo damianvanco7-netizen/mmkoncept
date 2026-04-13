@@ -145,7 +145,7 @@ const TechTabs = () => {
         </p>
 
         {/* Pill buttons — horizontal scroll on mobile */}
-        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-4 mb-12 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
+        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-4 mb-12 overflow-x-auto scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]">
           {tabs.map((tab) => (
             <button
               key={tab.id}
