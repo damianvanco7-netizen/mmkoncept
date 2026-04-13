@@ -117,7 +117,8 @@ const TechTabs = () => {
     if (!container) return;
     const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement;
     if (activeBtn) {
-      activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
+      container.scrollTo({ left: scrollLeft, behavior: active === "core" ? "instant" : "smooth" });
     }
   }, [active]);
 
