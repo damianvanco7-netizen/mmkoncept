@@ -74,7 +74,7 @@ const VirtualVillage = () => {
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding pr-0">
           {/* Left — text */}
           <div className="flex flex-col items-start pt-8">
-            <h2 className="heading-h2 mb-8 pb-4">
+            <h2 className="heading-h2 mb-4 md:mb-8 pb-0 md:pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than<br />a platform...
               </ShinyText>
@@ -98,7 +98,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — mockup phones */}
-          <div className="flex items-start justify-center md:justify-end pt-8 md:-ml-12">
+          <div className="flex items-start justify-center pt-8 md:-ml-12">
             <img
               src={vvMockupPhones}
               alt="Virtual Village app mockup"
