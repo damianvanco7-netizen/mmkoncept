@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import './Grainient.css';
 
@@ -167,6 +167,37 @@ const Grainient = ({
   className = '',
 }: GrainientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [useStaticMobileBackground, setUseStaticMobileBackground] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 768
+  );
+
+  const staticBackgroundStyle = useMemo(
+    () => ({
+      background: `radial-gradient(circle at 24% 20%, ${color1} 0%, ${color2} 42%, ${color3} 100%)`,
+    }),
+    [color1, color2, color3]
+  );
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const updateMobileMode = () => setUseStaticMobileBackground(mediaQuery.matches);
+
+    updateMobileMode();
+    mediaQuery.addEventListener('change', updateMobileMode);
+
+    return () => mediaQuery.removeEventListener('change', updateMobileMode);
+  }, []);
+
+  if (useStaticMobileBackground) {
+    return (
+      <div
+        className={`grainient-container grainient-static ${className}`.trim()}
+        style={staticBackgroundStyle}
+      />
+    );
+  }
 
   useEffect(() => {
     if (!containerRef.current) return;
