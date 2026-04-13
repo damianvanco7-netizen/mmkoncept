@@ -158,7 +158,26 @@ const Navbar = () => {
               <button onClick={goHome} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Origin</button>
               <button onClick={() => scrollTo("philosophy")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Our Portfolio</button>
               <button onClick={() => scrollTo("founder")} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>About</button>
-              <button onClick={() => setContactOpen(true)} className={`transition-colors ${useDarkText ? "hover:text-foreground/80" : "hover:text-white/80"}`}>Contact</button>
+              <button
+                onClick={() => setContactOpen(true)}
+                className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
+                  useDarkText
+                    ? "text-foreground/70 hover:text-foreground/90"
+                    : "text-white/70 hover:text-white/90"
+                }`}
+                style={{
+                  background: useDarkText
+                    ? "linear-gradient(135deg, hsl(0 0% 100% / 0.35) 0%, hsl(0 0% 100% / 0.18) 100%)"
+                    : "linear-gradient(135deg, hsl(0 0% 100% / 0.12) 0%, hsl(0 0% 100% / 0.05) 100%)",
+                  border: useDarkText
+                    ? "1px solid hsl(18 100% 3% / 0.08)"
+                    : "1px solid hsl(0 0% 100% / 0.12)",
+                  backdropFilter: "blur(20px) saturate(1.4)",
+                  WebkitBackdropFilter: "blur(20px) saturate(1.4)",
+                }}
+              >
+                Contact
+              </button>
             </div>
 
             {/* Mobile hamburger */}
