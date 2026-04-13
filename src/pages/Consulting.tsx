@@ -77,13 +77,13 @@ const Consulting = () => {
                 }}
               >
                 <img src={service.icon} alt={service.title} className="w-[76px] h-[76px] mb-4 opacity-50" />
-                <span className="text-white text-sm md:text-base font-semibold mb-1 leading-tight whitespace-nowrap">
+                <span className="text-white text-lg md:text-base font-semibold mb-1 leading-tight whitespace-nowrap">
                   {service.title}
                 </span>
-                <span className="text-white/40 text-[10px] md:text-xs italic mb-2 leading-tight">
+                <span className="text-white/40 text-xs md:text-xs italic mb-2 leading-tight">
                   {service.subtitle}
                 </span>
-                <span className="text-white/50 text-[10px] md:text-xs leading-relaxed px-8 max-w-[85%]">
+                <span className="text-white/50 text-xs md:text-xs leading-relaxed px-8 max-w-[85%]">
                   {service.description}
                 </span>
               </div>
