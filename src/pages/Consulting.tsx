@@ -71,10 +71,8 @@ const Consulting = () => {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle"
+                className="flex-shrink-0 flex flex-col items-center justify-center text-center liquid-glass-circle w-[320px] h-[320px] md:w-[clamp(280px,24vw,330px)] md:h-[clamp(280px,24vw,330px)]"
                 style={{
-                  width: "clamp(280px, 24vw, 330px)",
-                  height: "clamp(280px, 24vw, 330px)",
                   borderRadius: "50%",
                 }}
               >
