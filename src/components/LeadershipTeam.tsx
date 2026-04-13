@@ -66,22 +66,23 @@ const LeadershipTeam = () => {
         />
 
         {/* Pill buttons — horizontal scroll on mobile */}
-        <div className="w-full overflow-hidden md:overflow-visible">
-          <div
-            ref={scrollRef}
-            className="flex w-max min-w-full md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto md:overflow-visible scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]"
-            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
-          >
+        <div
+          ref={scrollRef}
+          className="w-full mb-10 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)] pb-2"
+          style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
+        >
+          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3">
             {members.map((member) => (
               <button
                 key={member.id}
                 data-member={member.id}
                 onClick={() => switchMember(member.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 ${
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 select-none ${
                   active === member.id
                     ? "border-foreground/40 text-foreground"
                     : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
                 }`}
+                style={{ touchAction: "pan-x" }}
               >
                 {member.label}
               </button>
