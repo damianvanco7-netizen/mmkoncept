@@ -66,21 +66,27 @@ const LeadershipTeam = () => {
         />
 
         {/* Pill buttons — horizontal scroll on mobile */}
-        <div ref={scrollRef} className="flex md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]" style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' }}>
-          {members.map((member) => (
-            <button
-              key={member.id}
-              data-member={member.id}
-              onClick={() => switchMember(member.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 ${
-                active === member.id
-                  ? "border-foreground/40 text-foreground"
-                  : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
-              }`}
-            >
-              {member.label}
-            </button>
-          ))}
+        <div className="w-full overflow-hidden md:overflow-visible">
+          <div
+            ref={scrollRef}
+            className="flex w-max min-w-full md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-3 mb-10 overflow-x-auto md:overflow-visible scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
+          >
+            {members.map((member) => (
+              <button
+                key={member.id}
+                data-member={member.id}
+                onClick={() => switchMember(member.id)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-center flex-shrink-0 ${
+                  active === member.id
+                    ? "border-foreground/40 text-foreground"
+                    : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
+                }`}
+              >
+                {member.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Content */}
