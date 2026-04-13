@@ -56,7 +56,7 @@ const Navbar = () => {
   const showLogo = scrolled || !isHome;
   const shellClassName = scrolled && !mobileOpen
     ? isMobile
-      ? "mt-4 mx-6 rounded-2xl px-6 py-3"
+      ? "mt-4 mx-6 rounded-full px-6 py-3"
       : "mt-4 mx-auto max-w-3xl rounded-full px-6 md:px-8 py-3"
     : "mt-0 max-w-none rounded-none section-padding py-6";
   const scrolledSurfaceStyle = isMobile
@@ -67,8 +67,8 @@ const Navbar = () => {
         border: useDarkText
           ? "1px solid hsl(18 100% 3% / 0.08)"
           : "1px solid hsl(0 0% 100% / 0.12)",
-        backdropFilter: "none",
-        WebkitBackdropFilter: "none",
+        backdropFilter: "blur(24px) saturate(1.4)",
+        WebkitBackdropFilter: "blur(24px) saturate(1.4)",
         boxShadow: useDarkText
           ? "0 4px 18px hsl(18 100% 3% / 0.08)"
           : "0 4px 18px hsl(18 100% 3% / 0.12)",
@@ -93,9 +93,9 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="fixed inset-0 z-[59] md:hidden"
           style={{
-            background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.10) 0%, hsl(0 0% 100% / 0.04) 100%)',
-            backdropFilter: 'none',
-            WebkitBackdropFilter: 'none',
+            background: 'linear-gradient(135deg, hsl(0 0% 100% / 0.08) 0%, hsl(0 0% 100% / 0.03) 100%)',
+            backdropFilter: 'blur(24px) saturate(1.4)',
+            WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
           }}
         >
           <div className="flex flex-col items-start justify-center h-full px-10 gap-8">

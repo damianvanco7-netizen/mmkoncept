@@ -36,15 +36,15 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     const nodes: Node[] = [];
 
     if (direction === 'down') {
-      // Mobile: cluster at top center, dots trailing downward — larger & less dense
-      const clusterCenterX = w * 0.5;
-      const clusterCenterY = h * 0.3;
-      const clusterRadius = Math.min(w, h) * 0.50;
-      const clusterCount = MOBILE_CLUSTER_COUNT;
+      // Mobile: cluster at top-left like desktop, dots trailing toward bottom-right
+      const clusterCenterX = w * 0.35;
+      const clusterCenterY = h * 0.35;
+      const clusterRadius = Math.min(w, h) * 0.32;
+      const clusterCount = 55;
 
       for (let i = 0; i < clusterCount; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const rFactor = Math.pow(Math.random(), 0.5);
+        const rFactor = Math.pow(Math.random(), 0.6);
         const r = rFactor * clusterRadius;
         const bx = clusterCenterX + Math.cos(angle) * r;
         const by = clusterCenterY + Math.sin(angle) * r;
@@ -52,22 +52,23 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           baseX: bx, baseY: by, x: bx, y: by,
           vx: (Math.random() - 0.5) * 0.25,
           vy: (Math.random() - 0.5) * 0.25,
-          radius: 2 + Math.random() * 3,
+          radius: 2 + Math.random() * 2.5,
         });
       }
 
-      // 3 trailing dots going downward
-      const dotsX = w * 0.5;
-      const dotsStartY = clusterCenterY + clusterRadius + 20;
-      const dotsEndY = h * 0.85;
-      const dotsSpacing = (dotsEndY - dotsStartY) / 2;
+      // 3 trailing dots toward bottom-right (like desktop)
+      const trailStartX = w * 0.55;
+      const trailStartY = h * 0.6;
+      const trailEndX = w * 0.75;
+      const trailEndY = h * 0.85;
 
       for (let i = 0; i < 3; i++) {
+        const t = i / 2;
         nodes.push({
-          baseX: dotsX,
-          baseY: dotsStartY + i * dotsSpacing,
-          x: dotsX,
-          y: dotsStartY + i * dotsSpacing,
+          baseX: trailStartX + (trailEndX - trailStartX) * t,
+          baseY: trailStartY + (trailEndY - trailStartY) * t,
+          x: trailStartX + (trailEndX - trailStartX) * t,
+          y: trailStartY + (trailEndY - trailStartY) * t,
           vx: 0, vy: 0,
           radius: 4.5 - i * 0.5,
         });
@@ -209,7 +210,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
-    const clusterCount = direction === 'down' ? MOBILE_CLUSTER_COUNT : DESKTOP_CLUSTER_COUNT;
+    const clusterCount = direction === 'down' ? 55 : DESKTOP_CLUSTER_COUNT;
     let lastFrameTime = 0;
 
     const draw = (time = 0) => {
@@ -280,7 +281,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }
 
       // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
-      const trailConnDist = direction === 'down' ? 240 : 650;
+      const trailConnDist = direction === 'down' ? 400 : 650;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
         for (let i = 0; i < clusterNodes.length; i++) {
@@ -292,7 +293,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           }
         }
         distances.sort((a, b) => a.dist - b.dist);
-        const nearest = distances.slice(0, direction === 'down' ? MOBILE_TRAIL_CONNECTIONS : 6);
+        const nearest = distances.slice(0, direction === 'down' ? 5 : 6);
         for (const { idx, dist } of nearest) {
           const alpha = (1 - dist / trailConnDist) * 0.3;
           ctx.beginPath();
