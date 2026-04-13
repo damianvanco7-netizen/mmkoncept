@@ -82,7 +82,7 @@ const VVDimensionsGrid = () => {
         {/* Two-column: image + dimensions accordion */}
         <div className="w-full flex flex-col md:flex-row items-start gap-12 md:gap-32">
           {/* Left — image */}
-          <div className="shrink-0 -ml-4">
+          <div className="shrink-0 md:-ml-4 flex justify-center md:justify-start">
             <img
               src={vvKruh}
               alt="Virtual Village ecosystem — 7 Life Dimensions"
@@ -126,7 +126,7 @@ const VVDimensionsGrid = () => {
                     opacity: openIndex === i ? 1 : 0,
                   }}
                 >
-                  <p className="text-xs md:text-sm text-foreground/50 leading-relaxed pl-11 pb-2">
+                  <p className="text-sm md:text-sm text-foreground/50 leading-relaxed pl-11 pb-2">
                     {dim.description}
                   </p>
                 </div>
