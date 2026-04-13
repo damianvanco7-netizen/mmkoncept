@@ -44,7 +44,7 @@ const FounderSection = () => {
           </div>
 
           {/* Circle image — desktop: absolute bottom-right, mobile: left-aligned below text */}
-          <div className="mt-8 md:mt-0 md:absolute md:bottom-0 md:right-0 w-[160px] h-[160px] md:w-[clamp(196px,15.4vw,266px)] md:h-[clamp(196px,15.4vw,266px)] flex items-center justify-center isolate">
+          <div className="relative mt-8 h-[160px] w-[160px] shrink-0 overflow-hidden rounded-full md:absolute md:bottom-0 md:right-0 md:mt-0 md:h-[clamp(196px,15.4vw,266px)] md:w-[clamp(196px,15.4vw,266px)] flex items-center justify-center isolate">
             {/* Outer circle with blur fill */}
             <div className="absolute inset-0 rounded-full border border-white/10 bg-white/5 backdrop-blur-md" />
             {/* Inner photo */}
