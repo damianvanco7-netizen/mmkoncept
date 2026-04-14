@@ -15,6 +15,7 @@ import vvMockupPhones from "@/assets/vv-mockup-phones.png";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
 import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
+import vvPhoto5 from "@/assets/vv-photo-5.png";
 import gallerySquare1 from "@/assets/vv-photo-2-1.png";
 import gallerySquare2 from "@/assets/vv-photo-3-1.png";
 import galleryWide from "@/assets/vv-photo-1-1.png";
@@ -136,7 +137,7 @@ const VirtualVillage = () => {
           {/* Desktop grid */}
           <div className="hidden md:grid grid-cols-4 gap-3 md:gap-4 auto-rows-[260px] lg:auto-rows-[300px]">
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
-              <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png" alt="Virtual Village mockup 4" className="w-full h-full object-cover" />
+              <img src={vvPhoto5} alt="Virtual Village mockup 5" className="w-full h-full object-cover" />
             </div>
             <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
               <img src={galleryFeatured} alt="Virtual Village location select" className="w-full h-full object-cover" />
@@ -151,7 +152,7 @@ const VirtualVillage = () => {
           {/* Mobile carousel */}
           <div className="md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-[clamp(1.5rem,5vw,6rem)]  px-[clamp(1.5rem,5vw,6rem)]">
             {[
-              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png", alt: "Virtual Village mockup 4" },
+              { src: vvPhoto5, alt: "Virtual Village mockup 5" },
               { src: galleryFeatured, alt: "Virtual Village location select" },
               { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png", alt: "Virtual Village mockup" },
               { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png", alt: "Virtual Village app mockup" },
