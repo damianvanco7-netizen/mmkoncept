@@ -1,41 +1,42 @@
 
-Cieľ: prerobím mobilné pill slidery v sekciách `TechTabs` a `LeadershipTeam` na skutočný carousel s rovnakou logikou ovládania ako funguje fotogaléria/mobile carousel, aby sa dali spoľahlivo swipeovať, aby prvý pill bol vždy celý viditeľný a aby sa po kliknutí aktívny pill automaticky posunul do stredu.
+Cieľ: prerobím mobilné pill buttony v `TechTabs` a `LeadershipTeam` na natívny horizontálny slider úplne rovnakého typu ako je foto slider v sekcii `Product Gallery` — teda `overflow-x-auto + snap-x + full-bleed wrapper`, nie stránkovaný carousel po dvojiciach.
 
-1. Zruším aktuálny natívny `overflow-x-auto` scroll pre pill buttony
-- V `src/components/TechTabs.tsx` a `src/components/LeadershipTeam.tsx` odstránim dnešný horizontálny scroll wrapper so `snap-x`, `overflow-x-auto` a ručným `scrollTo`.
-- Tento prístup je teraz príčina problému: wrapper sa bije so sekčným spacingom a pill buttony sa na mobile správajú nepredvídateľne.
+1. Zruším aktuálny `PillCarousel` paging prístup na mobile
+- Aktuálny komponent `src/components/PillCarousel.tsx` teraz stránkuje pills po 2 kusoch, preto sa nespráva ako foto slider.
+- Tento mobile režim prerobím tak, aby namiesto interného “slideTo/page” systému používal rovnaký scroll model ako galéria s fotkami.
 
-2. Nahradím ho carousel patternom
-- Oba zoznamy pill buttonov prerobím na carousel logiku rovnakého typu, aký sa už používa v `src/components/MobileCarousel.tsx`.
-- Na mobile budú pills rozdelené do “stránok” a používateľ sa medzi nimi bude posúvať swipe gestom doľava/doprava.
-- Na desktope nechám dnešné správanie bez zmeny: normálne zobrazené všetky pills naraz.
+2. Nasadím presne rovnaký mobile wrapper ako v Product Gallery
+- Na mobile použijem ten istý pattern:
+  - `overflow-x-auto`
+  - `snap-x snap-mandatory`
+  - `scrollbar-hide`
+  - `-mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]`
+- Každý pill bude samostatný horizontálny item v jednom riadku, aby sa dal swipeovať úplne rovnako ako obrázky.
 
-3. Zachovám klikateľnosť pill buttonov aj animáciu obsahu
-- Klik na pill stále prepne aktívny obsah sekcie.
-- Keď je aktívny pill na inej carousel stránke, slider sa po kliknutí/prepnutí presunie na správnu stránku, aby bol pill viditeľný.
-- Tým sa splní aj požiadavka, že selected button má byť dobre viditeľný a nie mimo viewportu.
+3. Upravím track a pill items pre správne správanie
+- V mobile view zmením vnútorný layout z aktuálneho `flex-wrap justify-center` na jednoriadkový track bez zalamovania.
+- Každý button dostane správny `flex-shrink-0` a podľa potreby `snap-start` alebo `snap-center`, aby bol prvý button po príchode do sekcie celý viditeľný a scroll zostal plynulý.
 
-4. Opravím initial stav na mobile
-- Pri načítaní sekcie bude carousel začínať od prvej stránky, takže prvý pill bude celý viditeľný.
-- Nebudú tam asymetrické okraje ani useknutie na pravej strane, lebo layout už nebude závisieť od problematického full-bleed scroll kontajnera.
+4. Zachovám desktop bez zmeny
+- Desktop vetva v `PillCarousel` ostane klasický `flex-wrap justify-center`, takže sa nič nezmení mimo mobilu.
 
-5. Zjednotím vizuál s existujúcim carousel správaním
-- Použijem rovnaký swipe threshold, animácie prechodu a prípadne aj rovnaký štýl navigácie ako v existujúcom mobile carouseli, aby bolo ovládanie konzistentné naprieč webom.
-- Samotné pill buttony vizuálne ostanú rovnaké.
+5. Zjednotím správanie kliknutia na aktívny button
+- Po kliknutí na pill nechám prepnutie obsahu sekcie tak ako dnes.
+- Mobile doplním o jednoduché dorovnanie aktívneho pillu do view cez ref na button/container, ale už bez rozbíjania natívneho scrollu.
+- Cieľ je: slider ostane normálne ručne scrollovateľný a selected pill bude po kliknutí dobre viditeľný.
 
 Technické detaily
 - Súbory na úpravu:
-  - `src/components/TechTabs.tsx`
-  - `src/components/LeadershipTeam.tsx`
-  - pravdepodobne menšia refaktorizácia v `src/components/MobileCarousel.tsx` alebo vytvorenie ľahkej zdieľanej varianty pre pill navigáciu
-- Referencia:
-  - `src/components/MobileCarousel.tsx`
-  - mobilná galéria vo `src/pages/VirtualVillage.tsx`
+  - `src/components/PillCarousel.tsx`
+  - prípadne drobná úprava použitia v `src/components/TechTabs.tsx`
+  - prípadne drobná úprava použitia v `src/components/LeadershipTeam.tsx`
+- Referencia pre presnú implementáciu:
+  - mobile galéria v `src/pages/VirtualVillage.tsx` (riadok s `overflow-x-auto snap-x snap-mandatory scrollbar-hide ...`)
 
 QA po implementácii
-- Otestujem mobile správanie v oboch sekciách:
-  - swipe doľava/doprava funguje
-  - prvý pill je po príchode do sekcie celý viditeľný
-  - klik na pill prepne obsah a pill zostane viditeľný
-  - pravá strana už nie je useknutá
+- Overím na mobile viewport v oboch sekciách:
+  - slider ide swipeovať presne ako foto galéria
+  - prvý button je po príchode do sekcie celý viditeľný
+  - pravá strana nie je useknutá
+  - klik na pill prepne obsah a button ostane viditeľný
   - desktop layout ostane nezmenený
