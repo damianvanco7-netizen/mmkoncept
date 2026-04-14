@@ -1,31 +1,41 @@
 
-Cieľ: upravím oba mobilné pill slidery na `/virtual-village` tak, aby sa správali rovnako ako slider s fotkami v Product Gallery: plná šírka, bez useknutia vpravo, s prvým buttonom hneď plne viditeľným a s aktívnym buttonom po kliknutí zarovnaným do stredu alebo aspoň kompletne do view.
+Cieľ: prerobím mobilné pill slidery v sekciách `TechTabs` a `LeadershipTeam` na skutočný carousel s rovnakou logikou ovládania ako funguje fotogaléria/mobile carousel, aby sa dali spoľahlivo swipeovať, aby prvý pill bol vždy celý viditeľný a aby sa po kliknutí aktívny pill automaticky posunul do stredu.
 
-1. Zjednotím mobile wrapper s Product Gallery sliderom
-- V `src/components/TechTabs.tsx` a `src/components/LeadershipTeam.tsx` nahradím aktuálny mobile wrapper `w-screen / translate-x` rovnakým full-bleed patternom, aký je v `src/pages/VirtualVillage.tsx` pri Product Gallery.
-- Padding presuniem zo `w-max` tracku na samotný scroll container, aby ľavý a pravý okraj boli symetrické a nič sa na pravej strane neodsekávalo.
-- Desktop štýly nechám bez zmeny.
+1. Zruším aktuálny natívny `overflow-x-auto` scroll pre pill buttony
+- V `src/components/TechTabs.tsx` a `src/components/LeadershipTeam.tsx` odstránim dnešný horizontálny scroll wrapper so `snap-x`, `overflow-x-auto` a ručným `scrollTo`.
+- Tento prístup je teraz príčina problému: wrapper sa bije so sekčným spacingom a pill buttony sa na mobile správajú nepredvídateľne.
 
-2. Opravím scroll správanie po kliknutí na button
-- Súčasné `scrollIntoView(... nearest)` na mobile nahradím presnejším scroll výpočtom, ktorý aktívny pill vycentruje v rámci viditeľnej šírky slidera.
-- Ak je pill na začiatku alebo na konci, scroll sa korektne “clampne”, aby button zostal celý viditeľný a slider nešiel mimo hraníc.
+2. Nahradím ho carousel patternom
+- Oba zoznamy pill buttonov prerobím na carousel logiku rovnakého typu, aký sa už používa v `src/components/MobileCarousel.tsx`.
+- Na mobile budú pills rozdelené do “stránok” a používateľ sa medzi nimi bude posúvať swipe gestom doľava/doprava.
+- Na desktope nechám dnešné správanie bez zmeny: normálne zobrazené všetky pills naraz.
 
-3. Zabezpečím správny initial stav sekcie
-- Pri prvom zobrazení sekcie ostane slider na začiatku tak, aby bol prvý button viditeľný celý.
-- Overím aj posledný button, aby mal na pravej strane rovnaký priestor ako prvý na ľavej.
+3. Zachovám klikateľnosť pill buttonov aj animáciu obsahu
+- Klik na pill stále prepne aktívny obsah sekcie.
+- Keď je aktívny pill na inej carousel stránke, slider sa po kliknutí/prepnutí presunie na správnu stránku, aby bol pill viditeľný.
+- Tým sa splní aj požiadavka, že selected button má byť dobre viditeľný a nie mimo viewportu.
+
+4. Opravím initial stav na mobile
+- Pri načítaní sekcie bude carousel začínať od prvej stránky, takže prvý pill bude celý viditeľný.
+- Nebudú tam asymetrické okraje ani useknutie na pravej strane, lebo layout už nebude závisieť od problematického full-bleed scroll kontajnera.
+
+5. Zjednotím vizuál s existujúcim carousel správaním
+- Použijem rovnaký swipe threshold, animácie prechodu a prípadne aj rovnaký štýl navigácie ako v existujúcom mobile carouseli, aby bolo ovládanie konzistentné naprieč webom.
+- Samotné pill buttony vizuálne ostanú rovnaké.
 
 Technické detaily
-- Súbory: `src/components/TechTabs.tsx`, `src/components/LeadershipTeam.tsx`
-- Referenčný pattern: mobile carousel v `src/pages/VirtualVillage.tsx`
-- Implementačne:
-  - full-bleed scroll container podľa gallery
-  - vnútorný track bez extra `px-6`
-  - mobile auto-scroll cez výpočet pozície a `scrollTo`, nie cez `nearest`
+- Súbory na úpravu:
+  - `src/components/TechTabs.tsx`
+  - `src/components/LeadershipTeam.tsx`
+  - pravdepodobne menšia refaktorizácia v `src/components/MobileCarousel.tsx` alebo vytvorenie ľahkej zdieľanej varianty pre pill navigáciu
+- Referencia:
+  - `src/components/MobileCarousel.tsx`
+  - mobilná galéria vo `src/pages/VirtualVillage.tsx`
 
 QA po implementácii
-- Otestujem oba slidery na mobile viewport:
-  - prvý button po načítaní sekcie
-  - klik na stredný button
-  - klik na posledný button
-  - swipe doľava/doprava
-- Skontrolujem, že pravá strana je vizuálne presne rovnaká ako ľavá a že desktop ostal nezmenený.
+- Otestujem mobile správanie v oboch sekciách:
+  - swipe doľava/doprava funguje
+  - prvý pill je po príchode do sekcie celý viditeľný
+  - klik na pill prepne obsah a pill zostane viditeľný
+  - pravá strana už nie je useknutá
+  - desktop layout ostane nezmenený
