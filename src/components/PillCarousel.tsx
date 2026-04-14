@@ -62,9 +62,9 @@ function PillCarousel<T extends string>({
           <button
             key={item.id}
             onClick={() => onSelect(item.id)}
-            className={`px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
+            className={`px-6 py-3 rounded-full text-sm font-semibold leading-none liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
               active === item.id
-                ? "border-foreground/30 text-foreground"
+                ? "liquid-glass-circle-light-active text-foreground"
                 : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
             }`}
           >
@@ -79,7 +79,7 @@ function PillCarousel<T extends string>({
   return (
     <div
       ref={scrollRef}
-      className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]"
+      className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pt-2 pb-3 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]"
     >
       {items.map((item) => (
         <button
@@ -88,9 +88,9 @@ function PillCarousel<T extends string>({
             if (el) itemRefs.current.set(item.id, el);
           }}
           onClick={() => handleSelect(item.id)}
-          className={`flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
+          className={`flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-semibold leading-none liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
             active === item.id
-              ? "border-foreground/40 text-foreground"
+              ? "liquid-glass-circle-light-active text-foreground"
               : "border-foreground/15 text-foreground/50"
           }`}
         >
