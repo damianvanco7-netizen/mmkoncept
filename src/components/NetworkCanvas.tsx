@@ -159,7 +159,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const mobileMode = direction === 'down' || isMobile;
+    const mobileMode = isMobile;
 
     const resize = () => {
       const parent = canvas.parentElement;

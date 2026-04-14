@@ -11,7 +11,12 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-[100svh] md:min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48 overflow-hidden"
     >
-      {/* Mobile: title at top left, then network canvas below */}
+      {/* Network canvas — same on mobile and desktop */}
+      <div className="absolute inset-0">
+        <NetworkCanvas />
+      </div>
+
+      {/* Mobile: title at top, rest of space for network */}
       <div className="relative z-10 w-full flex flex-col md:hidden mt-8">
         <h1 className="heading-h1 text-left">
           <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
@@ -19,15 +24,9 @@ const HeroSection = () => {
             <span className="block">simplified</span>
           </ShinyText>
         </h1>
-        <div className="relative w-full h-[45svh] min-h-[320px] max-h-[420px]">
-          <NetworkCanvas direction="down" />
-        </div>
       </div>
 
-      {/* Desktop: original layout */}
-      <div className="hidden md:block absolute inset-0">
-        <NetworkCanvas />
-      </div>
+      {/* Desktop: text right-aligned */}
       <div className="relative z-10 w-full hidden md:flex justify-end">
         <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-[65%]">
           <h1 className="heading-h1">
@@ -39,7 +38,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Explore circle — desktop: bottom right, mobile: right side partially offscreen */}
+      {/* Explore circle */}
       <button
         onClick={() => scrollTo("philosophy")}
         className="absolute z-20 rounded-full flex flex-col items-center justify-center transition-all duration-500 liquid-glass-circle overflow-hidden

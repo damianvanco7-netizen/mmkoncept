@@ -96,36 +96,63 @@ const Consulting = () => {
 
       {/* CTA + Footer */}
       <div>
-        <section className="relative section-padding overflow-hidden pb-0 min-h-[70vh]">
-          <div className="absolute inset-0">
-            <NetworkCanvas variant="consulting" />
-          </div>
-          <div className="relative z-10 w-full flex justify-end pt-24 md:pt-32">
-          <div className="max-w-xl md:text-right">
+        <section className="relative section-padding overflow-hidden pb-0">
+          {/* Mobile: stacked layout — title, subtitle, network, button */}
+          <div className="md:hidden flex flex-col items-center text-center">
             <h2 className="heading-h2 mb-6">
               <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
                 Complexity is everywhere. Simplicity is a choice.
               </ShinyText>
             </h2>
-            <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10 md:text-right md:ml-auto">
+            <div className="text-white/50 heading-h3 font-normal mb-10">
               If this resonates, let's talk.
             </div>
-            <div className="flex md:justify-end">
+            <div className="relative w-full h-[50vh] min-h-[300px] mb-10">
+              <NetworkCanvas variant="consulting" />
+            </div>
             <button
               onClick={() => setContactOpen(true)}
-              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle"
-              style={{
-                width: "clamp(160px, 16vw, 220px)",
-                height: "clamp(160px, 16vw, 220px)",
-              }}
+              className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle w-[160px] h-[160px] mb-16"
             >
-              <span className="text-white text-base md:text-lg font-semibold leading-tight text-center">
+              <span className="text-white text-base font-semibold leading-tight text-center">
                 <span className="block">Start the</span>
                 <span className="block">conversation</span>
               </span>
             </button>
-            </div>
           </div>
+
+          {/* Desktop: original overlapping layout */}
+          <div className="hidden md:block relative min-h-[70vh]">
+            <div className="absolute inset-0">
+              <NetworkCanvas variant="consulting" />
+            </div>
+            <div className="relative z-10 w-full flex justify-end pt-24 md:pt-32">
+              <div className="max-w-xl md:text-right">
+                <h2 className="heading-h2 mb-6">
+                  <ShinyText speed={4} color="rgba(255,255,255,0.35)" shineColor="rgba(255,255,255,1)" spread={140}>
+                    Complexity is everywhere. Simplicity is a choice.
+                  </ShinyText>
+                </h2>
+                <div className="text-white/50 heading-h3 font-normal max-w-xl mb-10 md:text-right md:ml-auto">
+                  If this resonates, let's talk.
+                </div>
+                <div className="flex md:justify-end">
+                  <button
+                    onClick={() => setContactOpen(true)}
+                    className="group rounded-full flex flex-col items-center justify-center text-center transition-all duration-500 liquid-glass-circle"
+                    style={{
+                      width: "clamp(160px, 16vw, 220px)",
+                      height: "clamp(160px, 16vw, 220px)",
+                    }}
+                  >
+                    <span className="text-white text-base md:text-lg font-semibold leading-tight text-center">
+                      <span className="block">Start the</span>
+                      <span className="block">conversation</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
