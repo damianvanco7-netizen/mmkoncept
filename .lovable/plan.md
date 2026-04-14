@@ -1,35 +1,32 @@
 
 
-## Plán: Úpravy Consulting CTA buttonu a Mobile verzie Homepage
+## Problem
+The horizontal pill sliders on mobile still clip buttons on the right side. The outer container spans full viewport width (`w-screen`), but the inner flex track (`w-max`) has no horizontal padding, so the last button is cut off at the right edge.
 
-### 1. Consulting — CTA button "Start the conversation" na dva riadky
-**Súbor:** `src/pages/Consulting.tsx`
-- Rozdeliť text v buttone na dva `<span className="block">` riadky: "Start the" / "conversation"
-- Mierne zväčšiť font na `text-base md:text-lg`
+## Fix
+Add horizontal padding (`px-6 md:px-0`) to the inner flex container in both `TechTabs.tsx` and `LeadershipTeam.tsx`. This gives the first and last buttons equal breathing room from the screen edges on mobile, while keeping desktop layout unchanged.
 
-### 2. Mobile flickering pri scrollovaní
-**Súbor:** `src/pages/Index.tsx`
-- Problém: Hero sekcia má `z-index: 1` a sekcie pod ňou (Philosophy, Founder) majú `z-index: 0`. Na mobile hero zaberie celý viewport a prekrýva obsah pod ním, čo spôsobuje preblikávanie
-- Riešenie: Odstrániť rozdielne z-indexy — dať všetok obsah do jedného wrapperu s rovnakým z-indexom, alebo zabezpečiť, že hero nemá `position: relative` s vyšším z-indexom, ktorý prekrýva nasledujúci obsah
+### Files to edit:
 
-### 3. Sieť v hero sekcii — väčšia a menej hustá na mobile
-**Súbor:** `src/components/NetworkCanvas.tsx`
-- Zvýšiť `clusterRadius` z `0.35` na ~`0.50` (viac roztiahnuť uzly)
-- Znížiť `clusterCount` z `50` na ~`35` (menej hustota)
+**`src/components/TechTabs.tsx` (line 160)**
+Change the inner flex div from:
+```
+flex w-max min-w-max gap-4 md:min-w-0 md:w-full md:flex-wrap md:justify-center
+```
+to:
+```
+flex w-max min-w-max gap-4 px-6 md:px-0 md:min-w-0 md:w-full md:flex-wrap md:justify-center
+```
 
-### 4. Pozadie pod fotkou — len za kruhom, nie cez celý screen
-**Súbor:** `src/components/FounderSection.tsx`
-- Na mobile `backdrop-blur-md` na vonkajšom kruhovom dive sa vizuálne prejavuje príliš výrazne
-- Odstrániť `backdrop-blur-md` na mobile a ponechať len na desktop: zmeniť na `md:backdrop-blur-md`
-- Alternatívne nahradiť blur statickým semi-transparentným pozadím
+**`src/components/LeadershipTeam.tsx` (line 80)**
+Change the inner flex div from:
+```
+flex w-max min-w-max gap-3 md:min-w-0 md:w-full md:flex-wrap md:justify-center
+```
+to:
+```
+flex w-max min-w-max gap-3 px-6 md:px-0 md:min-w-0 md:w-full md:flex-wrap md:justify-center
+```
 
-### 5. Navbar na mobile pri scrollovaní — šírka obsahu
-**Súbor:** `src/components/Navbar.tsx`
-- Keď je scrolled na mobile, namiesto `max-w-3xl rounded-full px-8` použiť `section-padding` šírku
-- Zmeniť mobilné správanie: na mobile zachovať `section-padding` a `rounded-2xl` namiesto `rounded-full`, aby navbar mal rovnakú šírku ako obsah stránky
-- Na desktop ponechať súčasné správanie (`max-w-3xl rounded-full`)
-
-### Technické detaily
-- Súbory na úpravu: `Consulting.tsx`, `Index.tsx`, `NetworkCanvas.tsx`, `FounderSection.tsx`, `Navbar.tsx`
-- Žiadne nové závislosti
+This matches the left-side spacing and ensures buttons are never clipped on either edge.
 
