@@ -61,7 +61,7 @@ const LeadershipTeam = () => {
             items={members.map((m) => ({ id: m.id, label: m.label }))}
             active={active}
             onSelect={switchMember}
-            pillsPerPage={2}
+            
           />
         </div>
 
