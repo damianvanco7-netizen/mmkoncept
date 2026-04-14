@@ -12,7 +12,7 @@ const HeroSection = () => {
       className="relative min-h-[100svh] md:min-h-screen flex flex-col md:flex-row md:items-center section-padding pt-24 pb-48 overflow-hidden"
     >
       {/* Network canvas — pushed down on mobile to avoid title overlap */}
-      <div className="absolute inset-x-0 top-[220px] bottom-[200px] md:top-0 md:bottom-0">
+      <div className="absolute inset-x-0 top-[260px] bottom-[200px] md:top-0 md:bottom-0">
         <NetworkCanvas />
       </div>
 
