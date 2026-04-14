@@ -96,7 +96,7 @@ const Consulting = () => {
 
       {/* CTA + Footer */}
       <div>
-        <section className="relative section-padding overflow-hidden pb-0">
+        <section className="relative section-padding overflow-hidden pb-0 pt-16 md:pt-0">
           {/* Mobile: stacked layout — title, subtitle, network, button */}
           <div className="md:hidden flex flex-col items-center text-center">
             <h2 className="heading-h2 mb-6">
@@ -108,7 +108,7 @@ const Consulting = () => {
               If this resonates, let's talk.
             </div>
             <div className="relative w-full h-[50vh] min-h-[300px] mb-10">
-              <NetworkCanvas variant="consulting" />
+              <NetworkCanvas />
             </div>
             <button
               onClick={() => setContactOpen(true)}
@@ -124,7 +124,7 @@ const Consulting = () => {
           {/* Desktop: original overlapping layout */}
           <div className="hidden md:block relative min-h-[70vh]">
             <div className="absolute inset-0">
-              <NetworkCanvas variant="consulting" />
+              <NetworkCanvas />
             </div>
             <div className="relative z-10 w-full flex justify-end pt-24 md:pt-32">
               <div className="max-w-xl md:text-right">
