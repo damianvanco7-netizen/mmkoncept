@@ -120,13 +120,9 @@ const TechTabs = () => {
     const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement | null;
     if (!activeBtn) return;
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
-      return;
-    }
-
-    const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
-    container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+    const targetScroll = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    container.scrollTo({ left: Math.max(0, Math.min(targetScroll, maxScroll)), behavior: "smooth" });
   }, [active]);
 
   const switchTab = (id: string) => {
@@ -154,10 +150,10 @@ const TechTabs = () => {
         {/* Pill buttons — horizontal scroll on mobile */}
         <div
           ref={scrollRef}
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 mb-12 overflow-x-auto md:left-auto md:right-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
+          className="mb-12 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)] md:mx-0 md:px-0"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
-          <div className="flex w-max min-w-max gap-4 px-6 md:px-0 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
+          <div className="flex w-max min-w-max gap-4 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
             {tabs.map((tab) => (
               <button
                 key={tab.id}

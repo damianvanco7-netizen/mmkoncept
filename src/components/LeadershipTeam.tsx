@@ -39,13 +39,9 @@ const LeadershipTeam = () => {
     const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement | null;
     if (!activeBtn) return;
 
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
-      return;
-    }
-
-    const scrollLeft = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
-    container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+    const targetScroll = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    container.scrollTo({ left: Math.max(0, Math.min(targetScroll, maxScroll)), behavior: "smooth" });
   }, [active]);
 
   const switchMember = (id: string) => {
@@ -74,10 +70,10 @@ const LeadershipTeam = () => {
         {/* Pill buttons — horizontal scroll on mobile */}
         <div
           ref={scrollRef}
-          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 mb-10 overflow-x-auto md:left-auto md:right-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
+          className="mb-10 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)] md:mx-0 md:px-0"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
-          <div className="flex w-max min-w-max gap-3 px-6 md:px-0 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
+          <div className="flex w-max min-w-max gap-3 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
             {members.map((member) => (
               <button
                 key={member.id}
