@@ -104,10 +104,10 @@ const Consulting = () => {
                 Complexity is everywhere. Simplicity is a choice.
               </ShinyText>
             </h2>
-            <div className="text-white/50 heading-h3 font-normal mb-10">
+            <div className="text-white/50 heading-h3 font-normal mb-8">
               If this resonates, let's talk.
             </div>
-            <div className="relative w-full h-[50vh] min-h-[300px] mb-10">
+            <div className="relative w-full h-[50vh] min-h-[300px] mb-10 -mx-[clamp(1.5rem,5vw,6rem)]" style={{ width: 'calc(100% + 2 * clamp(1.5rem, 5vw, 6rem))' }}>
               <NetworkCanvas />
             </div>
             <button

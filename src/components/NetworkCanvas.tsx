@@ -74,10 +74,11 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         });
       }
     } else {
-      // Hero desktop: cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
-      const clusterCenterX = w * 0.22;
-      const clusterCenterY = h * 0.45;
-      const clusterRadius = Math.min(w, h) * 0.35;
+      // Hero: cluster position adapts to screen size
+      const isMobileSize = w < 500;
+      const clusterCenterX = isMobileSize ? w * 0.35 : w * 0.22;
+      const clusterCenterY = isMobileSize ? h * 0.35 : h * 0.45;
+      const clusterRadius = Math.min(w, h) * (isMobileSize ? 0.30 : 0.35);
       const clusterCount = DESKTOP_CLUSTER_COUNT;
 
       for (let i = 0; i < clusterCount; i++) {
@@ -94,11 +95,11 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         });
       }
 
-      // 3 trailing dots toward bottom-right (Our Portfolio button)
-      const trailStartX = w * 0.52;
-      const trailStartY = h * 0.72;
-      const trailEndX = w * 0.68;
-      const trailEndY = h * 0.92;
+      // 3 trailing dots toward bottom-right
+      const trailStartX = isMobileSize ? w * 0.58 : w * 0.52;
+      const trailStartY = isMobileSize ? h * 0.65 : h * 0.72;
+      const trailEndX = isMobileSize ? w * 0.72 : w * 0.68;
+      const trailEndY = isMobileSize ? h * 0.85 : h * 0.92;
 
       for (let i = 0; i < 3; i++) {
         const t = i / 2;
