@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import ShinyText from "@/components/ShinyText";
 import ContactFormDialog from "@/components/ContactFormDialog";
+import PillCarousel from "@/components/PillCarousel";
 import techReact from "@/assets/tech-react.png";
 import techSupabase from "@/assets/tech-supabase.png";
 import techGemini from "@/assets/tech-gemini.png";
@@ -109,21 +110,8 @@ const TechTabs = () => {
   const [active, setActive] = useState<string>("core");
   const [animating, setAnimating] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = tabs.find((t) => t.id === active)!;
-
-  // Scroll active pill into view
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    const activeBtn = container.querySelector(`[data-tab="${active}"]`) as HTMLElement | null;
-    if (!activeBtn) return;
-
-    const targetScroll = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    container.scrollTo({ left: Math.max(0, Math.min(targetScroll, maxScroll)), behavior: "smooth" });
-  }, [active]);
 
   const switchTab = (id: string) => {
     if (animating || id === active) return;
@@ -147,29 +135,13 @@ const TechTabs = () => {
           for speed, intelligence, and seamless growth.
         </p>
 
-        {/* Pill buttons — horizontal scroll on mobile */}
-        <div
-          ref={scrollRef}
-          className="mb-12 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)] md:mx-0 md:px-0"
-          style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
-        >
-          <div className="flex w-max min-w-max gap-4 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                data-tab={tab.id}
-                onClick={() => switchTab(tab.id)}
-                className={`px-6 py-3 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-start flex-shrink-0 select-none ${
-                  active === tab.id
-                    ? "border-foreground/30 text-foreground"
-                    : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
-                }`}
-                style={{ touchAction: "pan-x" }}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+        <div className="mb-12 w-full">
+          <PillCarousel
+            items={tabs.map((t) => ({ id: t.id, label: t.label }))}
+            active={active}
+            onSelect={switchTab}
+            pillsPerPage={2}
+          />
         </div>
 
         {/* Content */}
