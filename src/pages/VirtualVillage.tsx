@@ -103,7 +103,7 @@ const VirtualVillage = () => {
             <img
               src={vvMockupPhones}
               alt="Virtual Village app mockup"
-              className="w-[90%] md:w-full pointer-events-none"
+              className="w-full md:w-full pointer-events-none"
             />
           </div>
         </div>
