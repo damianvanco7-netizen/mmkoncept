@@ -154,10 +154,10 @@ const TechTabs = () => {
         {/* Pill buttons — horizontal scroll on mobile */}
         <div
           ref={scrollRef}
-          className="w-full -mx-6 px-6 mb-12 overflow-x-auto md:mx-0 md:px-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory scroll-px-6 md:scroll-px-0 pb-2"
+          className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 mb-12 overflow-x-auto md:left-auto md:right-auto md:w-full md:translate-x-0 md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2"
           style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
         >
-          <div className="flex w-max min-w-max md:min-w-0 md:w-full md:flex-wrap md:justify-center gap-4">
+          <div className="flex w-max min-w-max gap-4 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
