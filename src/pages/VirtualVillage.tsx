@@ -152,7 +152,7 @@ const VirtualVillage = () => {
           {/* Mobile carousel */}
           <div className="md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-[clamp(1.5rem,5vw,6rem)]  px-[clamp(1.5rem,5vw,6rem)]">
             {[
-              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%204.png", alt: "Virtual Village mockup 4" },
+              { src: vvPhoto5, alt: "Virtual Village mockup 5" },
               { src: galleryFeatured, alt: "Virtual Village location select" },
               { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png", alt: "Virtual Village mockup" },
               { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png", alt: "Virtual Village app mockup" },
