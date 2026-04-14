@@ -92,7 +92,8 @@ const VirtualVillage = () => {
               Intelligence that understands your world.
             </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed max-w-lg">
-              Powered by <strong>Google Cloud</strong> and our <strong>proprietary STAR Pro AI,</strong><br />
+              Powered by <strong>Google Cloud</strong> and our <strong>proprietary STAR Pro AI,</strong>{" "}
+              <br className="hidden md:block" />
               Virtual Village adapts to your location, your needs, and your everyday life.
             </p>
           </div>
