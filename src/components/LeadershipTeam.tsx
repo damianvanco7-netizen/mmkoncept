@@ -30,20 +30,8 @@ const members = [
 const LeadershipTeam = () => {
   const [active, setActive] = useState<string>("hans");
   const [animating, setAnimating] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   const current = members.find((m) => m.id === active)!;
-
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    const activeBtn = container.querySelector(`[data-member="${active}"]`) as HTMLElement | null;
-    if (!activeBtn) return;
-
-    const targetScroll = activeBtn.offsetLeft - container.clientWidth / 2 + activeBtn.offsetWidth / 2;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    container.scrollTo({ left: Math.max(0, Math.min(targetScroll, maxScroll)), behavior: "smooth" });
-  }, [active]);
 
   const switchMember = (id: string) => {
     if (animating || id === active) return;
@@ -68,29 +56,13 @@ const LeadershipTeam = () => {
           className="w-full max-w-3xl rounded-2xl mb-12 object-cover grayscale"
         />
 
-        {/* Pill buttons — horizontal scroll on mobile */}
-        <div
-          ref={scrollRef}
-          className="mb-10 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)] md:mx-0 md:px-0"
-          style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
-        >
-          <div className="flex w-max min-w-max gap-3 md:min-w-0 md:w-full md:flex-wrap md:justify-center">
-            {members.map((member) => (
-              <button
-                key={member.id}
-                data-member={member.id}
-                onClick={() => switchMember(member.id)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap snap-start flex-shrink-0 select-none ${
-                  active === member.id
-                    ? "border-foreground/40 text-foreground"
-                    : "border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70"
-                }`}
-                style={{ touchAction: "pan-x" }}
-              >
-                {member.label}
-              </button>
-            ))}
-          </div>
+        <div className="mb-10 w-full">
+          <PillCarousel
+            items={members.map((m) => ({ id: m.id, label: m.label }))}
+            active={active}
+            onSelect={switchMember}
+            pillsPerPage={2}
+          />
         </div>
 
         {/* Content */}
