@@ -140,7 +140,7 @@ const TechTabs = () => {
             items={tabs.map((t) => ({ id: t.id, label: t.label }))}
             active={active}
             onSelect={switchTab}
-            pillsPerPage={2}
+            
           />
         </div>
 
