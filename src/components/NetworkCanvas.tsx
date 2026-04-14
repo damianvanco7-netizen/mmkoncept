@@ -73,44 +73,6 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
           radius: 4.5 - i * 0.5,
         });
       }
-    } else if (variant === 'consulting') {
-      // Consulting: same network geometry as hero, with the final chain leading toward Connect
-      const clusterCenterX = w * 0.25;
-      const clusterCenterY = h * 0.32;
-      const clusterRadius = Math.min(w, h) * 0.32;
-      const clusterCount = DESKTOP_CLUSTER_COUNT;
-
-      for (let i = 0; i < clusterCount; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const rFactor = Math.pow(Math.random(), 0.7);
-        const r = rFactor * clusterRadius;
-        const bx = clusterCenterX + Math.cos(angle) * r;
-        const by = clusterCenterY + Math.sin(angle) * r;
-        nodes.push({
-          baseX: bx, baseY: by, x: bx, y: by,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          radius: 2.5 + Math.random() * 3.5,
-        });
-      }
-
-      // 3 trailing dots toward bottom-right, matching the home hero flow and aiming at Connect
-      const trailStartX = w * 0.52;
-      const trailStartY = h * 0.60;
-      const trailEndX = w * 0.68;
-      const trailEndY = h * 0.82;
-
-      for (let i = 0; i < 3; i++) {
-        const t = i / 2;
-        nodes.push({
-          baseX: trailStartX + (trailEndX - trailStartX) * t,
-          baseY: trailStartY + (trailEndY - trailStartY) * t,
-          x: trailStartX + (trailEndX - trailStartX) * t,
-          y: trailStartY + (trailEndY - trailStartY) * t,
-          vx: 0, vy: 0,
-          radius: 5,
-        });
-      }
     } else {
       // Hero desktop: cluster on LEFT, dots trailing to bottom-right toward Our Portfolio button
       const clusterCenterX = w * 0.22;
