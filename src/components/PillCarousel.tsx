@@ -1,120 +1,58 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PillCarouselProps<T extends string> {
   items: { id: T; label: string }[];
   active: T;
   onSelect: (id: T) => void;
-  pillsPerPage?: number;
 }
 
 function PillCarousel<T extends string>({
   items,
   active,
   onSelect,
-  pillsPerPage = 2,
 }: PillCarouselProps<T>) {
   const isMobile = useIsMobile();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
-  // Find which page the active item is on
-  const activeIndex = items.findIndex((item) => item.id === active);
-  const totalPages = Math.ceil(items.length / pillsPerPage);
-  const activePageForItem = Math.floor(activeIndex / pillsPerPage);
+  const scrollActiveIntoView = useCallback(
+    (id: T, smooth = true) => {
+      const container = scrollRef.current;
+      const el = itemRefs.current.get(id);
+      if (!container || !el) return;
 
-  const [page, setPage] = useState(activePageForItem);
-  const [displayPage, setDisplayPage] = useState(activePageForItem);
-  const [slideOffset, setSlideOffset] = useState(0);
-  const [isSliding, setIsSliding] = useState(false);
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const isDragging = useRef(false);
-  const isHorizontalSwipe = useRef<boolean | null>(null);
-  const dragOffset = useRef(0);
+      const containerRect = container.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
 
-  // When active changes externally, navigate to correct page
-  useEffect(() => {
-    const targetPage = Math.floor(activeIndex / pillsPerPage);
-    if (targetPage !== page && !isSliding) {
-      const direction = targetPage > page ? 1 : -1;
-      slideTo(targetPage, direction);
-    }
-  }, [activeIndex, pillsPerPage]);
+      // Center the element in the container
+      const scrollLeft =
+        el.offsetLeft -
+        container.offsetWidth / 2 +
+        el.offsetWidth / 2;
 
-  const visibleItems = items.slice(
-    displayPage * pillsPerPage,
-    displayPage * pillsPerPage + pillsPerPage
-  );
-
-  const slideTo = useCallback(
-    (nextPage: number, direction: number) => {
-      if (isSliding) return;
-      setIsSliding(true);
-      setSlideOffset(direction * -100);
-
-      setTimeout(() => {
-        setDisplayPage(nextPage);
-        setPage(nextPage);
-        setSlideOffset(direction * 40);
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            setSlideOffset(0);
-            setTimeout(() => setIsSliding(false), 500);
-          });
-        });
-      }, 300);
+      container.scrollTo({
+        left: Math.max(0, scrollLeft),
+        behavior: smooth ? "smooth" : "instant",
+      });
     },
-    [isSliding]
+    []
   );
 
-  const handlePrev = () => {
-    if (isSliding) return;
-    slideTo(page === 0 ? totalPages - 1 : page - 1, -1);
-  };
+  // Scroll active pill into view on mount and when active changes
+  useEffect(() => {
+    if (!isMobile) return;
+    // Small delay to ensure layout is ready
+    const t = setTimeout(() => scrollActiveIntoView(active, false), 50);
+    return () => clearTimeout(t);
+  }, [active, isMobile, scrollActiveIntoView]);
 
-  const handleNext = () => {
-    if (isSliding) return;
-    slideTo(page === totalPages - 1 ? 0 : page + 1, 1);
-  };
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    if (isSliding) return;
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    isDragging.current = true;
-    isHorizontalSwipe.current = null;
-    dragOffset.current = 0;
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging.current || isSliding) return;
-    const dx = e.touches[0].clientX - touchStartX.current;
-    const dy = e.touches[0].clientY - touchStartY.current;
-    if (isHorizontalSwipe.current === null) {
-      if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-        isHorizontalSwipe.current = Math.abs(dx) > Math.abs(dy);
-      }
-      return;
+  const handleSelect = (id: T) => {
+    onSelect(id);
+    if (isMobile) {
+      setTimeout(() => scrollActiveIntoView(id, true), 50);
     }
-    if (!isHorizontalSwipe.current) return;
-    dragOffset.current = dx;
-    setSlideOffset(dx * 0.3);
   };
-
-  const onTouchEnd = () => {
-    if (!isDragging.current || isSliding) return;
-    isDragging.current = false;
-    if (!isHorizontalSwipe.current) {
-      setSlideOffset(0);
-      return;
-    }
-    if (dragOffset.current < -40) handleNext();
-    else if (dragOffset.current > 40) handlePrev();
-    else setSlideOffset(0);
-  };
-
-  const needsTransition = !isDragging.current;
 
   // Desktop: show all pills inline
   if (!isMobile) {
@@ -137,61 +75,28 @@ function PillCarousel<T extends string>({
     );
   }
 
-  // Mobile: carousel
+  // Mobile: native horizontal scroll – same pattern as Product Gallery
   return (
-    <div>
-      <div
-        className="overflow-hidden"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <div
-          className="flex flex-wrap justify-center gap-3"
-          style={{
-            transform: `translateX(${slideOffset}px)`,
-            opacity: Math.abs(slideOffset) > 60 ? 0 : 1,
-            transition: needsTransition
-              ? "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease"
-              : "none",
-            willChange: "transform, opacity",
+    <div
+      ref={scrollRef}
+      className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 -mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]"
+    >
+      {items.map((item) => (
+        <button
+          key={item.id}
+          ref={(el) => {
+            if (el) itemRefs.current.set(item.id, el);
           }}
+          onClick={() => handleSelect(item.id)}
+          className={`flex-shrink-0 snap-center px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
+            active === item.id
+              ? "border-foreground/40 text-foreground"
+              : "border-foreground/15 text-foreground/50"
+          }`}
         >
-          {visibleItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onSelect(item.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none ${
-                active === item.id
-                  ? "border-foreground/40 text-foreground"
-                  : "border-foreground/15 text-foreground/50"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-3 mt-4">
-          <button
-            onClick={handlePrev}
-            className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center"
-          >
-            <ChevronLeft className="w-3.5 h-3.5 text-foreground/60" />
-          </button>
-          <span className="text-xs text-foreground/40 font-medium tabular-nums">
-            {page + 1} / {totalPages}
-          </span>
-          <button
-            onClick={handleNext}
-            className="w-8 h-8 rounded-full border border-foreground/20 flex items-center justify-center"
-          >
-            <ChevronRight className="w-3.5 h-3.5 text-foreground/60" />
-          </button>
-        </div>
-      )}
+          {item.label}
+        </button>
+      ))}
     </div>
   );
 }
