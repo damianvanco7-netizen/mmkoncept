@@ -44,14 +44,14 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
-          <div className="flex flex-col justify-center section-padding py-24 pt-[20vh] md:pt-24">
+          <div className="flex flex-col justify-center items-center md:items-start section-padding py-24 pt-[20vh] md:pt-24">
             <img
               src={vvHeroLogo}
               alt="Virtual Village"
               className="mb-8 md:mb-10"
               style={{ width: 'clamp(220px, 28vw, 420px)' }}
             />
-            <h1 className="heading-h2 text-foreground/80">
+            <h1 className="heading-h2 text-foreground/80 text-center md:text-left">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 Your personalized<br />Universe
               </ShinyText>
@@ -73,7 +73,7 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-start pt-24 md:pt-32 py-6 overflow-hidden">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding md:pr-0">
           {/* Left — text */}
-          <div className="flex flex-col items-start pt-8">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left pt-8">
             <h2 className="heading-h2 mb-4 md:mb-8 pb-0 md:pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than<br />a platform...

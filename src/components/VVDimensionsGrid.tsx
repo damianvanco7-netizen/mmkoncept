@@ -57,8 +57,8 @@ const VVDimensionsGrid = () => {
 
   return (
     <section className="py-10 md:py-14 section-padding">
-      <div className="w-full flex flex-col items-start">
-        <h2 className="heading-h2 text-foreground/80 mb-2 text-left">
+      <div className="w-full flex flex-col items-center md:items-start">
+        <h2 className="heading-h2 text-foreground/80 mb-2 text-center md:text-left">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
@@ -68,7 +68,7 @@ const VVDimensionsGrid = () => {
             One Intuitive Space
           </ShinyText>
         </h2>
-        <h2 className="heading-h2 text-foreground/80 mb-12 text-left">
+        <h2 className="heading-h2 text-foreground/80 mb-12 text-center md:text-left">
           <ShinyText
             speed={4}
             color="hsl(var(--foreground) / 0.35)"
