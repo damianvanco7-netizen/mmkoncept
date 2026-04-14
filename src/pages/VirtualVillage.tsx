@@ -73,7 +73,7 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-start pt-24 md:pt-32 py-6 overflow-hidden">
         <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-8 items-start section-padding md:pr-0">
           {/* Left — text */}
-          <div className="flex flex-col items-start pt-8">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left pt-8">
             <h2 className="heading-h2 mb-4 md:mb-8 pb-0 md:pb-4">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
                 More than<br />a platform...
