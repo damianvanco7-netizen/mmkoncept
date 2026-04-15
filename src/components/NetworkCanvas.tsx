@@ -123,6 +123,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const mobileMode = isMobile;
+    const animateCanvas = !(mobileMode && variant === 'hero');
 
     const resize = () => {
       const parent = canvas.parentElement;
@@ -157,7 +158,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     }
 
     const handleScroll = () => {
-      if (!mobileMode) return;
+      if (!mobileMode || !animateCanvas) return;
 
       scrollingRef.current = true;
       if (scrollTimeoutRef.current !== null) {
@@ -169,7 +170,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
       }, 140);
     };
 
-    if (mobileMode) {
+    if (mobileMode && animateCanvas) {
       window.addEventListener('scroll', handleScroll, { passive: true });
     }
 
@@ -177,12 +178,12 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     let lastFrameTime = 0;
 
     const draw = (time = 0) => {
-      if (mobileMode && scrollingRef.current) {
+      if (animateCanvas && mobileMode && scrollingRef.current) {
         animRef.current = requestAnimationFrame(draw);
         return;
       }
 
-      if (mobileMode) {
+      if (animateCanvas && mobileMode) {
         const frameInterval = 1000 / MOBILE_TARGET_FPS;
         if (time - lastFrameTime < frameInterval) {
           animRef.current = requestAnimationFrame(draw);
@@ -198,25 +199,27 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
 
       const interactRadius = 100;
 
-      for (const n of nodes) {
-        n.x += n.vx;
-        n.y += n.vy;
-        n.x += (n.baseX - n.x) * 0.03;
-        n.y += (n.baseY - n.y) * 0.03;
+      if (animateCanvas) {
+        for (const n of nodes) {
+          n.x += n.vx;
+          n.y += n.vy;
+          n.x += (n.baseX - n.x) * 0.03;
+          n.y += (n.baseY - n.y) * 0.03;
 
-        const dx = n.x - mouse.x;
-        const dy = n.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < interactRadius && dist > 0) {
-          const force = (interactRadius - dist) / interactRadius * 2.5;
-          n.x += (dx / dist) * force;
-          n.y += (dy / dist) * force;
+          const dx = n.x - mouse.x;
+          const dy = n.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < interactRadius && dist > 0) {
+            const force = (interactRadius - dist) / interactRadius * 2.5;
+            n.x += (dx / dist) * force;
+            n.y += (dy / dist) * force;
+          }
+
+          n.vx += (Math.random() - 0.5) * 0.04;
+          n.vy += (Math.random() - 0.5) * 0.04;
+          n.vx *= 0.95;
+          n.vy *= 0.95;
         }
-
-        n.vx += (Math.random() - 0.5) * 0.04;
-        n.vy += (Math.random() - 0.5) * 0.04;
-        n.vx *= 0.95;
-        n.vy *= 0.95;
       }
 
       const clusterNodes = nodes.slice(0, clusterCount);
@@ -243,7 +246,6 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         }
       }
 
-      // Each trailing dot connects to nearest 6 cluster nodes (increased reach)
       const trailConnDist = direction === 'down' ? 400 : 550;
       for (const dot of dotNodes) {
         const distances: { idx: number; dist: number }[] = [];
@@ -268,7 +270,6 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         }
       }
 
-      // Connect trailing dots: dot0—dot1, dot1—dot2, and dot0—dot2
       for (let i = 0; i < dotNodes.length; i++) {
         for (let j = i + 1; j < dotNodes.length; j++) {
           ctx.beginPath();
@@ -294,15 +295,21 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         ctx.fill();
       }
 
-      animRef.current = requestAnimationFrame(draw);
+      if (animateCanvas) {
+        animRef.current = requestAnimationFrame(draw);
+      }
     };
 
-    animRef.current = requestAnimationFrame(draw);
+    if (animateCanvas) {
+      animRef.current = requestAnimationFrame(draw);
+    } else {
+      draw();
+    }
 
     return () => {
       cancelAnimationFrame(animRef.current);
       ro.disconnect();
-      if (mobileMode) {
+      if (mobileMode && animateCanvas) {
         window.removeEventListener('scroll', handleScroll);
       }
       if (scrollTimeoutRef.current !== null) {
@@ -313,7 +320,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
         canvas.removeEventListener('mouseleave', onLeave);
       }
     };
-  }, [generateNodes, direction, isMobile]);
+  }, [generateNodes, direction, isMobile, variant]);
 
   return (
     <canvas

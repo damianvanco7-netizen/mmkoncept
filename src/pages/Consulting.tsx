@@ -108,7 +108,7 @@ const Consulting = () => {
               If this resonates, let's talk.
             </div>
             <div className="relative w-full h-[50vh] min-h-[300px] mb-10 -mx-[clamp(1.5rem,5vw,6rem)]" style={{ width: 'calc(100% + 2 * clamp(1.5rem, 5vw, 6rem))' }}>
-              <NetworkCanvas />
+              <NetworkCanvas variant="consulting" />
             </div>
             <button
               onClick={() => setContactOpen(true)}
@@ -124,7 +124,7 @@ const Consulting = () => {
           {/* Desktop: original overlapping layout */}
           <div className="hidden md:block relative min-h-[70vh]">
             <div className="absolute inset-0">
-              <NetworkCanvas />
+              <NetworkCanvas variant="consulting" />
             </div>
             <div className="relative z-10 w-full flex justify-end pt-24 md:pt-32">
               <div className="max-w-xl md:text-right">
