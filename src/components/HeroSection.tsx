@@ -13,7 +13,7 @@ const HeroSection = () => {
     >
       {/* Network canvas — pushed down on mobile to avoid title overlap */}
       <div className="absolute inset-x-0 top-[260px] bottom-[200px] md:top-0 md:bottom-0">
-        <NetworkCanvas />
+        <NetworkCanvas variant="hero" />
       </div>
 
       {/* Mobile: title at top, rest of space for network */}

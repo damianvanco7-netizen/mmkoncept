@@ -68,7 +68,14 @@ const CookieConsent = () => {
       };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 animate-in slide-in-from-bottom-4 duration-500">
+    <div
+      className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 animate-in slide-in-from-bottom-4 duration-500"
+      style={{
+        paddingBottom: "calc(1rem + env(safe-area-inset-bottom))",
+        paddingLeft: "calc(1rem + env(safe-area-inset-left))",
+        paddingRight: "calc(1rem + env(safe-area-inset-right))",
+      }}
+    >
       <div
         className="mx-auto max-w-4xl rounded-full p-6 md:p-8"
         style={{
