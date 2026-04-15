@@ -135,7 +135,7 @@ const Navbar = () => {
         </div>
       )}
 
-      <nav className="fixed top-0 left-0 right-0 z-[60]" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+      <nav className="fixed top-0 left-0 right-0 z-[60]">
         <div className={shellClassName}
           style={{
             transitionProperty: 'max-width, margin-top, padding, border-radius, background, backdrop-filter, box-shadow',
