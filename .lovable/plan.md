@@ -1,42 +1,52 @@
 
-Cieľ: prerobím mobilné pill buttony v `TechTabs` a `LeadershipTeam` na natívny horizontálny slider úplne rovnakého typu ako je foto slider v sekcii `Product Gallery` — teda `overflow-x-auto + snap-x + full-bleed wrapper`, nie stránkovaný carousel po dvojiciach.
 
-1. Zruším aktuálny `PillCarousel` paging prístup na mobile
-- Aktuálny komponent `src/components/PillCarousel.tsx` teraz stránkuje pills po 2 kusoch, preto sa nespráva ako foto slider.
-- Tento mobile režim prerobím tak, aby namiesto interného “slideTo/page” systému používal rovnaký scroll model ako galéria s fotkami.
+## Problem Analysis
 
-2. Nasadím presne rovnaký mobile wrapper ako v Product Gallery
-- Na mobile použijem ten istý pattern:
-  - `overflow-x-auto`
-  - `snap-x snap-mandatory`
-  - `scrollbar-hide`
-  - `-mx-[clamp(1.5rem,5vw,6rem)] px-[clamp(1.5rem,5vw,6rem)]`
-- Každý pill bude samostatný horizontálny item v jednom riadku, aby sa dal swipeovať úplne rovnako ako obrázky.
+The iOS Safari cropping at top and bottom is caused by the browser's dynamic UI elements (address bar, bottom toolbar) overlapping your content. Your `index.html` viewport meta tag is:
 
-3. Upravím track a pill items pre správne správanie
-- V mobile view zmením vnútorný layout z aktuálneho `flex-wrap justify-center` na jednoriadkový track bez zalamovania.
-- Každý button dostane správny `flex-shrink-0` a podľa potreby `snap-start` alebo `snap-center`, aby bol prvý button po príchode do sekcie celý viditeľný a scroll zostal plynulý.
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
 
-4. Zachovám desktop bez zmeny
-- Desktop vetva v `PillCarousel` ostane klasický `flex-wrap justify-center`, takže sa nič nezmení mimo mobilu.
+It's missing `viewport-fit=cover`, which tells iOS Safari to extend the web content into the safe area (behind the status bar, home indicator, etc.). Without it, Safari constrains your content but the dynamic toolbars can still visually overlap edges.
 
-5. Zjednotím správanie kliknutia na aktívny button
-- Po kliknutí na pill nechám prepnutie obsahu sekcie tak ako dnes.
-- Mobile doplním o jednoduché dorovnanie aktívneho pillu do view cez ref na button/container, ale už bez rozbíjania natívneho scrollu.
-- Cieľ je: slider ostane normálne ručne scrollovateľný a selected pill bude po kliknutí dobre viditeľný.
+The second site (veloxsro.sk) likely either uses `viewport-fit=cover` with proper safe-area padding, or has enough natural padding that the overlap isn't noticeable.
 
-Technické detaily
-- Súbory na úpravu:
-  - `src/components/PillCarousel.tsx`
-  - prípadne drobná úprava použitia v `src/components/TechTabs.tsx`
-  - prípadne drobná úprava použitia v `src/components/LeadershipTeam.tsx`
-- Referencia pre presnú implementáciu:
-  - mobile galéria v `src/pages/VirtualVillage.tsx` (riadok s `overflow-x-auto snap-x snap-mandatory scrollbar-hide ...`)
+## Plan
 
-QA po implementácii
-- Overím na mobile viewport v oboch sekciách:
-  - slider ide swipeovať presne ako foto galéria
-  - prvý button je po príchode do sekcie celý viditeľný
-  - pravá strana nie je useknutá
-  - klik na pill prepne obsah a button ostane viditeľný
-  - desktop layout ostane nezmenený
+### 1. Add `viewport-fit=cover` to viewport meta tag
+**File:** `index.html`
+
+Change the viewport meta to:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+```
+
+### 2. Add safe-area padding to the page layout
+**File:** `src/index.css`
+
+Add safe-area inset padding to the body/root so content respects the notch, status bar, and home indicator:
+```css
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+```
+
+### 3. Adjust Hero section bottom spacing
+**File:** `src/components/HeroSection.tsx`
+
+Update the "Our Portfolio" button's bottom position on mobile to account for the safe area:
+```css
+bottom: calc(2rem + env(safe-area-inset-bottom))
+```
+
+This ensures the button stays visible above the iOS home indicator bar.
+
+### Summary
+- `viewport-fit=cover` lets your content use the full screen
+- `env(safe-area-inset-*)` padding prevents content from hiding behind iOS system UI
+- The network canvas and button positions will naturally adjust within the safe area
+
