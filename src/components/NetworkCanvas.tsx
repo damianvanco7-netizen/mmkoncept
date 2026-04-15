@@ -123,7 +123,7 @@ const NetworkCanvas = ({ direction = 'right', variant = 'hero' }: NetworkCanvasP
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const mobileMode = isMobile;
-    const animateCanvas = !(mobileMode && variant === 'hero');
+    const animateCanvas = true;
 
     const resize = () => {
       const parent = canvas.parentElement;
