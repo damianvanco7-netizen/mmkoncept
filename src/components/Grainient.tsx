@@ -1,16 +1,19 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
 import "./Grainient.css";
+
 const hexToRgb = (hex: string): number[] => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return [1, 1, 1];
   return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
 };
+
 const vertex = `#version 300 es
 in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }`;
+
 const fragment = `#version 300 es
 precision highp float;
 uniform vec2 iResolution;
@@ -87,6 +90,7 @@ void main(){
   mainImage(o,gl_FragCoord.xy);
   fragColor=o;
 }`;
+
 interface GrainientProps {
   timeSpeed?: number;
   colorBalance?: number;
@@ -112,6 +116,10 @@ interface GrainientProps {
   color3?: string;
   className?: string;
 }
+
+// Detect iOS Safari once at module level
+const isIOS = typeof navigator !== "undefined" && /iP(ad|hone|od)/i.test(navigator.userAgent);
+
 const Grainient = ({
   timeSpeed = 0.25,
   colorBalance = 0.0,
@@ -138,11 +146,22 @@ const Grainient = ({
   className = "",
 }: GrainientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // iOS Safari: skip WebGL entirely, use static CSS gradient fallback
+  if (isIOS) {
+    return (
+      <div
+        className={`grainient-container ${className}`.trim()}
+        style={{
+          background: `linear-gradient(160deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`,
+        }}
+      />
+    );
+  }
+
   useEffect(() => {
     if (!containerRef.current) return;
     const isMobile = window.innerWidth < 768;
-    // Detect iOS Safari
-    const isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
     const renderer = new Renderer({
       // @ts-ignore
       webgl: 2,
@@ -188,11 +207,10 @@ const Grainient = ({
       },
     });
     const mesh = new Mesh(gl, { geometry, program });
-    // iOS Safari: use window.innerWidth/innerHeight instead of getBoundingClientRect
-    // to avoid incorrect measurements caused by dynamic toolbar
     const setSize = () => {
-      const width = Math.max(1, Math.floor(isIOS ? window.innerWidth : container.getBoundingClientRect().width));
-      const height = Math.max(1, Math.floor(isIOS ? window.innerHeight : container.getBoundingClientRect().height));
+      const rect = container.getBoundingClientRect();
+      const width = Math.max(1, Math.floor(rect.width));
+      const height = Math.max(1, Math.floor(rect.height));
       renderer.setSize(width, height);
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
@@ -200,10 +218,6 @@ const Grainient = ({
     };
     const ro = new ResizeObserver(setSize);
     ro.observe(container);
-    // iOS Safari: also listen to visualViewport resize (handles toolbar show/hide)
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", setSize);
-    }
     setSize();
     let raf = 0;
     const t0 = performance.now();
@@ -216,9 +230,6 @@ const Grainient = ({
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      if (window.visualViewport) {
-        window.visualViewport.removeEventListener("resize", setSize);
-      }
       try {
         container.removeChild(canvas);
       } catch {
@@ -249,6 +260,8 @@ const Grainient = ({
     color2,
     color3,
   ]);
+
   return <div ref={containerRef} className={`grainient-container ${className}`.trim()} />;
 };
+
 export default Grainient;
