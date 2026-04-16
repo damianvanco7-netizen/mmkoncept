@@ -5,7 +5,7 @@ const FounderSection = () => {
   return (
     <section
       id="founder"
-      className="py-28 md:py-36 section-padding overflow-hidden"
+      className="py-16 md:py-20 section-padding overflow-hidden"
     >
       <div className="w-full">
         {/* Small label above heading */}
