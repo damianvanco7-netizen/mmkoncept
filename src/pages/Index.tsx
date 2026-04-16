@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import PhilosophySection from "@/components/PhilosophySection";
 import FounderSection from "@/components/FounderSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Grainient from "@/components/Grainient";
 
@@ -30,6 +31,8 @@ const Index = () => {
         <PhilosophySection />
         <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
         <FounderSection />
+        <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
+        <ContactSection />
         <Footer />
       </div>
     </div>
