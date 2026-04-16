@@ -46,11 +46,11 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
-          <div className="flex flex-col justify-center items-center md:items-start section-padding py-24 pt-[14vh] md:pt-24">
+          <div className="flex flex-col justify-center items-center md:items-start section-padding py-12 pt-[12vh] md:py-24 md:pt-24">
             <img
               src={vvHeroLogo}
               alt="Virtual Village"
-              className="mb-6 md:mb-10"
+              className="mb-4 md:mb-10"
               style={{ width: 'clamp(160px, 28vw, 420px)' }}
             />
             <h1 className="heading-h2 text-foreground/80 text-center md:text-left">
@@ -61,7 +61,7 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — hero image */}
-          <div className="relative min-h-[40vh] -mt-4 md:mt-0 md:min-h-screen overflow-hidden">
+          <div className="relative min-h-[55vh] -mt-6 md:mt-0 md:min-h-screen overflow-hidden">
             <img
               src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
