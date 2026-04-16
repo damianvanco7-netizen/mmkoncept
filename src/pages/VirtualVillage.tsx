@@ -156,7 +156,7 @@ const VirtualVillage = () => {
               { src: vvPhoto5, alt: "Virtual Village mockup 5" },
               { src: galleryFeatured, alt: "Virtual Village location select" },
               { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png", alt: "Virtual Village mockup" },
-              { src: "https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png", alt: "Virtual Village app mockup" },
+              { src: vvAppMockup, alt: "Virtual Village app mockup" },
             ].map((img, i) => (
               <div key={i} className="flex-shrink-0 w-[75vw] h-[55vw] rounded-xl overflow-hidden snap-center">
                 <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
