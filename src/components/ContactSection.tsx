@@ -82,7 +82,7 @@ const ContactSection = () => {
         </div>
 
         {/* Right — form in glass card */}
-        <div className="liquid-glass-dialog rounded-2xl p-8 md:p-12 relative">
+        <div className="liquid-glass-dialog rounded-2xl p-8 md:p-12 relative" style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -1px 1px rgba(255,255,255,0.05), inset 0 0 30px rgba(255,255,255,0.03)' }}>
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
             <div>
               <input
