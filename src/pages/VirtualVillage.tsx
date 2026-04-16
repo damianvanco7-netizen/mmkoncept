@@ -14,6 +14,7 @@ import vvMockup from "@/assets/vv-mockup.png";
 import vvMockupPhones from "@/assets/vv-mockup-phones.png";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
 import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
+import vvAppMockup from "@/assets/vv-app-mockup.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
 import vvPhoto5 from "@/assets/vv-photo-5.png";
 import gallerySquare1 from "@/assets/vv-photo-2-1.png";
@@ -45,12 +46,12 @@ const VirtualVillage = () => {
       <section className="relative min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 min-h-screen">
           {/* Left — text */}
-          <div className="flex flex-col justify-center items-center md:items-start section-padding py-24 pt-[20vh] md:pt-24">
+          <div className="flex flex-col justify-center items-center md:items-start section-padding py-24 pt-[14vh] md:pt-24">
             <img
               src={vvHeroLogo}
               alt="Virtual Village"
-              className="mb-8 md:mb-10"
-              style={{ width: 'clamp(220px, 28vw, 420px)' }}
+              className="mb-6 md:mb-10"
+              style={{ width: 'clamp(160px, 28vw, 420px)' }}
             />
             <h1 className="heading-h2 text-foreground/80 text-center md:text-left">
               <ShinyText speed={4} color="hsl(var(--foreground) / 0.35)" shineColor="hsl(var(--foreground))" spread={140}>
@@ -145,7 +146,10 @@ const VirtualVillage = () => {
             <div className="col-span-2 row-span-2 rounded-xl overflow-hidden">
               <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png" alt="Virtual Village mockup" className="w-full h-full object-cover" />
             </div>
-            <div className="col-span-2 row-span-1 rounded-xl overflow-hidden">
+            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
+              <img src={vvAppMockup} alt="Virtual Village app mockup" className="w-full h-full object-cover" />
+            </div>
+            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
               <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png" alt="Virtual Village app mockup" className="w-full h-full object-cover" />
             </div>
           </div>

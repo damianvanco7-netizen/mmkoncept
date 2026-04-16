@@ -5,7 +5,7 @@ const FounderSection = () => {
   return (
     <section
       id="founder"
-      className="py-28 md:py-36 section-padding overflow-hidden"
+      className="py-16 md:py-20 section-padding overflow-hidden"
     >
       <div className="w-full">
         {/* Small label above heading */}
@@ -32,7 +32,11 @@ const FounderSection = () => {
             </p>
 
             <p className="text-white/70 leading-relaxed">
-              As a strategist, entrepreneur, and mother, I have experienced firsthand how digital noise and fragmentation can overwhelm everyday life. That experience continues to shape my work. I believe that technology should never add more pressure or complexity — it should work quietly in the background, as an invisible supporter.
+              Through both business and private life, I have experienced firsthand how digital noise and fragmentation can overwhelm everyday reality. Not only as a strategist and entrepreneur, but also as a mother navigating the demands of daily life, I have seen how easily technology can add pressure instead of reducing it.
+            </p>
+
+            <p className="text-white/70 leading-relaxed">
+              That experience continues to shape my work. I believe technology should never create more complexity, it should work quietly in the background, as an invisible supporter.
             </p>
 
             <p className="text-white/70 leading-relaxed">
