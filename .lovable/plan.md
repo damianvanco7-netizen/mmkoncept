@@ -1,52 +1,41 @@
 
 
-## Problem Analysis
+## Fix: iOS Safari scroll flicker on mobile
 
-The iOS Safari cropping at top and bottom is caused by the browser's dynamic UI elements (address bar, bottom toolbar) overlapping your content. Your `index.html` viewport meta tag is:
+### Root cause
+The `ResizeObserver` on the Grainient container fires every time iOS Safari shows/hides its toolbar during scrolling. Each resize triggers `renderer.setSize()` which recreates the WebGL framebuffer — causing the visible flash/flicker.
 
-```
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-```
+### Approach
+Keep everything identical visually (gradient, animation, blur) but prevent resize-triggered redraws during scroll on mobile. No changes to navbar or cookie banner blur.
 
-It's missing `viewport-fit=cover`, which tells iOS Safari to extend the web content into the safe area (behind the status bar, home indicator, etc.). Without it, Safari constrains your content but the dynamic toolbars can still visually overlap edges.
+### Changes
 
-The second site (veloxsro.sk) likely either uses `viewport-fit=cover` with proper safe-area padding, or has enough natural padding that the overlap isn't noticeable.
+**1. `src/components/Grainient.tsx` — Debounce/stabilize resize on mobile**
 
-## Plan
+Replace the `ResizeObserver` → `setSize` logic with a mobile-aware approach:
+- On mobile, set the canvas size once using `window.innerHeight` (the maximum viewport height) instead of tracking `getBoundingClientRect()` which fluctuates with toolbar show/hide
+- Use `100lvh` concept: size to `window.screen.height` (or a stable max) so the canvas never needs resizing during scroll
+- Keep `ResizeObserver` only for desktop where toolbar toggling doesn't happen
+- Add a debounce (300ms) as a safety net for any remaining resize events on mobile
 
-### 1. Add `viewport-fit=cover` to viewport meta tag
-**File:** `index.html`
+**2. `src/components/Grainient.css` — GPU compositing hints**
 
-Change the viewport meta to:
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-```
-
-### 2. Add safe-area padding to the page layout
-**File:** `src/index.css`
-
-Add safe-area inset padding to the body/root so content respects the notch, status bar, and home indicator:
+Add to `.grainient-container`:
 ```css
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
+transform: translateZ(0);
+will-change: transform;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
 ```
 
-### 3. Adjust Hero section bottom spacing
-**File:** `src/components/HeroSection.tsx`
+This forces the canvas onto its own GPU compositing layer, preventing repaints from propagating to/from the scrolling content layer.
 
-Update the "Our Portfolio" button's bottom position on mobile to account for the safe area:
-```css
-bottom: calc(2rem + env(safe-area-inset-bottom))
-```
+### What stays the same
+- Full gradient animation on mobile
+- All blur effects (navbar, cookie banner) unchanged
+- Visual appearance identical on both platforms
+- No "orezanie" — the container still extends into safe areas with negative insets
 
-This ensures the button stays visible above the iOS home indicator bar.
-
-### Summary
-- `viewport-fit=cover` lets your content use the full screen
-- `env(safe-area-inset-*)` padding prevents content from hiding behind iOS system UI
-- The network canvas and button positions will naturally adjust within the safe area
+### Technical detail
+The key insight: on mobile Safari, we size the canvas to `window.screen.availHeight` (the full screen height including toolbar area) once at mount, and skip all subsequent resize events. The fixed container with negative safe-area insets already covers the full viewport, so a stable oversized canvas just works without any visible cropping.
 
