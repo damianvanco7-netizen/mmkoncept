@@ -31,6 +31,8 @@ const Index = () => {
         <PhilosophySection />
         <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
         <FounderSection />
+        <hr className="border-t border-white/10 mx-[clamp(1.5rem,5vw,6rem)]" />
+        <ContactSection />
         <Footer />
       </div>
     </div>
