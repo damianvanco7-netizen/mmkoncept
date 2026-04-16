@@ -11,8 +11,8 @@
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  height: 100vh;
-  height: 100lvh;
+  min-height: 100vh;
+  min-height: 100lvh;
 }
 
 .grainient-static {
