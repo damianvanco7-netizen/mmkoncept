@@ -171,8 +171,14 @@ const Grainient = ({
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const userAgent = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/i.test(userAgent)
+      || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(userAgent) || isIOS;
     const isMobile = window.innerWidth < 768;
+    const isIOSSafari = isIOS
+      && /WebKit/i.test(userAgent)
+      && !/CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo/i.test(userAgent);
     const renderer = new Renderer({
       // @ts-ignore
       webgl: 2,
@@ -229,17 +235,20 @@ const Grainient = ({
       const h = Math.max(1, Math.floor(window.screen.height * dpr));
       const root = document.documentElement;
       const body = document.body;
+      const useRootBackgroundOnly = isIOSSafari;
       const previousRootStyles = {
         backgroundImage: root.style.backgroundImage,
         backgroundPosition: root.style.backgroundPosition,
         backgroundRepeat: root.style.backgroundRepeat,
         backgroundSize: root.style.backgroundSize,
+        backgroundAttachment: root.style.backgroundAttachment,
       };
       const previousBodyStyles = {
         backgroundImage: body.style.backgroundImage,
         backgroundPosition: body.style.backgroundPosition,
         backgroundRepeat: body.style.backgroundRepeat,
         backgroundSize: body.style.backgroundSize,
+        backgroundAttachment: body.style.backgroundAttachment,
         backgroundColor: body.style.backgroundColor,
       };
       const previousContainerStyles = {
@@ -247,13 +256,16 @@ const Grainient = ({
         backgroundPosition: container.style.backgroundPosition,
         backgroundRepeat: container.style.backgroundRepeat,
         backgroundSize: container.style.backgroundSize,
+        backgroundAttachment: container.style.backgroundAttachment,
+        display: container.style.display,
       };
       const backgroundHeight = 'calc(100lvh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + 60px)';
-      const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
+      const applyStaticBackground = (element: HTMLElement, dataUrl: string, repeating = false) => {
         element.style.backgroundImage = `url(${dataUrl})`;
         element.style.backgroundPosition = 'center top';
-        element.style.backgroundRepeat = 'no-repeat';
-        element.style.backgroundSize = `100vw ${backgroundHeight}`;
+        element.style.backgroundRepeat = repeating ? 'repeat-y' : 'no-repeat';
+        element.style.backgroundSize = repeating ? '100vw auto' : `100vw ${backgroundHeight}`;
+        element.style.backgroundAttachment = 'scroll';
       };
 
       renderer.setSize(w / dpr, h / dpr);
@@ -270,11 +282,17 @@ const Grainient = ({
       // Capture the frame as a static image
       try {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-        applyStaticBackground(root, dataUrl);
-        applyStaticBackground(body, dataUrl);
+        applyStaticBackground(root, dataUrl, useRootBackgroundOnly);
+        applyStaticBackground(body, dataUrl, useRootBackgroundOnly);
         body.style.backgroundColor = 'transparent';
-        applyStaticBackground(container, dataUrl);
-        container.classList.add('grainient-static');
+
+        if (useRootBackgroundOnly) {
+          container.style.display = 'none';
+        } else {
+          applyStaticBackground(container, dataUrl);
+          container.classList.add('grainient-static');
+        }
+
         hasStaticBackground = true;
       } catch {
         // If toDataURL fails, keep the canvas as-is with no animation
