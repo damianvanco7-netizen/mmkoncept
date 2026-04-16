@@ -171,6 +171,7 @@ const Grainient = ({
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const isMobile = window.innerWidth < 768;
     const renderer = new Renderer({
       // @ts-ignore
@@ -221,6 +222,41 @@ const Grainient = ({
 
     const mesh = new Mesh(gl, { geometry, program });
 
+    if (isMobileDevice) {
+      // Mobile: render one frame, capture as static image, destroy WebGL
+      const w = Math.max(1, Math.floor(window.screen.width * (window.devicePixelRatio || 1)));
+      const h = Math.max(1, Math.floor((window.screen.availHeight || window.screen.height) * (window.devicePixelRatio || 1)));
+      renderer.setSize(w / (window.devicePixelRatio || 1), h / (window.devicePixelRatio || 1));
+      const res = program.uniforms.iResolution.value;
+      res[0] = gl.drawingBufferWidth;
+      res[1] = gl.drawingBufferHeight;
+
+      // Render a single frame with a slight time offset for a nice gradient state
+      program.uniforms.iTime.value = 1.5;
+      renderer.render({ scene: mesh });
+
+      // Capture the frame as a static image
+      try {
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+        container.style.backgroundImage = `url(${dataUrl})`;
+        container.classList.add('grainient-static');
+      } catch {
+        // If toDataURL fails, keep the canvas as-is with no animation
+      }
+
+      // Remove canvas and clean up WebGL resources
+      try {
+        container.removeChild(canvas);
+      } catch {
+        // Ignore
+      }
+
+      return () => {
+        // Nothing to clean up — WebGL already destroyed
+      };
+    }
+
+    // Desktop: full animated loop
     const applySize = (width: number, height: number) => {
       renderer.setSize(width, height);
       const res = program.uniforms.iResolution.value;
@@ -235,34 +271,9 @@ const Grainient = ({
       applySize(width, height);
     };
 
-    // On mobile, use a stable height to prevent resize flicker from Safari toolbar
-    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    let ro: ResizeObserver | null = null;
-    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
-
-    if (isMobileDevice) {
-      // Use screen height for a stable canvas size that won't change with toolbar
-      const stableWidth = Math.max(1, Math.floor(window.innerWidth));
-      const stableHeight = Math.max(1, Math.floor(window.screen.availHeight || window.screen.height));
-      applySize(stableWidth, stableHeight);
-
-      // Only handle orientation changes, debounced
-      const handleOrientationResize = () => {
-        if (debounceTimer) clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          const w = Math.max(1, Math.floor(window.innerWidth));
-          const h = Math.max(1, Math.floor(window.screen.availHeight || window.screen.height));
-          applySize(w, h);
-        }, 300);
-      };
-      window.addEventListener('orientationchange', handleOrientationResize);
-      // Store cleanup ref
-      (container as any).__grainientOrientationHandler = handleOrientationResize;
-    } else {
-      ro = new ResizeObserver(setSize);
-      ro.observe(container);
-      setSize();
-    }
+    const ro = new ResizeObserver(setSize);
+    ro.observe(container);
+    setSize();
 
     let raf = 0;
     const t0 = performance.now();
@@ -275,12 +286,7 @@ const Grainient = ({
 
     return () => {
       cancelAnimationFrame(raf);
-      if (ro) ro.disconnect();
-      if (debounceTimer) clearTimeout(debounceTimer);
-      if (isMobileDevice && (container as any).__grainientOrientationHandler) {
-        window.removeEventListener('orientationchange', (container as any).__grainientOrientationHandler);
-        delete (container as any).__grainientOrientationHandler;
-      }
+      ro.disconnect();
       try {
         container.removeChild(canvas);
       } catch {
