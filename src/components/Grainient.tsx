@@ -12,7 +12,6 @@ const hexToRgb = (hex: string): number[] => {
   ];
 };
 
-
 const vertex = `#version 300 es
 in vec2 position;
 void main() {
@@ -173,11 +172,10 @@ const Grainient = ({
     if (!containerRef.current) return;
 
     const userAgent = navigator.userAgent;
-    const isIOS = /iPhone|iPad|iPod/i.test(userAgent)
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(userAgent)
       || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(userAgent) || isIOS;
     const isMobile = window.innerWidth < 768;
-    // isIOSSafari detection removed — all mobile now uses same WebGL snapshot path
+
     const renderer = new Renderer({
       // @ts-ignore
       webgl: 2,
@@ -229,104 +227,40 @@ const Grainient = ({
     const mesh = new Mesh(gl, { geometry, program });
 
     if (isMobileDevice) {
-      // Mobile: use a Safari-safe static gradient or capture a single static frame on other mobile browsers
+      // Mobile: render one frame, capture as static PNG, remove canvas
       const dpr = window.devicePixelRatio || 1;
       const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
       const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
       const w = Math.max(1, Math.floor(viewportWidth * dpr));
       const h = Math.max(1, Math.floor(viewportHeight * dpr));
-      const root = document.documentElement;
-      const body = document.body;
-      const previousRootStyles = {
-        backgroundImage: root.style.backgroundImage,
-        backgroundPosition: root.style.backgroundPosition,
-        backgroundRepeat: root.style.backgroundRepeat,
-        backgroundSize: root.style.backgroundSize,
-        backgroundAttachment: root.style.backgroundAttachment,
-        backgroundColor: root.style.backgroundColor,
-      };
-      const previousBodyStyles = {
-        backgroundImage: body.style.backgroundImage,
-        backgroundPosition: body.style.backgroundPosition,
-        backgroundRepeat: body.style.backgroundRepeat,
-        backgroundSize: body.style.backgroundSize,
-        backgroundAttachment: body.style.backgroundAttachment,
-        backgroundColor: body.style.backgroundColor,
-      };
-      const previousContainerStyles = {
-        backgroundImage: container.style.backgroundImage,
-        backgroundPosition: container.style.backgroundPosition,
-        backgroundRepeat: container.style.backgroundRepeat,
-        backgroundSize: container.style.backgroundSize,
-        backgroundAttachment: container.style.backgroundAttachment,
-        backgroundColor: container.style.backgroundColor,
-        filter: container.style.filter,
-        display: container.style.display,
-      };
-      const removeCanvas = () => {
-        try {
-          container.removeChild(canvas);
-        } catch {
-          // Ignore
-        }
-      };
-
-
-      const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
-        element.style.backgroundImage = `url(${dataUrl})`;
-        element.style.backgroundPosition = 'center top';
-        element.style.backgroundRepeat = 'no-repeat';
-        element.style.backgroundSize = 'cover';
-      };
 
       renderer.setSize(w / dpr, h / dpr);
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
       res[1] = gl.drawingBufferHeight;
 
-      // Render a single frame with a slight time offset for a nice gradient state
+      // Reduce grain for static snapshot
       const previousGrainAmount = program.uniforms.uGrainAmount.value;
       program.uniforms.uGrainAmount.value = Math.min(previousGrainAmount, 0.03);
       program.uniforms.iTime.value = 1.5;
       renderer.render({ scene: mesh });
       program.uniforms.uGrainAmount.value = previousGrainAmount;
 
-      let hasStaticBackground = false;
-
-      // Capture the frame as a static image
+      // Capture and apply as background image on container only
       try {
         const dataUrl = canvas.toDataURL('image/png');
-
-        applyStaticBackground(root, dataUrl);
-        applyStaticBackground(body, dataUrl);
-        root.style.backgroundColor = 'transparent';
-        body.style.backgroundColor = 'transparent';
-        applyStaticBackground(container, dataUrl);
-
-        if (isIOS) {
-          container.classList.add('grainient-static', 'grainient-ios-fullpage');
-        } else {
-          container.classList.add('grainient-static');
-        }
-
-        hasStaticBackground = true;
+        container.style.backgroundImage = `url(${dataUrl})`;
+        container.classList.add('grainient-static');
+        // Remove canvas since we have the static background
+        try { container.removeChild(canvas); } catch { /* ignore */ }
       } catch {
-        // If toDataURL fails, keep the canvas as-is with no animation
-      }
-
-      if (hasStaticBackground) {
-        removeCanvas();
+        // If toDataURL fails, keep canvas visible with no animation
       }
 
       return () => {
-        container.classList.remove('grainient-static', 'grainient-ios-fullpage');
-        Object.assign(root.style, previousRootStyles);
-        Object.assign(body.style, previousBodyStyles);
-        Object.assign(container.style, previousContainerStyles);
-
-        if (!hasStaticBackground) {
-          removeCanvas();
-        }
+        container.classList.remove('grainient-static');
+        container.style.backgroundImage = '';
+        try { container.removeChild(canvas); } catch { /* ignore */ }
       };
     }
 
@@ -361,11 +295,7 @@ const Grainient = ({
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      try {
-        container.removeChild(canvas);
-      } catch {
-        // Ignore
-      }
+      try { container.removeChild(canvas); } catch { /* ignore */ }
     };
   }, [
     timeSpeed, colorBalance, warpStrength, warpFrequency, warpSpeed, warpAmplitude,
