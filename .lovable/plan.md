@@ -1,41 +1,41 @@
 
 
-## Fix: iOS Safari scroll flicker on mobile
+## Fix: iOS Safari bottom cropping — static gradient snapshot on mobile
 
-### Root cause
-The `ResizeObserver` on the Grainient container fires every time iOS Safari shows/hides its toolbar during scrolling. Each resize triggers `renderer.setSize()` which recreates the WebGL framebuffer — causing the visible flash/flicker.
+### Problem
+On iOS Safari, the fixed WebGL canvas gets cropped at the bottom because the browser dynamically resizes the viewport when the toolbar appears/disappears. Even with stable sizing, the `position: fixed` container still gets clipped by iOS's visual viewport behavior.
 
-### Approach
-Keep everything identical visually (gradient, animation, blur) but prevent resize-triggered redraws during scroll on mobile. No changes to navbar or cookie banner blur.
+### Solution
+On mobile, render the WebGL gradient once (a single frame), capture it as a static image (`canvas.toDataURL()`), then stop the WebGL animation loop and replace the canvas with a CSS `background-image`. A static background image behaves like a photo — iOS Safari handles it correctly with no cropping or flicker.
+
+Content scrolls over this static gradient naturally, creating the parallax-like effect you described.
+
+Desktop keeps the full animated WebGL gradient unchanged.
 
 ### Changes
 
-**1. `src/components/Grainient.tsx` — Debounce/stabilize resize on mobile**
+**1. `src/components/Grainient.tsx`**
 
-Replace the `ResizeObserver` → `setSize` logic with a mobile-aware approach:
-- On mobile, set the canvas size once using `window.innerHeight` (the maximum viewport height) instead of tracking `getBoundingClientRect()` which fluctuates with toolbar show/hide
-- Use `100lvh` concept: size to `window.screen.height` (or a stable max) so the canvas never needs resizing during scroll
-- Keep `ResizeObserver` only for desktop where toolbar toggling doesn't happen
-- Add a debounce (300ms) as a safety net for any remaining resize events on mobile
+- Detect mobile device at mount
+- On mobile:
+  - Initialize WebGL, render exactly one frame to generate the gradient
+  - Call `canvas.toDataURL('image/jpeg', 0.9)` to capture the frame as a static image
+  - Set the captured image as `background-image` on the container div
+  - Destroy the WebGL renderer and canvas immediately (no animation loop, no RAF)
+  - Add the `grainient-static` CSS class to the container
+- On desktop: keep everything as-is (animated WebGL loop)
 
-**2. `src/components/Grainient.css` — GPU compositing hints**
+**2. `src/components/Grainient.css`**
 
-Add to `.grainient-container`:
-```css
-transform: translateZ(0);
-will-change: transform;
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;
-```
-
-This forces the canvas onto its own GPU compositing layer, preventing repaints from propagating to/from the scrolling content layer.
+- Update `.grainient-container` to use `height: 100vh` plus `-webkit-fill-available` for iOS stability
+- The existing `.grainient-static` class already handles `background-size: cover` and the subtle radial gradient overlay
 
 ### What stays the same
-- Full gradient animation on mobile
+- Desktop: full animated gradient, identical to current
+- Mobile: visually identical gradient (same colors, same shader output), just frozen as a static image
 - All blur effects (navbar, cookie banner) unchanged
-- Visual appearance identical on both platforms
-- No "orezanie" — the container still extends into safe areas with negative insets
+- Safe-area inset coverage unchanged
 
-### Technical detail
-The key insight: on mobile Safari, we size the canvas to `window.screen.availHeight` (the full screen height including toolbar area) once at mount, and skip all subsequent resize events. The fixed container with negative safe-area insets already covers the full viewport, so a stable oversized canvas just works without any visible cropping.
+### Why this works
+iOS Safari never crops a CSS `background-image` on a fixed element the way it clips a WebGL canvas. The gradient looks the same because it's literally a screenshot of the same shader — just not animating. The subtle animation on mobile was barely noticeable anyway due to the slow `timeSpeed`.
 
