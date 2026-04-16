@@ -275,7 +275,12 @@ const Grainient = ({
 
     return () => {
       cancelAnimationFrame(raf);
-      ro.disconnect();
+      if (ro) ro.disconnect();
+      if (debounceTimer) clearTimeout(debounceTimer);
+      if (isMobileDevice && (container as any).__grainientOrientationHandler) {
+        window.removeEventListener('orientationchange', (container as any).__grainientOrientationHandler);
+        delete (container as any).__grainientOrientationHandler;
+      }
       try {
         container.removeChild(canvas);
       } catch {
