@@ -12,6 +12,31 @@ const hexToRgb = (hex: string): number[] => {
   ];
 };
 
+const hexToRgba = (hex: string, alpha = 1): string => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!result) return `rgba(255, 255, 255, ${alpha})`;
+
+  return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${alpha})`;
+};
+
+const buildStaticGradientBackground = ({
+  color1,
+  color2,
+  color3,
+  blendAngle,
+  colorBalance,
+}: Pick<GrainientProps, 'color1' | 'color2' | 'color3' | 'blendAngle' | 'colorBalance'>): string => {
+  const angle = blendAngle + 140;
+  const balanceStop = Math.max(30, Math.min(70, 50 - colorBalance * 28));
+
+  return [
+    `radial-gradient(circle at 18% 16%, ${hexToRgba(color1 ?? '#ffffff', 0.9)} 0%, ${hexToRgba(color1 ?? '#ffffff', 0.64)} 18%, transparent 46%)`,
+    `radial-gradient(circle at 82% 18%, ${hexToRgba(color2 ?? '#ffffff', 0.8)} 0%, ${hexToRgba(color2 ?? '#ffffff', 0.42)} 22%, transparent 48%)`,
+    `radial-gradient(circle at 50% 86%, ${hexToRgba(color3 ?? '#ffffff', 0.74)} 0%, ${hexToRgba(color3 ?? '#ffffff', 0.28)} 24%, transparent 52%)`,
+    `linear-gradient(${angle}deg, ${hexToRgba(color3 ?? '#ffffff', 1)} 0%, ${hexToRgba(color2 ?? '#ffffff', 1)} ${balanceStop}%, ${hexToRgba(color1 ?? '#ffffff', 1)} 100%)`,
+  ].join(', ');
+};
+
 const vertex = `#version 300 es
 in vec2 position;
 void main() {
@@ -230,10 +255,12 @@ const Grainient = ({
     const mesh = new Mesh(gl, { geometry, program });
 
     if (isMobileDevice) {
-      // Mobile: render one frame, capture as static image, and mirror it onto the page background
+      // Mobile: use a Safari-safe static gradient or capture a single static frame on other mobile browsers
       const dpr = window.devicePixelRatio || 1;
-      const w = Math.max(1, Math.floor(window.screen.width * dpr));
-      const h = Math.max(1, Math.floor(window.screen.height * dpr));
+      const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+      const w = Math.max(1, Math.floor(viewportWidth * dpr));
+      const h = Math.max(1, Math.floor(viewportHeight * dpr));
       const root = document.documentElement;
       const body = document.body;
       const previousRootStyles = {
@@ -258,8 +285,42 @@ const Grainient = ({
         backgroundRepeat: container.style.backgroundRepeat,
         backgroundSize: container.style.backgroundSize,
         backgroundAttachment: container.style.backgroundAttachment,
+        backgroundColor: container.style.backgroundColor,
+        filter: container.style.filter,
         display: container.style.display,
       };
+      const removeCanvas = () => {
+        try {
+          container.removeChild(canvas);
+        } catch {
+          // Ignore
+        }
+      };
+
+      if (isIOSSafari) {
+        removeCanvas();
+        container.style.backgroundImage = buildStaticGradientBackground({
+          color1,
+          color2,
+          color3,
+          blendAngle,
+          colorBalance,
+        });
+        container.style.backgroundPosition = '18% 14%, 82% 18%, 50% 86%, center center';
+        container.style.backgroundRepeat = 'no-repeat';
+        container.style.backgroundSize = '160% 160%, 150% 150%, 150% 150%, cover';
+        container.style.backgroundAttachment = 'scroll';
+        container.style.backgroundColor = color3;
+        container.style.filter = 'saturate(1.08) contrast(1.04)';
+        container.classList.add('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
+
+        return () => {
+          container.classList.remove('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
+          Object.assign(container.style, previousContainerStyles);
+          removeCanvas();
+        };
+      }
+
       const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
         element.style.backgroundImage = `url(${dataUrl})`;
         element.style.backgroundPosition = 'center top';
@@ -273,14 +334,17 @@ const Grainient = ({
       res[1] = gl.drawingBufferHeight;
 
       // Render a single frame with a slight time offset for a nice gradient state
+      const previousGrainAmount = program.uniforms.uGrainAmount.value;
+      program.uniforms.uGrainAmount.value = Math.min(previousGrainAmount, 0.03);
       program.uniforms.iTime.value = 1.5;
       renderer.render({ scene: mesh });
+      program.uniforms.uGrainAmount.value = previousGrainAmount;
 
       let hasStaticBackground = false;
 
       // Capture the frame as a static image
       try {
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+        const dataUrl = canvas.toDataURL('image/png');
 
         applyStaticBackground(root, dataUrl);
         applyStaticBackground(body, dataUrl);
@@ -300,25 +364,17 @@ const Grainient = ({
       }
 
       if (hasStaticBackground) {
-        try {
-          container.removeChild(canvas);
-        } catch {
-          // Ignore
-        }
+        removeCanvas();
       }
 
       return () => {
-        container.classList.remove('grainient-static', 'grainient-ios-fullpage');
+        container.classList.remove('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
         Object.assign(root.style, previousRootStyles);
         Object.assign(body.style, previousBodyStyles);
         Object.assign(container.style, previousContainerStyles);
 
         if (!hasStaticBackground) {
-          try {
-            container.removeChild(canvas);
-          } catch {
-            // Ignore
-          }
+          removeCanvas();
         }
       };
     }
