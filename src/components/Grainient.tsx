@@ -331,31 +331,6 @@ const Grainient = ({
         element.style.backgroundColor = color3;
       };
 
-      if (isIOSSafari) {
-        const staticGradientBackground = buildStaticGradientBackground({
-          color1,
-          color2,
-          color3,
-          blendAngle,
-          colorBalance,
-        });
-
-        removeCanvas();
-        applyGradientBackground(root, staticGradientBackground);
-        applyGradientBackground(body, staticGradientBackground);
-        applyGradientBackground(container, staticGradientBackground);
-        container.style.filter = 'saturate(1.14) contrast(1.08)';
-        container.classList.add('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
-
-        return () => {
-          container.classList.remove('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
-          Object.assign(root.style, previousRootStyles);
-          Object.assign(body.style, previousBodyStyles);
-          Object.assign(container.style, previousContainerStyles);
-          removeCanvas();
-        };
-      }
-
       const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
         element.style.backgroundImage = `url(${dataUrl})`;
         element.style.backgroundPosition = 'center top';
@@ -387,7 +362,7 @@ const Grainient = ({
         body.style.backgroundColor = 'transparent';
         applyStaticBackground(container, dataUrl);
 
-        if (isIOSSafari) {
+        if (isIOS) {
           container.classList.add('grainient-static', 'grainient-ios-fullpage');
         } else {
           container.classList.add('grainient-static');
