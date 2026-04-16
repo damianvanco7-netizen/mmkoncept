@@ -21,24 +21,16 @@
   background-size: cover;
 }
 
-/* iOS Safari: use sticky instead of fixed to avoid bottom cropping */
-.grainient-ios-sticky {
-  position: sticky;
-  top: 0;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  width: 100vw;
-  height: 100lvh;
-  min-height: 100svh;
-  margin-bottom: -100lvh;
-  overflow: visible;
+.grainient-ios-fullpage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
   transform: none;
   will-change: auto;
   backface-visibility: visible;
   -webkit-backface-visibility: visible;
-  z-index: 0;
-  pointer-events: none;
 }
 
 .grainient-static::after {
