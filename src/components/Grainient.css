@@ -7,6 +7,10 @@
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .grainient-static {

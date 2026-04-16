@@ -221,19 +221,48 @@ const Grainient = ({
 
     const mesh = new Mesh(gl, { geometry, program });
 
-    const setSize = () => {
-      const rect = container.getBoundingClientRect();
-      const width = Math.max(1, Math.floor(rect.width));
-      const height = Math.max(1, Math.floor(rect.height));
+    const applySize = (width: number, height: number) => {
       renderer.setSize(width, height);
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
       res[1] = gl.drawingBufferHeight;
     };
 
-    const ro = new ResizeObserver(setSize);
-    ro.observe(container);
-    setSize();
+    const setSize = () => {
+      const rect = container.getBoundingClientRect();
+      const width = Math.max(1, Math.floor(rect.width));
+      const height = Math.max(1, Math.floor(rect.height));
+      applySize(width, height);
+    };
+
+    // On mobile, use a stable height to prevent resize flicker from Safari toolbar
+    const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let ro: ResizeObserver | null = null;
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+
+    if (isMobileDevice) {
+      // Use screen height for a stable canvas size that won't change with toolbar
+      const stableWidth = Math.max(1, Math.floor(window.innerWidth));
+      const stableHeight = Math.max(1, Math.floor(window.screen.availHeight || window.screen.height));
+      applySize(stableWidth, stableHeight);
+
+      // Only handle orientation changes, debounced
+      const handleOrientationResize = () => {
+        if (debounceTimer) clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          const w = Math.max(1, Math.floor(window.innerWidth));
+          const h = Math.max(1, Math.floor(window.screen.availHeight || window.screen.height));
+          applySize(w, h);
+        }, 300);
+      };
+      window.addEventListener('orientationchange', handleOrientationResize);
+      // Store cleanup ref
+      (container as any).__grainientOrientationHandler = handleOrientationResize;
+    } else {
+      ro = new ResizeObserver(setSize);
+      ro.observe(container);
+      setSize();
+    }
 
     let raf = 0;
     const t0 = performance.now();
