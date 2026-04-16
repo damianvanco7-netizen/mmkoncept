@@ -259,13 +259,11 @@ const Grainient = ({
         backgroundAttachment: container.style.backgroundAttachment,
         display: container.style.display,
       };
-      const backgroundHeight = 'calc(100lvh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + 60px)';
-      const applyStaticBackground = (element: HTMLElement, dataUrl: string, repeating = false) => {
+      const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
         element.style.backgroundImage = `url(${dataUrl})`;
         element.style.backgroundPosition = 'center top';
-        element.style.backgroundRepeat = repeating ? 'repeat-y' : 'no-repeat';
-        element.style.backgroundSize = repeating ? '100vw auto' : `100vw ${backgroundHeight}`;
-        element.style.backgroundAttachment = 'scroll';
+        element.style.backgroundRepeat = 'no-repeat';
+        element.style.backgroundSize = 'cover';
       };
 
       renderer.setSize(w / dpr, h / dpr);
@@ -282,16 +280,13 @@ const Grainient = ({
       // Capture the frame as a static image
       try {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-        applyStaticBackground(root, dataUrl, useRootBackgroundOnly);
-        applyStaticBackground(body, dataUrl, useRootBackgroundOnly);
+        // Apply to root and body for iOS Safari bottom bar coverage
+        applyStaticBackground(root, dataUrl);
+        applyStaticBackground(body, dataUrl);
         body.style.backgroundColor = 'transparent';
-
-        if (useRootBackgroundOnly) {
-          container.style.display = 'none';
-        } else {
-          applyStaticBackground(container, dataUrl);
-          container.classList.add('grainient-static');
-        }
+        // Also apply to the fixed container (it stays in place while content scrolls)
+        applyStaticBackground(container, dataUrl);
+        container.classList.add('grainient-static');
 
         hasStaticBackground = true;
       } catch {
