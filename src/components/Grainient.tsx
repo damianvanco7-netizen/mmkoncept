@@ -226,9 +226,7 @@ const Grainient = ({
       || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(userAgent) || isIOS;
     const isMobile = window.innerWidth < 768;
-    const isIOSSafari = isIOS
-      && /WebKit/i.test(userAgent)
-      && !/CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo/i.test(userAgent);
+    // isIOSSafari detection removed — all mobile now uses same WebGL snapshot path
     const renderer = new Renderer({
       // @ts-ignore
       webgl: 2,
@@ -322,14 +320,6 @@ const Grainient = ({
         }
       };
 
-      const applyGradientBackground = (element: HTMLElement, backgroundImage: string) => {
-        element.style.backgroundImage = backgroundImage;
-        element.style.backgroundPosition = '16% 14%, 84% 18%, 50% 88%, 56% 44%, center center';
-        element.style.backgroundRepeat = 'no-repeat';
-        element.style.backgroundSize = '145% 145%, 132% 132%, 150% 150%, 122% 122%, cover';
-        element.style.backgroundAttachment = 'scroll';
-        element.style.backgroundColor = color3;
-      };
 
       const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
         element.style.backgroundImage = `url(${dataUrl})`;
