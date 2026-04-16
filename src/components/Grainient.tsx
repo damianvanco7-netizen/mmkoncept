@@ -241,6 +241,7 @@ const Grainient = ({
         backgroundRepeat: root.style.backgroundRepeat,
         backgroundSize: root.style.backgroundSize,
         backgroundAttachment: root.style.backgroundAttachment,
+        backgroundColor: root.style.backgroundColor,
       };
       const previousBodyStyles = {
         backgroundImage: body.style.backgroundImage,
@@ -280,21 +281,15 @@ const Grainient = ({
       try {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
 
+        applyStaticBackground(root, dataUrl);
+        applyStaticBackground(body, dataUrl);
+        root.style.backgroundColor = 'transparent';
+        body.style.backgroundColor = 'transparent';
+        applyStaticBackground(container, dataUrl);
+
         if (isIOSSafari) {
-          // iOS Safari: use sticky container to avoid fixed-position bottom cropping
-          // Root/body get the same image as fallback behind browser chrome areas
-          applyStaticBackground(root, dataUrl);
-          applyStaticBackground(body, dataUrl);
-          root.style.backgroundColor = 'transparent';
-          body.style.backgroundColor = 'transparent';
-          applyStaticBackground(container, dataUrl);
-          container.classList.add('grainient-static', 'grainient-ios-sticky');
+          container.classList.add('grainient-static', 'grainient-ios-fullpage');
         } else {
-          // Other mobile browsers (Chrome etc.): fixed container works fine
-          applyStaticBackground(root, dataUrl);
-          applyStaticBackground(body, dataUrl);
-          body.style.backgroundColor = 'transparent';
-          applyStaticBackground(container, dataUrl);
           container.classList.add('grainient-static');
         }
 
@@ -312,7 +307,7 @@ const Grainient = ({
       }
 
       return () => {
-        container.classList.remove('grainient-static', 'grainient-ios-sticky');
+        container.classList.remove('grainient-static', 'grainient-ios-fullpage');
         Object.assign(root.style, previousRootStyles);
         Object.assign(body.style, previousBodyStyles);
         Object.assign(container.style, previousContainerStyles);
