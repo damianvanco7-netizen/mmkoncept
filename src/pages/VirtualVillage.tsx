@@ -61,11 +61,11 @@ const VirtualVillage = () => {
           </div>
 
           {/* Right — hero image */}
-          <div className="relative min-h-[50vh] md:min-h-screen overflow-hidden">
+          <div className="relative min-h-[40vh] -mt-4 md:mt-0 md:min-h-screen overflow-hidden">
             <img
               src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20hero%20sekcia%20photo.png"
               alt="Virtual Village"
-              className="absolute inset-0 w-full h-full object-cover md:[border-bottom-left-radius:clamp(2rem,5vw,5rem)]"
+              className="absolute inset-0 w-full h-full object-cover object-top md:object-center md:[border-bottom-left-radius:clamp(2rem,5vw,5rem)]"
             />
           </div>
         </div>
@@ -146,11 +146,8 @@ const VirtualVillage = () => {
             <div className="col-span-2 row-span-2 rounded-xl overflow-hidden">
               <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup%203.png" alt="Virtual Village mockup" className="w-full h-full object-cover" />
             </div>
-            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
+            <div className="col-span-2 row-span-1 rounded-xl overflow-hidden">
               <img src={vvAppMockup} alt="Virtual Village app mockup" className="w-full h-full object-cover" />
-            </div>
-            <div className="col-span-1 row-span-1 rounded-xl overflow-hidden">
-              <img src="https://raw.githubusercontent.com/damianvanco7-netizen/mmkoncept/main/vv%20photo%20mockup.png" alt="Virtual Village app mockup" className="w-full h-full object-cover" />
             </div>
           </div>
           {/* Mobile carousel */}
