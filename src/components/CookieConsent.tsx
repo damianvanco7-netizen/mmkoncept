@@ -76,44 +76,41 @@ const CookieConsent = () => {
         paddingRight: "calc(1rem + env(safe-area-inset-right))",
       }}
     >
-      <div
-        className="mx-auto max-w-4xl rounded-full p-6 md:p-8"
-        style={{
-          background: glassBg,
-          backdropFilter: "blur(24px) saturate(1.4)",
-          WebkitBackdropFilter: "blur(24px) saturate(1.4)",
-          border: glassBorder,
-          boxShadow: glassShadow,
-        }}
-      >
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
-          <div className="flex-1">
-            <p className={`text-sm ${textColor} leading-relaxed`}>
-              We use cookies to enhance your experience. Necessary cookies ensure the site works properly.
-              Analytics cookies help us improve.{" "}
+        <div
+          className="mx-auto max-w-4xl rounded-full px-5 py-3 md:p-8"
+          style={{
+            background: glassBg,
+            backdropFilter: "blur(24px) saturate(1.4)",
+            WebkitBackdropFilter: "blur(24px) saturate(1.4)",
+            border: glassBorder,
+            boxShadow: glassShadow,
+          }}
+        >
+          <div className="flex items-center gap-3 md:gap-8">
+            <p className={`flex-1 text-[11px] md:text-sm ${textColor} leading-snug md:leading-relaxed`}>
+              We use cookies to enhance your experience.{" "}
               <Link to="/privacy-policy" className={`underline underline-offset-2 ${linkColor} transition-colors`}>
                 Privacy Policy
               </Link>
             </p>
-          </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <button
-              onClick={handleReject}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium ${rejectTextColor} transition-colors`}
-              style={rejectBtnStyle}
-            >
-              Reject
-            </button>
-            <button
-              onClick={handleAccept}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium ${acceptTextColor} transition-colors`}
-              style={acceptBtnStyle}
-            >
-              Accept All
-            </button>
+            <div className="flex items-center gap-2 md:gap-3 shrink-0">
+              <button
+                onClick={handleReject}
+                className={`px-3 py-1.5 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-sm font-medium ${rejectTextColor} transition-colors`}
+                style={rejectBtnStyle}
+              >
+                Reject
+              </button>
+              <button
+                onClick={handleAccept}
+                className={`px-3 py-1.5 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-sm font-medium ${acceptTextColor} transition-colors`}
+                style={acceptBtnStyle}
+              >
+                Accept
+              </button>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
