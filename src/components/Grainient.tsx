@@ -235,7 +235,6 @@ const Grainient = ({
       const h = Math.max(1, Math.floor(window.screen.height * dpr));
       const root = document.documentElement;
       const body = document.body;
-      const useRootBackgroundOnly = isIOSSafari;
       const previousRootStyles = {
         backgroundImage: root.style.backgroundImage,
         backgroundPosition: root.style.backgroundPosition,
@@ -280,13 +279,24 @@ const Grainient = ({
       // Capture the frame as a static image
       try {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-        // Apply to root and body for iOS Safari bottom bar coverage
-        applyStaticBackground(root, dataUrl);
-        applyStaticBackground(body, dataUrl);
-        body.style.backgroundColor = 'transparent';
-        // Also apply to the fixed container (it stays in place while content scrolls)
-        applyStaticBackground(container, dataUrl);
-        container.classList.add('grainient-static');
+
+        if (isIOSSafari) {
+          // iOS Safari: use sticky container to avoid fixed-position bottom cropping
+          // Root/body get the same image as fallback behind browser chrome areas
+          applyStaticBackground(root, dataUrl);
+          applyStaticBackground(body, dataUrl);
+          root.style.backgroundColor = 'transparent';
+          body.style.backgroundColor = 'transparent';
+          applyStaticBackground(container, dataUrl);
+          container.classList.add('grainient-static', 'grainient-ios-sticky');
+        } else {
+          // Other mobile browsers (Chrome etc.): fixed container works fine
+          applyStaticBackground(root, dataUrl);
+          applyStaticBackground(body, dataUrl);
+          body.style.backgroundColor = 'transparent';
+          applyStaticBackground(container, dataUrl);
+          container.classList.add('grainient-static');
+        }
 
         hasStaticBackground = true;
       } catch {
@@ -302,7 +312,7 @@ const Grainient = ({
       }
 
       return () => {
-        container.classList.remove('grainient-static');
+        container.classList.remove('grainient-static', 'grainient-ios-sticky');
         Object.assign(root.style, previousRootStyles);
         Object.assign(body.style, previousBodyStyles);
         Object.assign(container.style, previousContainerStyles);
