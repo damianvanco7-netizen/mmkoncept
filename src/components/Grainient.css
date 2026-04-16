@@ -11,6 +11,8 @@
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  height: 100vh;
+  height: -webkit-fill-available;
 }
 
 .grainient-static {
@@ -28,4 +30,3 @@
     radial-gradient(circle at 78% 82%, rgba(255, 255, 255, 0.05) 0%, transparent 34%);
   pointer-events: none;
 }
-
