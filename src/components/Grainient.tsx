@@ -263,9 +263,9 @@ const Grainient = ({
       const applyStaticBackground = (element: HTMLElement, dataUrl: string, repeating = false) => {
         element.style.backgroundImage = `url(${dataUrl})`;
         element.style.backgroundPosition = 'center top';
-        element.style.backgroundRepeat = repeating ? 'repeat-y' : 'no-repeat';
-        element.style.backgroundSize = repeating ? '100vw auto' : `100vw ${backgroundHeight}`;
-        element.style.backgroundAttachment = 'scroll';
+        element.style.backgroundRepeat = 'no-repeat';
+        element.style.backgroundSize = repeating ? '100vw 100lvh' : `100vw ${backgroundHeight}`;
+        element.style.backgroundAttachment = repeating ? 'fixed' : 'scroll';
       };
 
       renderer.setSize(w / dpr, h / dpr);
