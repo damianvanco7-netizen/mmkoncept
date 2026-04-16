@@ -185,6 +185,7 @@ const Grainient = ({
       alpha: true,
       antialias: false,
       dpr: Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2),
+      preserveDrawingBuffer: isMobileDevice,
     });
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
