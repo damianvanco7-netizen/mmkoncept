@@ -12,55 +12,6 @@ const hexToRgb = (hex: string): number[] => {
   ];
 };
 
-const clampUnit = (value: number): number => Math.max(0, Math.min(1, value));
-
-const mixRgb = (source: number[], target: number[], amount: number): number[] => (
-  source.map((channel, index) => clampUnit(channel + (target[index] - channel) * amount))
-);
-
-const rgbToRgba = (rgb: number[], alpha = 1): string => (
-  `rgba(${Math.round(clampUnit(rgb[0]) * 255)}, ${Math.round(clampUnit(rgb[1]) * 255)}, ${Math.round(clampUnit(rgb[2]) * 255)}, ${alpha})`
-);
-
-const tintHex = (hex: string, amount = 0): number[] => mixRgb(hexToRgb(hex), [1, 1, 1], amount);
-
-const shadeHex = (hex: string, amount = 0): number[] => mixRgb(hexToRgb(hex), [0, 0, 0], amount);
-
-const mixHexPair = (colorA: string, colorB: string, amount = 0.5): number[] => (
-  mixRgb(hexToRgb(colorA), hexToRgb(colorB), amount)
-);
-
-const buildStaticGradientBackground = ({
-  color1,
-  color2,
-  color3,
-  blendAngle,
-  colorBalance,
-}: Pick<GrainientProps, 'color1' | 'color2' | 'color3' | 'blendAngle' | 'colorBalance'>): string => {
-  const warmColor = color1 ?? '#ffffff';
-  const accentColor = color2 ?? '#ffffff';
-  const baseColor = color3 ?? '#ffffff';
-  const angle = blendAngle + 142;
-  const balanceStop = Math.max(34, Math.min(68, 52 - colorBalance * 24));
-
-  const topGlow = tintHex(warmColor, 0.34);
-  const topCore = tintHex(warmColor, 0.18);
-  const sideGlow = tintHex(accentColor, 0.22);
-  const centerMist = mixHexPair(warmColor, accentColor, 0.46);
-  const floorGlow = tintHex(baseColor, 0.16);
-  const baseMid = mixHexPair(baseColor, accentColor, 0.42);
-  const accentShadow = shadeHex(accentColor, 0.18);
-  const deepBase = shadeHex(baseColor, 0.34);
-  const warmEdge = tintHex(warmColor, 0.08);
-
-  return [
-    `radial-gradient(140% 125% at 16% 14%, ${rgbToRgba(topGlow, 0.96)} 0%, ${rgbToRgba(topCore, 0.74)} 18%, ${rgbToRgba(mixHexPair(warmColor, accentColor, 0.28), 0.28)} 38%, transparent 62%)`,
-    `radial-gradient(125% 112% at 84% 18%, ${rgbToRgba(sideGlow, 0.78)} 0%, ${rgbToRgba(mixHexPair(accentColor, warmColor, 0.22), 0.34)} 26%, transparent 58%)`,
-    `radial-gradient(155% 132% at 50% 88%, ${rgbToRgba(floorGlow, 0.48)} 0%, ${rgbToRgba(baseMid, 0.18)} 34%, transparent 64%)`,
-    `radial-gradient(115% 105% at 56% 44%, ${rgbToRgba(centerMist, 0.16)} 0%, transparent 56%)`,
-    `linear-gradient(${angle}deg, ${rgbToRgba(deepBase, 1)} 0%, ${rgbToRgba(accentShadow, 1)} 28%, ${rgbToRgba(baseMid, 1)} ${balanceStop}%, ${rgbToRgba(warmEdge, 1)} 100%)`,
-  ].join(', ');
-};
 
 const vertex = `#version 300 es
 in vec2 position;
@@ -368,7 +319,7 @@ const Grainient = ({
       }
 
       return () => {
-        container.classList.remove('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
+        container.classList.remove('grainient-static', 'grainient-ios-fullpage');
         Object.assign(root.style, previousRootStyles);
         Object.assign(body.style, previousBodyStyles);
         Object.assign(container.style, previousContainerStyles);
