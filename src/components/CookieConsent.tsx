@@ -87,12 +87,20 @@ const CookieConsent = () => {
           }}
         >
           <div className="flex items-center gap-3 md:gap-8">
-            <p className={`flex-1 text-[11px] md:text-sm ${textColor} leading-snug md:leading-relaxed`}>
-              We use cookies to enhance your experience.{" "}
+          <div className="flex-1">
+            <p className={`text-[11px] md:text-sm ${textColor} leading-snug md:leading-relaxed`}>
+              <span className="md:hidden">
+                We use cookies to enhance your experience.{" "}
+              </span>
+              <span className="hidden md:inline">
+                We use cookies to enhance your experience. Necessary cookies ensure the site works properly.
+                Analytics cookies help us improve.{" "}
+              </span>
               <Link to="/privacy-policy" className={`underline underline-offset-2 ${linkColor} transition-colors`}>
                 Privacy Policy
               </Link>
             </p>
+          </div>
             <div className="flex items-center gap-2 md:gap-3 shrink-0">
               <button
                 onClick={handleReject}
