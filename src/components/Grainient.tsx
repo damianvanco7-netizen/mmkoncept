@@ -12,12 +12,23 @@ const hexToRgb = (hex: string): number[] => {
   ];
 };
 
-const hexToRgba = (hex: string, alpha = 1): string => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return `rgba(255, 255, 255, ${alpha})`;
+const clampUnit = (value: number): number => Math.max(0, Math.min(1, value));
 
-  return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${alpha})`;
-};
+const mixRgb = (source: number[], target: number[], amount: number): number[] => (
+  source.map((channel, index) => clampUnit(channel + (target[index] - channel) * amount))
+);
+
+const rgbToRgba = (rgb: number[], alpha = 1): string => (
+  `rgba(${Math.round(clampUnit(rgb[0]) * 255)}, ${Math.round(clampUnit(rgb[1]) * 255)}, ${Math.round(clampUnit(rgb[2]) * 255)}, ${alpha})`
+);
+
+const tintHex = (hex: string, amount = 0): number[] => mixRgb(hexToRgb(hex), [1, 1, 1], amount);
+
+const shadeHex = (hex: string, amount = 0): number[] => mixRgb(hexToRgb(hex), [0, 0, 0], amount);
+
+const mixHexPair = (colorA: string, colorB: string, amount = 0.5): number[] => (
+  mixRgb(hexToRgb(colorA), hexToRgb(colorB), amount)
+);
 
 const buildStaticGradientBackground = ({
   color1,
@@ -26,14 +37,28 @@ const buildStaticGradientBackground = ({
   blendAngle,
   colorBalance,
 }: Pick<GrainientProps, 'color1' | 'color2' | 'color3' | 'blendAngle' | 'colorBalance'>): string => {
-  const angle = blendAngle + 140;
-  const balanceStop = Math.max(30, Math.min(70, 50 - colorBalance * 28));
+  const warmColor = color1 ?? '#ffffff';
+  const accentColor = color2 ?? '#ffffff';
+  const baseColor = color3 ?? '#ffffff';
+  const angle = blendAngle + 142;
+  const balanceStop = Math.max(34, Math.min(68, 52 - colorBalance * 24));
+
+  const topGlow = tintHex(warmColor, 0.34);
+  const topCore = tintHex(warmColor, 0.18);
+  const sideGlow = tintHex(accentColor, 0.22);
+  const centerMist = mixHexPair(warmColor, accentColor, 0.46);
+  const floorGlow = tintHex(baseColor, 0.16);
+  const baseMid = mixHexPair(baseColor, accentColor, 0.42);
+  const accentShadow = shadeHex(accentColor, 0.18);
+  const deepBase = shadeHex(baseColor, 0.34);
+  const warmEdge = tintHex(warmColor, 0.08);
 
   return [
-    `radial-gradient(circle at 18% 16%, ${hexToRgba(color1 ?? '#ffffff', 0.9)} 0%, ${hexToRgba(color1 ?? '#ffffff', 0.64)} 18%, transparent 46%)`,
-    `radial-gradient(circle at 82% 18%, ${hexToRgba(color2 ?? '#ffffff', 0.8)} 0%, ${hexToRgba(color2 ?? '#ffffff', 0.42)} 22%, transparent 48%)`,
-    `radial-gradient(circle at 50% 86%, ${hexToRgba(color3 ?? '#ffffff', 0.74)} 0%, ${hexToRgba(color3 ?? '#ffffff', 0.28)} 24%, transparent 52%)`,
-    `linear-gradient(${angle}deg, ${hexToRgba(color3 ?? '#ffffff', 1)} 0%, ${hexToRgba(color2 ?? '#ffffff', 1)} ${balanceStop}%, ${hexToRgba(color1 ?? '#ffffff', 1)} 100%)`,
+    `radial-gradient(140% 125% at 16% 14%, ${rgbToRgba(topGlow, 0.96)} 0%, ${rgbToRgba(topCore, 0.74)} 18%, ${rgbToRgba(mixHexPair(warmColor, accentColor, 0.28), 0.28)} 38%, transparent 62%)`,
+    `radial-gradient(125% 112% at 84% 18%, ${rgbToRgba(sideGlow, 0.78)} 0%, ${rgbToRgba(mixHexPair(accentColor, warmColor, 0.22), 0.34)} 26%, transparent 58%)`,
+    `radial-gradient(155% 132% at 50% 88%, ${rgbToRgba(floorGlow, 0.48)} 0%, ${rgbToRgba(baseMid, 0.18)} 34%, transparent 64%)`,
+    `radial-gradient(115% 105% at 56% 44%, ${rgbToRgba(centerMist, 0.16)} 0%, transparent 56%)`,
+    `linear-gradient(${angle}deg, ${rgbToRgba(deepBase, 1)} 0%, ${rgbToRgba(accentShadow, 1)} 28%, ${rgbToRgba(baseMid, 1)} ${balanceStop}%, ${rgbToRgba(warmEdge, 1)} 100%)`,
   ].join(', ');
 };
 
@@ -297,25 +322,35 @@ const Grainient = ({
         }
       };
 
+      const applyGradientBackground = (element: HTMLElement, backgroundImage: string) => {
+        element.style.backgroundImage = backgroundImage;
+        element.style.backgroundPosition = '16% 14%, 84% 18%, 50% 88%, 56% 44%, center center';
+        element.style.backgroundRepeat = 'no-repeat';
+        element.style.backgroundSize = '145% 145%, 132% 132%, 150% 150%, 122% 122%, cover';
+        element.style.backgroundAttachment = 'scroll';
+        element.style.backgroundColor = color3;
+      };
+
       if (isIOSSafari) {
-        removeCanvas();
-        container.style.backgroundImage = buildStaticGradientBackground({
+        const staticGradientBackground = buildStaticGradientBackground({
           color1,
           color2,
           color3,
           blendAngle,
           colorBalance,
         });
-        container.style.backgroundPosition = '18% 14%, 82% 18%, 50% 86%, center center';
-        container.style.backgroundRepeat = 'no-repeat';
-        container.style.backgroundSize = '160% 160%, 150% 150%, 150% 150%, cover';
-        container.style.backgroundAttachment = 'scroll';
-        container.style.backgroundColor = color3;
-        container.style.filter = 'saturate(1.08) contrast(1.04)';
+
+        removeCanvas();
+        applyGradientBackground(root, staticGradientBackground);
+        applyGradientBackground(body, staticGradientBackground);
+        applyGradientBackground(container, staticGradientBackground);
+        container.style.filter = 'saturate(1.14) contrast(1.08)';
         container.classList.add('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
 
         return () => {
           container.classList.remove('grainient-static', 'grainient-ios-fullpage', 'grainient-ios-gradient');
+          Object.assign(root.style, previousRootStyles);
+          Object.assign(body.style, previousBodyStyles);
           Object.assign(container.style, previousContainerStyles);
           removeCanvas();
         };
