@@ -223,11 +223,40 @@ const Grainient = ({
     const mesh = new Mesh(gl, { geometry, program });
 
     if (isMobileDevice) {
-      // Mobile: render one frame, capture as static image, destroy WebGL
+      // Mobile: render one frame, capture as static image, and mirror it onto the page background
       const dpr = window.devicePixelRatio || 1;
       const w = Math.max(1, Math.floor(window.screen.width * dpr));
       const h = Math.max(1, Math.floor(window.screen.height * dpr));
-      renderer.setSize(w / (window.devicePixelRatio || 1), h / (window.devicePixelRatio || 1));
+      const root = document.documentElement;
+      const body = document.body;
+      const previousRootStyles = {
+        backgroundImage: root.style.backgroundImage,
+        backgroundPosition: root.style.backgroundPosition,
+        backgroundRepeat: root.style.backgroundRepeat,
+        backgroundSize: root.style.backgroundSize,
+      };
+      const previousBodyStyles = {
+        backgroundImage: body.style.backgroundImage,
+        backgroundPosition: body.style.backgroundPosition,
+        backgroundRepeat: body.style.backgroundRepeat,
+        backgroundSize: body.style.backgroundSize,
+        backgroundColor: body.style.backgroundColor,
+      };
+      const previousContainerStyles = {
+        backgroundImage: container.style.backgroundImage,
+        backgroundPosition: container.style.backgroundPosition,
+        backgroundRepeat: container.style.backgroundRepeat,
+        backgroundSize: container.style.backgroundSize,
+      };
+      const backgroundHeight = 'calc(100lvh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px) + 60px)';
+      const applyStaticBackground = (element: HTMLElement, dataUrl: string) => {
+        element.style.backgroundImage = `url(${dataUrl})`;
+        element.style.backgroundPosition = 'center top';
+        element.style.backgroundRepeat = 'no-repeat';
+        element.style.backgroundSize = `100vw ${backgroundHeight}`;
+      };
+
+      renderer.setSize(w / dpr, h / dpr);
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
       res[1] = gl.drawingBufferHeight;
@@ -236,24 +265,42 @@ const Grainient = ({
       program.uniforms.iTime.value = 1.5;
       renderer.render({ scene: mesh });
 
+      let hasStaticBackground = false;
+
       // Capture the frame as a static image
       try {
         const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-        container.style.backgroundImage = `url(${dataUrl})`;
+        applyStaticBackground(root, dataUrl);
+        applyStaticBackground(body, dataUrl);
+        body.style.backgroundColor = 'transparent';
+        applyStaticBackground(container, dataUrl);
         container.classList.add('grainient-static');
+        hasStaticBackground = true;
       } catch {
         // If toDataURL fails, keep the canvas as-is with no animation
       }
 
-      // Remove canvas and clean up WebGL resources
-      try {
-        container.removeChild(canvas);
-      } catch {
-        // Ignore
+      if (hasStaticBackground) {
+        try {
+          container.removeChild(canvas);
+        } catch {
+          // Ignore
+        }
       }
 
       return () => {
-        // Nothing to clean up — WebGL already destroyed
+        container.classList.remove('grainient-static');
+        Object.assign(root.style, previousRootStyles);
+        Object.assign(body.style, previousBodyStyles);
+        Object.assign(container.style, previousContainerStyles);
+
+        if (!hasStaticBackground) {
+          try {
+            container.removeChild(canvas);
+          } catch {
+            // Ignore
+          }
+        }
       };
     }
 
