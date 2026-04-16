@@ -224,8 +224,9 @@ const Grainient = ({
 
     if (isMobileDevice) {
       // Mobile: render one frame, capture as static image, destroy WebGL
-      const w = Math.max(1, Math.floor(window.screen.width * (window.devicePixelRatio || 1)));
-      const h = Math.max(1, Math.floor((window.screen.availHeight || window.screen.height) * (window.devicePixelRatio || 1)));
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(1, Math.floor(window.screen.width * dpr));
+      const h = Math.max(1, Math.floor(window.screen.height * dpr));
       renderer.setSize(w / (window.devicePixelRatio || 1), h / (window.devicePixelRatio || 1));
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
