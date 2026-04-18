@@ -28,15 +28,12 @@ const BrowserChromeTheme = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Only update the browser chrome theme-color meta tag on route change.
+    // Do NOT touch html/body backgroundColor — that causes a visible color flash
+    // on iOS Safari before the gradient image renders. The body keeps a single
+    // static dark color (set once) that matches the gradient base.
     const isLightSurface = pathname === "/virtual-village";
     const browserSurface = isLightSurface ? "#e5ded3" : "#0b0806";
-    const root = document.documentElement;
-    const body = document.body;
-    const previousRootBg = root.style.backgroundColor;
-    const previousBodyBg = body.style.backgroundColor;
-
-    root.style.backgroundColor = browserSurface;
-    body.style.backgroundColor = browserSurface;
 
     let themeColorMeta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
     const createdMeta = !themeColorMeta;
@@ -51,9 +48,6 @@ const BrowserChromeTheme = () => {
     themeColorMeta.content = browserSurface;
 
     return () => {
-      root.style.backgroundColor = previousRootBg;
-      body.style.backgroundColor = previousBodyBg;
-
       if (createdMeta) {
         themeColorMeta?.remove();
       } else if (themeColorMeta) {
