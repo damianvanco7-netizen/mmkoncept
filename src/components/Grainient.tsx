@@ -227,12 +227,14 @@ const Grainient = ({
     const mesh = new Mesh(gl, { geometry, program });
 
     if (isMobileDevice) {
-      // Mobile: render one frame, capture as static PNG, remove canvas
+      // Mobile: render one frame, capture as static PNG, remove canvas.
+      // Use the LARGEST possible viewport size (screen dimensions) so the snapshot
+      // covers both states of Safari (URL bar visible AND hidden) without rescaling.
       const dpr = window.devicePixelRatio || 1;
-      const viewportWidth = window.visualViewport?.width ?? window.innerWidth;
-      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-      const w = Math.max(1, Math.floor(viewportWidth * dpr));
-      const h = Math.max(1, Math.floor(viewportHeight * dpr));
+      const screenW = Math.max(window.screen?.width ?? 0, window.innerWidth);
+      const screenH = Math.max(window.screen?.height ?? 0, window.innerHeight);
+      const w = Math.max(1, Math.floor(screenW * dpr));
+      const h = Math.max(1, Math.floor(screenH * dpr));
 
       renderer.setSize(w / dpr, h / dpr);
       const res = program.uniforms.iResolution.value;

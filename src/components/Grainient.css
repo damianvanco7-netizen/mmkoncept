@@ -16,7 +16,18 @@
 }
 
 .grainient-static {
+  /* Stable fixed height on iOS — 100lvh is the largest viewport height
+     and does NOT change when Safari toggles its URL bar, preventing
+     the background-size: cover reflow flicker. */
+  bottom: auto;
+  height: 100vh;
+  height: 100lvh;
+  min-height: 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
