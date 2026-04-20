@@ -14,7 +14,7 @@ import vvMockup from "@/assets/vv-mockup.png";
 import vvMockupPhones from "@/assets/vv-mockup-phones.png";
 import vvHeroLogo from "@/assets/logo-vv-hero.svg";
 import vvHeroPhone from "@/assets/vv-hero-photo-new.png";
-import vvAppMockup from "@/assets/vv-mockup-phone-5-v3.png";
+import vvAppMockup from "@/assets/vv-mockup-phone-5-v4.png";
 import galleryFeatured from "@/assets/gallery-featured.png";
 import vvPhoto5 from "@/assets/vv-photo-5.png";
 import gallerySquare1 from "@/assets/vv-photo-2-1.png";
