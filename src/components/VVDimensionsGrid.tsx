@@ -39,12 +39,12 @@ const dimensions = [
   {
     icon: iconEducation,
     title: "Education",
-    description: "A space for lifelong learning — from local schools to personal growth.",
+    description: "A space for lifelong learning, from local schools to personal growth.",
   },
   {
     icon: iconShopping,
     title: "Shopping",
-    description: "Smart, local commerce — convenient, relevant, and community-driven.",
+    description: "Smart, local commerce, convenient, relevant, and community-driven.",
   },
 ];
 

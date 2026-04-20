@@ -86,8 +86,7 @@ const VirtualVillage = () => {
               A guide. A quiet intelligence<br />in the background.
             </p>
             <p className="text-sm md:text-base text-foreground/80 leading-relaxed mb-6 max-w-lg">
-              It helps you get things done effortlessly —<br />
-              so you can spend less time navigating technology<br />
+              It helps you get things done effortlessly, so you can spend less time navigating technology
               and more time enjoying life, nature, and the people around you.
             </p>
             <p className="text-sm md:text-base font-semibold text-foreground mb-2">
