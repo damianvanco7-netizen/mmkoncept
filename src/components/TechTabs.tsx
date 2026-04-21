@@ -155,9 +155,9 @@ const TechTabs = () => {
           {current.content}
           <button
             onClick={() => setContactOpen(true)}
-            className={`mt-8 px-6 py-3 rounded-full text-base font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70`}
+            className={`mt-8 px-6 py-3 rounded-full text-lg font-semibold liquid-glass-circle-light transition-all duration-300 whitespace-nowrap select-none border-foreground/15 text-foreground/50 hover:border-foreground/30 hover:text-foreground/70`}
           >
-            Get more info
+            Get more Info
           </button>
         </div>
       </div>
